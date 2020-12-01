@@ -5,7 +5,7 @@
 { config, pkgs, ... }:
 
 let
-  yakuake_autostart = (pkgs.makeAutostartItem { name = "yakuake"; package = pkgs.yakuake; srcPrefix = "org.kde.";  });
+  yakuake-autostart = (pkgs.makeAutostartItem { name = "yakuake"; package = pkgs.yakuake; srcPrefix = "org.kde."; });
 in
 {
   imports =
@@ -63,19 +63,16 @@ in
     firefox
     google-chrome
     mattermost
+    mattermost-desktop
     slack
-
-    # email
-    kdeApplications.kmail
-    kdeApplications.kmail-account-wizard
-    kdeApplications.kmailtransport
-    accounts-qt
-    kmail
 
     # dev
     dbeaver
+    docker
+    docker-compose
     git
     postgresql
+    ruby
     vscode
 
     # haskell
@@ -86,14 +83,16 @@ in
     # utils
     gnupg
     home-manager
+    networkmanager-fortisslvpn
     openfortivpn
     yakuake
-    yakuake_autostart
+    yakuake-autostart
 
     # misc
     nix-prefetch-git
     pinentry
     pinentry-qt
+    plasma5.plasma-browser-integration
   ];
 
   environment.variables = {
@@ -105,7 +104,7 @@ in
   services.xserver.dpi = 227;
 
   fonts.fonts = with pkgs; [
-    hasklig  ];
+    hasklig ];
 
   location.latitude = 38.9072;
   location.longitude = 77.0369;
@@ -119,6 +118,8 @@ in
   };
 
   home-manager.users.tommy = import ./home.nix;
+
+  hardware.bluetooth.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
