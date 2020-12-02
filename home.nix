@@ -1,7 +1,20 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
+let
+  unstableTarball =
+    fetchTarball
+      https://github.com/NixOS/nixpkgs-channels/archive/nixos-unstable.tar.gz;
+in
 {
   nixpkgs.config.allowUnfree = true;
+
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
 
   accounts.email = {
     accounts = {
@@ -34,6 +47,7 @@
     extensions = [
       pkgs.vscode-extensions.bbenoist.Nix
       pkgs.vscode-extensions.justusadam.language-haskell
+      pkgs.unstable.vscode-extensions.haskell.haskell
     ];
     userSettings = {
       "editor.wordWrapColumn" = 80;

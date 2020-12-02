@@ -6,12 +6,15 @@
 
 let
   yakuake-autostart = (pkgs.makeAutostartItem { name = "yakuake"; package = pkgs.yakuake; srcPrefix = "org.kde."; });
+  home-manager = builtins.fetchGit {
+    url = "https://github.com/rycee/home-manager.git";
+    rev = "c1faa848c5224452660cd6d2e0f4bd3e8d206419";
+  };
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      (import "${builtins.fetchTarball https://github.com/rycee/home-manager/archive/master.tar.gz}/nixos")
+    [ ./hardware-configuration.nix
+      (import "${home-manager}/nixos")
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -44,6 +47,7 @@ in
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.tommy = {
@@ -51,7 +55,7 @@ in
     description = "Tommy Bidne";
     group = "users";
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "audio" ]; # Enable ‘sudo’ for the user.
     uid = 1000;
     createHome = true;
     home = "/home/tommy";
@@ -65,14 +69,16 @@ in
     mattermost
     mattermost-desktop
     slack
+    teams
+    teamspeak_client
 
     # dev
     dbeaver
     docker
     docker-compose
     git
-    postgresql
     ruby
+    sqitchPg
     vscode
 
     # haskell
@@ -85,8 +91,10 @@ in
     home-manager
     networkmanager-fortisslvpn
     openfortivpn
+    unzip
     yakuake
     yakuake-autostart
+    zip
 
     # misc
     nix-prefetch-git
@@ -101,13 +109,25 @@ in
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
   };
 
-  services.xserver.dpi = 227;
+  # https://www.sven.de/dpi/
+  services.xserver.dpi = 314;
 
   fonts.fonts = with pkgs; [
     hasklig ];
 
   location.latitude = 38.9072;
   location.longitude = 77.0369;
+
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_12;
+    authentication = pkgs.lib.mkForce ''
+    local all all trust
+    host  all all 127.0.0.1/32 trust
+    host  all all ::1/128      trust
+    host  all all 0.0.0.0/0    trust
+    '';
+  };
 
   services.redshift = {
     enable = true;
@@ -120,6 +140,10 @@ in
   home-manager.users.tommy = import ./home.nix;
 
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  nix.binaryCaches = [ "https://nixcache.reflex-frp.org" "https://cache.nixos.org" "https://shpadoinkle.cachix.org" ];
+  nix.binaryCachePublicKeys = [ "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI=" "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "shpadoinkle.cachix.org-1:aRltE7Yto3ArhZyVjsyqWh1hmcCf27pYSmO1dPaadZ8=" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
