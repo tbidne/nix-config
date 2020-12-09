@@ -65,6 +65,7 @@ in
   environment.systemPackages = with pkgs; [
     # core
     firefox
+    gimp
     google-chrome
     mattermost
     mattermost-desktop
@@ -77,6 +78,7 @@ in
     docker
     docker-compose
     git
+    kdiff3
     ruby
     sqitchPg
     vscode
@@ -115,9 +117,6 @@ in
   fonts.fonts = with pkgs; [
     hasklig ];
 
-  location.latitude = 38.9072;
-  location.longitude = 77.0369;
-
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_12;
@@ -128,6 +127,8 @@ in
     host  all all 0.0.0.0/0    trust
     '';
   };
+
+  location.provider = "geoclue2";
 
   services.redshift = {
     enable = true;

@@ -39,6 +39,26 @@ in
     enable = true;
     userName = "Tommy Bidne";
     userEmail = "tbidne@gmail.com";
+    extraConfig = {
+      pull.ff = "only";
+      push.default = "simple";
+      diff.tool = "kdiff3";
+      merge.tool = "kdiff3";
+    };
+    aliases = {
+      gs = "status";
+      gad = "add -A";
+      count = "count-objects -vH";
+      ft = "fetch --prune";
+      mst = "merge origin/master --ff-only";
+      log-mst = "log origin/master";
+      log-mst-me = "log origin/master --author='Tommy Bidne'";
+      log-me = "log --author='Tommy Bidne'";
+      df = "diff";
+      dfc = "diff --cached";
+      dft = "difftool";
+      dftc = "difftool --cached";
+    };
   };
 
   programs.vscode = {
