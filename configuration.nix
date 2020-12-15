@@ -100,10 +100,10 @@ in
 
     # misc
     nix-prefetch-git
-    pinentry
-    pinentry-qt
     plasma5.plasma-browser-integration
   ];
+
+  programs.gnupg.agent.enable = true;
 
   environment.variables = {
     GDK_SCALE = "2";
