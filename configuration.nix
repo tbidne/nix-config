@@ -59,7 +59,7 @@ in
     uid = 1000;
     createHome = true;
     home = "/home/tommy";
-    shell = "/run/current-system/sw/bin/bash";
+    shell = "/run/current-system/sw/bin/zsh";
   };
 
   environment.systemPackages = with pkgs; [
@@ -128,7 +128,9 @@ in
     '';
   };
 
-  location.provider = "geoclue2";
+  location.provider = "manual";
+  location.latitude = 38.89511;
+  location.longitude = -77.03637;
 
   services.redshift = {
     enable = true;
@@ -139,6 +141,8 @@ in
   };
 
   home-manager.users.tommy = import ./home.nix;
+
+  programs.zsh.enable = true;
 
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;

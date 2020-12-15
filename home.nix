@@ -16,29 +16,9 @@ in
     };
   };
 
-  accounts.email = {
-    accounts = {
-      gmail = {
-        address = "tbidne@gmail.com";
-        userName = "tbidne@gmail.com";
-        flavor = "gmail.com";
-        primary = true;
-        realName = "Tommy Bidne";
-      };
-      platonic-systems = {
-        address = "tommy.bidne@platonic.systems";
-        userName = "tommy.bidne@platonic.systems";
-        flavor = "gmail.com";
-        primary = false;
-        realName = "Tommy Bidne";
-      };
-    };
-  };
-
   programs.git = {
     enable = true;
     userName = "Tommy Bidne";
-    userEmail = "tbidne@gmail.com";
     extraConfig = {
       pull.ff = "only";
       push.default = "simple";
@@ -46,8 +26,10 @@ in
       merge.tool = "kdiff3";
     };
     aliases = {
-      gs = "status";
+      s = "status";
       gad = "add -A";
+      co = "checkout";
+      cob = "checkout -b";
       count = "count-objects -vH";
       ft = "fetch --prune";
       mst = "merge origin/master --ff-only";
@@ -81,5 +63,20 @@ in
 
   programs.firefox = {
     enable = true;
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    history.extended = true;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git-extras"
+        "git"
+        "gitfast"
+      ];
+      theme = "avit";
+    };
   };
 }
