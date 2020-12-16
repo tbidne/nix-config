@@ -11,6 +11,7 @@ in
 {
     environment.systemPackages = with pkgs; [
     # core
+    chromium
     firefox
     gimp
     google-chrome
