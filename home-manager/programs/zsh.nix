@@ -12,5 +12,8 @@
       ];
       theme = "avit";
     };
+    initExtra = ''
+      source ~/.bashrc.private.interos
+    '';
   };
 }
