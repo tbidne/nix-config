@@ -23,6 +23,7 @@ in
       ./config/bluetooth.nix
       ./config/cache.nix
       ./config/dpi.nix
+      ./config/fonts.nix
       ./config/packages.nix
       ./config/postgresql.nix
       ./config/redshift.nix
