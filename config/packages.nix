@@ -14,7 +14,6 @@ in
     chromium
     firefox
     gimp
-    google-chrome
     mattermost
     mattermost-desktop
     slack

@@ -14,21 +14,10 @@ in
   imports =
     [ # system
       ./hardware-configuration.nix
-      ./system/audio.nix
-      ./system/boot.nix
-      ./system/desktopEnv.nix
-      ./system/network.nix
+      ./system/system.nix
 
       # general config
-      ./config/bluetooth.nix
-      ./config/cache.nix
-      ./config/dpi.nix
-      ./config/fonts.nix
-      ./config/packages.nix
-      ./config/postgresql.nix
-      ./config/redshift.nix
-      ./config/sys.nix
-      ./config/user.nix
+      ./config/config.nix
 
       # home manager
       (import "${home-manager}/nixos")
