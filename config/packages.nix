@@ -28,7 +28,7 @@ in
     kdiff3
     ruby
     sqitchPg
-    vscode
+    vscodium
 
     # haskell
     cabal-install

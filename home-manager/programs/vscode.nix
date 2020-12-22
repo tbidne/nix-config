@@ -17,6 +17,8 @@ in
   programs.vscode = {
     enable = true;
 
+    package = pkgs.vscodium;
+
     extensions = [
       pkgs.vscode-extensions.bbenoist.Nix
       pkgs.vscode-extensions.justusadam.language-haskell
