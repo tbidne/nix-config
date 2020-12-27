@@ -10,6 +10,7 @@
     };
     aliases = {
       s = "status";
+      b = "branch";
       gad = "add -A";
       co = "checkout";
       cob = "checkout -b";
@@ -17,6 +18,7 @@
       count-commits = "rev-list --count";
       ft = "fetch --prune";
       mst = "merge origin/master --ff-only";
+      l = "log";
       log-mst = "log origin/master";
       log-mst-me = "log origin/master --author='Tommy Bidne'";
       log-me = "log --author='Tommy Bidne'";
