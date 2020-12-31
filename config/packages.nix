@@ -18,7 +18,6 @@ in
     mattermost-desktop
     slack
     teams
-    teamspeak_client
 
     # dev
     dbeaver
@@ -28,6 +27,7 @@ in
     kdiff3
     ruby
     sqitchPg
+    vim
     vscodium
 
     # haskell
