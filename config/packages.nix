@@ -51,6 +51,4 @@ in
   ];
 
   programs.gnupg.agent.enable = true;
-
-  services.blueman.enable = true;
 }
