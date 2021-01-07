@@ -3,7 +3,8 @@
 {
   imports =
     [ # dot files
-      ./dotfiles/ghci.nix 
+      ./dotfiles/ghci.nix
+      ./dotfiles/konsole.nix
       
       # program configs
       ./programs/chromium.nix
