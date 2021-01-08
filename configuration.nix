@@ -14,10 +14,10 @@ in
   imports =
     [ # system
       ./hardware-configuration.nix
-      ./system/system.nix
+      ./system/default.nix
 
       # general config
-      ./config/config.nix
+      ./config/default.nix
 
       # home manager
       (import "${home-manager}/nixos")
