@@ -5,8 +5,11 @@
     extraConfig = {
       pull.ff = "only";
       push.default = "simple";
-      diff.tool = "kdiff3";
-      merge.tool = "kdiff3";
+      diff.tool = "vscode";
+      difftool.vscode.cmd = "codium --wait --diff $LOCAL $REMOTE";
+      merge.tool = "vscode";
+      mergetool.vscode.cmd = "codium --wait $MERGED";
+      core.editor = "codium";
     };
     aliases = {
       s = "status";
