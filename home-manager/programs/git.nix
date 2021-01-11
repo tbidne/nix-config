@@ -20,10 +20,7 @@
       count = "count-objects -vH";
       count-commits = "rev-list --count";
       ft = "fetch --prune";
-      mst = "merge origin/master --ff-only";
       l = "log";
-      log-mst = "log origin/master";
-      log-mst-me = "log origin/master --author='Tommy Bidne'";
       log-me = "log --author='Tommy Bidne'";
       df = "diff";
       dfc = "diff --cached";
