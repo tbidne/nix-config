@@ -9,7 +9,7 @@
       difftool.vscode.cmd = "codium --wait --diff $LOCAL $REMOTE";
       merge.tool = "vscode";
       mergetool.vscode.cmd = "codium --wait $MERGED";
-      core.editor = "codium";
+      core.editor = "codium --wait";
     };
     aliases = {
       s = "status";

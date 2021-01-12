@@ -3,7 +3,7 @@
 let
   unstableTarball = builtins.fetchGit {
     url = "https://github.com/NixOS/nixpkgs.git";
-    ref = "master";
+    ref = "nixos-unstable";
     rev = "71478e6fe4b3330d55b3a7c6b8462845a8bdc484";
   };
 in
