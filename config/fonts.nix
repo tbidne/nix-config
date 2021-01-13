@@ -4,7 +4,7 @@ let
   ringbearerRepo = builtins.fetchGit {
     url = "https://github.com/tbidne/ringbearer.git";
     ref = "main";
-    rev = "10e60077b49bf36765eada7b4757b8b45fbd98a9";
+    rev = "d34a126bc5719f1f5ac9f9203617c9ccfaf35f11";
   };
   ringbearer = pkgs.callPackage ringbearerRepo {};
 in
