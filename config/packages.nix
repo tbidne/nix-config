@@ -6,7 +6,6 @@ let
     package = pkgs.yakuake;
     srcPrefix = "org.kde.";
   });
-
 in
 {
     environment.systemPackages = with pkgs; [
@@ -18,6 +17,7 @@ in
     mattermost-desktop
     slack
     teams
+    thunderbird
 
     # dev
     dbeaver
@@ -25,6 +25,7 @@ in
     docker-compose
     git
     kdiff3
+    lua
     ruby
     sqitchPg
     vim
@@ -38,6 +39,7 @@ in
     # utils
     gnupg
     home-manager
+    htop
     networkmanager-fortisslvpn
     openfortivpn
     unzip
@@ -46,8 +48,10 @@ in
     zip
 
     # misc
+    conky
     nix-prefetch-git
     plasma5.plasma-browser-integration
+    protonmail-bridge
   ];
 
   programs.gnupg.agent.enable = true;

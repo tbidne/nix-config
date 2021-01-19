@@ -10,7 +10,8 @@ let
 in
 {
   fonts.fonts = with pkgs;
-    [ hasklig
+    [ aileron
+      hasklig
       ringbearer
     ];
 }
