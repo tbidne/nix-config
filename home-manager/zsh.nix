@@ -13,8 +13,6 @@
       theme = "avit";
     };
     initExtra = ''
-      source ~/.bashrc.private.interos
-
       # mv to trash
       del() {
         local filePath=$(readlink -f $1);
