@@ -3,7 +3,7 @@
     [
       ./audio.nix
       ./boot.nix
-      ./desktopEnv.nix
+      ./plasma.nix
       ./network.nix
     ];
 }

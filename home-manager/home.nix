@@ -2,15 +2,13 @@
 
 {
   imports =
-    [ # dot files
-      ./dotfiles/ghci.nix
-      ./dotfiles/konsole.nix
-      
-      # program configs
-      ./programs/chromium.nix
+    [ ./programs/chromium.nix
+      ./programs/ghci.nix
       ./programs/git.nix
       ./programs/vscode.nix
       ./programs/zsh.nix
+
+      ./programs/plasma/default.nix
     ];
 
   nixpkgs.config.allowUnfree = true;

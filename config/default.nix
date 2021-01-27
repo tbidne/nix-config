@@ -3,7 +3,6 @@
     [
       ./bluetooth.nix
       ./cache.nix
-      ./dpi.nix
       ./fonts.nix
       ./packages.nix
       ./postgresql.nix

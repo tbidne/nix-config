@@ -1,12 +1,5 @@
 { pkgs, ... }:
 
-let
-  yakuake-autostart = (pkgs.makeAutostartItem {
-    name = "yakuake";
-    package = pkgs.yakuake;
-    srcPrefix = "org.kde.";
-  });
-in
 {
     environment.systemPackages = with pkgs; [
     # core
@@ -24,7 +17,6 @@ in
     docker
     docker-compose
     git
-    kdiff3
     lua
     ruby
     sqitchPg
@@ -42,15 +34,12 @@ in
     htop
     networkmanager-fortisslvpn
     openfortivpn
+    pv
     unzip
-    yakuake
-    yakuake-autostart
     zip
 
     # misc
-    conky
     nix-prefetch-git
-    plasma5.plasma-browser-integration
     protonmail-bridge
   ];
 
