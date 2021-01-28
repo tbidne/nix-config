@@ -4,6 +4,7 @@
 {-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_GHC -Wall -Werror #-}
 {-# OPTIONS_GHC -Wincomplete-uni-patterns -Wmissing-export-lists -Wcompat #-}
+{-# OPTIONS_GHC -Wno-deprecations -Wno-missing-signatures #-}
 {-# OPTIONS_GHC -Wpartial-fields -Wmissing-home-modules -Widentities #-}
 {-# OPTIONS_GHC -Wredundant-constraints -Wincomplete-record-updates #-}
 
@@ -14,7 +15,7 @@ import DBus qualified
 import DBus.Client qualified as DClient
 import Data.Word (Word32)
 import GHC.IO.Handle qualified as GHC.IO
-import XMonad (KeyMask, KeySym, X, XConfig (..), (.|.))
+import XMonad (KeyMask, KeySym, X, XConfig (..), (.|.), (|||))
 import XMonad qualified as X
 import XMonad.Actions.CycleWS (Direction1D (Next, Prev), WSType (AnyWS))
 import XMonad.Actions.CycleWS qualified as XCycleWS
@@ -24,9 +25,16 @@ import XMonad.Actions.RotSlaves qualified as XRotSlaves
 import XMonad.Hooks.DynamicLog (PP (..))
 import XMonad.Hooks.DynamicLog qualified as XDynamicLog
 import XMonad.Hooks.ManageDocks qualified as XManageDocks
+import XMonad.Layout.Gaps (Direction2D (..))
+import XMonad.Layout.Gaps qualified as XGaps
 import XMonad.Layout.LayoutModifier qualified as XLayoutModifier
 import XMonad.Layout.MultiToggle (Toggle (..))
+import XMonad.Layout.MultiToggle qualified as XMultiToggle
 import XMonad.Layout.MultiToggle.Instances (StdTransformers (NBFULL))
+import XMonad.Layout.NoBorders qualified as XNoBorders
+import XMonad.Layout.PerWorkspace qualified as XPerWorkspace
+import XMonad.Layout.Spacing qualified as XSpacing
+import XMonad.Layout.ThreeColumns (ThreeCol (..))
 import XMonad.StackSet qualified as XStackSet
 import XMonad.Util.NamedActions (NamedAction, (^++^))
 import XMonad.Util.NamedActions qualified as XNamedActions
@@ -45,8 +53,10 @@ withDBus _ = do
           X.def
             { modMask = myModMask,
               terminal = myTerminal,
-              focusedBorderColor = "#282c73",
-              borderWidth = 1
+              focusedBorderColor = "#ffffff",
+              normalBorderColor = "#000000",
+              borderWidth = 1,
+              layoutHook = myLayout
             }
   myXMobar config >>= X.xmonad
 
@@ -192,6 +202,45 @@ layoutKeySet modm =
       --, key "Reset"         (modm .|. X.shiftMask, X.xK_space     ) $ X.setLayout (X.layoutHook conf)
       key "Fullscreen" (modm, X.xK_f) $ X.sendMessage (Toggle NBFULL)
     ]
+
+-- LAYOUT --
+
+wrkWs :: String
+wrkWs = "wrk"
+
+-- This type signature is hideous
+myLayout =
+  XManageDocks.avoidStruts
+    . XNoBorders.smartBorders
+    . fullScreenToggle
+    . wrkLayout
+    $ (tiled ||| X.Mirror tiled ||| column3 ||| full)
+  where
+    -- default tiling algorithm partitions the screen into two panes
+    tiled = gapSpaced 10 $ X.Tall nmaster delta ratio
+    full = gapSpaced 5 X.Full
+    column3 = gapSpaced 10 $ ThreeColMid 1 (3 / 100) (1 / 2)
+
+    -- The default number of windows in the master pane
+    nmaster = 1
+
+    -- Default proportion of screen occupied by master pane
+    ratio = 1 / 2
+
+    -- Percent of screen to increment by when resizing panes
+    delta = 3 / 100
+
+    -- Gaps bewteen windows
+    myGaps gap = XGaps.gaps [(U, gap), (D, gap), (L, gap), (R, gap)]
+
+    -- TODO: spacing deprecated in favor of spacingRaw
+    gapSpaced g = XSpacing.spacing g . myGaps g
+
+    -- Per workspace layout
+    wrkLayout = XPerWorkspace.onWorkspace wrkWs (tiled ||| full)
+
+    -- Fullscreen
+    fullScreenToggle = XMultiToggle.mkToggle (XMultiToggle.single NBFULL)
 
 -- XMOBAR --
 
