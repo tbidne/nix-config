@@ -8,7 +8,7 @@
       ./programs/vscode.nix
       ./programs/zsh.nix
 
-      ./programs/plasma/default.nix
+      ./programs/xmonad/default.nix
     ];
 
   nixpkgs.config.allowUnfree = true;

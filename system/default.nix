@@ -3,7 +3,8 @@
     [
       ./audio.nix
       ./boot.nix
-      ./plasma.nix
+      ./mouse.nix
       ./network.nix
+      ./xmonad.nix
     ];
 }
