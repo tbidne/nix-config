@@ -34,7 +34,8 @@ in
       "breadcrumbs.enabled" = true;
       "editor.fontLigatures" = true;
       "editor.fontFamily" = "Hasklig, Menlo, Menlo, Monaco, 'Courier New', monospace";
-      "editor.wordWrap"= "on";
+      "editor.wordWrap" = "on";
+      "window.menuBarVisibility" = "toggle";
     };
   };
 }

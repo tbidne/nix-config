@@ -1,6 +1,6 @@
 {
   imports =
-    [ ./alacritty.nix
+    [ ./alacritty/default.nix
       ./better-lock-screen.nix
       ./picom.nix
       ./rofi/default.nix
