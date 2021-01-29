@@ -208,7 +208,8 @@ systemKeySet :: KeyMask -> KeySet
 systemKeySet modm =
   keySet
     "System"
-    [ key "Logout (quit XMonad)" (modm .|. X.shiftMask, X.xK_q) $ X.io Sys.exitSuccess
+    [ key "Logout (quit XMonad)" (modm .|. X.shiftMask, X.xK_q) $ X.io Sys.exitSuccess,
+      key "Capture entire screen" (modm, X.xK_Print) $ X.spawn "flameshot full -p ~/Pictures/flameshot/"
     ]
 
 -- LAYOUT --

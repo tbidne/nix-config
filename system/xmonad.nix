@@ -52,8 +52,10 @@
     alacritty
     betterlockscreen       # lock screen
     feh                    # setting the wallpaper
+    flameshot              # screenshot
     haskellPackages.xmobar # xmobar
     networkmanagerapplet   # network manager gui
+    pcmanfm                # file browser
     rofi                   # app launcher
     xorg.xwininfo          # get X window information
   ];
