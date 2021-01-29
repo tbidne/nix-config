@@ -9,7 +9,7 @@
       colors = {
         primary = {
           background = "#040404";
-          foreground = "#c5c8c6";
+          foreground = "#0077ff";
         };
       };
       selection.save_to_clipboard = true;
