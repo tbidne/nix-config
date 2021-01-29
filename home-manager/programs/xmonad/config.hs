@@ -15,6 +15,7 @@ import DBus qualified
 import DBus.Client qualified as DClient
 import Data.Word (Word32)
 import GHC.IO.Handle qualified as GHC.IO
+import System.Exit qualified as Sys
 import XMonad (KeyMask, KeySym, X, XConfig (..), (.|.), (|||))
 import XMonad qualified as X
 import XMonad.Actions.CycleWS (Direction1D (Next, Prev), WSType (AnyWS))
@@ -119,6 +120,7 @@ myKeys conf@X.XConfig {X.modMask = modm} =
     ^++^ windowKeySet modm
     ^++^ layoutKeySet modm
     ^++^ workspacesKeySet modm
+    ^++^ systemKeySet modm
       ++ switchWsById
   where
     action :: KeyMask -> String
@@ -199,8 +201,14 @@ layoutKeySet modm =
   keySet
     "Layouts"
     [ key "Next" (modm, X.xK_space) $ X.sendMessage X.NextLayout,
-      --, key "Reset"         (modm .|. X.shiftMask, X.xK_space     ) $ X.setLayout (X.layoutHook conf)
       key "Fullscreen" (modm, X.xK_f) $ X.sendMessage (Toggle NBFULL)
+    ]
+
+systemKeySet :: KeyMask -> KeySet
+systemKeySet modm =
+  keySet
+    "System"
+    [ key "Logout (quit XMonad)" (modm .|. X.shiftMask, X.xK_q) $ X.io Sys.exitSuccess
     ]
 
 -- LAYOUT --
