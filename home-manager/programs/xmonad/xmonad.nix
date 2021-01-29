@@ -11,8 +11,8 @@ in
     "Xft.hinting" = 1;
     "Xft.antialias" = 1;
     "Xft.rgba" = "rgb";
-    "Xcursor*theme" = "Vanilla-DMZ-AA";
-    "Xcursor*size" = 256;
+    "Xcursor.theme" = "Vanilla-DMZ-AA";
+    "Xcursor.size" = 64;
   };
 
   xsession = {

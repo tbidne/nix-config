@@ -26,7 +26,22 @@
         ];
       };
 
-      displayManager.defaultSession = "none+xmonad";
+      displayManager = {
+        defaultSession = "none+xmonad";
+        lightdm = {
+          enable = true;
+          greeters = {
+            gtk = {
+              enable = true;
+              cursorTheme = {
+                package = pkgs.gnome3.defaultIconTheme;
+                name = "Adawaita-dark";
+                size = 64;
+              };
+            };
+          };
+        };
+      };
       desktopManager.xterm.enable = false;
     };
   };
