@@ -20,6 +20,7 @@
         xmonad.enable = true;
         xmonad.enableContribAndExtras = true;
         xmonad.extraPackages = hpkgs: [
+          hpkgs.X11
           hpkgs.xmonad
           hpkgs.xmonad-contrib
           hpkgs.xmonad-extras

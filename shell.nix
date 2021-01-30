@@ -5,6 +5,7 @@
 let
   haskellDeps = ps: with ps; [
     dbus
+    X11
     xmonad
     xmonad-contrib
     xmonad-utils

@@ -43,6 +43,8 @@ import XMonad.Util.Run qualified as XRun
 import XMonad.Util.WorkspaceCompare qualified as XWorkspaceCompare
 import XMonad.Wallpaper qualified as XWallpaper
 
+import Graphics.X11.ExtraTypes.XF86 qualified as X11
+
 main :: IO ()
 main = mkDbusClient >>= withDBus
 
@@ -121,7 +123,8 @@ myKeys conf@X.XConfig {X.modMask = modm} =
     ^++^ layoutKeySet modm
     ^++^ workspacesKeySet modm
     ^++^ systemKeySet modm
-      ++ switchWsById
+    ^++^ audioKeySet
+      <> switchWsById
   where
     action :: KeyMask -> String
     action m = if m == X.shiftMask then "Move to " else "Switch to "
@@ -210,6 +213,14 @@ systemKeySet modm =
     "System"
     [ key "Logout (quit XMonad)" (modm .|. X.shiftMask, X.xK_q) $ X.io Sys.exitSuccess,
       key "Capture entire screen" (modm, X.xK_Print) $ X.spawn "flameshot full -p ~/Pictures/flameshot/"
+    ]
+
+audioKeySet :: KeySet
+audioKeySet =
+  keySet "Audio"
+    [ key "Mute"          (0, X11.xF86XK_AudioMute              ) $ X.spawn "amixer -q set Master toggle"
+    , key "Lower volume"  (0, X11.xF86XK_AudioLowerVolume       ) $ X.spawn "amixer -q set Master 5%-"
+    , key "Raise volume"  (0, X11.xF86XK_AudioRaiseVolume       ) $ X.spawn "amixer -q set Master 5%+"
     ]
 
 -- LAYOUT --
