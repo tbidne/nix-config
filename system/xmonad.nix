@@ -57,6 +57,7 @@
     haskellPackages.xmobar # xmobar
     networkmanagerapplet   # network manager gui
     pcmanfm                # file browser
+    polybar                # status bar
     rofi                   # app launcher
     xorg.xwininfo          # get X window information
   ];

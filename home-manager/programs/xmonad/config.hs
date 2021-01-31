@@ -13,8 +13,10 @@ module Main (main) where
 import Control.Exception qualified as E
 import DBus qualified
 import DBus.Client qualified as DClient
+import Data.Monoid (All)
 import Data.Word (Word32)
 import GHC.IO.Handle qualified as GHC.IO
+import Graphics.X11.ExtraTypes.XF86 qualified as X11
 import System.Exit qualified as Sys
 import XMonad (KeyMask, KeySym, X, XConfig (..), (.|.), (|||))
 import XMonad qualified as X
@@ -25,10 +27,10 @@ import XMonad.Actions.FloatKeys qualified as XFloatKeys
 import XMonad.Actions.RotSlaves qualified as XRotSlaves
 import XMonad.Hooks.DynamicLog (PP (..))
 import XMonad.Hooks.DynamicLog qualified as XDynamicLog
+import XMonad.Hooks.EwmhDesktops qualified as XEwmhDesktops
 import XMonad.Hooks.ManageDocks qualified as XManageDocks
 import XMonad.Layout.Gaps (Direction2D (..))
 import XMonad.Layout.Gaps qualified as XGaps
-import XMonad.Layout.LayoutModifier qualified as XLayoutModifier
 import XMonad.Layout.MultiToggle (Toggle (..))
 import XMonad.Layout.MultiToggle qualified as XMultiToggle
 import XMonad.Layout.MultiToggle.Instances (StdTransformers (NBFULL))
@@ -42,8 +44,6 @@ import XMonad.Util.NamedActions qualified as XNamedActions
 import XMonad.Util.Run qualified as XRun
 import XMonad.Util.WorkspaceCompare qualified as XWorkspaceCompare
 import XMonad.Wallpaper qualified as XWallpaper
-
-import Graphics.X11.ExtraTypes.XF86 qualified as X11
 
 main :: IO ()
 main = mkDbusClient >>= withDBus
@@ -59,9 +59,10 @@ withDBus _ = do
               focusedBorderColor = "#ffffff",
               normalBorderColor = "#000000",
               borderWidth = 1,
-              layoutHook = myLayout
+              layoutHook = myLayout,
+              handleEventHook = myEventHook
             }
-  myXMobar config >>= X.xmonad
+  myPolybar config >>= X.xmonad . XEwmhDesktops.ewmh
 
 mkDbusClient :: IO DClient.Client
 mkDbusClient = do
@@ -103,6 +104,12 @@ screenLocker = "betterlockscreen -l dim"
 appLauncher :: String
 appLauncher = "rofi -modi drun,ssh,window -show drun -show-icons"
 
+myEventHook :: X.Event -> X All
+myEventHook =
+  X.def
+  <> XEwmhDesktops.ewmhDesktopsEventHook
+  <> XEwmhDesktops.fullscreenEventHook
+
 -- KEY BINDINGS --
 
 keybindings :: X.XConfig l -> X.XConfig l
@@ -124,6 +131,7 @@ myKeys conf@X.XConfig {X.modMask = modm} =
     ^++^ workspacesKeySet modm
     ^++^ systemKeySet modm
     ^++^ audioKeySet
+    ^++^ polyBarKeySet modm
       <> switchWsById
   where
     action :: KeyMask -> String
@@ -217,11 +225,21 @@ systemKeySet modm =
 
 audioKeySet :: KeySet
 audioKeySet =
-  keySet "Audio"
-    [ key "Mute"          (0, X11.xF86XK_AudioMute              ) $ X.spawn "amixer -q set Master toggle"
-    , key "Lower volume"  (0, X11.xF86XK_AudioLowerVolume       ) $ X.spawn "amixer -q set Master 5%-"
-    , key "Raise volume"  (0, X11.xF86XK_AudioRaiseVolume       ) $ X.spawn "amixer -q set Master 5%+"
+  keySet
+    "Audio"
+    [ key "Mute" (0, X11.xF86XK_AudioMute) $ X.spawn "amixer -q set Master toggle",
+      key "Lower volume" (0, X11.xF86XK_AudioLowerVolume) $ X.spawn "amixer -q set Master 5%-",
+      key "Raise volume" (0, X11.xF86XK_AudioRaiseVolume) $ X.spawn "amixer -q set Master 5%+"
     ]
+
+polyBarKeySet :: KeyMask -> KeySet
+polyBarKeySet modm =
+  keySet
+    "Polybar"
+    [ key "Toggle" (modm, X.xK_equal) togglePolybar
+    ]
+  where
+    togglePolybar = X.spawn "polybar example &"
 
 -- LAYOUT --
 
@@ -262,37 +280,12 @@ myLayout =
     -- Fullscreen
     fullScreenToggle = XMultiToggle.mkToggle (XMultiToggle.single NBFULL)
 
--- XMOBAR --
+-- POLYBAR --
 
-myXMobar :: X.LayoutClass l X.Window => XConfig l -> IO (XConfig (XLayoutModifier.ModifiedLayout XManageDocks.AvoidStruts l))
-myXMobar = XDynamicLog.statusBar "xmobar" myPP toggleBar
+polybarHook :: PP
+polybarHook = XDynamicLog.def
+
+myPolybar = XDynamicLog.statusBar "polybar mybar" polybarHook toggleBar
 
 toggleBar :: X.XConfig l -> (KeyMask, KeySym)
 toggleBar X.XConfig {modMask} = (modMask, X.xK_b)
-
-myPP :: XDynamicLog.PP
-myPP =
-  XDynamicLog.xmobarPP
-    { ppTitle = XDynamicLog.xmobarColor myTitleColor "" . XDynamicLog.shorten myTitleLength,
-      ppCurrent =
-        XDynamicLog.xmobarColor myCurrentWSColor ""
-          . XDynamicLog.wrap myCurrentWSLeft myCurrentWSRight,
-      ppVisible =
-        XDynamicLog.xmobarColor myVisibleWSColor ""
-          . XDynamicLog.wrap myVisibleWSLeft myVisibleWSRight,
-      ppUrgent =
-        XDynamicLog.xmobarColor myUrgentWSColor ""
-          . XDynamicLog.wrap myUrgentWSLeft myUrgentWSRight
-    }
-  where
-    myTitleColor = "#eeeeee" -- color of window title
-    myTitleLength = 80 -- truncate window title to this length
-    myCurrentWSColor = "#e6744c" -- color of active workspace
-    myVisibleWSColor = "#c185a7" -- color of inactive workspace
-    myUrgentWSColor = "#cc0000" -- color of workspace with 'urgent' window
-    myCurrentWSLeft = "[" -- wrap active workspace with these
-    myCurrentWSRight = "]"
-    myVisibleWSLeft = "(" -- wrap inactive workspace with these
-    myVisibleWSRight = ")"
-    myUrgentWSLeft = "{" -- wrap urgent workspace with these
-    myUrgentWSRight = "}"

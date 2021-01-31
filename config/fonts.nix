@@ -11,7 +11,10 @@ in
 {
   fonts.fonts = with pkgs;
     [ aileron
+      font-awesome
       hasklig
       ringbearer
+      siji
+      unifont
     ];
 }
