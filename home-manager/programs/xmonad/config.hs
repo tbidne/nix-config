@@ -1,7 +1,5 @@
-{-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ImportQualifiedPost #-}
 {-# LANGUAGE NamedFieldPuns #-}
-{-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_GHC -Wall -Werror #-}
 {-# OPTIONS_GHC -Wincomplete-uni-patterns -Wmissing-export-lists -Wcompat #-}
 {-# OPTIONS_GHC -Wno-deprecations -Wno-missing-signatures #-}
