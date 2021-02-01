@@ -112,7 +112,7 @@ myEventHook =
 
 -- KEY BINDINGS --
 
-keybindings :: X.XConfig l -> X.XConfig l
+keybindings :: XConfig l -> XConfig l
 keybindings = XNamedActions.addDescrKeys' ((myModMask, X.xK_F1), showKeybindings) myKeys
 
 showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
@@ -123,8 +123,8 @@ showKeybindings x =
 zenity :: App
 zenity = ClassApp "Zenity" "zenity --text-info --font=terminus"
 
-myKeys :: X.XConfig l -> [((X.KeyMask, X.KeySym), XNamedActions.NamedAction)]
-myKeys conf@X.XConfig {X.modMask = modm} =
+myKeys :: XConfig l -> [((X.KeyMask, X.KeySym), XNamedActions.NamedAction)]
+myKeys conf@XConfig {X.modMask = modm} =
   launchersKeySet conf modm
     ^++^ windowKeySet modm
     ^++^ layoutKeySet modm
@@ -152,7 +152,7 @@ key n k a = (k, XNamedActions.addName n a)
 
 -- KEYSETS --
 
-launchersKeySet :: X.XConfig l -> KeyMask -> KeySet
+launchersKeySet :: XConfig l -> KeyMask -> KeySet
 launchersKeySet conf modm =
   keySet
     "Launchers"
@@ -287,5 +287,5 @@ polybarHook = XDynamicLog.def
 
 myPolybar = XDynamicLog.statusBar "polybar mybar" polybarHook toggleBar
 
-toggleBar :: X.XConfig l -> (KeyMask, KeySym)
-toggleBar X.XConfig {modMask} = (modMask, X.xK_b)
+toggleBar :: XConfig l -> (KeyMask, KeySym)
+toggleBar XConfig {modMask} = (modMask, X.xK_b)
