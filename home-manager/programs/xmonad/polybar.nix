@@ -58,7 +58,7 @@
 
       modules-left = ewmh xwindow
       modules-center =
-      modules-right = filesystem alsa memory cpu wlan eth battery date powermenu
+      modules-right = alsa memory cpu wlan eth battery date powermenu
 
       tray-position = right
       tray-padding = 2
@@ -180,14 +180,13 @@
       type = internal/alsa
 
       format-volume = <label-volume> <bar-volume>
-      label-volume = VOL
+      label-volume = 
       label-volume-foreground = ''${root.foreground}
 
-      format-muted-prefix = " "
       format-muted-foreground = ''${colors.foreground-alt}
-      label-muted = sound muted
+      label-muted = 
 
-      bar-volume-width = 10
+      bar-volume-width = 5
       bar-volume-foreground-0 = #55aa55
       bar-volume-foreground-1 = #55aa55
       bar-volume-foreground-2 = #55aa55
@@ -225,7 +224,7 @@
       ramp-capacity-2 = 
       ramp-capacity-foreground = ''${colors.foreground-alt}
 
-      animation-charging-0 = 
+      animation-charging-0 = 
       animation-charging-1 = 
       animation-charging-2 = 
       animation-charging-foreground = ''${colors.foreground-alt}
