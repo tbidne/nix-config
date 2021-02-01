@@ -105,8 +105,8 @@ appLauncher = "rofi -modi drun,ssh,window -show drun -show-icons"
 myEventHook :: X.Event -> X All
 myEventHook =
   X.def
-  <> XEwmhDesktops.ewmhDesktopsEventHook
-  <> XEwmhDesktops.fullscreenEventHook
+    <> XEwmhDesktops.ewmhDesktopsEventHook
+    <> XEwmhDesktops.fullscreenEventHook
 
 -- KEY BINDINGS --
 
@@ -283,6 +283,7 @@ myLayout =
 polybarHook :: PP
 polybarHook = XDynamicLog.def
 
+-- Another insane type signature ;-)
 myPolybar = XDynamicLog.statusBar "polybar mybar" polybarHook toggleBar
 
 toggleBar :: XConfig l -> (KeyMask, KeySym)

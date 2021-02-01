@@ -58,7 +58,7 @@
 
       modules-left = ewmh xwindow
       modules-center =
-      modules-right = alsa memory cpu wlan eth battery date powermenu
+      modules-right = alsa memory cpu wlan eth battery date
 
       tray-position = right
       tray-padding = 2
@@ -138,7 +138,7 @@
       type = internal/date
       interval = 5
 
-      date = %a %b %m
+      date = %a %b %d
       date-alt = " %Y-%m-%d"
 
       time = %H:%M
@@ -215,24 +215,24 @@
       format-discharging = <animation-discharging> <label-discharging>
       format-discharging-underline = ''${self.format-charging-underline}
 
-      format-full-prefix = 
+      format-full-prefix = " "
       format-full-prefix-foreground = ''${colors.foreground-alt}
       format-full-underline = ''${self.format-charging-underline}
 
-      ramp-capacity-0 = 
-      ramp-capacity-1 = 
-      ramp-capacity-2 = 
+      ramp-capacity-0 = " "
+      ramp-capacity-1 = " "
+      ramp-capacity-2 = " "
       ramp-capacity-foreground = ''${colors.foreground-alt}
 
-      animation-charging-0 = 
-      animation-charging-1 = 
-      animation-charging-2 = 
+      animation-charging-0 = " "
+      animation-charging-1 = " "
+      animation-charging-2 = " "
       animation-charging-foreground = ''${colors.foreground-alt}
       animation-charging-framerate = 750
 
-      animation-discharging-0 = 
-      animation-discharging-1 = 
-      animation-discharging-2 = 
+      animation-discharging-0 = " "
+      animation-discharging-1 = " "
+      animation-discharging-2 = " "
       animation-discharging-foreground = ''${colors.foreground-alt}
       animation-discharging-framerate = 750
 
