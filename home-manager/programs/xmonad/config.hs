@@ -11,7 +11,6 @@ module Main (main) where
 import Control.Exception qualified as E
 import DBus qualified
 import DBus.Client qualified as DClient
-import Data.Monoid (All)
 import Data.Word (Word32)
 import GHC.IO.Handle qualified as GHC.IO
 import Graphics.X11.ExtraTypes.XF86 qualified as X11
@@ -57,8 +56,7 @@ withDBus _ = do
               focusedBorderColor = "#ffffff",
               normalBorderColor = "#000000",
               borderWidth = 1,
-              layoutHook = myLayout,
-              handleEventHook = myEventHook
+              layoutHook = myLayout
             }
   myPolybar config >>= X.xmonad . XEwmhDesktops.ewmh
 
@@ -102,12 +100,6 @@ screenLocker = "betterlockscreen -l dim"
 appLauncher :: String
 appLauncher = "rofi -modi drun,ssh,window -show drun -show-icons"
 
-myEventHook :: X.Event -> X All
-myEventHook =
-  X.def
-    <> XEwmhDesktops.ewmhDesktopsEventHook
-    <> XEwmhDesktops.fullscreenEventHook
-
 -- KEY BINDINGS --
 
 keybindings :: XConfig l -> XConfig l
@@ -129,6 +121,7 @@ myKeys conf@XConfig {X.modMask = modm} =
     ^++^ workspacesKeySet modm
     ^++^ systemKeySet modm
     ^++^ audioKeySet
+    ^++^ brightnessKeySet
     ^++^ polyBarKeySet modm
       <> switchWsById
   where
@@ -238,6 +231,14 @@ polyBarKeySet modm =
     ]
   where
     togglePolybar = X.spawn "polybar example &"
+
+brightnessKeySet :: KeySet
+brightnessKeySet =
+  keySet
+    "Brightness"
+    [ key "Increase Brightness" (0, X11.xF86XK_MonBrightnessUp) $ X.spawn "brightnessctl -d intel_backlight s +10%",
+      key "Decrease Brightness" (0, X11.xF86XK_MonBrightnessDown) $ X.spawn "brightnessctl -d intel_backlight s 10%-"
+    ]
 
 -- LAYOUT --
 

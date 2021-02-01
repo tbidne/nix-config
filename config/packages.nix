@@ -18,6 +18,7 @@
     docker-compose
     git
     lua
+    nginx
     ruby
     sqitchPg
     vim

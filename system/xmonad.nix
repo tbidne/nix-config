@@ -52,6 +52,7 @@
   environment.systemPackages = with pkgs; [
     alacritty
     betterlockscreen       # lock screen
+    brightnessctl          # control backlight
     feh                    # setting the wallpaper
     flameshot              # screenshot
     haskellPackages.xmobar # xmobar

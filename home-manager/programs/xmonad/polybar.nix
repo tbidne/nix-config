@@ -60,8 +60,8 @@
       modules-center =
       modules-right = alsa memory cpu wlan eth battery date
 
-      tray-position = right
-      tray-padding = 2
+      ;tray-position = right
+      ;tray-padding = 2
 
       cursor-click = pointer
       cursor-scroll = ns-resize
