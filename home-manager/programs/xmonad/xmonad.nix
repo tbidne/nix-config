@@ -12,11 +12,17 @@ in
     "Xft.antialias" = 1;
     "Xft.rgba" = "rgb";
     "Xcursor.theme" = "Vanilla-DMZ-AA";
-    "Xcursor.size" = 64;
+    "Xcursor.size" = 256;
   };
 
   xsession = {
     enable = true;
+
+    pointerCursor = {
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ-AA";
+      size = 256;
+    };
 
     windowManager.xmonad = {
       enable = true;
