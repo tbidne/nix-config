@@ -8,6 +8,7 @@
 
 module Main (main) where
 
+import Codec.Binary.UTF8.String qualified as Utf8
 import Control.Exception qualified as E
 import DBus qualified
 import DBus.Client qualified as DClient
@@ -25,6 +26,7 @@ import XMonad.Actions.RotSlaves qualified as XRotSlaves
 import XMonad.Hooks.DynamicLog (PP (..))
 import XMonad.Hooks.DynamicLog qualified as XDynamicLog
 import XMonad.Hooks.EwmhDesktops qualified as XEwmhDesktops
+import XMonad.Hooks.FadeInactive qualified as XFadeInactive
 import XMonad.Hooks.ManageDocks qualified as XManageDocks
 import XMonad.Layout.Gaps (Direction2D (..))
 import XMonad.Layout.Gaps qualified as XGaps
@@ -46,7 +48,7 @@ main :: IO ()
 main = mkDbusClient >>= withDBus
 
 withDBus :: DClient.Client -> IO ()
-withDBus _ = do
+withDBus dbus = do
   XWallpaper.setRandomWallpaper ["$HOME/Pictures/Wallpaper/Current"]
   let config =
         keybindings $
@@ -56,9 +58,13 @@ withDBus _ = do
               focusedBorderColor = "#ffffff",
               normalBorderColor = "#000000",
               borderWidth = 1,
-              layoutHook = myLayout
+              layoutHook = myLayout,
+              logHook = myPolybarLogHook dbus
             }
-  myPolybar config >>= X.xmonad . XEwmhDesktops.ewmh
+  _ <- startPolybar
+  X.xmonad $
+    XManageDocks.docks $
+      XEwmhDesktops.ewmh config
 
 mkDbusClient :: IO DClient.Client
 mkDbusClient = do
@@ -214,6 +220,9 @@ systemKeySet modm =
       key "Capture entire screen" (modm, X.xK_Print) $ X.spawn "flameshot full -p ~/Pictures/flameshot/"
     ]
 
+startPolybar :: IO ()
+startPolybar = X.spawn "polybar mybar &"
+
 audioKeySet :: KeySet
 audioKeySet =
   keySet
@@ -227,10 +236,11 @@ polyBarKeySet :: KeyMask -> KeySet
 polyBarKeySet modm =
   keySet
     "Polybar"
-    [ key "Toggle" (modm, X.xK_equal) togglePolybar
+    [ key "Toggle" (modm, X.xK_equal) toggleStruts
     ]
   where
-    togglePolybar = X.spawn "polybar example &"
+    togglePolybar = X.spawn "polybar-msg cmd toggle &"
+    toggleStruts = togglePolybar >> X.sendMessage XManageDocks.ToggleStruts
 
 brightnessKeySet :: KeySet
 brightnessKeySet =
@@ -281,11 +291,38 @@ myLayout =
 
 -- POLYBAR --
 
-polybarHook :: PP
-polybarHook = XDynamicLog.def
+myPolybarLogHook :: DClient.Client -> X ()
+myPolybarLogHook dbus = myLogHook <> XDynamicLog.dynamicLogWithPP (polybarHook dbus)
 
--- Another insane type signature ;-)
-myPolybar = XDynamicLog.statusBar "polybar mybar" polybarHook toggleBar
+polybarHook :: DClient.Client -> PP
+polybarHook dbus =
+  let wrapper c s
+        | s /= "NSP" = XDynamicLog.wrap ("%{F" <> c <> "} ") " %{F-}" s
+        | otherwise = mempty
+      blue = "#2E9AFE"
+      gray = "#7F7F7F"
+      orange = "#ea4300"
+      purple = "#9058c7"
+      red = "#722222"
+   in XDynamicLog.def
+        { ppOutput = dbusOutput dbus,
+          ppCurrent = wrapper blue,
+          ppVisible = wrapper gray,
+          ppUrgent = wrapper orange,
+          ppHidden = wrapper gray,
+          ppHiddenNoWindows = wrapper red,
+          ppTitle = XDynamicLog.shorten 100 . wrapper purple
+        }
 
-toggleBar :: XConfig l -> (KeyMask, KeySym)
-toggleBar XConfig {modMask} = (modMask, X.xK_b)
+myLogHook :: X ()
+myLogHook = XFadeInactive.fadeInactiveLogHook 0.9
+
+-- Emit a DBus signal on log updates
+dbusOutput :: DClient.Client -> String -> IO ()
+dbusOutput dbus str =
+  let opath = DBus.objectPath_ "/org/xmonad/Log"
+      iname = DBus.interfaceName_ "org.xmonad.Log"
+      mname = DBus.memberName_ "Update"
+      signal = DBus.signal opath iname mname
+      body = [DBus.toVariant $ Utf8.decodeString str]
+   in DClient.emit dbus $ signal {DBus.signalBody = body}

@@ -33,6 +33,7 @@
       height = 80
       radius = 6.0
       fixed-center = false
+      enable-ipc = true
 
       background = ''${colors.background}
       foreground = ''${colors.foreground}
@@ -56,7 +57,7 @@
       font-4 = FontAwesome5Free:style=Solid:size=30;4
       font-5 = FontAwesome5Brands:style=Regular:size=30;4
 
-      modules-left = ewmh xwindow
+      modules-left = ewmh
       modules-center =
       modules-right = alsa memory cpu wlan eth battery date
 
