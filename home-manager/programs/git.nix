@@ -19,7 +19,7 @@
       cob = "checkout -b";
       count = "count-objects -vH";
       count-commits = "rev-list --count";
-      ff = "merge #{u} --ff-only";
+      ff = "merge @{u} --ff-only";
       ft = "fetch --prune";
       l = "log";
       log-me = "log --author='Tommy Bidne'";
