@@ -56,6 +56,7 @@ withDBus dbus = do
             { modMask = myModMask,
               terminal = myTerminal,
               focusedBorderColor = "#ffffff",
+              focusFollowsMouse = True,
               normalBorderColor = "#000000",
               borderWidth = 1,
               layoutHook = myLayout,

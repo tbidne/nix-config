@@ -60,9 +60,9 @@
       font-4 = FontAwesome5Free:style=Solid:size=30;4
       font-5 = FontAwesome5Brands:style=Regular:size=30;4
 
-      modules-left =
-      modules-center = memory cpu temperature battery openweathermap-fullfeatured
-      modules-right =
+      modules-left = ewmh
+      modules-center = xwindow
+      modules-right = openweathermap-fullfeatured date
 
       ;tray-position = right
       ;tray-padding = 2
@@ -72,7 +72,7 @@
 
       [bar/bottom]
       width = 100%
-      height = 80
+      height = 70
       radius = 6.0
       fixed-center = false
       enable-ipc = true
@@ -100,9 +100,9 @@
       font-4 = FontAwesome5Free:style=Solid:size=30;4
       font-5 = FontAwesome5Brands:style=Regular:size=30;4
 
-      modules-left = ewmh
+      modules-left = filesystem memory cpu temperature backlight alsa
       modules-center =
-      modules-right = alsa wlan eth date
+      modules-right = wlan eth battery
 
       ;tray-position = right
       ;tray-padding = 2
@@ -124,11 +124,13 @@
 
       [module/filesystem]
       type = internal/fs
-      interval = 25
+      interval = 600
+      format = <label>
 
       mount-0 = /
 
-      label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+      label-mounted = " %percentage_used%%"
+      label-mounted-underline = ''${colors.purple}
       label-unmounted = %mountpoint% not mounted
       label-unmounted-foreground = ''${colors.foreground-alt}
 
@@ -302,27 +304,6 @@
       ramp-2 = " "
       ramp-foreground = ''${colors.foreground-alt}
 
-      [module/powermenu]
-      type = custom/menu
-
-      expand-right = true
-
-      format-spacing = 1
-
-      label-open = 
-      label-open-foreground = ''${colors.secondary}
-      label-close =  cancel
-      label-close-foreground = #03910c
-      label-separator = |
-      label-separator-foreground = ''${colors.foreground-alt}
-
-      menu-0-0 = reboot
-      menu-0-0-foreground = ''${colors.primary}
-      menu-0-0-exec = sudo reboot
-      menu-0-1 = shutdown
-      menu-0-1-foreground = ''${colors.secondary}
-      menu-0-1-exec = sudo poweroff
-
       [settings]
       screenchange-reload = true
 
@@ -336,6 +317,13 @@
       interval = 600
       label-font = 0
       format-underline = ''${colors.purple}
+
+      [module/backlight]
+      type = internal/backlight
+      card = intel_backlight
+      format = <label>
+      format-underline = ''${colors.purple}
+      label = " %percentage%%"
     '';
   };
 }
