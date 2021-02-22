@@ -61,7 +61,8 @@ withDBus dbus = do
               layoutHook = myLayout,
               logHook = myPolybarLogHook dbus
             }
-  _ <- startPolybar
+  _ <- startTopPolybar
+  _ <- startBottomPolybar
   X.xmonad $
     XManageDocks.docks $
       XEwmhDesktops.ewmh config
@@ -220,8 +221,11 @@ systemKeySet modm =
       key "Capture entire screen" (modm, X.xK_Print) $ X.spawn "flameshot full -p ~/Pictures/flameshot/"
     ]
 
-startPolybar :: IO ()
-startPolybar = X.spawn "polybar mybar &"
+startTopPolybar :: IO ()
+startTopPolybar = X.spawn "polybar top &"
+
+startBottomPolybar :: IO ()
+startBottomPolybar = X.spawn "polybar bottom &"
 
 audioKeySet :: KeySet
 audioKeySet =

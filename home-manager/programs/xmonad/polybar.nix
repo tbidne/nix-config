@@ -23,17 +23,60 @@
       background = #002F343F
       background-alt = #444
       foreground = #dfdfdf
-      foreground-alt = #555
+      foreground-alt = #999
       primary = #ffb52a
       secondary = #e60053
       alert = #bd2c40
+      warn = #f90000
+      good = #53ab1d
+      purple = #9f78e1
 
-      [bar/mybar]
+      [bar/top]
+      width = 100%
+      height = 70
+      radius = 6.0
+      fixed-center = true
+      enable-ipc = true
+
+      background = ''${colors.background}
+      foreground = ''${colors.foreground}
+
+      line-size = 3
+      line-color = #f00
+
+      border-size = 4
+      border-color = #00000000
+
+      padding-left = 0
+      padding-right = 2
+
+      module-margin-left = 1
+      module-margin-right = 2
+
+      font-0 = HaskLig:size=30;1
+      font-1 = unifont:fontformat=truetype:size=70:antialias=false;0
+      font-2 = siji:pixelsize=22;1
+      font-3 = FontAwesome5Free:style=Regular:size=30;4
+      font-4 = FontAwesome5Free:style=Solid:size=30;4
+      font-5 = FontAwesome5Brands:style=Regular:size=30;4
+
+      modules-left =
+      modules-center = memory cpu temperature battery
+      modules-right =
+
+      ;tray-position = right
+      ;tray-padding = 2
+
+      cursor-click = pointer
+      cursor-scroll = ns-resize
+
+      [bar/bottom]
       width = 100%
       height = 80
       radius = 6.0
       fixed-center = false
       enable-ipc = true
+      bottom = true
 
       background = ''${colors.background}
       foreground = ''${colors.foreground}
@@ -59,7 +102,7 @@
 
       modules-left = ewmh
       modules-center =
-      modules-right = alsa memory cpu wlan eth battery date
+      modules-right = alsa wlan eth date
 
       ;tray-position = right
       ;tray-padding = 2
@@ -77,7 +120,7 @@
       label-active = " %name% "
       label-active-foreground = #ffffff
       label-active-background = #3f3f3f
-      label-active-underline = #fba922
+      label-active-underline = ''${colors.purple}
 
       [module/filesystem]
       type = internal/fs
@@ -94,15 +137,16 @@
       interval = 2
       format-prefix = " "
       format-prefix-foreground = ''${colors.foreground-alt}
-      format-underline = #f90000
+      format-underline = ''${colors.purple}
       label = %percentage:2%%
 
       [module/memory]
       type = internal/memory
       interval = 2
       format-prefix = " "
+      format = <label>
       format-prefix-foreground = ''${colors.foreground-alt}
-      format-underline = #4bffdc
+      format-underline = ''${colors.purple}
       label = %percentage_used%%
 
       [module/wlan]
@@ -111,7 +155,7 @@
       interval = 3.0
 
       format-connected = <ramp-signal> <label-connected>
-      format-connected-underline = #9f78e1
+      format-connected-underline = ''${colors.purple}
       label-connected = %essid%
 
       format-disconnected =
@@ -139,14 +183,14 @@
       type = internal/date
       interval = 5
 
-      date = %a %b %d
-      date-alt = " %Y-%m-%d"
+      date = %a %d %b
+      date-alt = %a %d %b
 
       time = %H:%M
-      time-alt = %H:%M:%S
+      time-alt = %H:%M
 
       format-prefix-foreground = ''${colors.foreground-alt}
-      format-underline = #0a6cf5
+      format-underline = ''${colors.purple}
 
       label = %date% %time%
 
@@ -181,10 +225,12 @@
       type = internal/alsa
 
       format-volume = <label-volume> <bar-volume>
+      format-underline = ''${colors.purple}
       label-volume = 
       label-volume-foreground = ''${root.foreground}
 
       format-muted-foreground = ''${colors.foreground-alt}
+      format-muted-underline = ''${colors.purple}
       label-muted = 
 
       bar-volume-width = 5
@@ -211,10 +257,10 @@
       full-at = 99
 
       format-charging = <animation-charging> <label-charging>
-      format-charging-underline = #ffb52a
+      format-charging-underline = ''${colors.good}
 
       format-discharging = <animation-discharging> <label-discharging>
-      format-discharging-underline = ''${self.format-charging-underline}
+      format-discharging-underline = ''${colors.warn}
 
       format-full-prefix = " "
       format-full-prefix-foreground = ''${colors.foreground-alt}
@@ -243,17 +289,17 @@
       warn-temperature = 60
 
       format = <ramp> <label>
-      format-underline = #f50a4d
+      format-underline = ''${colors.good}
       format-warn = <ramp> <label-warn>
-      format-warn-underline = ''${self.format-underline}
+      format-warn-underline = ''${colors.warn}
 
       label = %temperature-c%
       label-warn = %temperature-c%
       label-warn-foreground = ''${colors.secondary}
 
-      ramp-0 = 
-      ramp-1 = 
-      ramp-2 = 
+      ramp-0 = " "
+      ramp-1 = " "
+      ramp-2 = " "
       ramp-foreground = ''${colors.foreground-alt}
 
       [module/powermenu]
