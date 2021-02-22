@@ -16,5 +16,7 @@ in
       ringbearer
       siji
       unifont
+      # openweathermap
+      weather-icons
     ];
 }

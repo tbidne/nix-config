@@ -55,13 +55,13 @@
 
       font-0 = HaskLig:size=30;1
       font-1 = unifont:fontformat=truetype:size=70:antialias=false;0
-      font-2 = siji:pixelsize=22;1
+      font-2 = Weather Icons:size=30;1
       font-3 = FontAwesome5Free:style=Regular:size=30;4
       font-4 = FontAwesome5Free:style=Solid:size=30;4
       font-5 = FontAwesome5Brands:style=Regular:size=30;4
 
       modules-left =
-      modules-center = memory cpu temperature battery
+      modules-center = memory cpu temperature battery openweathermap-fullfeatured
       modules-right =
 
       ;tray-position = right
@@ -329,6 +329,13 @@
       [global/wm]
       margin-top = 5
       margin-bottom = 5
+
+      [module/openweathermap-fullfeatured]
+      type = custom/script
+      exec = ~/Dev/tommy/polybar/openweathermap-fullfeatured.sh
+      interval = 600
+      label-font = 0
+      format-underline = ''${colors.purple}
     '';
   };
 }

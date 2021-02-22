@@ -56,6 +56,7 @@
     feh                    # setting the wallpaper
     flameshot              # screenshot
     haskellPackages.xmobar # xmobar
+    jq                     # openweathermap
     networkmanagerapplet   # network manager gui
     pcmanfm                # file browser
     polybar                # status bar
