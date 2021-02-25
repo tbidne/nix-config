@@ -1,24 +1,6 @@
 {
   home.file = {
     ".config/polybar/config".text = ''
-      ;==========================================================
-      ;
-      ;
-      ;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-      ;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-      ;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-      ;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-      ;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-      ;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-      ;
-      ;
-      ;   To learn more about how to configure Polybar
-      ;   go to https://github.com/polybar/polybar
-      ;
-      ;   The README contains a lot of information
-      ;
-      ;==========================================================
-
       [colors]
       background = #002F343F
       background-alt = #444
@@ -30,6 +12,7 @@
       warn = #f90000
       good = #53ab1d
       purple = #9f78e1
+      pink = #ea79c6
 
       [bar/top]
       width = 100%
@@ -63,9 +46,6 @@
       modules-left = ewmh
       modules-center = xwindow
       modules-right = openweathermap-fullfeatured date
-
-      ;tray-position = right
-      ;tray-padding = 2
 
       cursor-click = pointer
       cursor-scroll = ns-resize
@@ -103,9 +83,6 @@
       modules-left = filesystem memory cpu temperature backlight alsa
       modules-center =
       modules-right = wlan eth battery
-
-      ;tray-position = right
-      ;tray-padding = 2
 
       cursor-click = pointer
       cursor-scroll = ns-resize
@@ -195,33 +172,6 @@
       format-underline = ''${colors.purple}
 
       label = %date% %time%
-
-      [module/pulseaudio]
-      type = internal/pulseaudio
-
-      format-volume = <label-volume> <bar-volume>
-      label-volume = VOL %percentage%%
-      label-volume-foreground = ''${root.foreground}
-
-      label-muted = 🔇 muted
-      label-muted-foreground = #666
-
-      bar-volume-width = 10
-      bar-volume-foreground-0 = #55aa55
-      bar-volume-foreground-1 = #55aa55
-      bar-volume-foreground-2 = #55aa55
-      bar-volume-foreground-3 = #55aa55
-      bar-volume-foreground-4 = #55aa55
-      bar-volume-foreground-5 = #f5a70a
-      bar-volume-foreground-6 = #ff5555
-      bar-volume-gradient = false
-      bar-volume-indicator = |
-      bar-volume-indicator-font = 2
-      bar-volume-fill = ─
-      bar-volume-fill-font = 2
-      bar-volume-empty = ─
-      bar-volume-empty-font = 2
-      bar-volume-empty-foreground = ''${colors.foreground-alt}
 
       [module/alsa]
       type = internal/alsa

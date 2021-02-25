@@ -5,7 +5,6 @@
       ./picom.nix
       ./polybar/default.nix
       ./rofi/default.nix
-      ./xmobar.nix
       ./xmonad.nix
     ];
 }

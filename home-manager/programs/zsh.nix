@@ -37,6 +37,7 @@
       }
 
       neofetch
+      cd /etc/nixos
     '';
   };
 }

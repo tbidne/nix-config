@@ -1,13 +1,12 @@
 { fontSize, pkgs, ... }:
 
-let theme = import ./nord.nix;
+let theme = import ./dracula.nix;
 in
 { 
   programs.alacritty = {
     enable = true;
     settings = {
-      # globally set in picom.nix
-      background_opacity = 0.8;
+      background_opacity = 0.5;
       colors = theme;
       selection.save_to_clipboard = true;
       shell.program = "${pkgs.zsh}/bin/zsh";
