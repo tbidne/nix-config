@@ -35,6 +35,8 @@
         # move file to trash
         $(mv $filePath "$trash/files")
       }
+
+      neofetch
     '';
   };
 }

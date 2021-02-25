@@ -57,6 +57,7 @@
     flameshot              # screenshot
     haskellPackages.xmobar # xmobar
     jq                     # openweathermap
+    neofetch               # display system info
     networkmanagerapplet   # network manager gui
     pcmanfm                # file browser
     polybar                # status bar

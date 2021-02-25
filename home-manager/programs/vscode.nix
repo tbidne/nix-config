@@ -6,11 +6,19 @@ let
     ref = "nixos-unstable";
     rev = "71478e6fe4b3330d55b3a7c6b8462845a8bdc484";
   };
+  masterTarbell = builtins.fetchGit {
+    url = "https://github.com/tbidne/nixpkgs.git";
+    ref = "master";
+    rev = "a786e326c3fc54d0bb02e2a592a0a492e325dde2";
+  };
 in
 {
   nixpkgs.config = {
     packageOverrides = pkgs: {
       unstable = import unstableTarball {
+        config = config.nixpkgs.config;
+      };
+      master = import masterTarbell {
         config = config.nixpkgs.config;
       };
     };
@@ -22,6 +30,7 @@ in
     package = pkgs.vscodium;
 
     extensions = [
+      pkgs.master.vscode-extensions.dracula-theme.theme-dracula
       pkgs.vscode-extensions.bbenoist.Nix
       pkgs.vscode-extensions.justusadam.language-haskell
       pkgs.unstable.vscode-extensions.haskell.haskell
@@ -35,7 +44,9 @@ in
       "editor.fontLigatures" = true;
       "editor.fontFamily" = "Hasklig, Menlo, Menlo, Monaco, 'Courier New', monospace";
       "editor.wordWrap" = "on";
+      "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
+      "workbench.colorTheme" = "Dracula";
     };
   };
 }
