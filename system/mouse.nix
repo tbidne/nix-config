@@ -1,7 +1,11 @@
 {
   # touchpad
-  services.xserver.libinput.naturalScrolling = true;
-  services.xserver.libinput.enable = true;
-  services.xserver.libinput.middleEmulation = true;
-  services.xserver.libinput.tapping = true;
+  services.xserver.libinput = {
+    enable = true;
+    # -1.0 to 1.0, helps touchpad accel on HiDPI
+    accelSpeed = "0.5";
+    middleEmulation = true;
+    naturalScrolling = true;
+    tapping = true;
+  };
 }

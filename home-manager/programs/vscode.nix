@@ -38,12 +38,13 @@ in
       pkgs.unstable.vscode-extensions.mechatroner.rainbow-csv
     ];
     userSettings = {
-      "editor.wordWrapColumn" = 80;
-      "editor.renderWhitespace" = "boundary";
       "breadcrumbs.enabled" = true;
       "editor.fontLigatures" = true;
       "editor.fontFamily" = "Hasklig, Menlo, Menlo, Monaco, 'Courier New', monospace";
+      "editor.renderWhitespace" = "boundary";
+      "editor.tabSize" = 2;
       "editor.wordWrap" = "on";
+      "editor.wordWrapColumn" = 80;
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
       "workbench.colorTheme" = "Dracula";

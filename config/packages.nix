@@ -6,16 +6,10 @@
     chromium
     firefox
     gimp
-    mattermost
-    mattermost-desktop
-    slack
-    teams
     thunderbird
 
     # dev
     dbeaver
-    docker
-    docker-compose
     git
     lua
     nginx
@@ -32,10 +26,12 @@
     # utils
     gnupg
     home-manager
+    gotop
     htop
     networkmanager-fortisslvpn
     openfortivpn
     pv
+    tty-clock
     unzip
     zip
 
