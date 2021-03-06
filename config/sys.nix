@@ -6,6 +6,6 @@
   services.printing.enable = true;
 
   location.provider = "manual";
-  location.latitude = 38.89511;
-  location.longitude = -77.03637;
+  location.latitude = -41.28664;
+  location.longitude = 174.77557;
 }
