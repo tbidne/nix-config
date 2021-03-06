@@ -1,5 +1,11 @@
 # nix-config
 
+<p>
+    <a href="https://github.com/tbidne/nix-config/workflows/build/badge.svg?branch=main" alt="build">
+        <img src="https://img.shields.io/github/workflow/status/tbidne/nix-config/build/main?logo=NixOS&style=plastic&logoColor=7ebae4" height="20"/>
+    </a>
+</p>
+
 This repository holds my config in `/etc/nixos/`. The main desktop programs are:
 
 - [xmonad](https://xmonad.org/)
