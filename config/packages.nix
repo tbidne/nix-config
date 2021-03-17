@@ -29,10 +29,13 @@
     gotop
     htop
     networkmanager-fortisslvpn
+    nslookup
     openfortivpn
     pv
+    traceroute
     tty-clock
     unzip
+    whois
     zip
 
     # misc
