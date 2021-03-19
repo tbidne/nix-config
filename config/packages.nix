@@ -29,7 +29,6 @@
     gotop
     htop
     networkmanager-fortisslvpn
-    nslookup
     openfortivpn
     pv
     traceroute
