@@ -10,6 +10,4 @@
 
       ./programs/xmonad/default.nix
     ];
-
-  nixpkgs.config.allowUnfree = true;
 }
