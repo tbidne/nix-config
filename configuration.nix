@@ -4,13 +4,14 @@
 
 { config, pkgs, ... }:
 
-let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "c1faa848c5224452660cd6d2e0f4bd3e8d206419";
-  };
-in
 {
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   imports =
     [ # system
       ./hardware-configuration.nix
@@ -19,14 +20,10 @@ in
       # general config
       ./config/default.nix
 
-      # home manager
-      (import "${home-manager}/nixos")
-      ./app/nixos/interos.nix
+      #./app/nixos/interos.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
-
-  home-manager.users.tommy = import ./home-manager/home.nix;  
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
