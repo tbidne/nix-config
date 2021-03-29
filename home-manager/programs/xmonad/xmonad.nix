@@ -1,7 +1,7 @@
 { pkgs, ...}:
 
 let
-  compiler = "ghc8101";
+  compiler = "ghc8104";
 in
 {
   xresources.properties = {

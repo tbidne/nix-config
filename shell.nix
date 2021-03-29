@@ -1,4 +1,4 @@
-{ compiler ? "ghc8101"
+{ compiler ? "ghc8104"
 , pkgs ? import <nixpkgs> { }
 }:
 
