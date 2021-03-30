@@ -45,9 +45,15 @@ After that we can do the real build with `nixos-rebuild switch --flake ''`.
 To update `flake.lock`, run `nix flake update`.
 
 ## Nix Shell
-To launch a nix shell, for now you must specify the same revision it was built with. 
+The line
 
-That is, since `flake.lock` currently has `nixpkgs` corresponding to
+```nix
+devShell."${system}" = import ./shell.nix { inherit pkgs; };
+```
+
+allows us to launch the nix shell with `nix develop`. This gives us the shell with the dependencies to use HLS with `config.hs`.
+
+Launching a shell the old way can still be achieved by manually specifying the `nixpkgs` version. That is, since `flake.lock` currently has `nixpkgs` corresponding to
 
 ```nix
 "nixpkgs": {
@@ -66,7 +72,7 @@ That is, since `flake.lock` currently has `nixpkgs` corresponding to
   }
 }
 ```
-We launch the shell with,
+We launch the shell with
 
 ```shell
 nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/ad47284f8b01f587e24a4f14e0f93126d8ebecda.tar.gz

@@ -8,30 +8,36 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
     {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./configuration.nix
-          home-manager.nixosModules.home-manager ({
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.tommy = {...}: {
-              imports = [
-                ./home-manager/programs/chromium.nix
-                ./home-manager/programs/ghci.nix
-                ./home-manager/programs/git.nix
-                ./home-manager/programs/vscode.nix
-                ./home-manager/programs/zsh.nix
+      nixosConfigurations = {
+        nixos = nixpkgs.lib.nixosSystem {
+          system = system;
+          modules = [
+            ./configuration.nix
+            home-manager.nixosModules.home-manager ({
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.tommy = {...}: {
+                imports = [
+                  ./home-manager/programs/chromium.nix
+                  ./home-manager/programs/ghci.nix
+                  ./home-manager/programs/git.nix
+                  ./home-manager/programs/vscode.nix
+                  ./home-manager/programs/zsh.nix
 
-                ./home-manager/programs/xmonad/default.nix
-              ];
-            };
-          })
-        ];
+                  ./home-manager/programs/xmonad/default.nix
+                ];
+              };
+            })
+          ];
+        };
       };
+
+      devShell."${system}" = import ./shell.nix { inherit pkgs; };
     };
-  };
 }
