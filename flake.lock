@@ -21,6 +21,18 @@
         "type": "github"
       }
     },
+    "interos": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-HMAuuXh2CSxkogBYMQv3et580e0FO0mTsw9dtk8Rgs0=",
+        "path": "/etc/nixos/app/nixos/interos.nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/etc/nixos/app/nixos/interos.nix",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1616779317,
@@ -54,6 +66,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "interos": "interos",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }

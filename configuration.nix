@@ -19,8 +19,6 @@
 
       # general config
       ./config/default.nix
-
-      #./app/nixos/interos.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
