@@ -6,9 +6,13 @@
     nixpkgs-unstable.url = "nixpkgs/master";
     home-manager.url = "github:rycee/home-manager/release-20.09";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    interos = {
+      flake = false;
+      url = "path:/etc/nixos/app/nixos/interos.nix";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, interos, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -19,6 +23,7 @@
           system = system;
           modules = [
             ./configuration.nix
+            interos.outPath
             home-manager.nixosModules.home-manager ({
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -37,7 +42,6 @@
           ];
         };
       };
-
       devShell."${system}" = import ./shell.nix { inherit pkgs; };
     };
 }
