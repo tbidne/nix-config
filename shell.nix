@@ -1,5 +1,5 @@
 { compiler ? "ghc8104"
-, pkgs ? import <nixpkgs> { }
+, pkgs
 }:
 
 let
