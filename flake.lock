@@ -33,6 +33,22 @@
         "type": "path"
       }
     },
+    "my-nixpkgs": {
+      "locked": {
+        "lastModified": 1617237192,
+        "narHash": "sha256-8lCuFxdVWMY9u18OsuXhQcK7cEgRpJIj+DZY4KJ74dA=",
+        "owner": "tbidne",
+        "repo": "nixpkgs",
+        "rev": "21a76de62e5341ffd349019372e4d727f255b2f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "ref": "vscode-idris",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1616779317,
@@ -67,6 +83,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "interos": "interos",
+        "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
       }

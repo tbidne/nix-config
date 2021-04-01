@@ -6,6 +6,8 @@
     chromium
     firefox
     gimp
+    pandoc
+    texlive.combined.scheme-full
     thunderbird
 
     # dev
@@ -25,7 +27,6 @@
 
     # utils
     gnupg
-    home-manager
     gotop
     htop
     networkmanager-fortisslvpn
@@ -39,7 +40,6 @@
 
     # misc
     nix-prefetch-git
-    protonmail-bridge
   ];
 
   programs.gnupg.agent.enable = true;

@@ -10,12 +10,14 @@
       flake = false;
       url = "path:/etc/nixos/app/nixos/interos.nix";
     };
+    my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-idris";
   };
 
-  outputs = { self, nixpkgs, home-manager, interos, ... }:
+  outputs = { self, nixpkgs, home-manager, interos, my-nixpkgs, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      my-pkgs = my-nixpkgs.legacyPackages.${system};
     in
     {
       nixosConfigurations = {
@@ -32,7 +34,7 @@
                   ./home-manager/programs/chromium.nix
                   ./home-manager/programs/ghci.nix
                   ./home-manager/programs/git.nix
-                  ./home-manager/programs/vscode.nix
+                  (import ./home-manager/programs/vscode.nix { inherit pkgs my-pkgs; })
                   ./home-manager/programs/zsh.nix
 
                   ./home-manager/programs/xmonad/default.nix
