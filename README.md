@@ -53,27 +53,4 @@ devShell."${system}" = import ./shell.nix { inherit pkgs; };
 
 allows us to launch the nix shell with `nix develop`. This gives us the shell with the dependencies to use HLS with `config.hs`.
 
-Launching a shell the old way can still be achieved by manually specifying the `nixpkgs` version. That is, since `flake.lock` currently has `nixpkgs` corresponding to
-
-```nix
-"nixpkgs": {
-  "locked": {
-    "lastModified": 1616779317,
-    "narHash": "sha256-+mUTkYguFMNGb57JkwauDgjcq65RnOLUhDo4mhb8qAI=",
-    "owner": "NixOS",
-    "repo": "nixpkgs",
-    "rev": "ad47284f8b01f587e24a4f14e0f93126d8ebecda",
-    "type": "github"
-  },
-  "original": {
-    "id": "nixpkgs",
-    "ref": "nixos-unstable",
-    "type": "indirect"
-  }
-}
-```
-We launch the shell with
-
-```shell
-nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/ad47284f8b01f587e24a4f14e0f93126d8ebecda.tar.gz
-```
+We can also launch a nix shell with `nix-shell`.
