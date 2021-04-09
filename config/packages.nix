@@ -17,6 +17,7 @@
     nginx
     ruby
     sqitchPg
+    sqlite
     vim
     vscodium
 
