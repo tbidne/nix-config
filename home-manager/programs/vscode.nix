@@ -13,6 +13,7 @@
       pkgs.vscode-extensions.haskell.haskell
       pkgs.vscode-extensions.justusadam.language-haskell
       pkgs.vscode-extensions.mechatroner.rainbow-csv
+      pkgs.vscode-extensions.ms-python.python
       pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
       my-pkgs.vscode-extensions.zjhmale.Idris
     ];
