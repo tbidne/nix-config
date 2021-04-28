@@ -6,6 +6,7 @@
     chromium
     firefox
     gimp
+    google-chrome
     pandoc
     texlive.combined.scheme-full
     thunderbird
