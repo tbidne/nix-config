@@ -38,7 +38,6 @@
         $(mv $filePath "$trash/files")
       }
 
-      neofetch
       cd /etc/nixos
     '';
   };

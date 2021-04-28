@@ -40,7 +40,7 @@ nix = {
 };
 ```
 
-After that we can do the real build with `nixos-rebuild switch --flake ''`.
+After that we can do the real build with `nixos-rebuild switch --flake '.#nixos'`.
 
 To update `flake.lock`, run `nix flake update`.
 
