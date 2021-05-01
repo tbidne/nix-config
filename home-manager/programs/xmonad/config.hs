@@ -62,8 +62,8 @@ withDBus dbus = do
               layoutHook = myLayout,
               logHook = myPolybarLogHook dbus
             }
-  _ <- startTopPolybar
-  _ <- startBottomPolybar
+  _ <- startPolybar
+  _ <- startConky
   X.xmonad $
     XManageDocks.docks $
       XEwmhDesktops.ewmh config
@@ -222,11 +222,14 @@ systemKeySet modm =
       key "Capture entire screen" (modm, X.xK_Print) $ X.spawn "flameshot full -p ~/Pictures/flameshot/"
     ]
 
-startTopPolybar :: IO ()
-startTopPolybar = X.spawn "polybar top &"
+startPolybar :: IO ()
+startPolybar = do
+  X.spawn "polybar top &"
+  X.spawn "polybar bottom &"
 
-startBottomPolybar :: IO ()
-startBottomPolybar = X.spawn "polybar bottom &"
+startConky :: IO ()
+startConky = do
+  X.spawn "conky -c ~/Dev/tommy/github/conky/xmonad/conky_clock.conf"
 
 audioKeySet :: KeySet
 audioKeySet =

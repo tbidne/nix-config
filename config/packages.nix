@@ -4,6 +4,7 @@
     environment.systemPackages = with pkgs; [
     # core
     chromium
+    conky
     firefox
     gimp
     google-chrome
