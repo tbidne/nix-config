@@ -11,6 +11,8 @@ in
       shell = "${pkgs.zsh}/bin/zsh";
       extraConfig = ''
         ${theme.conf}
+        wheel_scroll_multiplier 1.0
+        touch_scroll_multiplier 1.0
       '';
     };
   };
