@@ -11,6 +11,7 @@
     pandoc
     texlive.combined.scheme-full
     thunderbird
+    zoom-us
 
     # dev
     dbeaver
@@ -29,6 +30,7 @@
     stack
 
     # utils
+    gnome3.zenity
     gnupg
     gotop
     htop
@@ -36,6 +38,7 @@
     openfortivpn
     pv
     traceroute
+    tree
     tty-clock
     unzip
     whois
