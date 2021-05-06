@@ -8,6 +8,6 @@
     uid = 1000;
     createHome = true;
     home = "/home/tommy";
-    shell = "/home/tommy/.nix-profile/bin/zsh";
+    shell = "/etc/profiles/per-user/tommy/bin/zsh";
   };
 }

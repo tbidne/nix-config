@@ -7,6 +7,7 @@
     package = pkgs.vscodium;
 
     extensions = [
+      my-pkgs.vscode-extensions.aeschli.vscode-css-formatter
       pkgs.vscode-extensions.bbenoist.Nix
       pkgs.vscode-extensions.coenraads.bracket-pair-colorizer-2
       pkgs.vscode-extensions.dracula-theme.theme-dracula
@@ -15,7 +16,7 @@
       pkgs.vscode-extensions.mechatroner.rainbow-csv
       pkgs.vscode-extensions.ms-python.python
       pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
-      my-pkgs.vscode-extensions.zjhmale.Idris
+      #my-pkgs.vscode-extensions.zjhmale.Idris
     ];
     userSettings = {
       "breadcrumbs.enabled" = true;

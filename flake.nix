@@ -10,7 +10,8 @@
       flake = false;
       url = "path:/etc/nixos/app/nixos/interos.nix";
     };
-    my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-idris";
+    #my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-idris";
+    my-nixpkgs.url = "github:tbidne/nixpkgs/aeschli.vscode-css-formatter";
   };
 
   outputs = { self, nixpkgs, home-manager, interos, my-nixpkgs, ... }:
