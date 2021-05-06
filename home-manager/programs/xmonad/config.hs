@@ -100,7 +100,7 @@ myModMask :: KeyMask
 myModMask = X.mod4Mask -- Use Super instead of Alt
 
 myTerminal :: String
-myTerminal = "alacritty"
+myTerminal = "kitty"
 
 screenLocker :: String
 screenLocker = "betterlockscreen -l dim"
