@@ -6,15 +6,11 @@
     nixpkgs-unstable.url = "nixpkgs/master";
     home-manager.url = "github:rycee/home-manager/release-20.09";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    interos = {
-      flake = false;
-      url = "path:/etc/nixos/app/nixos/interos.nix";
-    };
     #my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-idris";
     my-nixpkgs.url = "github:tbidne/nixpkgs/aeschli.vscode-css-formatter";
   };
 
-  outputs = { self, nixpkgs, home-manager, interos, my-nixpkgs, ... }:
+  outputs = { self, nixpkgs, home-manager, my-nixpkgs, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -26,7 +22,6 @@
           system = system;
           modules = [
             ./configuration.nix
-            interos.outPath
             home-manager.nixosModules.home-manager ({
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

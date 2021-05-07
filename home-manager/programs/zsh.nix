@@ -13,8 +13,6 @@
       theme = "avit";
     };
     initExtra = ''
-      source ~/.bashrc.private.interos
-
       alias nsCabal2Nix='nix-shell --pure -p cabal2nix --run "cabal2nix ." > default.nix'
 
       # mv to trash
