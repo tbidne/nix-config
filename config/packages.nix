@@ -24,6 +24,13 @@
     vim
     vscodium
 
+    # doom emacs
+    clang
+    coreutils
+    emacs
+    fd
+    ripgrep
+
     # haskell
     cabal-install
     cabal2nix

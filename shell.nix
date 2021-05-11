@@ -1,10 +1,11 @@
 { compiler ? "ghc8104"
-, pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/3d1a7716d7f1fccbd7d30ab3b2ed3db831f43bde.tar.gz") {}
+, pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/d3ba49889a76539ea0f7d7285b203e7f81326ded.tar.gz") {}
 }:
 
 let
   haskellDeps = ps: with ps; [
     dbus
+    haskell-language-server
     X11
     xmonad
     xmonad-contrib
