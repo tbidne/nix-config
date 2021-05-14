@@ -44,6 +44,7 @@
     networkmanager-fortisslvpn
     openfortivpn
     pv
+    tmux
     traceroute
     tree
     tty-clock
