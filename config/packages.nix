@@ -8,6 +8,7 @@
     firefox
     gimp
     google-chrome
+    kitty
     pandoc
     texlive.combined.scheme-full
     thunderbird
@@ -56,5 +57,6 @@
     nix-prefetch-git
   ];
 
+  programs.steam.enable = true;
   programs.gnupg.agent.enable = true;
 }

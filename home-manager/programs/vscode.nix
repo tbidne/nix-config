@@ -29,6 +29,27 @@
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
       "workbench.colorTheme" = "Dracula";
+      "[haskell]" = {
+        "editor.defaultFormatter" = "haskell.haskell";
+      };
+      
+      # ignore spellcheck
+      "cSpell.userWords" = [
+        "asyn"
+        "bifunctor"
+        "bimap"
+        "cmds"
+        "concat"
+        "curr"
+        "desirements"
+        "fmap"
+        "foldr"
+        "foldl"
+        "hspec"
+        "mempty"
+        "monoid"
+        "semigroup"
+      ];
     };
   };
 }

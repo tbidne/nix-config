@@ -53,9 +53,7 @@
     brightnessctl          # control backlight
     feh                    # setting the wallpaper
     flameshot              # screenshot
-    haskellPackages.xmobar # xmobar
     jq                     # openweathermap
-    kitty
     neofetch               # display system info
     networkmanagerapplet   # network manager gui
     pcmanfm                # file browser
