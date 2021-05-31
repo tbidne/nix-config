@@ -12,25 +12,19 @@
     pandoc
     texlive.combined.scheme-full
     thunderbird
-    zoom-us
+  
 
     # dev
     dbeaver
     git
     lua
     nginx
+    onefetch
     ruby
     sqitchPg
     sqlite
     vim
     vscodium
-
-    # doom emacs
-    clang
-    coreutils
-    emacs
-    fd
-    ripgrep
 
     # haskell
     cabal-install
@@ -38,12 +32,8 @@
     stack
 
     # utils
-    gnome3.zenity
     gnupg
     gotop
-    htop
-    networkmanager-fortisslvpn
-    openfortivpn
     pv
     tmux
     traceroute

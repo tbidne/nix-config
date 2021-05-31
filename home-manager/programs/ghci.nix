@@ -9,6 +9,7 @@
 
       -- common extension
       :set -XOverloadedStrings
+      :set -XImportQualifiedPost
 
       -- multi-line support
       :set +m -v0
