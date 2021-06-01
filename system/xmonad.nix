@@ -10,11 +10,6 @@
       packages = [ pkgs.gnome3.dconf ];
     };
 
-    # attempt to make beginning console font more readable
-    i18n = {
-      consoleFont = "sun12x22";
-    };
-
     xserver = {
       enable = true;
       layout = "us";
