@@ -1,4 +1,4 @@
-{ pkgs, my-pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.vscode = {
@@ -7,7 +7,7 @@
     package = pkgs.vscodium;
 
     extensions = [
-      my-pkgs.vscode-extensions.aeschli.vscode-css-formatter
+      #my-pkgs.vscode-extensions.aeschli.vscode-css-formatter
       pkgs.vscode-extensions.bbenoist.Nix
       pkgs.vscode-extensions.coenraads.bracket-pair-colorizer-2
       pkgs.vscode-extensions.dracula-theme.theme-dracula

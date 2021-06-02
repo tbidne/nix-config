@@ -13,8 +13,15 @@
   outputs = { self, nixpkgs, home-manager, my-nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      my-pkgs = my-nixpkgs.legacyPackages.${system};
+      #pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config = { allowUnfree = true; };
+      };
+      #my-pkgs = my-nixpkgs.legacyPackages.${system};
+      #my-pkgs = import nixpkgs {
+      #  config = { allowUnfree = true; };
+      #};
     in
     {
       nixosConfigurations = {
@@ -30,10 +37,11 @@
                   ./home-manager/programs/chromium.nix
                   ./home-manager/programs/ghci.nix
                   ./home-manager/programs/git.nix
-                  (import ./home-manager/programs/vscode.nix { inherit pkgs my-pkgs; })
+                  (import ./home-manager/programs/vscode.nix { inherit pkgs; })
                   ./home-manager/programs/zsh.nix
 
                   ./home-manager/programs/xmonad/default.nix
+                  #./home-manager/programs/plasma/default.nix
                 ];
               };
             })

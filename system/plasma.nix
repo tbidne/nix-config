@@ -25,7 +25,7 @@ in
 
   environment.systemPackages = with pkgs; [
     conky
-    plasma5.plasma-browser-integration
+    #plasma5.plasma-browser-integration
     yakuake
     yakuake-autostart
   ];
