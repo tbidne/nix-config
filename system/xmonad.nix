@@ -13,6 +13,9 @@
     xserver = {
       enable = true;
       layout = "us";
+
+      # As of 2021 05 02, this is only helpful for making the login screen
+      # larger. It doesn't appear necessary for anything else.
       dpi = 314;
 
       windowManager = {
@@ -61,11 +64,4 @@
     rofi                   # app launcher
     xorg.xwininfo          # get X window information
   ];
-
-  environment.variables = {
-    GDK_SCALE = "2";
-    GDK_DPI_SCALE = "0.5";
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    XCURSOR_SIZE = "64";
-  };
 }
