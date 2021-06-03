@@ -12,7 +12,7 @@
     pandoc
     texlive.combined.scheme-full
     thunderbird
-  
+    zoom-us
 
     # dev
     dbeaver
