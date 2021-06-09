@@ -2,7 +2,8 @@
   programs.chromium = {
     enable = true;
     extensions =
-      [ "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
+      [
+        "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
         "mlomiejdfkolichcflejclcbmpeaniij" # ghostery
         "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
         "hdokiejnpimakedhajhdlcegeplioahd" # lastpass

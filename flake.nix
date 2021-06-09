@@ -23,10 +23,11 @@
           system = system;
           modules = [
             ./configuration.nix
-            home-manager.nixosModules.home-manager ({
+            home-manager.nixosModules.home-manager
+            ({
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.tommy = {...}: {
+              home-manager.users.tommy = { ... }: {
                 imports = [
                   ./home-manager/programs/chromium.nix
                   ./home-manager/programs/ghci.nix

@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 
 let
   yakuake-autostart = (pkgs.makeAutostartItem {

@@ -32,7 +32,7 @@
       "[haskell]" = {
         "editor.defaultFormatter" = "haskell.haskell";
       };
-      
+
       # ignore spellcheck
       "cSpell.userWords" = [
         "asyn"

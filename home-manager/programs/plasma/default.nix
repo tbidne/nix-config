@@ -1,5 +1,6 @@
 {
   imports =
-    [ ./konsole.nix
+    [
+      ./konsole.nix
     ];
 }

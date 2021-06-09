@@ -2,7 +2,7 @@
 
 let theme = import ./dracula.nix;
 in
-{ 
+{
   programs.kitty = {
     enable = true;
     font.name = "hasklig";

@@ -13,7 +13,8 @@
   };
 
   imports =
-    [ # system
+    [
+      # system
       ./hardware-configuration.nix
       ./system/default.nix
 

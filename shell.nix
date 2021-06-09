@@ -1,5 +1,5 @@
 { compiler ? "ghc8104"
-, pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/d3ba49889a76539ea0f7d7285b203e7f81326ded.tar.gz") {}
+, pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/d3ba49889a76539ea0f7d7285b203e7f81326ded.tar.gz") { }
 }:
 
 let
@@ -14,6 +14,7 @@ let
   ];
 
   ghc = pkgs.haskell.packages.${compiler}.ghcWithPackages haskellDeps;
-in pkgs.mkShell {
+in
+pkgs.mkShell {
   buildInputs = [ ghc pkgs.nixpkgs-fmt ];
 }
