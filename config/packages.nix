@@ -18,7 +18,9 @@
     dbeaver
     git
     lua
+    neovim
     nginx
+    nodejs
     onefetch
     ruby
     sqitchPg
