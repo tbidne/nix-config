@@ -1,11 +1,10 @@
+<div align="center">
+
 # nix-config
 
-<p>
-    <a href="https://github.com/tbidne/nix-config/workflows/build/badge.svg?branch=main" alt="build">
-        <img src="https://img.shields.io/github/workflow/status/tbidne/nix-config/build/main?logo=NixOS&style=plastic&logoColor=7ebae4" height="20"/>
-    </a>
-    ![nixfmt](https://github.com/tbidne/nix-config/workflows/nixfmt/badge.svg?branch=main)
-</p>
+<a href="https://github.com/tbidne/nix-config/workflows/build/badge.svg?branch=main" alt="build"><img src="https://img.shields.io/github/workflow/status/tbidne/nix-config/build/main?logo=NixOS&style=plastic&logoColor=7ebae4" height="20"/></a>
+![nixfmt](https://github.com/tbidne/nix-config/workflows/nixfmt/badge.svg?branch=main)
+</div>
 
 This repository holds my `/etc/nixos/` config.
 
