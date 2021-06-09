@@ -15,5 +15,5 @@ let
 
   ghc = pkgs.haskell.packages.${compiler}.ghcWithPackages haskellDeps;
 in pkgs.mkShell {
-  buildInputs = [ ghc ];
+  buildInputs = [ ghc pkgs.nixpkgs-fmt ];
 }
