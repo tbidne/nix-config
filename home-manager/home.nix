@@ -2,7 +2,8 @@
 
 {
   imports =
-    [ ./programs/chromium.nix
+    [
+      ./programs/chromium.nix
       ./programs/ghci.nix
       ./programs/git.nix
       ./programs/vscode.nix

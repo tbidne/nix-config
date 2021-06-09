@@ -52,16 +52,16 @@
   systemd.services.upower.enable = true;
 
   environment.systemPackages = with pkgs; [
-    betterlockscreen       # lock screen
-    brightnessctl          # control backlight
-    feh                    # setting the wallpaper
-    flameshot              # screenshot
-    jq                     # openweathermap
-    neofetch               # display system info
-    networkmanagerapplet   # network manager gui
-    pcmanfm                # file browser
-    polybar                # status bar
-    rofi                   # app launcher
-    xorg.xwininfo          # get X window information
+    betterlockscreen # lock screen
+    brightnessctl # control backlight
+    feh # setting the wallpaper
+    flameshot # screenshot
+    jq # openweathermap
+    neofetch # display system info
+    networkmanagerapplet # network manager gui
+    pcmanfm # file browser
+    polybar # status bar
+    rofi # app launcher
+    xorg.xwininfo # get X window information
   ];
 }

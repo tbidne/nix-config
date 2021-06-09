@@ -2,7 +2,7 @@
 
 let theme = import ./dracula.nix;
 in
-{ 
+{
   programs.alacritty = {
     enable = true;
     settings = {
