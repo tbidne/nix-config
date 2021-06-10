@@ -19,7 +19,7 @@
       ./system/default.nix
 
       # general config
-      (import ./config/default.nix {inherit pkgs system ringbearer;})
+      (import ./config/default.nix { inherit pkgs system ringbearer; })
     ];
 
   nixpkgs.config.allowUnfree = true;
