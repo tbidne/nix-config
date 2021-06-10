@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, system, ringbearer, ... }:
 
 {
   nix = {
@@ -19,7 +19,7 @@
       ./system/default.nix
 
       # general config
-      ./config/default.nix
+      (import ./config/default.nix {inherit pkgs system ringbearer;})
     ];
 
   nixpkgs.config.allowUnfree = true;

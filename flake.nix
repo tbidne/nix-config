@@ -7,13 +7,15 @@
     home-manager.url = "github:rycee/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     my-nixpkgs.url = "github:tbidne/nixpkgs/aeschli.vscode-css-formatter";
+    ringbearer.url = "github:tbidne/ringbearer/main";
+    ringbearer.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, my-nixpkgs, ... }:
+  outputs = { self, nixpkgs, home-manager, my-nixpkgs, ringbearer, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        system = "x86_64-linux";
+        system = system;
         config = { allowUnfree = true; };
       };
     in
@@ -22,7 +24,7 @@
         nixos = nixpkgs.lib.nixosSystem {
           system = system;
           modules = [
-            ./configuration.nix
+            (import ./configuration.nix { inherit pkgs system ringbearer; })
             home-manager.nixosModules.home-manager
             ({
               home-manager.useGlobalPkgs = true;

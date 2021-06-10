@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1622445595,
+        "narHash": "sha256-m+JRe6Wc5OZ/mKw2bB3+Tl0ZbtyxxxfnAWln8Q5qs+Y=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "7d706970d94bc5559077eb1a6600afddcd25a7c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -67,12 +82,35 @@
         "type": "indirect"
       }
     },
+    "ringbearer": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1623293987,
+        "narHash": "sha256-RWF85dMBOkAou4aRcfpcQJvgeH0H4SpYEvPwtdaNeiY=",
+        "owner": "tbidne",
+        "repo": "ringbearer",
+        "rev": "642247ebcb84aa481511b0f9f0e334d51b3cd0bd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "ref": "main",
+        "repo": "ringbearer",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "ringbearer": "ringbearer"
       }
     }
   },

@@ -1,9 +1,10 @@
+{ pkgs, system, ringbearer }:
 {
   imports =
     [
       ./bluetooth.nix
       ./cache.nix
-      ./fonts.nix
+      (import ./fonts.nix { inherit pkgs system ringbearer; })
       ./packages.nix
       ./postgresql.nix
       ./redshift.nix
