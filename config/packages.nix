@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, shell-run, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -32,6 +32,9 @@
     cabal-install
     cabal2nix
     stack
+
+    # my projects
+    shell-run
 
     # utils
     gnupg

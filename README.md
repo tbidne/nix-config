@@ -42,7 +42,9 @@ nix = {
 
 After that we can do the real build with `nixos-rebuild switch --flake '.#nixos'`.
 
-To update `flake.lock`, run `nix flake update`.
+To update `flake.lock`, run `nix flake lock`.
+
+To update a specific input, run `nix flake lock --update-input <input-name>.
 
 ## Nix Shell
 The line

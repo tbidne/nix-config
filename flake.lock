@@ -84,7 +84,9 @@
     },
     "ringbearer": {
       "inputs": {
-        "flake-utils": "flake-utils",
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -106,11 +108,37 @@
     },
     "root": {
       "inputs": {
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "ringbearer": "ringbearer"
+        "ringbearer": "ringbearer",
+        "shell-run-src": "shell-run-src"
+      }
+    },
+    "shell-run-src": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1623382567,
+        "narHash": "sha256-JiQSSNLsLAhpeUl4u6jjgvdOv3VmED8gkxC+82ss6yQ=",
+        "owner": "tbidne",
+        "repo": "shell-run",
+        "rev": "66040f3e828ffe44b96a34746908076cbba51b73",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "ref": "main",
+        "repo": "shell-run",
+        "type": "github"
       }
     }
   },
