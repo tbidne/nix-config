@@ -5,11 +5,9 @@
     extraConfig = {
       pull.ff = "only";
       push.default = "simple";
-      diff.tool = "vscode";
-      difftool.vscode.cmd = "codium --wait --diff $LOCAL $REMOTE";
-      merge.tool = "vscode";
-      mergetool.vscode.cmd = "codium --wait $MERGED";
-      core.editor = "codium --wait";
+      merge.tool = "vimdiff";
+      mergetool.path = "nvim";
+      core.editor = "nvim";
     };
     aliases = {
       s = "status";
