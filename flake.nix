@@ -11,7 +11,7 @@
     ringbearer.url = "github:tbidne/ringbearer/main";
     ringbearer.inputs.nixpkgs.follows = "nixpkgs";
     ringbearer.inputs.flake-utils.follows = "flake-utils";
-    shell-run-src.url= "github:tbidne/shell-run/main";
+    shell-run-src.url = "github:tbidne/shell-run/main";
     shell-run-src.inputs.nixpkgs.follows = "nixpkgs";
     shell-run-src.inputs.flake-utils.follows = "flake-utils";
 
