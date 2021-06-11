@@ -5,8 +5,12 @@
     extraConfig = {
       pull.ff = "only";
       push.default = "simple";
+      diff.tool = "nvimdiff";
+      difftool.nvimdiff.cmd = "nvim -d $LOCAL $REMOTE";
+      difftool.trustExitCode = true;
       merge.tool = "vimdiff";
-      mergetool.path = "nvim";
+      mergetool.prompt = true;
+      mergetool.vimdiff.cmd = "nvim -d $LOCAL $REMOTE $MERGED";
       core.editor = "nvim";
     };
     aliases = {
