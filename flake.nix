@@ -3,21 +3,24 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "nixpkgs/master";
-    home-manager.url = "github:rycee/home-manager/master";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    my-nixpkgs.url = "github:tbidne/nixpkgs/aeschli.vscode-css-formatter";
+    home-manager = {
+      url = "github:rycee/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-utils.url = "github:numtide/flake-utils";
-    ringbearer.url = "github:tbidne/ringbearer/main";
-    ringbearer.inputs.nixpkgs.follows = "nixpkgs";
-    ringbearer.inputs.flake-utils.follows = "flake-utils";
-    shell-run-src.url = "github:tbidne/shell-run/main";
-    shell-run-src.inputs.nixpkgs.follows = "nixpkgs";
-    shell-run-src.inputs.flake-utils.follows = "flake-utils";
-
+    ringbearer = {
+      url = "github:tbidne/ringbearer/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    shell-run-src = {
+      url = "github:tbidne/shell-run/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, my-nixpkgs, ringbearer, shell-run-src, ... }:
+  outputs = { self, nixpkgs, home-manager, ringbearer, shell-run-src, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {

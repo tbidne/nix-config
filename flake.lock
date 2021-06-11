@@ -36,22 +36,6 @@
         "type": "github"
       }
     },
-    "my-nixpkgs": {
-      "locked": {
-        "lastModified": 1620129886,
-        "narHash": "sha256-kMOLks9mTtNpu5SdUVbvdwHuV3UydgyVsUtq8OghOmU=",
-        "owner": "tbidne",
-        "repo": "nixpkgs",
-        "rev": "de8cce004732ada0c025f9aa174996c71396de22",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tbidne",
-        "ref": "aeschli.vscode-css-formatter",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1622282707,
@@ -64,21 +48,6 @@
       "original": {
         "id": "nixpkgs",
         "ref": "nixos-unstable",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1622538881,
-        "narHash": "sha256-xYZf2GExDiH8Nqdh3Flgl56JYJWh7E3X2sT1IQr6TuU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ad0879920c79643002ba21bcbd7f1e5af4a7a709",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "master",
         "type": "indirect"
       }
     },
@@ -110,9 +79,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-unstable": "nixpkgs-unstable",
         "ringbearer": "ringbearer",
         "shell-run-src": "shell-run-src"
       }
