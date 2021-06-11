@@ -6,6 +6,8 @@
     extraConfig = ''
       colorscheme nord
       let g:airline_theme='deus'
+      let NERDTreeShowHidden=1
+      let g:ctrlp_show_hidden=1
     '';
 
     plugins = with pkgs.vimPlugins; [
@@ -13,12 +15,14 @@
       coc-nvim
       ctrlp
       fugitive
+      fzf-vim
       haskell-vim
       nerdtree
       vim-airline
       vim-airline-themes
-      vim-hoogle
+      vim-markdown-composer
       vim-gitgutter
+      vim-hoogle
       vim-lsp
       vim-nix
     ];
@@ -29,7 +33,7 @@
       {
         "languageserver": {
           "haskell": {
-            "command": "haskell-language-server-wrapper",
+            "command": "haskell-language-server",
             "args": [
               "--lsp"
             ],
