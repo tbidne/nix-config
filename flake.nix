@@ -39,18 +39,7 @@
             ({
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.tommy = { ... }: {
-                imports = [
-                  ./home-manager/programs/chromium.nix
-                  ./home-manager/programs/ghci.nix
-                  ./home-manager/programs/git.nix
-                  (import ./home-manager/programs/neovim.nix { inherit pkgs; })
-                  (import ./home-manager/programs/vscode.nix { inherit pkgs; })
-                  ./home-manager/programs/zsh.nix
-
-                  ./home-manager/programs/xmonad/default.nix
-                ];
-              };
+              home-manager.users.tommy = import ./home-manager/home.nix;
             })
           ];
         };
