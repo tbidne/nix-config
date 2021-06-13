@@ -37,9 +37,11 @@
     shell-run
 
     # utils
+    fd
     gnupg
     gotop
     pv
+    ripgrep
     tmux
     traceroute
     tree
