@@ -57,14 +57,14 @@
                 ;; if you want which-key integration
                 (lsp-mode . lsp-enable-which-key-integration))
         :commands lsp)(use-package lsp-mode
-		        :ensure t)
+            :ensure t)
 
       (use-package lsp-ui
                    :ensure t
                    :commands lsp-ui-mode)
       (use-package lsp-ivy
-	           :ensure t
-	           :commands lsp-ivy-workspace-symbol)
+             :ensure t
+             :commands lsp-ivy-workspace-symbol)
       (use-package lsp-treemacs :ensure t)
 
       ;; haskell
