@@ -2,7 +2,7 @@
 {-# LANGUAGE NamedFieldPuns #-}
 {-# OPTIONS_GHC -Wall -Werror #-}
 {-# OPTIONS_GHC -Wincomplete-uni-patterns -Wmissing-export-lists -Wcompat #-}
-{-# OPTIONS_GHC -Wno-deprecations -Wno-missing-signatures #-}
+{-# OPTIONS_GHC -Wno-deprecations -Wno-missing-signatures -Wno-unused-top-binds #-}
 {-# OPTIONS_GHC -Wpartial-fields -Wmissing-home-modules -Widentities #-}
 {-# OPTIONS_GHC -Wredundant-constraints -Wincomplete-record-updates #-}
 
@@ -63,7 +63,6 @@ withDBus dbus = do
               logHook = myPolybarLogHook dbus
             }
   _ <- startPolybar
-  _ <- startConky
   X.xmonad $
     XManageDocks.docks $
       XEwmhDesktops.ewmh config
