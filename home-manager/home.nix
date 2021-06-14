@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, secrets, ... }:
 
 {
   imports =
@@ -8,7 +8,7 @@
       ./programs/git.nix
       ./programs/neovim.nix
       ./programs/vscode.nix
-      ./programs/xmonad/default.nix
+      (import ./programs/xmonad/default.nix { inherit secrets; })
       ./programs/zsh.nix
     ];
 }

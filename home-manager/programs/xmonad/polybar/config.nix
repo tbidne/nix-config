@@ -262,7 +262,7 @@
 
       [module/openweathermap-fullfeatured]
       type = custom/script
-      exec = ~/Dev/tommy/polybar/openweathermap-fullfeatured.sh
+      exec = ~/.config/polybar/openweathermap-fullfeatured.sh
       interval = 600
       label-font = 0
       format-underline = ''${colors.purple}

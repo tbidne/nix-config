@@ -45,3 +45,18 @@ devShell."${system}" = import ./shell.nix { inherit pkgs; };
 allows us to launch the nix shell with `nix develop`. This gives us the shell with the dependencies to use HLS with `config.hs`.
 
 We can also launch a nix shell with `nix-shell`.
+
+## Secrets
+
+Building requires access to the hidden repository `git@github.com/tbidne/secrets`. Because `nixos-rebuild` is run with `sudo`, it doesn't have access to our normal user keys, thus this fails. We can get around this via:
+- ssh key in `/root/.ssh`.
+- add the following to `/root/.ssh/config`:
+
+```sh
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile /root/.ssh/id_ed25519
+```
+
+Then we can access the repository during building.

@@ -18,9 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    # Need to have root key with repo access, i.e., /root/.ssh/...
+    secrets-src.url = "git+ssh://git@github.com/tbidne/secrets?ref=main";
   };
 
-  outputs = { self, nixpkgs, home-manager, ringbearer, shell-run-src, ... }:
+  outputs = { self, nixpkgs, home-manager, ringbearer, shell-run-src, secrets-src, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -28,6 +30,7 @@
         config = { allowUnfree = true; };
       };
       shell-run = shell-run-src.defaultPackage.${system};
+      secrets = secrets-src.outputs;
     in
     {
       nixosConfigurations = {
@@ -39,7 +42,7 @@
             ({
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.tommy = import ./home-manager/home.nix;
+              home-manager.users.tommy = (import ./home-manager/home.nix { inherit pkgs secrets; });
             })
           ];
         };

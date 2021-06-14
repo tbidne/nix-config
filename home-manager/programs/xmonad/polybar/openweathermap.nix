@@ -1,5 +1,7 @@
+{ secrets, ... }:
+
 {
-  home.file."Dev/tommy/polybar/openweathermap-fullfeatured.sh" = {
+  home.file.".config/polybar/openweathermap-fullfeatured.sh" = {
     executable = true;
     text = ''
       #!/bin/sh
@@ -56,8 +58,7 @@
           esac
       }
 
-      # OPENWEATHERMAP_API_KEY defined in private bash file
-      #KEY=""
+      API_KEY="${secrets.polybar.open-weather-api-key}"
       # Wellington
       CITY="2179537"
       UNITS="metric"
@@ -72,8 +73,8 @@
               CITY_PARAM="q=$CITY"
           fi
 
-          current=$(curl -sf "$API/weather?appid=$OPENWEATHERMAP_API_KEY&$CITY_PARAM&units=$UNITS")
-          forecast=$(curl -sf "$API/forecast?appid=$OPENWEATHERMAP_API_KEY&$CITY_PARAM&units=$UNITS&cnt=1")
+          current=$(curl -sf "$API/weather?appid=$API_KEY&$CITY_PARAM&units=$UNITS")
+          forecast=$(curl -sf "$API/forecast?appid=$API_KEY&$CITY_PARAM&units=$UNITS&cnt=1")
       else
           location=$(curl -sf https://location.services.mozilla.com/v1/geolocate?key=geoclue)
 
@@ -81,8 +82,8 @@
               location_lat="$(echo "$location" | jq '.location.lat')"
               location_lon="$(echo "$location" | jq '.location.lng')"
 
-              current=$(curl -sf "$API/weather?appid=$OPENWEATHERMAP_API_KEY&lat=$location_lat&lon=$location_lon&units=$UNITS")
-              forecast=$(curl -sf "$API/forecast?appid=$OPENWEATHERMAP_API_KEY&lat=$location_lat&lon=$location_lon&units=$UNITS&cnt=1")
+              current=$(curl -sf "$API/weather?appid=$API_KEY&lat=$location_lat&lon=$location_lon&units=$UNITS")
+              forecast=$(curl -sf "$API/forecast?appid=$API_KEY&lat=$location_lat&lon=$location_lon&units=$UNITS&cnt=1")
           fi
       fi
 

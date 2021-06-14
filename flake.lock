@@ -81,7 +81,24 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "ringbearer": "ringbearer",
+        "secrets-src": "secrets-src",
         "shell-run-src": "shell-run-src"
+      }
+    },
+    "secrets-src": {
+      "locked": {
+        "lastModified": 1623664099,
+        "narHash": "sha256-5HMD+0f3WTlUvV3FHFr90GiQWTS+ucFnGiVMlA7tYU0=",
+        "ref": "main",
+        "rev": "977b6da0d05f25cc6ff920db1f210e647bbb3bf5",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/tbidne/secrets"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/tbidne/secrets"
       }
     },
     "shell-run-src": {
