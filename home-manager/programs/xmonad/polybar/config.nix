@@ -96,7 +96,6 @@
 
       label-active = " %name% "
       label-active-foreground = #ffffff
-      label-active-background = #3f3f3f
       label-active-underline = ''${colors.purple}
 
       [module/filesystem]
