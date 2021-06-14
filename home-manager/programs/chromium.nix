@@ -3,12 +3,14 @@
     enable = true;
     extensions =
       [
+        "fhcgjolkccmbidfldomjliifgaodjagh" # cookie autodelete
         "eimadpbcbfnmbkopoojfekhnkhdbieeh" # dark reader
-        "mlomiejdfkolichcflejclcbmpeaniij" # ghostery
+        "ldpochfccmkkmhdbclfhpagapcfdljkj" # decentraleyes
         "gcbommkclmclpchllfjekcdonpmejbdp" # https everywhere
         "hdokiejnpimakedhajhdlcegeplioahd" # lastpass
         "fjoaledfpmneenckfbpdfhkmimnjocfa" # nordvpn
         "doojmbjmlfjjnbmnoijecmcbfeoakpjm" # noscript
+        "pkehgijcmpdhfbdbbnkijodmdjhbjlgp" # privacy badger
         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
       ];
   };
