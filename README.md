@@ -12,7 +12,7 @@ This repository holds my `/etc/nixos/` config.
 
 ![Desktop](./Desktop_23-02-2021.png)
 
-The wallpaper is set to whatever is in `$HOME/Pictures/Wallpaper/Current` via `feh` in `config.hs`.
+The wallpaper is set to whatever is in `$HOME/Pictures/Wallpaper/Current` via `feh` in `config.hs`. To test out new wallpapers, run `feh --bg-scale /path/to/wallpaper`.
 
 The main desktop programs are:
 

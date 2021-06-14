@@ -322,7 +322,7 @@ polybarHook dbus =
         }
 
 myLogHook :: X ()
-myLogHook = XFadeInactive.fadeInactiveLogHook 0.9
+myLogHook = XFadeInactive.fadeInactiveLogHook 0.95
 
 -- Emit a DBus signal on log updates
 dbusOutput :: DClient.Client -> String -> IO ()
