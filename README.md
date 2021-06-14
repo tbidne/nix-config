@@ -8,9 +8,9 @@
 
 This repository holds my `/etc/nixos/` config.
 
-## Desktop
+![Desktop](./Desktop_2021-06-14_16-11.png)
 
-![Desktop](./Desktop_23-02-2021.png)
+## Desktop
 
 The wallpaper is set to whatever is in `$HOME/Pictures/Wallpaper/Current` via `feh` in `config.hs`. To test out new wallpapers, run `feh --bg-scale /path/to/wallpaper`.
 
@@ -29,18 +29,7 @@ To set `betterlockscreen` up, run `betterlockscreen -u path/to/wallpaper`. Then 
 
 ## Flakes
 
-Sometimes you have to first build with `nixos-rebuild switch --flake '#'`. I believe this is when we're on the "old nix" and have to do a "dry run" to let us use flakes before we can do the "real build". E.g., we must execute:
-
-```nix
-nix = {
-  package = pkgs.nixFlakes;
-  extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-};
-```
-
-After that we can do the real build with `nixos-rebuild switch --flake '.#nixos'`.
+The configuration is built with `nixos-rebuild switch --flake '.#nixos'`.
 
 To update all inputs in `flake.lock`, run `nix flake update`.
 
