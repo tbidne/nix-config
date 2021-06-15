@@ -12,6 +12,7 @@
       pkgs.vscode-extensions.bbenoist.Nix
       pkgs.vscode-extensions.coenraads.bracket-pair-colorizer-2
       pkgs.vscode-extensions.dracula-theme.theme-dracula
+      pkgs.vscode-extensions.editorconfig.editorconfig
       pkgs.vscode-extensions.haskell.haskell
       pkgs.vscode-extensions.justusadam.language-haskell
       pkgs.vscode-extensions.mechatroner.rainbow-csv

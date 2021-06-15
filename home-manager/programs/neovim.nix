@@ -19,12 +19,13 @@
 
     plugins = with pkgs.vimPlugins; [
       bufexplorer
-      nord-vim
       coc-nvim
+      editorconfig-vim
       fugitive
       fzf-vim
       haskell-vim
       nerdtree
+      nord-vim
       vim-airline
       vim-airline-themes
       vim-markdown-composer
