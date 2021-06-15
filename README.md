@@ -55,7 +55,7 @@ Building requires access to the hidden repository `git@github.com/tbidne/secrets
 ```sh
 Host github.com
   HostName github.com
-  User git
+  User root
   IdentityFile /root/.ssh/id_ed25519
 ```
 
