@@ -20,7 +20,6 @@ import XMonad (KeyMask, KeySym, X, XConfig (..), (.|.), (|||))
 import XMonad qualified as X
 import XMonad.Actions.CycleWS (Direction1D (Next, Prev), WSType (AnyWS))
 import XMonad.Actions.CycleWS qualified as XCycleWS
-import XMonad.Actions.DynamicWorkspaces qualified as XDynamicWorkspaces
 import XMonad.Actions.FloatKeys qualified as XFloatKeys
 import XMonad.Actions.RotSlaves qualified as XRotSlaves
 import XMonad.Hooks.DynamicLog (PP (..))
