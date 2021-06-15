@@ -43,6 +43,7 @@
     gotop
     pv
     ripgrep
+    silver-searcher
     tmux
     traceroute
     tree
