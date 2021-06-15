@@ -189,8 +189,7 @@ workspacesKeySet modm =
   keySet
     "Workspaces"
     [ key "Next" (modm, X.xK_period) nextWS',
-      key "Previous" (modm, X.xK_comma) prevWS',
-      key "Remove" (modm .|. X.shiftMask, X.xK_BackSpace) XDynamicWorkspaces.removeWorkspace
+      key "Previous" (modm, X.xK_comma) prevWS'
     ]
   where
     filterOutNSP :: X ([X.WindowSpace] -> [XStackSet.Workspace String (X.Layout X.Window) X.Window])
