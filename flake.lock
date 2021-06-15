@@ -36,6 +36,22 @@
         "type": "github"
       }
     },
+    "my-nixpkgs": {
+      "locked": {
+        "lastModified": 1623714009,
+        "narHash": "sha256-M8XX/1nqziIqiR8Dvn5HZW9RzRDYQusIn1QnEnxo7Nw=",
+        "owner": "tbidne",
+        "repo": "nixpkgs",
+        "rev": "0595acdaca95e2c5620c90f9cbd8a55fc38eea14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "ref": "meraymond.idris-vscode",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1622282707,
@@ -79,6 +95,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs",
         "ringbearer": "ringbearer",
         "secrets-src": "secrets-src",

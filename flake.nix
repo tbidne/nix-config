@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    my-nixpkgs.url = "github:tbidne/nixpkgs/meraymond.idris-vscode";
     ringbearer = {
       url = "github:tbidne/ringbearer/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,10 +23,14 @@
     secrets-src.url = "git+ssh://git@github.com/tbidne/secrets?ref=main";
   };
 
-  outputs = { self, nixpkgs, home-manager, ringbearer, shell-run-src, secrets-src, ... }:
+  outputs = { self, nixpkgs, home-manager, my-nixpkgs, ringbearer, shell-run-src, secrets-src, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
+        system = system;
+        config = { allowUnfree = true; };
+      };
+      my-pkgs = import my-nixpkgs {
         system = system;
         config = { allowUnfree = true; };
       };
@@ -42,7 +47,7 @@
             ({
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.tommy = (import ./home-manager/home.nix { inherit pkgs secrets; });
+              home-manager.users.tommy = (import ./home-manager/home.nix { inherit pkgs my-pkgs secrets; });
             })
           ];
         };
