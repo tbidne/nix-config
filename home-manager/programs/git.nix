@@ -5,11 +5,13 @@
     extraConfig = {
       pull.ff = "only";
       push.default = "simple";
-      diff.tool = "vscode";
-      difftool.vscode.cmd = "codium --wait --diff $LOCAL $REMOTE";
-      merge.tool = "vscode";
-      mergetool.vscode.cmd = "codium --wait $MERGED";
-      core.editor = "codium --wait";
+      diff.tool = "nvimdiff";
+      difftool.nvimdiff.cmd = "nvim -d $LOCAL $REMOTE";
+      difftool.trustExitCode = true;
+      merge.tool = "nvimdiff";
+      mergetool.prompt = true;
+      mergetool.nvimdiff.cmd = "nvim -d $LOCAL $REMOTE $MERGED";
+      core.editor = "nvim";
     };
     aliases = {
       s = "status";

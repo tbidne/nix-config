@@ -5,15 +5,22 @@
 
     extraConfig = ''
       colorscheme nord
-      let g:airline_theme='deus'
+      set termguicolors
+      let g:airline_theme='base16_nord'
+
       let NERDTreeShowHidden=1
-      let g:ctrlp_show_hidden=1
+
+      nmap <C-p> :FZF<CR>
+      nmap <C-t> :NERDTreeToggle<CR>
+      nmap <Tab> <C-w>w
+      nmap <C-h> :call CocAction('doHover')<CR>
+      nmap <C-b> :ToggleBufExplorer<CR>
     '';
 
     plugins = with pkgs.vimPlugins; [
+      bufexplorer
       nord-vim
       coc-nvim
-      ctrlp
       fugitive
       fzf-vim
       haskell-vim

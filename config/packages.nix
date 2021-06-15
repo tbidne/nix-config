@@ -38,6 +38,7 @@
 
     # utils
     fd
+    fzf
     gnupg
     gotop
     pv
