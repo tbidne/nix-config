@@ -9,6 +9,7 @@
       let g:airline_theme='base16_nord'
 
       let NERDTreeShowHidden=1
+      set smartindent
 
       nmap <C-p> :FZF<CR>
       nmap <C-t> :NERDTreeToggle<CR>

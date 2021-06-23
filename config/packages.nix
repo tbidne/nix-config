@@ -7,11 +7,12 @@
     conky
     firefox
     gimp
-    google-chrome
     kitty
     pandoc
     texlive.combined.scheme-full
-    thunderbird
+
+    # social
+    element-desktop
     zoom-us
 
     # dev
@@ -27,11 +28,6 @@
     sqlite
     vim
     vscodium
-
-    # haskell
-    cabal-install
-    cabal2nix
-    stack
 
     # my projects
     shell-run

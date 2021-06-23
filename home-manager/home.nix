@@ -1,9 +1,9 @@
 { pkgs, my-pkgs, secrets, ... }:
-
 {
   imports =
     [
       ./programs/chromium.nix
+      (import ./programs/firefox.nix { inherit pkgs; })
       ./programs/ghci.nix
       ./programs/git.nix
       ./programs/neovim.nix

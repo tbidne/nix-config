@@ -8,6 +8,7 @@
 
     extensions = [
       my-pkgs.vscode-extensions.meraymond.idris-vscode
+      my-pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
 
       pkgs.vscode-extensions.bbenoist.Nix
       pkgs.vscode-extensions.coenraads.bracket-pair-colorizer-2
@@ -29,7 +30,7 @@
       "editor.wordWrapColumn" = 80;
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
-      "workbench.colorTheme" = "Dracula";
+      "workbench.colorTheme" = "Nord";
       "[haskell]" = {
         "editor.defaultFormatter" = "haskell.haskell";
       };
@@ -50,6 +51,9 @@
         "mempty"
         "monoid"
         "semigroup"
+        "supremum"
+        "typeclass"
+        "unlift"
       ];
     };
   };
