@@ -12,6 +12,10 @@
       ];
       theme = "avit";
     };
+    shellAliases = {
+      sys-test="shell-run -sk -l ~/Dev/legend.txt sys-test";
+      sys-switch="shell-run -sk -l ~/Dev/legend.txt sys-switch";
+    };
     initExtra = ''
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
