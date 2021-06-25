@@ -7,7 +7,7 @@ in
     enable = true;
     font.name = "hasklig";
     settings = {
-      background_opacity = "0.50";
+      background_opacity = "0.75";
       shell = "${pkgs.zsh}/bin/zsh";
       extraConfig = ''
         ${theme.conf}
