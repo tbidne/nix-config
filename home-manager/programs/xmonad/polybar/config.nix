@@ -94,9 +94,8 @@
       [module/ewmh]
       type = internal/xworkspaces
 
-      label-active = " %name% "
-      label-active-foreground = #ffffff
-      label-active-underline = ''${colors.purple}
+      label-active = " [%name%]"
+      label-active-foreground = ''${colors.purple}
 
       [module/filesystem]
       type = internal/fs
