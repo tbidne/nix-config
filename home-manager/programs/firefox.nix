@@ -32,6 +32,8 @@
           "privacy.firstparty.isolate" = true;
           "signon.rememberSignons" = false;
         };
+
+        path = "zydwxfxy.default";
       };
     };
   };
