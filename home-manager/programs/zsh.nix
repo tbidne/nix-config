@@ -13,10 +13,10 @@
       theme = "avit";
     };
     shellAliases = {
-      sys-test="shell-run -ck -l ~/Dev/legend.txt sys-test";
-      sys-switch="shell-run -ck -l ~/Dev/legend.txt sys-switch";
-      sys-clean="shell-run -ck -l ~/Dev/legend.txt sys-clean";
-      sys-clean-all="shell-run -ck -l ~/Dev/legend.txt sys-clean-all";
+      sys-test = "shell-run -ck -l ~/Dev/legend.txt sys-test";
+      sys-switch = "shell-run -ck -l ~/Dev/legend.txt sys-switch";
+      sys-clean = "shell-run -ck -l ~/Dev/legend.txt sys-clean";
+      sys-clean-all = "shell-run -ck -l ~/Dev/legend.txt sys-clean-all";
     };
     initExtra = ''
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
