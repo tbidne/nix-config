@@ -34,13 +34,15 @@
         lightdm = {
           enable = true;
           greeters = {
-            gtk = {
+            mini = {
               enable = true;
-              cursorTheme = {
-                package = pkgs.gnome3.defaultIconTheme;
-                name = "Adawaita-dark";
-                size = 64;
-              };
+              user = "tommy";
+              extraConfig = ''
+                [greeter]
+                show-password-label = false
+                [greeter-theme]
+                background-image = "${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath}"
+            '';
             };
           };
         };
