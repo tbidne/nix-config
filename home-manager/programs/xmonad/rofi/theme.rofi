@@ -12,7 +12,7 @@
     green:            rgba ( 134, 175, 128, 100 % );
     background-color: rgba ( 0, 0, 0, 0 % );
     lightred:         rgba ( 204, 85, 51, 100 % );
-    font:             "JetBrainsMono Nerd Font 24";
+    font:             "Hasklig 30";
     tlightblack:      rgba ( 85, 68, 68, 80 % );
     lightmagenta:     rgba ( 153, 102, 0, 100 % );
     dark:             rgba ( 28, 28, 28, 100 % );
@@ -23,23 +23,21 @@
     lightwhite:       rgba ( 221, 204, 187, 100 % );
     lightblue:        rgba ( 135, 206, 235, 100 % );
     lightyellow:      rgba ( 255, 167, 93, 100 % );
+    lilac:            rgba ( 111, 113, 157, 100 % );
     cyan:             rgba ( 176, 196, 222, 100 % );
     white:            rgba ( 187, 170, 153, 100 % );
     foreground:       rgba ( 255, 238, 221, 100 % );
     blue:             rgba ( 100, 149, 237, 100 % );
     highlight:        bold underline rgba ( 255, 255, 255, 100 % );
+    lighterblack:     rgba ( 54, 55, 73, 100 %) ;
+    superwhite:       rgba (255, 255, 255, 100%);
 }
 window {
     text-color:       var(magenta);
-    transparency:     "screenshot";
-    padding:          10px ;
     children:         [ mainbox ];
     orientation:      horizontal;
     location:         center;
     anchor:           center;
-    background-color: var(transparent);
-    border-radius:    10px ;
-    border:           0px ;
     spacing:          0;
 }
 mainbox {
@@ -49,19 +47,12 @@ mainbox {
 message {
     padding:          5;
     background-color: var(tcyan);
-    border-color:     var(foreground);
-    font:             "JetBrainsMono Nerd Font 20";
-    border:           0px 2px 2px ;
     text-color:       var(black);
 }
 inputbar {
     padding:          11px ;
-    background-color: var(tlightblack);
-    border:           2px ;
-    font:             "JetBrainsMono Nerd Font 30";
-    border-color:     var(foreground);
-    border-radius:    15px 15px 0px 0px ;
-    text-color:       var(lightgreen);
+    background-color: var(lighterblack);
+    text-color:       var(foreground);
 }
 entry {
     text-font:  inherit;
@@ -78,12 +69,9 @@ case-indicator {
 }
 listview {
     padding:          8px ;
-    background-color: rgba ( 28, 28, 28, 80 % );
+    background-color: var(lighterblack);
     dynamic:          false;
-    border-color:     var(foreground);
     lines:            10;
-    border-radius:    0px 0px 15px 15px ;
-    border:           0px 2px 2px ;
 }
 element {
     padding:          3px ;
@@ -94,18 +82,19 @@ element {
     text-color:       var(foreground);
 }
 element selected.normal {
-    background-color: var(blue);
+    background-color: var(lilac);
+    text-color: var(superwhite);
 }
 element selected.active {
     foreground:       var(dark);
-    background-color: var(lightblue);
+    background-color: var(lilac);
 }
 element selected.urgent {
-    foreground:       var(dark);
+    foreground:       var(lilac);
     background-color: var(lightred);
 }
 element normal.active {
-    foreground: var(lightblue);
+    foreground: var(lilac);
 }
 element normal.urgent {
     foreground: var(lightred);
