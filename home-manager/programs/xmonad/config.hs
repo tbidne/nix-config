@@ -11,6 +11,7 @@ module Main (main) where
 import Codec.Binary.UTF8.String qualified as Utf8
 import Control.Exception qualified as E
 import DBus qualified
+import DBus.Client (Client)
 import DBus.Client qualified as DClient
 import Data.Word (Word32)
 import GHC.IO.Handle qualified as GHC.IO
@@ -46,7 +47,7 @@ import XMonad.Wallpaper qualified as XWallpaper
 main :: IO ()
 main = mkDbusClient >>= withDBus
 
-withDBus :: DClient.Client -> IO ()
+withDBus :: Client -> IO ()
 withDBus dbus = do
   XWallpaper.setRandomWallpaper ["$HOME/Pictures/Wallpaper/Current"]
   let config =
@@ -66,7 +67,7 @@ withDBus dbus = do
     XManageDocks.docks $
       XEwmhDesktops.ewmh config
 
-mkDbusClient :: IO DClient.Client
+mkDbusClient :: IO Client
 mkDbusClient = do
   dbus <- DClient.connectSession
   _ <- DClient.requestName dbus (DBus.busName_ "org.xmonad.log") opts
@@ -296,10 +297,10 @@ myLayout =
 
 -- POLYBAR --
 
-myPolybarLogHook :: DClient.Client -> X ()
-myPolybarLogHook dbus = myLogHook <> XDynamicLog.dynamicLogWithPP (polybarHook dbus)
+myPolybarLogHook :: Client -> X ()
+myPolybarLogHook = XDynamicLog.dynamicLogWithPP . polybarHook
 
-polybarHook :: DClient.Client -> PP
+polybarHook :: Client -> PP
 polybarHook dbus =
   let wrapper c s
         | s /= "NSP" = XDynamicLog.wrap ("%{F" <> c <> "} ") " %{F-}" s
@@ -323,7 +324,7 @@ myLogHook :: X ()
 myLogHook = XFadeInactive.fadeInactiveLogHook 0.95
 
 -- Emit a DBus signal on log updates
-dbusOutput :: DClient.Client -> String -> IO ()
+dbusOutput :: Client -> String -> IO ()
 dbusOutput dbus str =
   let opath = DBus.objectPath_ "/org/xmonad/Log"
       iname = DBus.interfaceName_ "org.xmonad.Log"

@@ -1,22 +1,32 @@
 {
-  # NOTE: The opacity settings (at least) don't appear to be picked up.
-  # They are correctly written to the conf files in /nix/store, but they
-  # do not seem to have an effect. The culprit may be XMonad (and ewmh?),
-  # so for now opacity is handled individually, e.g. kitty has its own
-  # settings, and XMonad handles the general "inactive = faded" setting.
-  #
-  # I discovered this when trying to add blurring here, which also does
-  # not work, sadly. Keeping this here for now, but we may have to switch
-  # WMs to get blurring/rounded corners.
+  # Opacity and blurring works! The trick is to not use FadeInactive in
+  # xmonad settings and to use a blur method that's actually avaiable
+  # (see picom --help).
   services.picom = {
     enable = true;
-    activeOpacity = "1.0";
-    inactiveOpacity = "1.0";
+    activeOpacity = "0.95";
+    inactiveOpacity = "0.75";
     backend = "glx";
     fade = true;
     fadeDelta = 5;
-    #opacityRule = [ "100:name *= 'i3lock'" ];
+    opacityRule = [
+      "75:class_g *= 'kitty'"
+      "100:class_g *= 'Firefox'"
+    ];
     shadow = true;
     shadowOpacity = "0.75";
+
+    blur = true;
+    experimentalBackends = true;
+    # dual_kawase is probably the blur method we want, but it's not in
+    # picom 8.2 (current version). Once we have that we should swap it for
+    # "box".
+    extraOptions = ''
+      blur =
+        { method = "box";
+          size = 10;
+          deviation = 5.0;
+        };
+    '';
   };
 }
