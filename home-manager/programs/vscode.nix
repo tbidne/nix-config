@@ -30,7 +30,16 @@
       "editor.wordWrapColumn" = 80;
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
+      "workbench.activityBar.visible" = false;
       "workbench.colorTheme" = "Dracula";
+      "workbench.colorCustomizations" = {
+        "activityBar.background" = "#242631";
+        "editorGroupHeader.tabsBackground" = "#242631";
+        "statusBar.background" = "#242631";
+        "titleBar.activeBackground" = "#242631";
+        "sideBar.background" = "#242631";
+      };
+      "editor.minimap.enabled" = false;
       "[haskell]" = {
         "editor.defaultFormatter" = "haskell.haskell";
       };
