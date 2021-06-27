@@ -42,7 +42,7 @@
                 show-password-label = false
                 [greeter-theme]
                 background-image = "${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath}"
-            '';
+              '';
             };
           };
         };
