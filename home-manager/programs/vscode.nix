@@ -30,7 +30,7 @@
       "editor.wordWrapColumn" = 80;
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
-      "workbench.colorTheme" = "Nord";
+      "workbench.colorTheme" = "Dracula";
       "[haskell]" = {
         "editor.defaultFormatter" = "haskell.haskell";
       };
