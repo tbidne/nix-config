@@ -12,7 +12,10 @@
     texlive.combined.scheme-full
 
     # social
+    discord
     element-desktop
+    mattermost-desktop
+    slack
     zoom-us
 
     # dev
