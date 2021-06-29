@@ -13,9 +13,12 @@
       epkgs.lsp-ivy
       epkgs.lsp-latex
       epkgs.lsp-mode
+      epkgs.lsp-treemacs
       epkgs.lsp-ui
       epkgs.nix-mode
       epkgs.projectile
+      epkgs.treemacs
+      epkgs.treemacs-evil
       epkgs.use-package
       epkgs.which-key
     ];
@@ -45,6 +48,11 @@
         :config
         (which-key-mode 1))
 
+      ;; Misc keymaps
+      (global-set-key (kbd "C-x w") 'whitespace-mode)
+      (global-set-key (kbd "<tab>") 'other-window)
+      (global-set-key (kbd "C-SPC") 'treemacs)
+
       (ivy-mode +1)
       (projectile-mode +1)
       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
@@ -63,6 +71,7 @@
       (use-package lsp-ivy
              :ensure t
              :commands lsp-ivy-workspace-symbol)
+      (use-package lsp-treemacs :ensure t)
 
       ;; haskell
       (use-package haskell-mode :ensure t)
