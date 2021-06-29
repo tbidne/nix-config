@@ -53,7 +53,8 @@
 
       ;; Misc keymaps
       (global-set-key (kbd "C-x w") 'whitespace-mode)
-      (global-set-key (kbd "<tab>") 'other-window)
+      (global-set-key (kbd "C->") 'other-window)
+      (global-set-key (kbd "C-<") 'previous-window-any-frame)
       (global-set-key (kbd "C-SPC") 'treemacs)
 
       (use-package treemacs-all-the-icons)
