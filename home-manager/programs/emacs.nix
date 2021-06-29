@@ -3,6 +3,7 @@
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [
+      epkgs.all-the-icons
       epkgs.company
       epkgs.dracula-theme
       epkgs.evil
@@ -18,6 +19,7 @@
       epkgs.nix-mode
       epkgs.projectile
       epkgs.treemacs
+      epkgs.treemacs-all-the-icons
       epkgs.treemacs-evil
       epkgs.use-package
       epkgs.which-key
@@ -39,6 +41,7 @@
       ;; general
       (evil-mode 1)
       (global-hl-line-mode 1)
+      (setq make-backup-files nil)
 
       (use-package which-key
         :ensure t
@@ -52,6 +55,10 @@
       (global-set-key (kbd "C-x w") 'whitespace-mode)
       (global-set-key (kbd "<tab>") 'other-window)
       (global-set-key (kbd "C-SPC") 'treemacs)
+
+      (use-package treemacs-all-the-icons)
+      (treemacs-load-theme "all-the-icons")
+      (setq lsp-treemacs-theme "all-the-icons")
 
       (ivy-mode +1)
       (projectile-mode +1)
