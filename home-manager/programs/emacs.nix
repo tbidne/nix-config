@@ -4,6 +4,7 @@
     enable = true;
     extraPackages = epkgs: [
       epkgs.company
+      epkgs.dracula-theme
       epkgs.evil
       epkgs.hasklig-mode
       epkgs.haskell-mode
@@ -12,13 +13,9 @@
       epkgs.lsp-ivy
       epkgs.lsp-latex
       epkgs.lsp-mode
-      epkgs.lsp-treemacs
       epkgs.lsp-ui
       epkgs.nix-mode
-      epkgs.nord-theme
       epkgs.projectile
-      epkgs.treemacs
-      epkgs.treemacs-evil
       epkgs.use-package
       epkgs.which-key
     ];
@@ -26,16 +23,20 @@
 
   home.file = {
     ".emacs.d/init.el".text = ''
+      ;; disable splash and toolbars
+      (setq inhibit-startup-screen t) 
+      (menu-bar-mode -1)
+      (tool-bar-mode -1)
+
       ;; theme
-      (use-package nord-theme
+      (use-package dracula-theme
         :ensure t
-        :init (load-theme 'nord t))
+        :init (load-theme 'dracula t))
 
       ;; general
       (evil-mode 1)
       (global-hl-line-mode 1)
-      (use-package treemacs)
-      (use-package treemacs-evil)
+
       (use-package which-key
         :ensure t
         :init
@@ -44,20 +45,17 @@
         :config
         (which-key-mode 1))
 
+      (ivy-mode +1)
       (projectile-mode +1)
       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
       ;; lsp
       (use-package lsp-mode
         :init
-      ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
-      (setq lsp-keymap-prefix "C-c l")
-        :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-                (XXX-mode . lsp)
-                ;; if you want which-key integration
-                (lsp-mode . lsp-enable-which-key-integration))
-        :commands lsp)(use-package lsp-mode
-            :ensure t)
+        ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+        (setq lsp-keymap-prefix "C-c l")
+        :hook ((lsp-mode . lsp-enable-which-key-integration))
+        :commands lsp)
 
       (use-package lsp-ui
                    :ensure t
@@ -65,7 +63,6 @@
       (use-package lsp-ivy
              :ensure t
              :commands lsp-ivy-workspace-symbol)
-      (use-package lsp-treemacs :ensure t)
 
       ;; haskell
       (use-package haskell-mode :ensure t)

@@ -16,6 +16,7 @@
     zoom-us
 
     # dev
+    emacs
     dbeaver
     git
     lua
