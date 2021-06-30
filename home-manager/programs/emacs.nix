@@ -3,6 +3,7 @@
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [
+      epkgs.ag
       epkgs.all-the-icons
       epkgs.company
       epkgs.dracula-theme
