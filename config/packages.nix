@@ -5,6 +5,7 @@
     # core
     chromium
     conky
+    dunst
     firefox
     gimp
     kitty
