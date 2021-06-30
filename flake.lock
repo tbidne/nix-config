@@ -115,7 +115,8 @@
         "nur": "nur",
         "ringbearer": "ringbearer",
         "secrets-src": "secrets-src",
-        "shell-run-src": "shell-run-src"
+        "shell-run-src": "shell-run-src",
+        "static-assets-src": "static-assets-src"
       }
     },
     "secrets-src": {
@@ -155,6 +156,30 @@
         "owner": "tbidne",
         "ref": "main",
         "repo": "shell-run",
+        "type": "github"
+      }
+    },
+    "static-assets-src": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1625087823,
+        "narHash": "sha256-kHcgI2FYroq/5CsH2w0rNEpI9Qr3Zo8lPo2QYqhiyhI=",
+        "owner": "tbidne",
+        "repo": "static",
+        "rev": "59fe9f9aba2ac6c583d631d5bf1804c5eeaabc11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "ref": "main",
+        "repo": "static",
         "type": "github"
       }
     }

@@ -1,3 +1,5 @@
+{ pkgs, static-assets, ... }:
+
 {
   services.dunst = {
     enable = true;
@@ -35,17 +37,17 @@
       element = {
         appname = "Element";
         desktop_entry = "Electron";
-        new_icon = "/home/tommy/Pictures/static/element.svg";
+        new_icon = "${static-assets}/share/icons/element.svg";
       };
 
       mattermost = {
         appname = "mattermost";
-        new_icon = "/home/tommy/Pictures/static/mattermost-logo.svg";
+        new_icon = "${static-assets}/share/icons/mattermost.svg";
       };
 
       slack = {
         desktop_entry = "Slack";
-        new_icon = "/home/tommy/Pictures/static/slack-original.svg";
+        new_icon = "${static-assets}/share/icons/slack.svg";
       };
 
       urgency_normal = {
