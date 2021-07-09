@@ -41,7 +41,7 @@
       };
 
       mattermost = {
-        appname = "mattermost";
+        desktop_entry = "Mattermost";
         new_icon = "${static-assets}/share/icons/mattermost.svg";
       };
 

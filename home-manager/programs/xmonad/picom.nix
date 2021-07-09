@@ -11,7 +11,6 @@
     fadeDelta = 5;
     opacityRule = [
       "75:class_g *= 'kitty'"
-      "100:class_g *= 'Firefox'"
     ];
     shadow = true;
     shadowOpacity = "0.75";

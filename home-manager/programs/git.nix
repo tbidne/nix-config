@@ -1,7 +1,12 @@
 {
   programs.git = {
     enable = true;
+    signing = {
+      key = null;
+      signByDefault = true;
+    };
     userName = "Tommy Bidne";
+    userEmail = "tbidne@protonmail.com";
     extraConfig = {
       pull.ff = "only";
       push.default = "simple";
