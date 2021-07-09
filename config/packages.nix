@@ -9,7 +9,12 @@
     firefox
     gimp
     kitty
+
+    # doc editing
+    libreoffice
+    okular
     pandoc
+    texlab # for lsp + latex
     texlive.combined.scheme-full
 
     # social

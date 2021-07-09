@@ -98,6 +98,12 @@
         :hook (haskell-mode)
         :ensure t)
 
+      ;; latex
+      (use-package lsp-latex :ensure t)
+      (with-eval-after-load "tex-mode"
+        (add-hook 'tex-mode-hook 'lsp)
+        (add-hook 'latex-mode-hook 'lsp))
+
       (use-package nix-mode
         :mode "\\.nix\\'")
     '';
