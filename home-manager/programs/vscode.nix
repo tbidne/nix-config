@@ -15,9 +15,11 @@
       pkgs.vscode-extensions.dracula-theme.theme-dracula
       pkgs.vscode-extensions.editorconfig.editorconfig
       pkgs.vscode-extensions.haskell.haskell
+      pkgs.vscode-extensions.james-yu.latex-workshop
       pkgs.vscode-extensions.justusadam.language-haskell
       pkgs.vscode-extensions.mechatroner.rainbow-csv
       pkgs.vscode-extensions.ms-python.python
+      pkgs.vscode-extensions.octref.vetur
       pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
     ];
     userSettings = {
