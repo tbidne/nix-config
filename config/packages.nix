@@ -50,6 +50,7 @@
     pv
     ripgrep
     silver-searcher
+    tmate
     tmux
     traceroute
     tree
