@@ -49,7 +49,7 @@ main = mkDbusClient >>= withDBus
 
 withDBus :: Client -> IO ()
 withDBus dbus = do
-  XWallpaper.setRandomWallpaper ["$HOME/Pictures/Wallpaper/Current"]
+  XWallpaper.setRandomWallpaper ["$HOME/pictures/wallpaper/current"]
   let config =
         keybindings $
           X.def
