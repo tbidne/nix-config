@@ -11,5 +11,6 @@
       ./redshift.nix
       ./sys.nix
       ./user.nix
+      ./vbox.nix
     ];
 }
