@@ -8,7 +8,6 @@
     dunst
     firefox
     gimp
-    kitty
 
     # doc editing
     libreoffice
@@ -42,25 +41,29 @@
     # my projects
     shell-run
 
-    # utils
+    # network utils
+    traceroute
+    whois
+
+    # search utils
     fd
     fzf
-    gnupg
-    gotop
-    pv
     ripgrep
     silver-searcher
+
+    # terminals
+    kitty
     tmate
     tmux
-    traceroute
-    tree
-    tty-clock
-    unzip
-    whois
-    zip
 
-    # misc
+    # misc utils
+    gnupg
+    gotop
     nix-prefetch-git
+    pv
+    tree
+    unzip
+    zip
   ];
 
   programs.steam.enable = true;
