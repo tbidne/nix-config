@@ -10,6 +10,7 @@
       ringbearer.defaultPackage.${system}
       siji
       unifont
+      vistafonts
       # openweathermap
       weather-icons
     ];
