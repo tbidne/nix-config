@@ -31,20 +31,8 @@
 
       displayManager = {
         defaultSession = "none+xmonad";
-        lightdm = {
+        sddm = {
           enable = true;
-          greeters = {
-            mini = {
-              enable = true;
-              user = "tommy";
-              extraConfig = ''
-                [greeter]
-                show-password-label = false
-                [greeter-theme]
-                background-image = "${pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath}"
-              '';
-            };
-          };
         };
       };
       desktopManager.xterm.enable = false;
