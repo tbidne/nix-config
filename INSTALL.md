@@ -1,8 +1,6 @@
-This guide includes instructions for my installation process.
-
 # ISO
 
-Download the latest [ISO](https://nixos.org/download.html) and burn to a disk/usb-drive, or leave as-is if this is for `VirtualBox`.
+Download the latest [ISO](https://nixos.org/download.html) and burn to a disk/usb-drive or leave as-is if this is for `VirtualBox`.
 
 # Native
 
@@ -153,6 +151,8 @@ Restore the original `hardware-configuration.nix` (thus overwriting the one from
   * Match interfaces to whatever was in the original `configuration.nix`.
 * `system/swap.nix`
   * Ensure swap settings from original `configuration.nix` match those in `system/swap.nix`
+
+Finish with `sudo nixos-rebuild switch --flake '.#nixos'`.
 
 # VirtualBox
 
