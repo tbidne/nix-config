@@ -39,7 +39,9 @@ To update a specific input, run `nix flake lock --update-input <input-name>`.
 The line
 
 ```nix
-devShell."${system}" = import ./shell.nix { inherit pkgs; };
+{
+  devShell."${system}" = import ./shell.nix { inherit pkgs; };
+}
 ```
 
 allows us to launch the nix shell with `nix develop`. This gives us the shell with the dependencies to use HLS with `config.hs`.
