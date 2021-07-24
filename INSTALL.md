@@ -1,14 +1,28 @@
+These are instructions for installing NixOS with my configuration.
+
+### Table of Contents
+* [ISO](#iso)
+* [Native](#native)
+  * [Partitioning](#partitioning)
+  * [Encryption](#encryption)
+  * [Formatting](#formatting)
+  * [Configuration](#configuration)
+  * [User Password](#user-password)
+  * [Flakes](#flakes)
+  * [Clone Git Repository](#clone-git-repository)
+* [VirtualBox](#virtualbox)
+
 # ISO
 
 Download the latest [ISO](https://nixos.org/download.html) and burn to a disk/usb-drive or leave as-is if this is for `VirtualBox`.
 
 # Native
 
-These instructions are for installation on real hardware, not a virtual machine.
+This section describes installation on real hardware, not a virtual machine. For vm-specific instructions, see [VirtualBox](#virtualbox).
 
 ## Partitioning
 
-These instructions assume the disk to partition is named `$disk`, thus the primary and boot partitions will be `$disk1` and `$disk2`, respectively (order of the `mkpart` commands is why this order matters). Adjust to the actual disk/partition names (e.g. `/dev/sda`) as necessary.
+We assume the disk to partition is named `$disk`, thus the primary and boot partitions will be `$disk1` and `$disk2`, respectively (order of the `mkpart` commands is why this order matters). Adjust to the actual disk/partition names (e.g. `/dev/sda`) as necessary.
 
 Start `sudo parted $disk` and run the following commands:
 
@@ -23,7 +37,7 @@ name 2 boot
 quit
 ```
 
-## Full Disk Encryption
+## Encryption
 
 To enable full disk encryption, run:
 
@@ -52,7 +66,7 @@ In either case, formatting the boot partition is:
 sudo mkfs.fat -F 32 -n boot $disk2
 ```
 
-## Configure
+## Configuration
 
 First, we need to mount the disk.
 
@@ -64,22 +78,25 @@ sudo mount /dev/disk/by-label/boot /mnt/boot
 
 Then run `sudo nixos-generate-config --root /mnt` and `cd /mnt/etc/nixos`.
 
-From here, edit `configuration.nix` as necessary. This includes:
+From here, edit `configuration.nix` as necessary. Example changes:
 
 ```nix
 {
+  # Allow non-free software.
   nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Choose a hostname, optionally use networkmanager.
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
-  # get interfaces from ifconfig
+  # Get interfaces from ifconfig. Add wifi if one exists.
   networking.useDHCP = false;
   networking.interfaces.enp0s3.useDHCP = true;
 
+  # Set up user account.
   users.users.tommy = {
     name = "tommy";
     description = "Tommy Bidne";
@@ -91,6 +108,7 @@ From here, edit `configuration.nix` as necessary. This includes:
     home = "/home/tommy";
   };
 
+  # Add desired packages.
   environment.systemPackages = with pkgs; [
     firefox
     git
@@ -110,9 +128,9 @@ From here, edit `configuration.nix` as necessary. This includes:
 
 After the edits are made, run `sudo nixos-install`.
 
-## User password
+## User Password
 
-Reboot and login as root. Run `passwd <user>` to set the user password. Log out as root and log back in with the new user/pass.
+Reboot and log in as root. Run `passwd <user>` to set the user password. Log out as root and log back in with the new user/pass.
 
 ## Flakes
 
@@ -135,7 +153,7 @@ and rebuild with `sudo nixos-rebuild switch`.
 
 First, back up `configuration.nix` and `hardware-configuration.nix` then clean out the `/etc/nixos` directory.
 
-Clone the repo: `git clone git@github.com:tbidne/nix-config.git .`. This requires an ssh key set up with github. Additionally, because this repo involves the private repo `tbidne/secrets`, the [README#Secrets](README.md#secrets) instructions are a prerequisite.
+In `/etc/nixos`, clone the repo: `git clone git@github.com:tbidne/nix-config.git .`. This requires an ssh key set up with github. Additionally, because this repo involves the private repo `tbidne/secrets`, the [README#Secrets](README.md#secrets) instructions are a prerequisite.
 
 Restore the original `hardware-configuration.nix` (thus overwriting the one from the repo), and change any other needed values. Typical changes include:
 
@@ -152,7 +170,7 @@ Restore the original `hardware-configuration.nix` (thus overwriting the one from
 * `system/swap.nix`
   * Ensure swap settings from original `configuration.nix` match those in `system/swap.nix`
 
-Finish with `sudo nixos-rebuild switch --flake '.#nixos'`.
+Finish with `sudo nixos-rebuild switch --flake '.#nixos'`. Setup is now complete!
 
 # VirtualBox
 
@@ -171,9 +189,9 @@ Finish with `sudo nixos-rebuild switch --flake '.#nixos'`.
 * Storage
   * NixOS ISO loaded into optical drive
 
-Installation on a `VirtualBox` image is largely the same as on real hardware with a few complications. To wit:
+Installation on a `VirtualBox` image is largely the same as on real hardware (see [Native](#native)) with a few complications. To wit:
 
-* The following line should be added to `configuration.nix` in the first build.
+* The following line should be added to `configuration.nix` in the [first build](#configuration).
 
     ```nix
     {
@@ -181,7 +199,7 @@ Installation on a `VirtualBox` image is largely the same as on real hardware wit
     }
     ```
 
-    In the git clone step, this will be added to `system/vbox.nix`, and the host options should be removed.
+    In the [git clone step](#clone-git-repository), this will be added to `system/vbox.nix`, and the host options should be removed.
 
 * The HiDPI settings are not needed on `VirtualBox`, so these can be removed from `config/xmonad.nix` and `home-manager/programs/xmonad/xmonad.nix`.
 
