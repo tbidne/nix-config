@@ -2,7 +2,7 @@ This guide includes instructions for my installation process.
 
 # ISO
 
-Download the latest [ISO](https://nixos.org/download.html) and burn to a disk/usb drive, or leave as-is if this is for `VirtualBox`.
+Download the latest [ISO](https://nixos.org/download.html) and burn to a disk/usb-drive, or leave as-is if this is for `VirtualBox`.
 
 # Native
 
@@ -69,43 +69,45 @@ Then run `sudo nixos-generate-config --root /mnt` and `cd /mnt/etc/nixos`.
 From here, edit `configuration.nix` as necessary. This includes:
 
 ```nix
-nixpkgs.config.allowUnfree = true;
+{
+  nixpkgs.config.allowUnfree = true;
 
-boot.loader.systemd-boot.enable = true;
-boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-networking.hostName = "nixos"; 
-networking.networkmanager.enable = true;
+  networking.hostName = "nixos";
+  networking.networkmanager.enable = true;
 
-# get interfaces from ifconfig
-networking.useDHCP = false;
-networking.interfaces.enp0s3.useDHCP = true;
+  # get interfaces from ifconfig
+  networking.useDHCP = false;
+  networking.interfaces.enp0s3.useDHCP = true;
 
-users.users.tommy = {
-  name = "tommy";
-  description = "Tommy Bidne";
-  group = "users";
-  isNormalUser = true;
-  extraGroups = [ "wheel" ];
-  uid = 1000;
-  createHome = true;
-  home = "/home/tommy";
-};
+  users.users.tommy = {
+    name = "tommy";
+    description = "Tommy Bidne";
+    group = "users";
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+    uid = 1000;
+    createHome = true;
+    home = "/home/tommy";
+  };
 
-environment.systemPackages = with pkgs; [
-  firefox
-  git
-  vim
-];
+  environment.systemPackages = with pkgs; [
+    firefox
+    git
+    vim
+  ];
 
-# Using swapfile since it's easier with full disk encryption.
-# Size is 2 x RAM.
-swapDevices = [
-  {
-    device = "/swapfile";
-    size = 1024 * 16 * 2;
-  }
-];
+  # Using swapfile since it's easier with full disk encryption.
+  # Size is 2 x RAM.
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 1024 * 16 * 2;
+    }
+  ];
+}
 ```
 
 After the edits are made, run `sudo nixos-install`.
@@ -119,12 +121,14 @@ Reboot and login as root. Run `passwd <user>` to set the user password. Log out 
 To enable flakes, edit `configuration.nix`:
 
 ```nix
-nix = {
-  package = pkgs.nixFlakes;
-  extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-};
+{
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+}
 ```
 
 and rebuild with `sudo nixos-rebuild switch`.
@@ -135,7 +139,7 @@ First, back up `configuration.nix` and `hardware-configuration.nix` then clean o
 
 Clone the repo: `git clone git@github.com:tbidne/nix-config.git .`. This requires an ssh key set up with github. Additionally, because this repo involves the private repo `tbidne/secrets`, the [README#Secrets](README.md#secrets) instructions are a prerequisite.
 
-Restore the original `hardware-configuration.nix` (thus overwriting the one from the repo), and change any other needed values. Typical changes include: 
+Restore the original `hardware-configuration.nix` (thus overwriting the one from the repo), and change any other needed values. Typical changes include:
 
 * `configuration.nix`
   * Ensure `system.stateVersion` matches what the system was built with.
@@ -172,7 +176,9 @@ Installation on a `VirtualBox` image is largely the same as on real hardware wit
 * The following line should be added to `configuration.nix` in the first build.
 
     ```nix
-    virtualisation.virtualbox.guest.enable = true;
+    {
+      virtualisation.virtualbox.guest.enable = true;
+    }
     ```
 
     In the git clone step, this will be added to `system/vbox.nix`, and the host options should be removed.
