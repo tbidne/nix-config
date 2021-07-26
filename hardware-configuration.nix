@@ -9,25 +9,26 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/e2dfe2eb-249e-4458-b58e-e9c53ff9e4d1";
+      device = "/dev/disk/by-uuid/38ae538f-9f2c-4977-a972-c972c51a90c7";
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/3ae74f21-a61b-4e6e-a4f1-798a3b8b294a";
+
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/3818-380B";
+      device = "/dev/disk/by-uuid/DC64-F80D";
       fsType = "vfat";
     };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/29890f87-beaf-40d7-aae1-73bd3fe9377f"; }];
+  swapDevices = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   # high-resolution display

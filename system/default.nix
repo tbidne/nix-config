@@ -6,6 +6,7 @@
       ./mouse.nix
       ./network.nix
       #./plasma.nix
+      ./swap.nix
       ./xmonad.nix
     ];
 }
