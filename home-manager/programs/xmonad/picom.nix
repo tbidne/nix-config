@@ -9,8 +9,14 @@
     backend = "glx";
     fade = true;
     fadeDelta = 5;
+    # Using 'name' for Gimp, LibreOffice since I'm not sure what the class
+    # class should be.
     opacityRule = [
-      "75:class_g *= 'kitty'"
+      "100:class_g *= 'Chromium'"
+      "100:class_g *= 'Firefox'"
+      "100:name    *= 'GNU Image Manipulation Program'"
+      "100:name    *= 'LibreOffice'"
+      "75:class_g  *= 'kitty'"
     ];
     shadow = true;
     shadowOpacity = "0.75";
