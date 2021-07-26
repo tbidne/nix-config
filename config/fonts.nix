@@ -5,6 +5,7 @@
     [
       aileron
       carlito
+      emacs-all-the-icons-fonts
       font-awesome
       hasklig
       ringbearer.defaultPackage.${system}
