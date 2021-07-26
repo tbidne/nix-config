@@ -13,6 +13,10 @@
       theme = "avit";
     };
     shellAliases = {
+      # kitty
+      icat = "kitty +kitten icat";
+
+      # shell-run
       sys-test = "shell-run -ck -l ~/Dev/legend.txt sys-test";
       sys-switch = "shell-run -ck -l ~/Dev/legend.txt sys-switch";
       sys-clean = "shell-run -ck -l ~/Dev/legend.txt sys-clean";
