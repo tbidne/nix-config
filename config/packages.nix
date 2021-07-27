@@ -8,6 +8,7 @@
     dunst
     firefox
     gimp
+    thunderbird
 
     # doc editing
     libreoffice
