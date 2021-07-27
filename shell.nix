@@ -6,6 +6,7 @@ let
   haskellDeps = ps: with ps; [
     dbus
     haskell-language-server
+    hlint
     X11
     xmonad
     xmonad-contrib
@@ -13,8 +14,19 @@ let
     xmonad-wallpaper
   ];
 
+  haskellOtherDeps = with pkgs; [
+    haskellPackages.ormolu
+  ];
+
+  otherDeps = with pkgs; [
+    nixpkgs-fmt
+  ];
+
   ghc = pkgs.haskell.packages.${compiler}.ghcWithPackages haskellDeps;
 in
 pkgs.mkShell {
-  buildInputs = [ ghc pkgs.nixpkgs-fmt ];
+  buildInputs =
+    [ ghc ]
+    ++ haskellOtherDeps
+    ++ otherDeps;
 }

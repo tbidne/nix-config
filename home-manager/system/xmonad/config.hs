@@ -1,10 +1,14 @@
 {-# LANGUAGE ImportQualifiedPost #-}
-{-# LANGUAGE NamedFieldPuns #-}
-{-# OPTIONS_GHC -Wall -Werror #-}
-{-# OPTIONS_GHC -Wincomplete-uni-patterns -Wmissing-export-lists -Wcompat #-}
-{-# OPTIONS_GHC -Wno-deprecations -Wno-missing-signatures -Wno-unused-top-binds #-}
-{-# OPTIONS_GHC -Wpartial-fields -Wmissing-home-modules -Widentities #-}
-{-# OPTIONS_GHC -Wredundant-constraints -Wincomplete-record-updates #-}
+{-# LANGUAGE PartialTypeSignatures #-}
+{-# OPTIONS_GHC -Wall #-}
+{-# OPTIONS_GHC -Wcompat #-}
+{-# OPTIONS_GHC -Werror #-}
+{-# OPTIONS_GHC -Widentities #-}
+{-# OPTIONS_GHC -Wincomplete-record-updates #-}
+{-# OPTIONS_GHC -Wincomplete-uni-patterns #-}
+{-# OPTIONS_GHC -Wno-deprecations #-}
+{-# OPTIONS_GHC -Wno-partial-type-signatures #-}
+{-# OPTIONS_GHC -Wpartial-fields #-}
 
 module Main (main) where
 
@@ -17,26 +21,27 @@ import Data.Word (Word32)
 import GHC.IO.Handle qualified as GHC.IO
 import Graphics.X11.ExtraTypes.XF86 qualified as X11
 import System.Exit qualified as Sys
-import XMonad (KeyMask, KeySym, X, XConfig (..), (.|.), (|||))
+import XMonad (KeyMask, KeySym, Window, X, XConfig (..), (.|.), (|||))
 import XMonad qualified as X
 import XMonad.Actions.CycleWS (Direction1D (Next, Prev), WSType (AnyWS))
 import XMonad.Actions.CycleWS qualified as XCycleWS
 import XMonad.Actions.FloatKeys qualified as XFloatKeys
 import XMonad.Actions.RotSlaves qualified as XRotSlaves
+import XMonad.Actions.SpawnOn qualified as XSpawnOn
+import XMonad.Core (WorkspaceId)
 import XMonad.Hooks.DynamicLog (PP (..))
 import XMonad.Hooks.DynamicLog qualified as XDynamicLog
 import XMonad.Hooks.EwmhDesktops qualified as XEwmhDesktops
-import XMonad.Hooks.FadeInactive qualified as XFadeInactive
+import XMonad.Hooks.ManageDocks (AvoidStruts)
 import XMonad.Hooks.ManageDocks qualified as XManageDocks
-import XMonad.Layout.Gaps (Direction2D (..))
-import XMonad.Layout.Gaps qualified as XGaps
+import XMonad.Layout.LayoutModifier (ModifiedLayout)
 import XMonad.Layout.MultiToggle (Toggle (..))
 import XMonad.Layout.MultiToggle qualified as XMultiToggle
 import XMonad.Layout.MultiToggle.Instances (StdTransformers (NBFULL))
 import XMonad.Layout.NoBorders qualified as XNoBorders
 import XMonad.Layout.PerWorkspace qualified as XPerWorkspace
+import XMonad.Layout.Spacing
 import XMonad.Layout.Spacing qualified as XSpacing
-import XMonad.Layout.ThreeColumns (ThreeCol (..))
 import XMonad.StackSet qualified as XStackSet
 import XMonad.Util.NamedActions (NamedAction, (^++^))
 import XMonad.Util.NamedActions qualified as XNamedActions
@@ -60,7 +65,10 @@ withDBus dbus = do
               normalBorderColor = "#000000",
               borderWidth = 1,
               layoutHook = myLayout,
-              logHook = myPolybarLogHook dbus
+              logHook = myPolybarLogHook dbus,
+              manageHook = XSpawnOn.manageSpawn <> manageHook X.def,
+              startupHook = startup,
+              workspaces = myWorkspaces
             }
   _ <- startPolybar
   X.xmonad $
@@ -220,14 +228,16 @@ systemKeySet modm =
       key "Capture entire screen" (modm, X.xK_Print) $ X.spawn "flameshot full -p ~/Pictures/flameshot/"
     ]
 
+startup :: X ()
+startup = do
+  XSpawnOn.spawnOn mainWs "kitty"
+  XSpawnOn.spawnOn browserWs "firefox"
+  XSpawnOn.spawnOn commsWs "mattermost-desktop"
+
 startPolybar :: IO ()
 startPolybar = do
   X.spawn "polybar top &"
   X.spawn "polybar bottom &"
-
-startConky :: IO ()
-startConky = do
-  X.spawn "conky -c ~/Dev/tommy/github/conky/xmonad/conky_clock.conf"
 
 audioKeySet :: KeySet
 audioKeySet =
@@ -258,21 +268,42 @@ brightnessKeySet =
 
 -- LAYOUT --
 
-wrkWs :: String
-wrkWs = "wrk"
+mainWs :: WorkspaceId
+mainWs = "main"
 
--- This type signature is hideous
+browserWs :: WorkspaceId
+browserWs = "bwsr"
+
+commsWs :: WorkspaceId
+commsWs = "cmms"
+
+myWorkspaces :: [WorkspaceId]
+myWorkspaces =
+  [ mainWs,
+    browserWs,
+    commsWs,
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ]
+
+myLayout :: ModifiedLayout AvoidStruts _ Window
 myLayout =
   XManageDocks.avoidStruts
     . XNoBorders.smartBorders
     . fullScreenToggle
-    . wrkLayout
-    $ (tiled ||| X.Mirror tiled ||| column3 ||| full)
+    . fullLayouts
+    . mainLayout
+    $ defaultLayout
   where
-    -- default tiling algorithm partitions the screen into two panes
     tiled = gapSpaced 10 $ X.Tall nmaster delta ratio
     full = gapSpaced 5 X.Full
-    column3 = gapSpaced 10 $ ThreeColMid 1 (3 / 100) (1 / 2)
+    dev = gapSpaced 10 $ X.Mirror (X.Tall nmaster delta (2 / 3))
+
+    defaultLayout = dev ||| tiled ||| full
 
     -- The default number of windows in the master pane
     nmaster = 1
@@ -283,17 +314,18 @@ myLayout =
     -- Percent of screen to increment by when resizing panes
     delta = 3 / 100
 
-    -- Gaps bewteen windows
-    myGaps gap = XGaps.gaps [(U, gap), (D, gap), (L, gap), (R, gap)]
+    fullLayouts = XPerWorkspace.onWorkspaces [browserWs, commsWs] full
 
-    -- TODO: spacing deprecated in favor of spacingRaw
-    gapSpaced g = XSpacing.spacing g . myGaps g
-
-    -- Per workspace layout
-    wrkLayout = XPerWorkspace.onWorkspace wrkWs (tiled ||| full)
+    mainLayout = XPerWorkspace.onWorkspace mainWs dev
 
     -- Fullscreen
     fullScreenToggle = XMultiToggle.mkToggle (XMultiToggle.single NBFULL)
+
+gapSpaced :: Integer -> l a -> ModifiedLayout Spacing l a
+gapSpaced g = XSpacing.spacingRaw False (uniformBorder 0) False (uniformBorder g) True
+
+uniformBorder :: Integer -> Border
+uniformBorder i = Border i i i i
 
 -- POLYBAR --
 
@@ -319,9 +351,6 @@ polybarHook dbus =
           ppHiddenNoWindows = wrapper red,
           ppTitle = XDynamicLog.shorten 100 . wrapper purple
         }
-
-myLogHook :: X ()
-myLogHook = XFadeInactive.fadeInactiveLogHook 0.95
 
 -- Emit a DBus signal on log updates
 dbusOutput :: Client -> String -> IO ()
