@@ -22,6 +22,7 @@
       pkgs.vscode-extensions.ms-python.python
       pkgs.vscode-extensions.octref.vetur
       pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
+      pkgs.vscode-extensions.vscodevim.vim
     ];
     userSettings = {
       "breadcrumbs.enabled" = true;
