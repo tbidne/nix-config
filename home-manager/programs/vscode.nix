@@ -7,6 +7,7 @@
     package = pkgs.vscodium;
 
     extensions = [
+      my-pkgs.vscode-extensions.enkia.tokyo-night
       my-pkgs.vscode-extensions.meraymond.idris-vscode
       my-pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
 
@@ -33,7 +34,7 @@
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
       "workbench.activityBar.visible" = false;
-      "workbench.colorTheme" = "Dracula";
+      "workbench.colorTheme" = "Tokyo Night";
       "workbench.colorCustomizations" = {
         "activityBar.background" = "#242631";
         "editorGroupHeader.tabsBackground" = "#242631";
