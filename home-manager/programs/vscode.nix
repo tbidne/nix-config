@@ -11,7 +11,7 @@
       my-pkgs.vscode-extensions.meraymond.idris-vscode
       my-pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
 
-      pkgs.vscode-extensions.bbenoist.Nix
+      pkgs.vscode-extensions.bbenoist.nix
       pkgs.vscode-extensions.coenraads.bracket-pair-colorizer-2
       pkgs.vscode-extensions.dracula-theme.theme-dracula
       pkgs.vscode-extensions.editorconfig.editorconfig

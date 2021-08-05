@@ -22,11 +22,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1627422633,
-        "narHash": "sha256-9UvA3wn0xap6WLjhE7+90JwCD+PNj630qt721XRC3TQ=",
+        "lastModified": 1627592512,
+        "narHash": "sha256-+bauwACGl+/dTQB047XImRz5P6Lp6vxl5ruiKjtENxo=",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "ae8cb242f2e450c525274732af58b3050399f5bd",
+        "rev": "7f976da06840c268cc291a021bab7532b923713c",
         "type": "github"
       },
       "original": {
@@ -54,11 +54,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1627391865,
-        "narHash": "sha256-tPoWBO9Nzu3wuX37WcnctzL6LoDCErJLnfLGqqmXCm4=",
+        "lastModified": 1627942574,
+        "narHash": "sha256-guUcGRWvY2mfiVSet2x/zeHIyflm2wgglj0ldg0mMio=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8ecc61c91a596df7d3293603a9c2384190c1b89a",
+        "rev": "c464dc811babfe316ed4ab7bbc12351122e69dd7",
         "type": "github"
       },
       "original": {
@@ -69,11 +69,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1627458005,
-        "narHash": "sha256-nmD4ICx4N0O0qgRHXFYlwuV75TnvPE2Y4yJLv/6SQRM=",
+        "lastModified": 1628136205,
+        "narHash": "sha256-KmqpBAHr0hI3F56blZye7+POKs9N0OXyr+GC75ZpL/Y=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "f2ac7f2b55b30a71f3a9cc5846879f2b2f1b0765",
+        "rev": "5a272114c0720bdde504f333c709efa1787fdd78",
         "type": "github"
       },
       "original": {
@@ -145,11 +145,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1627471879,
-        "narHash": "sha256-8GcyrILUe7kDldqulnB0WxH4mD04kyTwk5o//eYRgXU=",
+        "lastModified": 1627558756,
+        "narHash": "sha256-PMmL4FOmTyKK8G4LJWeAlBuCar45laReNLZDG7Ku2Ls=",
         "owner": "tbidne",
         "repo": "shell-run",
-        "rev": "210cc8dbe574860200b5f6d3680d44121879e0f1",
+        "rev": "75d720f198ba87017285dbaf3a29e9b419960174",
         "type": "github"
       },
       "original": {
