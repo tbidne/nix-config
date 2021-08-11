@@ -8,6 +8,7 @@
     dunst
     firefox
     gimp
+    google-chrome
     thunderbird
 
     # doc editing
