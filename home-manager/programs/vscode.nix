@@ -22,7 +22,6 @@
       pkgs.vscode-extensions.ms-python.python
       pkgs.vscode-extensions.octref.vetur
       pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
-      pkgs.vscode-extensions.vscodevim.vim
     ];
     userSettings = {
       "breadcrumbs.enabled" = true;
@@ -34,7 +33,7 @@
       "editor.wordWrapColumn" = 80;
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
-      "workbench.activityBar.visible" = false;
+      "workbench.activityBar.visible" = true;
       "workbench.colorTheme" = "Tokyo Night";
       "workbench.colorCustomizations" = {
         "activityBar.background" = "#242631";
