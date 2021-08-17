@@ -29,6 +29,7 @@
     emacs
     dbeaver
     git
+    insomnia
     lua
     neovim
     nginx
