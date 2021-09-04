@@ -233,7 +233,6 @@ startup = do
   XSpawnOn.spawnOn mainWs "kitty"
   XSpawnOn.spawnOn browserWs "firefox"
   XSpawnOn.spawnOn commsWs "mattermost-desktop"
-  XSpawnOn.spawnOn commsWs "slack"
   XSpawnOn.spawnOn commsWs "thunderbird"
 
 startPolybar :: IO ()
