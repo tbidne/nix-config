@@ -9,6 +9,7 @@
     firefox
     gimp
     google-chrome
+    haruna
     thunderbird
 
     # doc editing
