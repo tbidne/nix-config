@@ -11,6 +11,9 @@
       my-pkgs.vscode-extensions.meraymond.idris-vscode
       my-pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
 
+      # shouldn't need to use custom nixpkgs, currently broken in real nixpkgs...
+      my-pkgs.vscode-extensions.ms-python.python
+
       pkgs.vscode-extensions.bbenoist.nix
       pkgs.vscode-extensions.coenraads.bracket-pair-colorizer-2
       pkgs.vscode-extensions.dracula-theme.theme-dracula
@@ -19,7 +22,7 @@
       pkgs.vscode-extensions.james-yu.latex-workshop
       pkgs.vscode-extensions.justusadam.language-haskell
       pkgs.vscode-extensions.mechatroner.rainbow-csv
-      pkgs.vscode-extensions.ms-python.python
+      #pkgs.vscode-extensions.ms-python.python
       pkgs.vscode-extensions.octref.vetur
       pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
     ];
