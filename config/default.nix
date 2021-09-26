@@ -7,7 +7,6 @@
       (import ./fonts.nix { inherit pkgs system ringbearer; })
       (import ./packages.nix { inherit pkgs shell-run; })
       ./postgresql.nix
-      ./rabbitmq.nix
       ./redshift.nix
       ./sys.nix
       ./user.nix
