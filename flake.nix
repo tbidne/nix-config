@@ -16,7 +16,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     shell-run-src = {
-      url = "github:tbidne/shell-run/main";
+      url = "github:tbidne/shell-run/sub-logging";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
