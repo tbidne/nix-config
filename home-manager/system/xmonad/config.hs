@@ -232,8 +232,6 @@ startup :: X ()
 startup = do
   XSpawnOn.spawnOn mainWs "kitty"
   XSpawnOn.spawnOn browserWs "firefox"
-  XSpawnOn.spawnOn commsWs "mattermost-desktop"
-  XSpawnOn.spawnOn commsWs "thunderbird"
 
 startPolybar :: IO ()
 startPolybar = do
@@ -275,14 +273,12 @@ mainWs = "main"
 browserWs :: WorkspaceId
 browserWs = "bwsr"
 
-commsWs :: WorkspaceId
-commsWs = "cmms"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces =
   [ mainWs,
     browserWs,
-    commsWs,
+    "3",
     "4",
     "5",
     "6",
@@ -315,7 +311,7 @@ myLayout =
     -- Percent of screen to increment by when resizing panes
     delta = 3 / 100
 
-    fullLayouts = XPerWorkspace.onWorkspaces [browserWs, commsWs] full
+    fullLayouts = XPerWorkspace.onWorkspaces [browserWs] full
 
     mainLayout = XPerWorkspace.onWorkspace mainWs dev
 
