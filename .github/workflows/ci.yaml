@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          repository: tbidne/secrets
+          token: ${{ secrets.SECRETS_TOKEN }}
 
       - name: Setup nix
         uses: cachix/install-nix-action@v13
