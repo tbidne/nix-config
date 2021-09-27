@@ -64,6 +64,7 @@
     deadd-notification-center
     gnupg
     gotop
+    libnotify
     nix-prefetch-git
     pv
     tree
