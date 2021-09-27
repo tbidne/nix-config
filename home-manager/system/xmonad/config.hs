@@ -67,10 +67,10 @@ withDBus dbus = do
               layoutHook = myLayout,
               logHook = myPolybarLogHook dbus,
               manageHook = XSpawnOn.manageSpawn <> manageHook X.def,
-              startupHook = startup,
+              startupHook = startHook,
               workspaces = myWorkspaces
             }
-  _ <- startPolybar
+  _ <- startup
   X.xmonad $
     XManageDocks.docks $
       XEwmhDesktops.ewmh config
@@ -228,15 +228,23 @@ systemKeySet modm =
       key "Capture entire screen" (modm, X.xK_Print) $ X.spawn "flameshot full -p ~/Pictures/flameshot/"
     ]
 
-startup :: X ()
-startup = do
+startHook :: X ()
+startHook = do
   XSpawnOn.spawnOn mainWs "kitty"
   XSpawnOn.spawnOn browserWs "firefox"
 
+startup :: IO ()
+startup =
+  startPolybar
+    *> startDeadd
+
 startPolybar :: IO ()
-startPolybar = do
+startPolybar =
   X.spawn "polybar top &"
-  X.spawn "polybar bottom &"
+    *> X.spawn "polybar bottom &"
+
+startDeadd :: IO ()
+startDeadd = X.spawn "deadd-notification-center"
 
 audioKeySet :: KeySet
 audioKeySet =
@@ -272,7 +280,6 @@ mainWs = "main"
 
 browserWs :: WorkspaceId
 browserWs = "bwsr"
-
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces =

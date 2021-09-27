@@ -61,6 +61,7 @@
     tmux
 
     # misc utils
+    deadd-notification-center
     gnupg
     gotop
     nix-prefetch-git
