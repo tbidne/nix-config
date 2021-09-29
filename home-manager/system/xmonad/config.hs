@@ -232,6 +232,7 @@ startHook :: X ()
 startHook = do
   XSpawnOn.spawnOn mainWs "kitty"
   XSpawnOn.spawnOn browserWs "firefox"
+  XSpawnOn.spawnOn browserWs "thunderbird"
 
 startup :: IO ()
 startup =
