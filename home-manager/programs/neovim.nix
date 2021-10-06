@@ -13,6 +13,9 @@
       "set whitespace with :set list
       :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
 
+      "use system keyboard
+      set clipboard+=unnamedplus
+
       nmap <C-p> :FZF<CR>
       nmap <C-t> :NERDTreeToggle<CR>
       nmap <Tab> <C-w>w

@@ -66,6 +66,7 @@
     gotop
     libnotify
     nix-prefetch-git
+    openssl
     pv
     tree
     unzip
