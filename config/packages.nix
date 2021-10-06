@@ -24,6 +24,7 @@
     element-desktop
     mattermost-desktop
     slack
+    teams
     zoom-us
 
     # dev
