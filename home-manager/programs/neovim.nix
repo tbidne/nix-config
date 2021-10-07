@@ -31,12 +31,14 @@
     plugins = with pkgs.vimPlugins; [
       bufexplorer
       coc-nvim
+      dhall-vim
       editorconfig-vim
       fugitive
       fzf-vim
       haskell-vim
       nerdtree
       nord-vim
+      nvim-lspconfig
       vim-airline
       vim-airline-themes
       vim-markdown-composer
