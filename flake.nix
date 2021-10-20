@@ -2,19 +2,31 @@
   description = "My NixOS Config";
 
   inputs = {
+    # nixpkgs
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-exts";
+
+    # utils
     home-manager = {
       url = "github:rycee/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
-    my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-exts";
     nur.url = "github:nix-community/NUR";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    # fonts
     ringbearer = {
       url = "github:tbidne/ringbearer/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    impact = {
+      url = "github:tbidne/impact/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    # my repos
     shell-run-src = {
       url = "github:tbidne/shell-run/sub-logging";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +41,19 @@
     secrets-src.url = "git+ssh://git@github.com/tbidne/secrets?ref=main";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, my-nixpkgs, ringbearer, shell-run-src, static-assets-src, secrets-src, ... }:
+  outputs =
+    { self
+    , nixpkgs
+    , my-nixpkgs
+    , home-manager
+    , nur
+    , ringbearer
+    , impact
+    , shell-run-src
+    , static-assets-src
+    , secrets-src
+    , ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -54,7 +78,7 @@
             ({ pkgs, ... }:
               {
                 imports = [
-                  (import ./configuration.nix { inherit pkgs system ringbearer shell-run; })
+                  (import ./configuration.nix { inherit pkgs system ringbearer impact shell-run; })
 
                   home-manager.nixosModules.home-manager
                   ({

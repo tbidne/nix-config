@@ -1,4 +1,4 @@
-{ pkgs, system, ringbearer, ... }:
+{ pkgs, system, ringbearer, impact, ... }:
 
 {
   fonts.fonts = with pkgs;
@@ -8,6 +8,7 @@
       emacs-all-the-icons-fonts
       font-awesome
       hasklig
+      impact.defaultPackage.${system}
       ringbearer.defaultPackage.${system}
       siji
       unifont

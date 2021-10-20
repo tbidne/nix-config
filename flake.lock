@@ -36,6 +36,30 @@
         "type": "github"
       }
     },
+    "impact": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1634241887,
+        "narHash": "sha256-1B8dxEuR/2BIpWLL6Hj5TNs2bqVEtT+3WnRitabqt/M=",
+        "owner": "tbidne",
+        "repo": "impact",
+        "rev": "9278e4e4f135321f565c2357c6dc3a8717073218",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "ref": "main",
+        "repo": "impact",
+        "type": "github"
+      }
+    },
     "my-nixpkgs": {
       "locked": {
         "lastModified": 1632779756,
@@ -110,6 +134,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "impact": "impact",
         "my-nixpkgs": "my-nixpkgs",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
