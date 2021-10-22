@@ -32,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
+    navi-src = {
+      url = "github:tbidne/navi/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     static-assets-src = {
       url = "github:tbidne/static/main";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,6 +55,7 @@
     , ringbearer
     , impact
     , shell-run-src
+    , navi-src
     , static-assets-src
     , secrets-src
     , ...
@@ -66,6 +72,7 @@
         config = { allowUnfree = true; };
       };
       shell-run = shell-run-src.defaultPackage.${system};
+      navi = navi-src.defaultPackage.${system};
       static-assets = static-assets-src.defaultPackage.${system};
       secrets = secrets-src.outputs;
     in
@@ -78,13 +85,17 @@
             ({ pkgs, ... }:
               {
                 imports = [
-                  (import ./configuration.nix { inherit pkgs system ringbearer impact shell-run; })
+                  (import ./configuration.nix {
+                    inherit pkgs system ringbearer impact shell-run navi;
+                  })
 
                   home-manager.nixosModules.home-manager
                   ({
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users.tommy = (import ./home-manager/home.nix { inherit pkgs my-pkgs static-assets secrets; });
+                    home-manager.users.tommy = (import ./home-manager/home.nix {
+                      inherit pkgs my-pkgs static-assets secrets;
+                    });
                   })
                 ];
               }

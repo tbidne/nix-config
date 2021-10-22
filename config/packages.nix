@@ -1,4 +1,4 @@
-{ pkgs, shell-run, ... }:
+{ pkgs, shell-run, navi, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -45,6 +45,7 @@
 
     # my projects
     shell-run
+    navi
 
     # network utils
     traceroute

@@ -238,6 +238,7 @@ startup :: IO ()
 startup =
   startPolybar
     *> startDeadd
+    *> startNavi
 
 startPolybar :: IO ()
 startPolybar =
@@ -246,6 +247,9 @@ startPolybar =
 
 startDeadd :: IO ()
 startDeadd = X.spawn "deadd-notification-center"
+
+startNavi :: IO ()
+startNavi = X.spawn "navi"
 
 audioKeySet :: KeySet
 audioKeySet =

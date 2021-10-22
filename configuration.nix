@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, system, ringbearer, impact, shell-run, ... }:
+{ pkgs, system, ringbearer, impact, shell-run, navi, ... }:
 
 {
   nix = {
@@ -19,7 +19,9 @@
       ./system/default.nix
 
       # general config
-      (import ./config/default.nix { inherit pkgs system ringbearer impact shell-run; })
+      (import ./config/default.nix {
+        inherit pkgs system ringbearer impact shell-run navi;
+      })
     ];
 
   nixpkgs.config.allowUnfree = true;
