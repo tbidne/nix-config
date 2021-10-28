@@ -20,6 +20,7 @@
       pkgs.vscode-extensions.editorconfig.editorconfig
       pkgs.vscode-extensions.haskell.haskell
       pkgs.vscode-extensions.james-yu.latex-workshop
+      pkgs.vscode-extensions.jnoortheen.nix-ide
       pkgs.vscode-extensions.justusadam.language-haskell
       pkgs.vscode-extensions.mechatroner.rainbow-csv
       #pkgs.vscode-extensions.ms-python.python
