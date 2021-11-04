@@ -83,14 +83,17 @@
         ],
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "simple-algebra-src": "simple-algebra-src",
+        "smart-data-src": "smart-data-src",
+        "system-info-src": "system-info-src"
       },
       "locked": {
-        "lastModified": 1635202932,
-        "narHash": "sha256-eG2TayFZsAuc4ToYOh1Lf7gV9MqPjtaeqotctsYE6g8=",
+        "lastModified": 1636057794,
+        "narHash": "sha256-wGkpfkwCrZS6o+cj/8iLILuP3RcqsODc+a3ygD7VF4s=",
         "owner": "tbidne",
         "repo": "navi",
-        "rev": "481bcdc1e0b289d556069f6d284a0f46f8aab552",
+        "rev": "db33919fe7a3cc9546c8f0984eff8ee4d74504af",
         "type": "github"
       },
       "original": {
@@ -209,6 +212,60 @@
         "type": "github"
       }
     },
+    "simple-algebra-src": {
+      "inputs": {
+        "flake-utils": [
+          "navi-src",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "navi-src",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1635726528,
+        "narHash": "sha256-2I6xR2icoaxaoWNQ4E/6UwiDiFiHdo1yshFoUT1z63s=",
+        "owner": "tbidne",
+        "repo": "simple-algebra",
+        "rev": "5dc4a95ffaa8ef53dcf24fed2aec3a16af878a50",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "simple-algebra",
+        "type": "github"
+      }
+    },
+    "smart-data-src": {
+      "inputs": {
+        "flake-utils": [
+          "navi-src",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "navi-src",
+          "nixpkgs"
+        ],
+        "simple-algebra-src": [
+          "navi-src",
+          "simple-algebra-src"
+        ]
+      },
+      "locked": {
+        "lastModified": 1635726587,
+        "narHash": "sha256-zGuBukgHwfgN7fblrKjT6PtUxZ9rLjiGUCv8CDnHcKo=",
+        "owner": "tbidne",
+        "repo": "smart-data",
+        "rev": "71e382392d506869c83bc548edb015c7c7ef4501",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "smart-data",
+        "type": "github"
+      }
+    },
     "static-assets-src": {
       "inputs": {
         "flake-utils": [
@@ -230,6 +287,39 @@
         "owner": "tbidne",
         "ref": "main",
         "repo": "static",
+        "type": "github"
+      }
+    },
+    "system-info-src": {
+      "inputs": {
+        "flake-utils": [
+          "navi-src",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "navi-src",
+          "nixpkgs"
+        ],
+        "simple-algebra-src": [
+          "navi-src",
+          "simple-algebra-src"
+        ],
+        "smart-data-src": [
+          "navi-src",
+          "smart-data-src"
+        ]
+      },
+      "locked": {
+        "lastModified": 1636056465,
+        "narHash": "sha256-8YGRMdb4oM/GFwMX7N1h3kh9GbDnFAEwVZ+Ljmahimc=",
+        "owner": "tbidne",
+        "repo": "system-info",
+        "rev": "9109ddf6dc30539430fe7861a1b72df7ca764f3d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "system-info",
         "type": "github"
       }
     }
