@@ -31,8 +31,26 @@
 
       displayManager = {
         defaultSession = "none+xmonad";
-        sddm = {
+        lightdm = {
           enable = true;
+          greeters = {
+            mini = {
+              enable = true;
+              user = "tommy";
+              extraConfig = ''
+                [greeter]
+                invalid-password-text = you. shall not. pass.
+                password-alignment = center
+                show-password-label = false
+                [greeter-theme]
+                background-image = #000000;
+                border-color = #000000
+                font-size = 24
+                password-background-color = #000000
+                window-color = #000000
+              '';
+            };
+          };
         };
       };
       desktopManager.xterm.enable = false;
