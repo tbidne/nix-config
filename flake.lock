@@ -89,11 +89,11 @@
         "system-info-src": "system-info-src"
       },
       "locked": {
-        "lastModified": 1636057794,
-        "narHash": "sha256-wGkpfkwCrZS6o+cj/8iLILuP3RcqsODc+a3ygD7VF4s=",
+        "lastModified": 1636083825,
+        "narHash": "sha256-0AkjIQceSqns7aRYhbv8JdM8kKLWn6fxsFNVcg4iGis=",
         "owner": "tbidne",
         "repo": "navi",
-        "rev": "db33919fe7a3cc9546c8f0984eff8ee4d74504af",
+        "rev": "776c74d10f27f8041dbb210051453b01704b1f0b",
         "type": "github"
       },
       "original": {
