@@ -67,6 +67,7 @@
     gnupg
     gotop
     libnotify
+    lm_sensors
     nix-prefetch-git
     openssl
     pv
