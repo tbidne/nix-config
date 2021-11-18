@@ -68,6 +68,7 @@
     gotop
     libnotify
     lm_sensors
+    lsof
     nix-prefetch-git
     openssl
     pv
