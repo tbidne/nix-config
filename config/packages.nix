@@ -64,6 +64,7 @@
 
     # misc utils
     deadd-notification-center
+    dig
     gnupg
     gotop
     libnotify
