@@ -3,7 +3,7 @@
 
   inputs = {
     # nixpkgs
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-exts";
 
     # utils
@@ -37,13 +37,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
-    static-assets-src = {
-      url = "github:tbidne/static/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    # Need to have root key with repo access, i.e., /root/.ssh/...
-    secrets-src.url = "git+ssh://git@github.com/tbidne/secrets?ref=main";
   };
 
   outputs =
@@ -56,8 +49,6 @@
     , impact
     , shell-run-src
     , navi-src
-    , static-assets-src
-    , secrets-src
     , ...
     }:
     let
@@ -73,8 +64,6 @@
       };
       shell-run = shell-run-src.defaultPackage.${system};
       navi = navi-src.defaultPackage.${system};
-      static-assets = static-assets-src.defaultPackage.${system};
-      secrets = secrets-src.outputs;
     in
     {
       nixosConfigurations = {
@@ -94,7 +83,7 @@
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users.tommy = (import ./home-manager/home.nix {
-                      inherit pkgs my-pkgs static-assets secrets;
+                      inherit pkgs my-pkgs;
                     });
                   })
                 ];

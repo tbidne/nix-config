@@ -1,6 +1,6 @@
-{ pkgs, static-assets, secrets, ... }:
+{ pkgs, ... }:
 {
   imports = [
-    (import ./xmonad/default.nix { inherit pkgs static-assets secrets; })
+    (import ./xmonad/default.nix { inherit pkgs; })
   ];
 }

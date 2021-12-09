@@ -105,17 +105,18 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1638535497,
-        "narHash": "sha256-tk5LNbdkUhALp00+r5ZmQ3t7n2d5M7YUQB+MznWvVOg=",
-        "owner": "NixOS",
+        "lastModified": 1638806821,
+        "narHash": "sha256-v2qd2Bsmzft53s43eCbN+4ocrLksRdFLyF/MAGuWuDA=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c71f061c68ba8ce53471b767d5049cbd0f3d8490",
+        "rev": "bc5d68306b40b8522ffb69ba6cff91898c2fbbff",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
+        "owner": "nixos",
         "ref": "nixos-unstable",
-        "type": "indirect"
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nur": {
@@ -167,25 +168,7 @@
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "ringbearer": "ringbearer",
-        "secrets-src": "secrets-src",
-        "shell-run-src": "shell-run-src",
-        "static-assets-src": "static-assets-src"
-      }
-    },
-    "secrets-src": {
-      "locked": {
-        "lastModified": 1623664099,
-        "narHash": "sha256-5HMD+0f3WTlUvV3FHFr90GiQWTS+ucFnGiVMlA7tYU0=",
-        "ref": "main",
-        "rev": "977b6da0d05f25cc6ff920db1f210e647bbb3bf5",
-        "revCount": 2,
-        "type": "git",
-        "url": "ssh://git@github.com/tbidne/secrets"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "ssh://git@github.com/tbidne/secrets"
+        "shell-run-src": "shell-run-src"
       }
     },
     "shell-run-src": {
@@ -263,30 +246,6 @@
       "original": {
         "owner": "tbidne",
         "repo": "smart-data",
-        "type": "github"
-      }
-    },
-    "static-assets-src": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1625087823,
-        "narHash": "sha256-kHcgI2FYroq/5CsH2w0rNEpI9Qr3Zo8lPo2QYqhiyhI=",
-        "owner": "tbidne",
-        "repo": "static",
-        "rev": "59fe9f9aba2ac6c583d631d5bf1804c5eeaabc11",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tbidne",
-        "ref": "main",
-        "repo": "static",
         "type": "github"
       }
     },
