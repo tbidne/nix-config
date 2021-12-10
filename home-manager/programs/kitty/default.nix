@@ -7,6 +7,7 @@ in
     enable = true;
     font.name = "hasklig";
     settings = {
+      shell = "/run/current-system/sw/bin/bash";
       extraConfig = ''
         ${theme.conf}
         wheel_scroll_multiplier 1.0
