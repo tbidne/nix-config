@@ -8,6 +8,6 @@
     uid = 1000;
     createHome = true;
     home = "/home/tommy";
-    shell = "/etc/profiles/per-user/tommy/bin/zsh";
+    shell = "/run/current-system/sw/bin/bash";
   };
 }
