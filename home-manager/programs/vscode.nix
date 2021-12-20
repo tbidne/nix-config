@@ -11,7 +11,6 @@
       my-pkgs.vscode-extensions.meraymond.idris-vscode
       my-pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
       pkgs.vscode-extensions.bbenoist.nix
-      pkgs.vscode-extensions.coenraads.bracket-pair-colorizer-2
       pkgs.vscode-extensions.dracula-theme.theme-dracula
       pkgs.vscode-extensions.editorconfig.editorconfig
       pkgs.vscode-extensions.haskell.haskell
@@ -31,6 +30,8 @@
       "editor.tabSize" = 2;
       "editor.wordWrap" = "on";
       "editor.wordWrapColumn" = 80;
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.guides.bracketPairs" = "active";
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
       "workbench.activityBar.visible" = true;
