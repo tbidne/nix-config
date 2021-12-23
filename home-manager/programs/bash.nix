@@ -24,6 +24,9 @@ in
       sys-switch = "shell-run -k -l ~/Dev/legend.txt sys-switch";
       sys-clean = "shell-run -k -l ~/Dev/legend.txt sys-clean";
       sys-clean-all = "shell-run -k -l ~/Dev/legend.txt sys-clean-all";
+
+      # haskell
+      stylish-fmt = "find . -name '*.hs' -type f | xargs stylish-haskell --inplace";
     };
     bashrcExtra = ''
       function color_my_prompt {
