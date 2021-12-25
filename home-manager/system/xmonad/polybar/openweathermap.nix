@@ -1,5 +1,3 @@
-{ secrets, ... }:
-
 {
   home.file.".config/polybar/openweathermap-fullfeatured.sh" = {
     executable = true;
@@ -58,7 +56,7 @@
           esac
       }
 
-      API_KEY="${secrets.polybar.open-weather-api-key}"
+      API_KEY="$OPEN_WEATHER_API_KEY"
       # Wellington
       CITY="2179537"
       UNITS="metric"

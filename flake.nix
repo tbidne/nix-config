@@ -40,16 +40,16 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , my-nixpkgs
+    { flake-utils
     , home-manager
+    , impact
+    , my-nixpkgs
+    , navi-src
+    , nixpkgs
     , nur
     , ringbearer
-    , impact
+    , self
     , shell-run-src
-    , navi-src
-    , ...
     }:
     let
       system = "x86_64-linux";

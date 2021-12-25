@@ -4,9 +4,9 @@ let
   config = builtins.readFile ./config.ini;
 in
 {
-  #imports = [
-  #  (import ./openweathermap.nix { inherit secrets; })
-  #];
+  imports = [
+    ./openweathermap.nix
+  ];
 
   home.file = {
     ".config/polybar/config".text = ''
