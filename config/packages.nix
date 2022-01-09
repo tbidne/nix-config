@@ -75,6 +75,7 @@
     pv
     tree
     unzip
+    xclip
     zip
   ];
 
