@@ -7,9 +7,10 @@
     package = pkgs.vscodium;
 
     extensions = [
+      my-pkgs.vscode-extensions.banacorn.agda-mode
       my-pkgs.vscode-extensions.enkia.tokyo-night
       my-pkgs.vscode-extensions.meraymond.idris-vscode
-      my-pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
+      pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
       pkgs.vscode-extensions.bbenoist.nix
       pkgs.vscode-extensions.dracula-theme.theme-dracula
       pkgs.vscode-extensions.editorconfig.editorconfig
