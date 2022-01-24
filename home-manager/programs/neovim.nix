@@ -9,7 +9,7 @@
       let g:airline_theme='base16_nord'
 
       let NERDTreeShowHidden=1
-      
+
       "set whitespace with :set list
       :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
 
@@ -21,6 +21,7 @@
       nmap <Tab> <C-w>w
       nmap <C-b> :ToggleBufExplorer<CR>
       nmap <C-s> :set list!<CR>
+      nnoremap <leader>g :Grepper -tool rg<cr>
 
       "CoC Actions
       nmap <C-f> :call CocAction('format')<CR>
@@ -42,6 +43,7 @@
       vim-airline
       vim-airline-themes
       #vim-markdown-composer
+      vim-grepper
       vim-gitgutter
       vim-hoogle
       vim-lsp
@@ -55,7 +57,7 @@
       {
         "languageserver": {
           "haskell": {
-            "command": "haskell-language-server-wrapper",
+            "command": "haskell-language-server",
             "args": [
               "--lsp"
             ],
