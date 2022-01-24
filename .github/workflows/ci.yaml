@@ -14,9 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: tbidne/secrets
-          token: ${{ secrets.SECRETS_TOKEN }}
 
       - name: Setup nix
         uses: cachix/install-nix-action@v13
@@ -25,7 +22,6 @@ jobs:
           install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
           extra_nix_config: |
             experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
         
       - name: Nix check
         run: nix flake check
