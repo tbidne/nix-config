@@ -41,7 +41,7 @@
       nvim-lspconfig
       vim-airline
       vim-airline-themes
-      vim-markdown-composer
+      #vim-markdown-composer
       vim-gitgutter
       vim-hoogle
       vim-lsp
