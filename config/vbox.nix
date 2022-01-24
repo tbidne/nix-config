@@ -1,7 +1,8 @@
 {
   virtualisation.virtualbox = {
     host = {
-      enable = true;
+      # heavy dependency, so disable it when not in use
+      enable = false;
       enableExtensionPack = true;
     };
   };
