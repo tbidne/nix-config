@@ -9,9 +9,8 @@
 (eval-when-compile
   (require 'use-package))
 
-(load-theme 'dracula t)
-(use-package dracula-theme
-  :init (load-theme 'dracula t))
+(use-package one-themes
+  :init (load-theme 'one-dark t))
 
 ;; General
 (evil-mode 1)

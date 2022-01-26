@@ -13,7 +13,7 @@ in
       epkgs.ag
       epkgs.all-the-icons
       epkgs.company
-      epkgs.dracula-theme
+      epkgs.one-themes
       epkgs.evil
       epkgs.hasklig-mode
       epkgs.haskell-mode
