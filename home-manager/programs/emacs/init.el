@@ -3,8 +3,15 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+;; use-package
+(require 'package)
+(package-initialize 'noactivate)
+(eval-when-compile
+  (require 'use-package))
+
 (load-theme 'dracula t)
-(require 'dracula-theme)
+(use-package dracula-theme
+  :init (load-theme 'dracula t))
 
 ;; General
 (evil-mode 1)
@@ -12,10 +19,12 @@
 (setq make-backup-files nil)
 
 ;; Which-Key
-(setq which-key-separator " ")
-(setq which-key-prefix-prefix "+")
-(require 'which-key)
-(which-key-mode 1)
+(use-package which-key
+  :init
+  (setq which-key-separator " ")
+  (setq which-key-prefix-prefix "+")
+  :config
+  (which-key-mode 1))
 
 ;; Misc keymaps
 (global-set-key (kbd "C-x w") 'whitespace-mode)
@@ -24,8 +33,7 @@
 (global-set-key (kbd "C-SPC") 'treemacs)
 
 ;; Treemacs
-(require 'all-the-icons)
-(require 'treemacs-all-the-icons)
+(use-package treemacs-all-the-icons)
 (treemacs-load-theme "all-the-icons")
 (setq lsp-treemacs-theme "all-the-icons")
 
@@ -34,39 +42,38 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; LSP
-(setq lsp-keymap-prefix "C-c l")
-(autoload 'lsp-mode "lsp" nil t)
-(require 'lsp-mode)
-
-(autoload 'lsp-ui "lsp-ui-mode" nil t)
-(require 'lsp-ui)
-
-(autoload 'lsp-ivy "lsp-ivy-workspace-symbol" nil t)
-(require 'lsp-ivy)
-
-(require 'lsp-treemacs)
+(use-package lsp-mode
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :hook ((lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+(use-package lsp-ivy
+  :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs)
 
 ;; Haskell
-(require 'haskell-mode)
-(require 'lsp-haskell)
+(use-package haskell-mode)
+(use-package lsp-haskell)
+;; Hooks so haskell and literate haskell major modes trigger LSP setup
 (add-hook 'haskell-mode-hook #'lsp)
 (add-hook 'haskell-literate-mode-hook #'lsp)
-
 (set-face-attribute 'default nil
-		    :height 100
-		    :family "Hasklig"
-		    :weight 'normal
-		    :width 'normal)
+  :height 100
+  :family "Hasklig"
+  :weight 'normal
+  :width 'normal)
 (add-to-list 'completion-ignored-extensions ".hi")
-(require 'hasklig-mode)
-(add-hook 'hasklig-mode "hasklig-mode" nil t)
+(use-package hasklig-mode
+  :hook (haskell-mode))
 
 ;; LaTeX
-(require 'lsp-latex)
-(with-eval-after-load "tex-mode")
-(add-hook 'tex-mode-hook 'lsp)
-(add-hook 'latex-mode-hook 'lsp)
+(use-package lsp-latex)
+(with-eval-after-load "tex-mode"
+  (add-hook 'tex-mode-hook 'lsp)
+  (add-hook 'latex-mode-hook 'lsp))
 
 ;; Nix
-(require 'nix-mode)
-(add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
+(use-package nix-mode
+  :mode "\\.nix\\'")

@@ -3,6 +3,7 @@
   imports = [
     ./bash.nix
     ./chromium.nix
+    ./emacs/default.nix
     (import ./firefox.nix { inherit pkgs; })
     ./ghci.nix
     ./git.nix

@@ -30,6 +30,7 @@ in
       epkgs.treemacs
       epkgs.treemacs-all-the-icons
       epkgs.treemacs-evil
+      epkgs.use-package
       epkgs.which-key
     ];
   };
