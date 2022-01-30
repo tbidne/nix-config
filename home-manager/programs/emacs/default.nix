@@ -27,6 +27,7 @@ in
       epkgs.lsp-ui
       epkgs.nix-mode
       epkgs.projectile
+      epkgs.rg
       epkgs.treemacs
       epkgs.treemacs-all-the-icons
       epkgs.treemacs-evil

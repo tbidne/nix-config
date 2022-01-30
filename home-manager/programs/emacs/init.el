@@ -67,6 +67,11 @@
 (use-package hasklig-mode
   :hook (haskell-mode))
 
+;; Agda
+;; We can do this because we're getting the package via nix in
+;; packages.nix
+(require 'agda2)
+
 ;; LaTeX
 (use-package lsp-latex)
 (with-eval-after-load "tex-mode"
