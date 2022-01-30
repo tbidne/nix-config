@@ -29,7 +29,6 @@
 
     # dev
     emacs
-    emacs27Packages.agda2-mode
     dbeaver
     git
     insomnia

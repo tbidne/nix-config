@@ -68,9 +68,10 @@
   :hook (haskell-mode))
 
 ;; Agda
-;; We can do this because we're getting the package via nix in
-;; packages.nix
-(require 'agda2)
+;; We no longer have agda2 globally installed since that can lead to version
+;; mismatches, so we locate it dynamically here instead.
+(load-file (let ((coding-system-for-read 'utf-8))
+  (shell-command-to-string "agda-mode locate")))
 
 ;; LaTeX
 (use-package lsp-latex)
