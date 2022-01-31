@@ -3,7 +3,8 @@
 
   inputs = {
     # nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Switch to unstable once https://github.com/NixOS/nixpkgs/issues/157112 is fixed.
+    nixpkgs.url = "github:nixos/nixpkgs?rev=689b76bcf36055afdeb2e9852f5ecdd2bf483f87";
     my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-exts";
 
     # utils
