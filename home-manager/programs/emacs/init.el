@@ -70,8 +70,13 @@
 ;; Agda
 ;; We no longer have agda2 globally installed since that can lead to version
 ;; mismatches, so we locate it dynamically here instead.
-(load-file (let ((coding-system-for-read 'utf-8))
-  (shell-command-to-string "agda-mode locate")))
+(when
+  (>
+    (length (shell-command-to-string "command -v agda-mode"))
+    0)
+  (load-file (let ((coding-system-for-read 'utf-8))
+  (shell-command-to-string "agda-mode locate"))))
+
 
 ;; LaTeX
 (use-package lsp-latex)
