@@ -55,6 +55,9 @@
 ;; Haskell
 (use-package haskell-mode)
 (use-package lsp-haskell)
+;; Default is "haskell-language-server-wrapper", which does not seem to be set
+;; by default when including hls via nix.
+(setq lsp-haskell-server-path "haskell-language-server")
 ;; Hooks so haskell and literate haskell major modes trigger LSP setup
 (add-hook 'haskell-mode-hook #'lsp)
 (add-hook 'haskell-literate-mode-hook #'lsp)
