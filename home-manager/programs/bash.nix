@@ -16,10 +16,11 @@ in
       icat = "kitty +kitten icat";
 
       # misc
-      ns-time = "shell-run -ck \"nix-shell --command exit\"";
-      nd-time = "shell-run -ck \"nix develop --command exit\"";
+      cpwd = "pwd | xclip -selection clipboard";
 
       # shell-run
+      ns-time = "shell-run -ck \"nix-shell --command exit\"";
+      nd-time = "shell-run -ck \"nix develop --command exit\"";
       sys-test = "shell-run -k -l ~/Dev/legend.txt sys-test";
       sys-switch = "shell-run -k -l ~/Dev/legend.txt sys-switch";
       sys-clean = "shell-run -k -l ~/Dev/legend.txt sys-clean";
