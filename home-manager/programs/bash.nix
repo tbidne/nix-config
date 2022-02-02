@@ -16,7 +16,7 @@ in
       icat = "kitty +kitten icat";
 
       # misc
-      cpwd = "pwd | xclip -selection clipboard";
+      pwdc = "pwd | xclip -selection clipboard";
 
       # shell-run
       ns-time = "shell-run -ck \"nix-shell --command exit\"";
