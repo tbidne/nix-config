@@ -9,13 +9,32 @@
 (eval-when-compile
   (require 'use-package))
 
+;; Util functions
+(defun my-move-key (keymap-from keymap-to key)
+  "Moves key binding from one keymap to another, deleting from the old location. "
+  (define-key keymap-to key (lookup-key keymap-from key))
+  (define-key keymap-from key nil))
+
+(defun cmd-exists-p (cmd)
+  "Returns true if the parameter cmd exists."
+  (>
+    (length (shell-command-to-string (concat "command -v " cmd)))
+     0))
+
 (use-package one-themes
   :init (load-theme 'one-dark t))
 
 ;; General
-(evil-mode 1)
 (global-hl-line-mode 1)
 (setq make-backup-files nil)
+;; improve buffer ergonomics
+(global-set-key "\C-x\C-b" 'electric-buffer-list)
+
+;; Evil
+(evil-mode 1)
+;; unbind vim RET and SPC
+(my-move-key evil-motion-state-map evil-normal-state-map (kbd "RET"))
+(my-move-key evil-motion-state-map evil-normal-state-map " ")
 
 ;; Which-Key
 (use-package which-key
@@ -74,12 +93,9 @@
 ;; We no longer have agda2 globally installed since that can lead to version
 ;; mismatches, so we locate it dynamically here instead.
 (when
-  (>
-    (length (shell-command-to-string "command -v agda-mode"))
-    0)
+  (cmd-exists-p "agda-mode")
   (load-file (let ((coding-system-for-read 'utf-8))
-  (shell-command-to-string "agda-mode locate"))))
-
+    (shell-command-to-string "agda-mode locate"))))
 
 ;; LaTeX
 (use-package lsp-latex)
