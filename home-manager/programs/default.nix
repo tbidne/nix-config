@@ -9,6 +9,7 @@
     ./git.nix
     ./kitty/default.nix
     ./neovim.nix
+    ./shell-run.nix
     (import ./vscode.nix { inherit pkgs my-pkgs; })
   ];
 }

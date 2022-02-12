@@ -19,12 +19,8 @@ in
       pwdc = "pwd | xclip -selection clipboard";
 
       # shell-run
-      ns-time = "shell-run  \"nix-shell --command exit\"";
-      nd-time = "shell-run  \"nix develop --command exit\"";
-      sys-test = "shell-run -k -l ~/Dev/legend.txt sys-test";
-      sys-switch = "shell-run -k -l ~/Dev/legend.txt sys-switch";
-      sys-clean = "shell-run -k -l ~/Dev/legend.txt sys-clean";
-      sys-clean-all = "shell-run -k -l ~/Dev/legend.txt sys-clean-all";
+      # legend defined in shell-run.nix
+      srun = "shell-run -ck -l ~/.config/shell-run/legend.txt -f ~/.config/shell-run/logs.txt";
     };
     bashrcExtra = ''
       function color_my_prompt {
