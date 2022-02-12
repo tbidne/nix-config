@@ -25,9 +25,6 @@ in
       sys-switch = "shell-run -k -l ~/Dev/legend.txt sys-switch";
       sys-clean = "shell-run -k -l ~/Dev/legend.txt sys-clean";
       sys-clean-all = "shell-run -k -l ~/Dev/legend.txt sys-clean-all";
-
-      # haskell
-      stylish-fmt = "find . -name '*.hs' -type f | xargs stylish-haskell --inplace";
     };
     bashrcExtra = ''
       function color_my_prompt {
@@ -41,6 +38,10 @@ in
           export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
       }
       color_my_prompt
+
+      function hs() {
+        nix run github:tbidne/nix-hs-tools#$1 -- ''${@:2}
+      }
 
       source ~/.git-prompt.sh
       source ~/.bash_profile.private
