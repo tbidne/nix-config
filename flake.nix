@@ -3,41 +3,21 @@
 
   inputs = {
     # nixpkgs
-    # Switch to unstable once https://github.com/NixOS/nixpkgs/issues/157112 is fixed.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-exts";
 
     # utils
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager/master";
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
 
     # fonts
-    ringbearer = {
-      url = "github:tbidne/ringbearer/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    impact = {
-      url = "github:tbidne/impact/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
+    ringbearer.url = "github:tbidne/ringbearer/main";
+    impact.url = "github:tbidne/impact/main";
 
     # my repos
-    shell-run-src = {
-      url = "github:tbidne/shell-run/sub-logging";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-    navi-src = {
-      url = "github:tbidne/navi/main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
+    shell-run-src.url = "github:tbidne/shell-run/main";
+    navi-src.url = "github:tbidne/navi/main";
   };
 
   outputs =
