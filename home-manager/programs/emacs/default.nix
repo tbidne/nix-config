@@ -12,6 +12,7 @@ in
     extraPackages = epkgs: [
       epkgs.ag
       epkgs.all-the-icons
+      epkgs.airline-themes
       epkgs.company
       epkgs.one-themes
       epkgs.evil

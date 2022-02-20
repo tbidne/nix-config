@@ -17,6 +17,7 @@ in
 
       # misc
       pwdc = "pwd | xclip -selection clipboard";
+      nap = "systemctl suspend";
 
       # shell-run
       # legend defined in shell-run.nix

@@ -21,8 +21,13 @@
     (length (shell-command-to-string (concat "command -v " cmd)))
      0))
 
+;; Themes
 (use-package one-themes
   :init (load-theme 'one-dark t))
+(require 'airline-themes)
+(load-theme 'airline-deus t)
+;;(use-package airline-themes
+;;  :init (load-theme 'airline-light t))
 
 ;; General
 (global-hl-line-mode 1)
