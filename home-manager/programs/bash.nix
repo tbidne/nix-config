@@ -21,7 +21,7 @@ in
 
       # shell-run
       # legend defined in shell-run.nix
-      srun = "shell-run -ck -l ~/.config/shell-run/legend.txt -f ~/.config/shell-run/logs.txt";
+      srun = "shell-run -ck -fdefault -y detect";
     };
     bashrcExtra = ''
       function color_my_prompt {
