@@ -37,7 +37,7 @@ in
       color_my_prompt
 
       function hs() {
-        nix run github:tbidne/nix-hs-tools#$1 -- ''${@:2}
+        nix run github:tbidne/nix-hs-tools/0.1.0.0#$1 -- ''${@:2}
       }
 
       source ~/.git-prompt.sh
