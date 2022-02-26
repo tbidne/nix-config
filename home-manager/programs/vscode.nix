@@ -51,6 +51,7 @@
 
       # ignore spellcheck
       "cSpell.userWords" = [
+        "anyclass"
         "asyn"
         "bifunctor"
         "bimap"
@@ -58,13 +59,16 @@
         "concat"
         "curr"
         "desirements"
+        "doctest"
         "fmap"
         "foldr"
         "foldl"
+        "hashable"
         "hspec"
         "mempty"
         "monoid"
         "semigroup"
+        "stringbuilder"
         "supremum"
         "typeclass"
         "unlift"
