@@ -1,5 +1,31 @@
 { pkgs, my-pkgs, ... }:
 
+let
+  haskellWords = [
+        "anyclass"
+        "bifunctor"
+        "bimap"
+        "concat"
+        "doctest"
+        "fmap"
+        "foldr"
+        "foldl"
+        "hashable"
+        "hspec"
+        "mempty"
+        "monoid"
+        "optparse"
+        "semigroup"
+        "stackage"
+        "stringbuilder"
+        "typeclass"
+        "unlift"
+        "unlifteddatatypes"
+      ];
+  miscWords = [
+    "supremum"
+  ];
+in
 {
   programs.vscode = {
     enable = true;
@@ -50,29 +76,7 @@
       };
 
       # ignore spellcheck
-      "cSpell.userWords" = [
-        "anyclass"
-        "asyn"
-        "bifunctor"
-        "bimap"
-        "cmds"
-        "concat"
-        "curr"
-        "desirements"
-        "doctest"
-        "fmap"
-        "foldr"
-        "foldl"
-        "hashable"
-        "hspec"
-        "mempty"
-        "monoid"
-        "semigroup"
-        "stringbuilder"
-        "supremum"
-        "typeclass"
-        "unlift"
-      ];
+      "cSpell.userWords" = haskellWords ++ miscWords;
     };
   };
 }
