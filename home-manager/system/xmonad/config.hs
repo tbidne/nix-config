@@ -110,7 +110,7 @@ myTerminal :: String
 myTerminal = "kitty"
 
 screenLocker :: String
-screenLocker = "betterlockscreen -l dim"
+screenLocker = "betterlockscreen -l blur"
 
 appLauncher :: String
 appLauncher = "rofi -modi drun,ssh,window -show drun -show-icons"
