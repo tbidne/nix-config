@@ -21,7 +21,7 @@ in
 
       # shell-run
       # legend defined in shell-run.nix
-      srun = "shell-run -ck -fdefault -y detect";
+      srun = "shell-run -ck -fd";
     };
     bashrcExtra = ''
       function color_my_prompt {
