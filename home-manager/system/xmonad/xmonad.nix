@@ -15,14 +15,14 @@ in
     "Xcursor.size" = 256;
   };
 
+  gtk.cursorTheme = {
+    package = pkgs.vanilla-dmz;
+    name = "Vanilla-DMZ-AA";
+    size = 256;
+  };
+
   xsession = {
     enable = true;
-
-    pointerCursor = {
-      package = pkgs.vanilla-dmz;
-      name = "Vanilla-DMZ-AA";
-      size = 256;
-    };
 
     windowManager.xmonad = {
       enable = true;

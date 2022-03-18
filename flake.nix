@@ -8,12 +8,10 @@
     # It appears that once again we have a bug. This time, suspend is not
     # going into low power mode, so the laptop runs out of battery much quicker
     # than it should.
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs?rev=689b76bcf36055afdeb2e9852f5ecdd2bf483f87";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # utils
-    #home-manager.url = "github:nix-community/home-manager/master";
-    home-manager.url = "github:nix-community/home-manager?rev=acf824c9ed70f623b424c2ca41d0f6821014c67c";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
     flake-utils.url = "github:numtide/flake-utils";
