@@ -36,8 +36,26 @@ in
       }
       color_my_prompt
 
+      # runs nix-hs-tools where first arg is tool and the rest are args
       function hs() {
         nix run github:tbidne/nix-hs-tools/0.1.0.0#$1 -- ''${@:2}
+      }
+
+      # tries param command until it succeeds
+      function retry() {
+        success=0
+        count=1
+        while [[ $success == 0 ]]; do
+          $1
+          if [[ $? == 0 ]]; then
+            echo "'$1' succeeded on try $count"
+            success=1
+          else
+            echo "'$1' failed on try $count"
+            sleep 1
+          fi
+          count=$((count + 1))
+        done
       }
 
       source ~/.git-prompt.sh
