@@ -14,9 +14,10 @@
       enable = true;
       layout = "us";
 
-      # As of 2021 05 02, this is only helpful for making the login screen
-      # larger. It doesn't appear necessary for anything else.
-      dpi = 314;
+      # This is being set in home-manager/system/xmonad/xmonad.nix, and
+      # currently it does not appear to do anything else. Leaving this
+      # as a comment in case we want it in the future.
+      #dpi = 314;
 
       windowManager = {
         xmonad.enable = true;
@@ -55,6 +56,10 @@
       };
       desktopManager.xterm.enable = false;
     };
+  };
+
+  programs.dconf = {
+    enable = true;
   };
 
   systemd.services.upower.enable = true;

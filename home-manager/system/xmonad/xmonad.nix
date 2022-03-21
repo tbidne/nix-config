@@ -4,6 +4,8 @@ let
   compiler = "ghc8107";
 in
 {
+  # For whatever reason, there is a regression that the cursor on the main
+  # desktop shows an ugly X.
   xresources.properties = {
     "Xft.dpi" = 314;
     "Xft.autohint" = 0;
@@ -15,10 +17,13 @@ in
     "Xcursor.size" = 256;
   };
 
-  gtk.cursorTheme = {
-    package = pkgs.vanilla-dmz;
-    name = "Vanilla-DMZ-AA";
-    size = 256;
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ-AA";
+      size = 256;
+    };
   };
 
   xsession = {
