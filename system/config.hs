@@ -85,24 +85,6 @@ mkDbusClient = do
 
 type KeySet = [((KeyMask, KeySym), NamedAction)]
 
-type AppName = String
-
-type AppCommand = String
-
-data App
-  = ClassApp AppName AppCommand
-  | TitleApp AppName AppCommand
-  | NameApp AppName AppCommand
-  deriving (Show)
-
-getNameCommand :: App -> (AppName, AppCommand)
-getNameCommand (ClassApp n c) = (n, c)
-getNameCommand (TitleApp n c) = (n, c)
-getNameCommand (NameApp n c) = (n, c)
-
-getAppCommand :: App -> AppCommand
-getAppCommand = snd . getNameCommand
-
 myModMask :: KeyMask
 myModMask = X.mod4Mask -- Use Super instead of Alt
 
@@ -123,10 +105,10 @@ keybindings = XNamedActions.addDescrKeys' ((myModMask, X.xK_F1), showKeybindings
 showKeybindings :: [((KeyMask, KeySym), NamedAction)] -> NamedAction
 showKeybindings x =
   XNamedActions.addName "Show Keybindings" . X.io $
-    E.bracket (XRun.spawnPipe $ getAppCommand zenity) GHC.IO.hClose (\h -> GHC.IO.hPutStr h (unlines $ XNamedActions.showKm x))
+    E.bracket (XRun.spawnPipe $ snd zenity) GHC.IO.hClose (\h -> GHC.IO.hPutStr h (unlines $ XNamedActions.showKm x))
 
-zenity :: App
-zenity = ClassApp "Zenity" "zenity --text-info --font=terminus"
+zenity :: (String, String)
+zenity = ("Zenity", "zenity --text-info --font=terminus")
 
 myKeys :: XConfig l -> [((X.KeyMask, X.KeySym), XNamedActions.NamedAction)]
 myKeys conf@XConfig {X.modMask = modm} =

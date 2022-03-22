@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
-{
+let
+  compiler = "ghc8107";
+in {
   services = {
     gnome.gnome-keyring.enable = true;
     upower.enable = true;
@@ -20,14 +22,21 @@
       #dpi = 314;
 
       windowManager = {
-        xmonad.enable = true;
-        xmonad.enableContribAndExtras = true;
-        xmonad.extraPackages = hpkgs: [
-          hpkgs.X11
-          hpkgs.xmonad
-          hpkgs.xmonad-contrib
-          hpkgs.xmonad-extras
-        ];
+        xmonad = {
+          enable = true;
+          enableContribAndExtras = true;
+          extraPackages = ps: [
+            ps.dbus
+            ps.monad-logger
+            ps.X11
+            ps.xmonad
+            ps.xmonad-contrib
+            ps.xmonad-extras
+            ps.xmonad-wallpaper
+          ];
+          haskellPackages = pkgs.haskell.packages.${compiler};
+          config = ./config.hs;
+        };
       };
 
       displayManager = {
