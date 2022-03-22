@@ -56,7 +56,12 @@
           esac
       }
 
-      API_KEY="$OPEN_WEATHER_API_KEY"
+      #API_KEY="$OPEN_WEATHER_API_KEY"
+
+      # Until we figure out something better, read the API key in imperatively
+      # like so.
+      API_KEY=`cat ~/Secrets/open_weather_api_key.txt 2>/dev/null` || true
+
       # Wellington
       CITY="2179537"
       UNITS="metric"

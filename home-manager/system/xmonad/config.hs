@@ -281,10 +281,10 @@ brightnessKeySet =
 -- LAYOUT --
 
 mainWs :: WorkspaceId
-mainWs = "main"
+mainWs = "1"
 
 browserWs :: WorkspaceId
-browserWs = "bwsr"
+browserWs = "2"
 
 myWorkspaces :: [WorkspaceId]
 myWorkspaces =
