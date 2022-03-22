@@ -4,10 +4,6 @@
   inputs = {
     # nixpkgs
     my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-exts";
-
-    # It appears that once again we have a bug. This time, suspend is not
-    # going into low power mode, so the laptop runs out of battery much quicker
-    # than it should.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # utils
