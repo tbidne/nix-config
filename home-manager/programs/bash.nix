@@ -46,12 +46,12 @@ in
         success=0
         count=1
         while [[ $success == 0 ]]; do
-          $1
+          $@
           if [[ $? == 0 ]]; then
-            echo "'$1' succeeded on try $count"
+            echo "'$@' succeeded on try $count"
             success=1
           else
-            echo "'$1' failed on try $count"
+            echo "'$@' failed on try $count"
             sleep 1
           fi
           count=$((count + 1))
