@@ -17,7 +17,6 @@ import Control.Exception qualified as E
 import DBus qualified
 import DBus.Client (Client)
 import DBus.Client qualified as DClient
-import Data.Word (Word32)
 import GHC.IO.Handle qualified as GHC.IO
 import Graphics.X11.ExtraTypes.XF86 qualified as X11
 import System.Exit qualified as Sys
@@ -171,8 +170,8 @@ windowKeySet modm =
       key "Incr  abs size" (modm .|. X.shiftMask, X.xK_s) $ X.withFocused (XFloatKeys.keysAbsResizeWindow (10, 10) (1024, 752))
     ]
   where
-    neg10 :: Word32
-    neg10 = 4294967286
+    neg10 :: Int
+    neg10 = -10
 
 workspacesKeySet :: KeyMask -> KeySet
 workspacesKeySet modm =

@@ -1,8 +1,19 @@
 { pkgs, ... }:
 
 let
-  compiler = "ghc8107";
-in {
+  compiler = "ghc921";
+  xmonad-packages = pkgs.haskell.packages.${compiler}.override (old: {
+    overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
+      (final: prev: {
+        dbus = prev.dbus_1_2_23;
+        xmonad = prev.xmonad_0_17_0;
+        xmonad-contrib = prev.xmonad-contrib_0_17_0;
+        xmonad-extras = prev.xmonad-extras_0_17_0;
+        xmonad-wallpaper = pkgs.haskell.lib.doJailbreak prev.xmonad-wallpaper;
+      });
+  });
+in
+{
   services = {
     gnome.gnome-keyring.enable = true;
     upower.enable = true;
@@ -15,11 +26,6 @@ in {
     xserver = {
       enable = true;
       layout = "us";
-
-      # This is being set in home-manager/system/xmonad/xmonad.nix, and
-      # currently it does not appear to do anything else. Leaving this
-      # as a comment in case we want it in the future.
-      #dpi = 314;
 
       windowManager = {
         xmonad = {
@@ -34,7 +40,7 @@ in {
             ps.xmonad-extras
             ps.xmonad-wallpaper
           ];
-          haskellPackages = pkgs.haskell.packages.${compiler};
+          haskellPackages = xmonad-packages;
           config = ./config.hs;
         };
       };
