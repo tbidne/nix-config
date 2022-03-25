@@ -13,10 +13,12 @@
     # class should be.
     opacityRule = [
       "100:class_g *= 'Chromium'"
-      "100:class_g *= 'Firefox'"
+      "100:name    *= 'Mozilla Firefox'"
+      "100:name    *= 'Thunderbird'"
       "100:name    *= 'Google Chrome'"
       "100:name    *= 'GNU Image Manipulation Program'"
       "100:name    *= 'LibreOffice'"
+      "100:class_g *= 'VSCodium'"
       "75:class_g  *= 'kitty'"
     ];
     shadow = true;
