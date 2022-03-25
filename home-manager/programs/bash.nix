@@ -41,6 +41,11 @@ in
         nix run github:tbidne/nix-hs-tools/0.1.0.0#$1 -- ''${@:2}
       }
 
+      # reload ui
+      function rui() {
+        sudo systemctl restart display-manager
+      }
+
       # tries param command until it succeeds
       function retry() {
         success=0
