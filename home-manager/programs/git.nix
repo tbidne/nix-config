@@ -32,6 +32,9 @@
       dfc = "diff --cached";
       dft = "difftool";
       dftc = "difftool --cached";
+
+      log-del-str = "!f() { git log -S \"$1\"; }; f";
+      log-del-file = "!f() { git log --diff-filter=D -- \"$1\"; }; f";
     };
   };
 }

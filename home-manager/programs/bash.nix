@@ -63,6 +63,17 @@ in
         done
       }
 
+      # force pushes all changes, copies the new git revision into the clipboard
+      function git-yolo() {
+        git add -A && \
+          git commit --amend --no-edit && \
+          git push --force && \
+          git log \
+            | head -n 1 \
+            | cut -c 8-47 \
+            | xclip -selection clipboard
+      }
+
       source ~/.git-prompt.sh
       source ~/.bash_profile.private
     '';
