@@ -211,9 +211,9 @@ systemKeySet modm =
 
 startHook :: X ()
 startHook = do
-  XSpawnOn.spawnOn mainWs "kitty"
-  XSpawnOn.spawnOn browserWs "firefox"
-  XSpawnOn.spawnOn browserWs "thunderbird"
+  XSpawnOn.spawnOn "1" "kitty"
+  XSpawnOn.spawnOn "2" "firefox"
+  XSpawnOn.spawnOn "2" "thunderbird"
 
 startup :: IO ()
 startup =
@@ -261,16 +261,10 @@ brightnessKeySet =
 
 -- LAYOUT --
 
-mainWs :: WorkspaceId
-mainWs = "1"
-
-browserWs :: WorkspaceId
-browserWs = "2"
-
 myWorkspaces :: [WorkspaceId]
 myWorkspaces =
-  [ mainWs,
-    browserWs,
+  [ "1",
+    "2",
     "3",
     "4",
     "5",
@@ -304,9 +298,9 @@ myLayout =
     -- Percent of screen to increment by when resizing panes
     delta = 3 / 100
 
-    fullLayouts = XPerWorkspace.onWorkspaces [browserWs] full
+    fullLayouts = XPerWorkspace.onWorkspaces ["2"] full
 
-    mainLayout = XPerWorkspace.onWorkspace mainWs dev
+    mainLayout = XPerWorkspace.onWorkspace "1" dev
 
     -- Fullscreen
     fullScreenToggle = XMultiToggle.mkToggle (XMultiToggle.single NBFULL)
