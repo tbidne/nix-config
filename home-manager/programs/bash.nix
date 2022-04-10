@@ -42,7 +42,7 @@ in
       }
 
       # reload ui
-      function rui() {
+      function reload-ui() {
         sudo systemctl restart display-manager
       }
 
