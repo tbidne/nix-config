@@ -18,7 +18,7 @@
 
     # my repos
     shell-run-src.url = "github:tbidne/shell-run/main";
-    navi-src.url = "github:tbidne/navi/main";
+    navi-src.url = "github:tbidne/navi/pythia-update";
   };
 
   outputs =
