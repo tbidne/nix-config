@@ -16,7 +16,7 @@
 
       # misc
       nix-revw-hd=nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"
-      nw-comparison=PYTHONPATH=. python application/db_scripts/load_market_comparison.p
+      nw-comparison=PYTHONPATH=. python application/db_scripts/load_market_comparison.py
     '';
   };
 }
