@@ -46,14 +46,13 @@ import XMonad.Util.NamedActions (NamedAction, (^++^))
 import XMonad.Util.NamedActions qualified as XNamedActions
 import XMonad.Util.Run qualified as XRun
 import XMonad.Util.WorkspaceCompare qualified as XWorkspaceCompare
-import XMonad.Wallpaper qualified as XWallpaper
 
 main :: IO ()
 main = mkDbusClient >>= withDBus
 
 withDBus :: Client -> IO ()
 withDBus dbus = do
-  XWallpaper.setRandomWallpaper ["$HOME/Pictures/wallpaper/current"]
+  setWallpaper
   let config =
         keybindings $
           X.def
@@ -231,6 +230,12 @@ startDeadd = X.spawn "deadd-notification-center"
 
 startNavi :: IO ()
 startNavi = X.spawn "navi"
+
+setWallpaper :: IO ()
+setWallpaper =
+  X.spawn $ "feh --bg-scale " <> wpPath
+  where
+    wpPath = "$HOME/Pictures/wallpaper/current/flowers_dark_pink.jpg"
 
 audioKeySet :: KeySet
 audioKeySet =

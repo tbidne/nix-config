@@ -1,15 +1,11 @@
 { pkgs, ... }:
 
 let
-  compiler = "ghc921";
+  compiler = "ghc922";
   xmonad-packages = pkgs.haskell.packages.${compiler}.override (old: {
     overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
       (final: prev: {
-        dbus = prev.dbus_1_2_23;
-        xmonad = prev.xmonad_0_17_0;
-        xmonad-contrib = prev.xmonad-contrib_0_17_0;
-        xmonad-extras = prev.xmonad-extras_0_17_0;
-        xmonad-wallpaper = pkgs.haskell.lib.doJailbreak prev.xmonad-wallpaper;
+        dbus = prev.dbus_1_2_24;
       });
   });
 in
@@ -38,7 +34,6 @@ in
             ps.xmonad
             ps.xmonad-contrib
             ps.xmonad-extras
-            ps.xmonad-wallpaper
           ];
           haskellPackages = xmonad-packages;
           config = ./config.hs;
