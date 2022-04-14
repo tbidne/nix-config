@@ -17,8 +17,9 @@
     impact.url = "github:tbidne/impact/main";
 
     # my repos
+    navi-src.url = "github:tbidne/navi/main";
+    pythia-src.url = "github:tbidne/pythia/main";
     shell-run-src.url = "github:tbidne/shell-run/main";
-    navi-src.url = "github:tbidne/navi/pythia-update";
   };
 
   outputs =
@@ -29,6 +30,7 @@
     , navi-src
     , nixpkgs
     , nur
+    , pythia-src
     , ringbearer
     , self
     , shell-run-src
@@ -44,8 +46,9 @@
         system = system;
         config = { allowUnfree = true; };
       };
-      shell-run = shell-run-src.defaultPackage.${system};
+      pythia = pythia-src.defaultPackage.${system};
       navi = navi-src.defaultPackage.${system};
+      shell-run = shell-run-src.defaultPackage.${system};
     in
     {
       nixosConfigurations = {
@@ -57,7 +60,14 @@
               {
                 imports = [
                   (import ./configuration.nix {
-                    inherit pkgs system ringbearer impact shell-run navi;
+                    inherit
+                      impact
+                      navi
+                      pkgs
+                      pythia
+                      ringbearer
+                      shell-run
+                      system;
                   })
 
                   home-manager.nixosModules.home-manager

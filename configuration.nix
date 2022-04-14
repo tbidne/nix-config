@@ -2,7 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, system, ringbearer, impact, shell-run, navi, ... }:
+{ impact
+, navi
+, pkgs
+, pythia
+, ringbearer
+, shell-run
+, system
+, ...
+}:
 
 {
   nix = {
@@ -20,7 +28,14 @@
 
       # general config
       (import ./config/default.nix {
-        inherit pkgs system ringbearer impact shell-run navi;
+        inherit
+          impact
+          navi
+          pkgs
+          pythia
+          ringbearer
+          shell-run
+          system;
       })
     ];
 

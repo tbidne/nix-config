@@ -1,4 +1,4 @@
-{ pkgs, shell-run, navi, ... }:
+{ navi, pkgs, pythia, shell-run, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -44,8 +44,9 @@
     vscodium
 
     # my projects
-    shell-run
     navi
+    pythia
+    shell-run
 
     # network utils
     traceroute
