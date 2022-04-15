@@ -65,7 +65,6 @@ withDBus dbus = do
               layoutHook = myLayout,
               logHook = myPolybarLogHook dbus,
               manageHook = XSpawnOn.manageSpawn <> manageHook X.def,
-              startupHook = startHook,
               workspaces = myWorkspaces
             }
   _ <- startup
@@ -207,12 +206,6 @@ systemKeySet modm =
     [ key "Logout (quit XMonad)" (modm .|. X.shiftMask, X.xK_q) $ X.io Sys.exitSuccess,
       key "Capture entire screen" (modm, X.xK_Print) $ X.spawn "flameshot full -p ~/Pictures/flameshot/"
     ]
-
-startHook :: X ()
-startHook = do
-  XSpawnOn.spawnOn "1" "kitty"
-  XSpawnOn.spawnOn "2" "firefox"
-  XSpawnOn.spawnOn "2" "thunderbird"
 
 startup :: IO ()
 startup =
