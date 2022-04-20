@@ -13,6 +13,7 @@
     # class should be.
     opacityRule = [
       "100:class_g *= 'Chromium'"
+      "100:class_g *= 'Brave'"
       "100:name    *= 'Mozilla Firefox'"
       "100:name    *= 'Thunderbird'"
       "100:name    *= 'Google Chrome'"

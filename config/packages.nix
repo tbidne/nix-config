@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # core
+    brave
     chromium
     conky
     dunst
