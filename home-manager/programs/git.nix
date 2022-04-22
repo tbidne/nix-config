@@ -33,7 +33,11 @@
       dft = "difftool";
       dftc = "difftool --cached";
 
+      # e.g. git log-date "2021-07-27 12:00" "master"
+      log-date = "!f() { git rev-list -n 1 --before=\"$1\" $2; }; f";
+      # e.g. git log-del-str "some deleted string"
       log-del-str = "!f() { git log -S \"$1\"; }; f";
+      # e.g. git log-del-file "deleted-file"
       log-del-file = "!f() { git log --diff-filter=D -- \"$1\"; }; f";
     };
   };
