@@ -74,6 +74,11 @@ in
             | xclip -selection clipboard
       }
 
+      # alias for ghcid w/ cabal
+      function ghcidc() {
+        ghcid --command "cabal repl $@"
+      }
+
       source ~/.git-prompt.sh
       source ~/.bash_profile.private
     '';
