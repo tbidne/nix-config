@@ -13,6 +13,9 @@
       "set whitespace with :set list
       :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
 
+      "line numbers
+      :set number
+
       "use system keyboard
       set clipboard+=unnamedplus
 
