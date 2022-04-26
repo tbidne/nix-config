@@ -23,9 +23,9 @@
     # social
     discord
     element-desktop
+    matterhorn
     mattermost-desktop
     slack
-    teams
     zoom-us
 
     # dev
