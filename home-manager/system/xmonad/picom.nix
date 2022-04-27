@@ -19,7 +19,6 @@
       "100:name    *= 'Google Chrome'"
       "100:name    *= 'GNU Image Manipulation Program'"
       "100:name    *= 'LibreOffice'"
-      "100:class_g *= 'VSCodium'"
       "75:class_g  *= 'kitty'"
     ];
     shadow = true;
@@ -27,14 +26,10 @@
 
     blur = true;
     experimentalBackends = true;
-    # dual_kawase is probably the blur method we want, but it's not in
-    # picom 8.2 (current version). Once we have that we should swap it for
-    # "box".
     extraOptions = ''
       blur =
-        { method = "box";
-          size = 10;
-          deviation = 5.0;
+        { method = "dual_kawase";
+          strength = 7;
         };
     '';
   };
