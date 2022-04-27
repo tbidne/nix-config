@@ -1,7 +1,12 @@
-{ navi, pkgs, pythia, shell-run, ... }:
+{ inputs }:
 
+let
+  pythia = inputs.pythia-src.defaultPackage.${inputs.system};
+  navi = inputs.navi-src.defaultPackage.${inputs.system};
+  shell-run = inputs.shell-run-src.defaultPackage.${inputs.system};
+in
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with inputs.pkgs; [
     # core
     brave
     chromium

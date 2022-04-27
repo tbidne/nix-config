@@ -2,20 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ impact
-, navi
-, pkgs
-, pythia
-, ringbearer
-, shell-run
-, system
-, xmonad-packages
-, ...
-}:
+{ inputs }:
 
 {
   nix = {
-    package = pkgs.nixFlakes;
+    package = inputs.pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -26,23 +17,10 @@
       # system
       ./hardware-configuration.nix
 
-      (import ./system/default.nix {
-        inherit
-          pkgs
-          xmonad-packages;
-      })
+      (import ./system/default.nix { inherit inputs; })
 
       # general config
-      (import ./config/default.nix {
-        inherit
-          impact
-          navi
-          pkgs
-          pythia
-          ringbearer
-          shell-run
-          system;
-      })
+      (import ./config/default.nix { inherit inputs; })
     ];
 
   nixpkgs.config.allowUnfree = true;

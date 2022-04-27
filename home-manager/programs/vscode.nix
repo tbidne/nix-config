@@ -1,4 +1,4 @@
-{ pkgs, my-pkgs, ... }:
+{ inputs }:
 
 let
   haskellWords = [
@@ -25,29 +25,33 @@ let
   miscWords = [
     "supremum"
   ];
+  my-pkgs = import inputs.my-nixpkgs {
+    system = inputs.system;
+    config = { allowUnfree = true; };
+  };
 in
 {
   programs.vscode = {
     enable = true;
 
-    package = pkgs.vscodium;
+    package = inputs.pkgs.vscodium;
 
     extensions = [
       my-pkgs.vscode-extensions.banacorn.agda-mode
       my-pkgs.vscode-extensions.enkia.tokyo-night
       my-pkgs.vscode-extensions.meraymond.idris-vscode
-      pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
-      pkgs.vscode-extensions.bbenoist.nix
-      pkgs.vscode-extensions.dracula-theme.theme-dracula
-      pkgs.vscode-extensions.editorconfig.editorconfig
-      pkgs.vscode-extensions.haskell.haskell
-      pkgs.vscode-extensions.james-yu.latex-workshop
-      pkgs.vscode-extensions.jnoortheen.nix-ide
-      pkgs.vscode-extensions.justusadam.language-haskell
-      pkgs.vscode-extensions.mechatroner.rainbow-csv
-      pkgs.vscode-extensions.ms-python.python
-      pkgs.vscode-extensions.octref.vetur
-      pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
+      inputs.pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
+      inputs.pkgs.vscode-extensions.bbenoist.nix
+      inputs.pkgs.vscode-extensions.dracula-theme.theme-dracula
+      inputs.pkgs.vscode-extensions.editorconfig.editorconfig
+      inputs.pkgs.vscode-extensions.haskell.haskell
+      inputs.pkgs.vscode-extensions.james-yu.latex-workshop
+      inputs.pkgs.vscode-extensions.jnoortheen.nix-ide
+      inputs.pkgs.vscode-extensions.justusadam.language-haskell
+      inputs.pkgs.vscode-extensions.mechatroner.rainbow-csv
+      inputs.pkgs.vscode-extensions.ms-python.python
+      inputs.pkgs.vscode-extensions.octref.vetur
+      inputs.pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
     ];
     userSettings = {
       "breadcrumbs.enabled" = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs }:
 
 {
   imports = [
@@ -24,7 +24,7 @@
   gtk = {
     enable = true;
     cursorTheme = {
-      package = pkgs.vanilla-dmz;
+      package = inputs.pkgs.vanilla-dmz;
       name = "Vanilla-DMZ-AA";
     };
   };

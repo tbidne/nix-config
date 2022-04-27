@@ -1,7 +1,7 @@
-{ pkgs, my-pkgs, ... }:
+{ inputs }:
 {
   imports = [
-    (import ./programs/default.nix { inherit pkgs my-pkgs; })
-    (import ./system/default.nix { inherit pkgs; })
+    (import ./programs/default.nix { inherit inputs; })
+    (import ./system/default.nix { inherit inputs; })
   ];
 }

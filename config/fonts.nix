@@ -1,15 +1,15 @@
-{ pkgs, system, ringbearer, impact, ... }:
+{ inputs }:
 
 {
-  fonts.fonts = with pkgs;
+  fonts.fonts = with inputs.pkgs;
     [
       aileron
       carlito
       emacs-all-the-icons-fonts
       font-awesome
       hasklig
-      impact.defaultPackage.${system}
-      ringbearer.defaultPackage.${system}
+      inputs.impact.defaultPackage.${inputs.system}
+      inputs.ringbearer.defaultPackage.${inputs.system}
       siji
       unifont
       vistafonts

@@ -34,25 +34,15 @@
     , ringbearer
     , self
     , shell-run-src
-    }:
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-        system = system;
-        config = { allowUnfree = true; };
-
-      };
-      my-pkgs = import my-nixpkgs {
-        system = system;
+        inherit system;
         config = { allowUnfree = true; };
       };
-      pythia = pythia-src.defaultPackage.${system};
-      navi = navi-src.defaultPackage.${system};
-      shell-run = shell-run-src.defaultPackage.${system};
-
       # xmonad
-      ghcCompiler = pkgs.haskell.packages."ghc922";
-      xmonad-packages = ghcCompiler.override (old: {
+      xmonad-ghc = pkgs.haskell.packages."ghc922".override (old: {
         overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
           (final: prev: {
             dbus = prev.dbus_1_2_24;
@@ -62,22 +52,26 @@
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          system = system;
+          inherit system;
           modules = [
             { nixpkgs.overlays = [ nur.overlay ]; }
             ({ pkgs, ... }:
+              let
+                inputs' = inputs // {
+                  inherit
+                    pkgs
+                    my-nixpkgs
+                    navi-src
+                    pythia-src
+                    shell-run-src
+                    system
+                    xmonad-ghc;
+                };
+              in
               {
                 imports = [
                   (import ./configuration.nix {
-                    inherit
-                      impact
-                      navi
-                      pkgs
-                      pythia
-                      ringbearer
-                      shell-run
-                      system
-                      xmonad-packages;
+                    inputs = inputs';
                   })
 
                   home-manager.nixosModules.home-manager
@@ -85,7 +79,7 @@
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users.tommy = (import ./home-manager/home.nix {
-                      inherit pkgs my-pkgs;
+                      inputs = inputs';
                     });
                   })
                 ];
@@ -96,7 +90,7 @@
       };
       devShell."${system}" = pkgs.mkShell {
         buildInputs = [
-          (xmonad-packages.ghcWithPackages (ps: with ps; [
+          (xmonad-ghc.ghcWithPackages (ps: with ps; [
             async
             dbus
             haskell-language-server

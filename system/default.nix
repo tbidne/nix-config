@@ -1,4 +1,4 @@
-{ pkgs, xmonad-packages, ... }:
+{ inputs }:
 
 {
   imports =
@@ -7,8 +7,7 @@
       ./boot.nix
       ./mouse.nix
       ./network.nix
-      #./plasma.nix
       ./swap.nix
-      (import ./xmonad.nix { inherit pkgs xmonad-packages; })
+      (import ./xmonad.nix { inherit inputs; })
     ];
 }

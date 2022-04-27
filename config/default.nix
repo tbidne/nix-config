@@ -1,18 +1,11 @@
-{ impact
-, navi
-, pkgs
-, pythia
-, ringbearer
-, shell-run
-, system
-}:
+{ inputs }:
 {
   imports =
     [
       ./bluetooth.nix
       ./cache.nix
-      (import ./fonts.nix { inherit impact pkgs ringbearer system; })
-      (import ./packages.nix { inherit navi pkgs pythia shell-run; })
+      (import ./fonts.nix { inherit inputs; })
+      (import ./packages.nix { inherit inputs; })
       ./postgresql.nix
       ./redshift.nix
       ./sys.nix

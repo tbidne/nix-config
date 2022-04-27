@@ -1,7 +1,4 @@
-{ pkgs
-, xmonad-packages
-, ...
-}:
+{ inputs }:
 
 {
   services = {
@@ -10,7 +7,7 @@
 
     dbus = {
       enable = true;
-      packages = [ pkgs.dconf ];
+      packages = [ inputs.pkgs.dconf ];
     };
 
     xserver = {
@@ -30,7 +27,7 @@
             ps.xmonad-contrib
             ps.xmonad-extras
           ];
-          haskellPackages = xmonad-packages;
+          haskellPackages = inputs.xmonad-ghc;
           config = ./config.hs;
         };
       };
@@ -69,7 +66,7 @@
 
   systemd.services.upower.enable = true;
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with inputs.pkgs; [
     betterlockscreen # lock screen
     brightnessctl # control backlight
     deadd-notification-center #notif server
