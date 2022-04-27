@@ -22,6 +22,7 @@
           enable = true;
           enableContribAndExtras = true;
           extraPackages = ps: [
+            ps.async
             ps.dbus
             ps.monad-logger
             ps.X11

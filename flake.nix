@@ -97,6 +97,7 @@
       devShell."${system}" = pkgs.mkShell {
         buildInputs = [
           (xmonad-packages.ghcWithPackages (ps: with ps; [
+            async
             dbus
             haskell-language-server
             ghcid

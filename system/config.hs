@@ -1,4 +1,6 @@
+{-# LANGUAGE ApplicativeDo #-}
 {-# LANGUAGE ImportQualifiedPost #-}
+{-# LANGUAGE NumericUnderscores #-}
 {-# LANGUAGE PartialTypeSignatures #-}
 {-# OPTIONS_GHC -Wall #-}
 {-# OPTIONS_GHC -Wcompat #-}
@@ -13,7 +15,10 @@
 module Main (main) where
 
 import Codec.Binary.UTF8.String qualified as Utf8
+import Control.Concurrent qualified as CC
+import Control.Concurrent.Async qualified as Async
 import Control.Exception qualified as E
+import Control.Monad (void)
 import DBus qualified
 import DBus.Client (Client)
 import DBus.Client qualified as DClient
@@ -67,7 +72,7 @@ withDBus dbus = do
               manageHook = XSpawnOn.manageSpawn <> manageHook X.def,
               workspaces = myWorkspaces
             }
-  _ <- startup
+  startup
   X.xmonad $
     XManageDocks.docks $
       XEwmhDesktops.ewmh config
@@ -211,12 +216,21 @@ startup :: IO ()
 startup =
   startPolybar
     *> startDeadd
+    -- delay between deadd and navi, otherwise navi may not properly connect.
+    *> CC.threadDelay 2_000_000
     *> startNavi
 
 startPolybar :: IO ()
-startPolybar =
-  X.spawn "polybar top &"
-    *> X.spawn "polybar bottom &"
+startPolybar = void $
+  Async.async $ do
+    -- polybar top needs to start _after_ xmonad to properly interface with
+    -- ewmh. This is a problem because apparently the xmonad command needs to
+    -- be the _last_ command in main. Naively putting startup after does not
+    -- seem to run any of our apps (i.e. deadd, navi, polybar). Thus we run
+    -- polybar asynchronously with a delay.
+    CC.threadDelay 5_000_000
+    X.spawn "polybar top"
+    X.spawn "polybar bottom"
 
 startDeadd :: IO ()
 startDeadd = X.spawn "deadd-notification-center"
