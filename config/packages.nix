@@ -36,6 +36,7 @@ in
     emacs
     dbeaver
     git
+    gnumake
     insomnia
     lua
     neovim
