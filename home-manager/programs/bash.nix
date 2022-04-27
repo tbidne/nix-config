@@ -16,8 +16,10 @@ in
       icat = "kitty +kitten icat";
 
       # misc
-      pwdc = "pwd | xclip -selection clipboard";
       nap = "systemctl suspend";
+      nv = "nvim .";
+      pwdc = "pwd | xclip -selection clipboard";
+      reload-ui = "sudo systemctl restart display-manager";
 
       # shell-run
       # legend defined in shell-run.nix
@@ -39,11 +41,6 @@ in
       # runs nix-hs-tools where first arg is tool and the rest are args
       function hs() {
         nix run github:tbidne/nix-hs-tools/0.1.0.0#$1 -- ''${@:2}
-      }
-
-      # reload ui
-      function reload-ui() {
-        sudo systemctl restart display-manager
       }
 
       # tries param command until it succeeds
