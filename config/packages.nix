@@ -6,7 +6,6 @@
     brave
     chromium
     conky
-    dunst
     firefox
     gimp
     google-chrome
