@@ -24,10 +24,12 @@
       [[battery-percentage.alert]]
       percent = 10
       urgency = "critical"
+      timeout = "never"
 
       [[battery-percentage.alert]]
       percent = 5
       urgency = "critical"
+      timeout = "never"
 
       [[net-interface]]
       poll-interval = "30"
