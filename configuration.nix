@@ -9,6 +9,7 @@
 , ringbearer
 , shell-run
 , system
+, xmonad-packages
 , ...
 }:
 
@@ -24,7 +25,12 @@
     [
       # system
       ./hardware-configuration.nix
-      ./system/default.nix
+
+      (import ./system/default.nix {
+        inherit
+          pkgs
+          xmonad-packages;
+      })
 
       # general config
       (import ./config/default.nix {

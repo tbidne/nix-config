@@ -1,3 +1,5 @@
+{ pkgs, xmonad-packages, ... }:
+
 {
   imports =
     [
@@ -7,6 +9,6 @@
       ./network.nix
       #./plasma.nix
       ./swap.nix
-      ./xmonad.nix
+      (import ./xmonad.nix { inherit pkgs xmonad-packages; })
     ];
 }

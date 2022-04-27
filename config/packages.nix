@@ -66,7 +66,6 @@
 
     # misc utils
     acpi
-    deadd-notification-center
     dig
     gnupg
     gotop

@@ -1,14 +1,8 @@
-{ pkgs, ... }:
+{ pkgs
+, xmonad-packages
+, ...
+}:
 
-let
-  compiler = "ghc922";
-  xmonad-packages = pkgs.haskell.packages.${compiler}.override (old: {
-    overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
-      (final: prev: {
-        dbus = prev.dbus_1_2_24;
-      });
-  });
-in
 {
   services = {
     gnome.gnome-keyring.enable = true;
@@ -77,6 +71,7 @@ in
   environment.systemPackages = with pkgs; [
     betterlockscreen # lock screen
     brightnessctl # control backlight
+    deadd-notification-center #notif server
     feh # setting the wallpaper
     flameshot # screenshot
     jq # openweathermap

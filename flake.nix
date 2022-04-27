@@ -49,6 +49,15 @@
       pythia = pythia-src.defaultPackage.${system};
       navi = navi-src.defaultPackage.${system};
       shell-run = shell-run-src.defaultPackage.${system};
+
+      # xmonad
+      ghcCompiler = pkgs.haskell.packages."ghc922";
+      xmonad-packages = ghcCompiler.override (old: {
+        overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
+          (final: prev: {
+            dbus = prev.dbus_1_2_24;
+          });
+      });
     in
     {
       nixosConfigurations = {
@@ -67,7 +76,8 @@
                       pythia
                       ringbearer
                       shell-run
-                      system;
+                      system
+                      xmonad-packages;
                   })
 
                   home-manager.nixosModules.home-manager
@@ -84,6 +94,18 @@
           ];
         };
       };
-      devShell."${system}" = import ./shell.nix { inherit pkgs; };
+      devShell."${system}" = pkgs.mkShell {
+        buildInputs = [
+          (xmonad-packages.ghcWithPackages (ps: with ps; [
+            dbus
+            haskell-language-server
+            ghcid
+            X11
+            xmonad
+            xmonad-contrib
+            xmonad-utils
+          ]))
+        ];
+      };
     };
 }
