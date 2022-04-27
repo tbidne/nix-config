@@ -1,6 +1,6 @@
 {
   home.file = {
-    ".config/shell-run/legend.txt".text = ''
+    ".config/shell-run/shell-run.legend".text = ''
       # nixos-rebuild
       sys-test=sudo nixos-rebuild test --flake '.#nixos'
       sys-switch=sudo nixos-rebuild switch --flake '.#nixos'
