@@ -76,6 +76,13 @@ in
         ghcid --command "cabal repl $@"
       }
 
+      function ns() {
+        nix-shell $@
+      }
+      function nd() {
+        nix develop $@
+      }
+
       source ~/.git-prompt.sh
       source ~/.bash_profile.private
     '';
