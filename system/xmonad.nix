@@ -18,15 +18,7 @@
         xmonad = {
           enable = true;
           enableContribAndExtras = true;
-          extraPackages = ps: [
-            ps.async
-            ps.dbus
-            ps.monad-logger
-            ps.X11
-            ps.xmonad
-            ps.xmonad-contrib
-            ps.xmonad-extras
-          ];
+          extraPackages = inputs.xmonad-extra;
           haskellPackages = inputs.xmonad-ghc;
           config = ./config.hs;
         };

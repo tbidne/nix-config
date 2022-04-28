@@ -71,9 +71,12 @@ in
             | xclip -selection clipboard
       }
 
-      # alias for ghcid w/ cabal
-      function ghcidc() {
+      function cghcid() {
         ghcid --command "cabal repl $@"
+      }
+
+      function crepl() {
+        cabal repl $@
       }
 
       function ns() {

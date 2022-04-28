@@ -39,13 +39,20 @@
         inherit system;
         config = { allowUnfree = true; };
       };
-      # xmonad
-      xmonad-ghc = pkgs.haskell.packages."ghc922".override (old: {
+      xmonad-ghc = pkgs.haskell.packages.ghc922.override (old: {
         overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
           (final: prev: {
             dbus = prev.dbus_1_2_24;
           });
       });
+      xmonad-extra = ps: with ps; [
+        async
+        dbus
+        X11
+        xmonad
+        xmonad-contrib
+        xmonad-utils
+      ];
     in
     {
       nixosConfigurations = {
@@ -62,6 +69,7 @@
                     pythia-src
                     shell-run-src
                     system
+                    xmonad-extra
                     xmonad-ghc;
                 };
               in
@@ -85,19 +93,14 @@
           ];
         };
       };
-      devShell."${system}" = pkgs.mkShell {
-        buildInputs = [
-          (xmonad-ghc.ghcWithPackages (ps: with ps; [
-            async
-            dbus
-            haskell-language-server
-            ghcid
-            X11
-            xmonad
-            xmonad-contrib
-            xmonad-utils
-          ]))
-        ];
-      };
+      devShell."${system}" =
+        let hs-dev-tools = ps: [ ps.ghcid ps.haskell-language-server ];
+        in
+        pkgs.mkShell {
+          buildInputs = [
+            (xmonad-ghc.ghcWithPackages
+              (ps: hs-dev-tools ps ++ xmonad-extra ps))
+          ];
+        };
     };
 }
