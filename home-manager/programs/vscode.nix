@@ -25,10 +25,49 @@ let
   miscWords = [
     "supremum"
   ];
-  my-pkgs = import inputs.my-nixpkgs {
-    system = inputs.system;
-    config = { allowUnfree = true; };
+
+  buildVscodeExt = inputs.pkgs.vscode-utils.buildVscodeMarketplaceExtension;
+  licenses = inputs.pkgs.lib.licenses;
+
+  agda-mode = buildVscodeExt {
+    mktplcRef = {
+      name = "agda-mode";
+      publisher = "banacorn";
+      version = "0.3.7";
+      sha256 = "0hmldbyldr4h53g5ifrk5n5504yzhbq5hjh087id6jbjkp41gs9b";
+    };
+    meta = { license = licenses.mit; };
   };
+  idris-vscode = buildVscodeExt {
+    mktplcRef = {
+      publisher = "meraymond";
+      name = "idris-vscode";
+      version = "0.0.9";
+      sha256 = "16n8bi34alpyybm90h3nn1rdw6r6s1xdyx11dbggr6fwdps70mv9";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/meraymond.idris-vscode/changelog";
+      description = "Language support for Idris and Idris 2.";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=meraymond.idris-vscode";
+      homepage = "https://github.com/meraymond2/idris-vscode";
+      license = licenses.mit;
+    };
+  };
+  tokyo-night = buildVscodeExt {
+    mktplcRef = {
+      name = "tokyo-night";
+      publisher = "enkia";
+      version = "0.7.9";
+      sha256 = "1yci2krmmxz4w105c9mjzhv8r0wbpf3k603rz5p0syq1b7g9vsfv";
+    };
+    meta = { license = licenses.mit; };
+  };
+
+  externalExts = [
+    agda-mode
+    idris-vscode
+    tokyo-night
+  ];
 in
 {
   programs.vscode = {
@@ -37,9 +76,6 @@ in
     package = inputs.pkgs.vscodium;
 
     extensions = [
-      my-pkgs.vscode-extensions.banacorn.agda-mode
-      my-pkgs.vscode-extensions.enkia.tokyo-night
-      my-pkgs.vscode-extensions.meraymond.idris-vscode
       inputs.pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
       inputs.pkgs.vscode-extensions.bbenoist.nix
       inputs.pkgs.vscode-extensions.dracula-theme.theme-dracula
@@ -52,7 +88,7 @@ in
       inputs.pkgs.vscode-extensions.ms-python.python
       inputs.pkgs.vscode-extensions.octref.vetur
       inputs.pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
-    ];
+    ] ++ externalExts;
     userSettings = {
       "breadcrumbs.enabled" = true;
       "editor.fontLigatures" = true;

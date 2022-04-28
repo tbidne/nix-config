@@ -1,9 +1,9 @@
+
 {
   description = "My NixOS Config";
 
   inputs = {
     # nixpkgs
-    my-nixpkgs.url = "github:tbidne/nixpkgs/vscode-exts";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # utils
@@ -26,7 +26,6 @@
     { flake-utils
     , home-manager
     , impact
-    , my-nixpkgs
     , navi-src
     , nixpkgs
     , nur
@@ -60,7 +59,6 @@
                 inputs' = inputs // {
                   inherit
                     pkgs
-                    my-nixpkgs
                     navi-src
                     pythia-src
                     shell-run-src

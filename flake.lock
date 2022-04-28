@@ -486,22 +486,6 @@
         "type": "github"
       }
     },
-    "my-nixpkgs": {
-      "locked": {
-        "lastModified": 1649625424,
-        "narHash": "sha256-bwxODbs1diBRNdZNggmzKlzuycipJ9JhqkXCLQEARzw=",
-        "owner": "tbidne",
-        "repo": "nixpkgs",
-        "rev": "4c713d5db20b8df2f8300e02165b3ec2818fb17e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tbidne",
-        "ref": "vscode-exts",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "navi-src": {
       "inputs": {
         "algebra-simple-src": "algebra-simple-src",
@@ -933,7 +917,6 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impact": "impact",
-        "my-nixpkgs": "my-nixpkgs",
         "navi-src": "navi-src",
         "nixpkgs": "nixpkgs_12",
         "nur": "nur",
