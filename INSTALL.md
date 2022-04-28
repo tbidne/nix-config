@@ -153,7 +153,7 @@ and rebuild with `sudo nixos-rebuild switch`.
 
 First, back up `configuration.nix` and `hardware-configuration.nix` then clean out the `/etc/nixos` directory.
 
-In `/etc/nixos`, clone the repo: `git clone git@github.com:tbidne/nix-config.git .`. This requires an ssh key set up with github. Additionally, because this repo involves the private repo `tbidne/secrets`, the [README#Secrets](README.md#secrets) instructions are a prerequisite.
+In `/etc/nixos`, clone the repo: `git clone git@github.com:tbidne/nix-config.git .`. This requires an ssh key set up with github.
 
 Restore the original `hardware-configuration.nix` (thus overwriting the one from the repo), and change any other needed values. Typical changes include:
 
