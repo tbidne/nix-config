@@ -84,7 +84,6 @@ in
       }
 
       source ~/.git-prompt.sh
-      source ~/.bash_profile.private
     '';
     initExtra = ''
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
