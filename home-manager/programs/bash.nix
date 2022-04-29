@@ -86,6 +86,13 @@ in
         nix develop $@
       }
 
+      # find-replace
+      function fr() {
+        find . \
+          -type f -name '*' ! -path "./.*" ! -path "./dist-newstyle/*" \
+            | xargs sed -i "s/$1/$2/g"
+      }
+
       source ~/.git-prompt.sh
     '';
     initExtra = ''
