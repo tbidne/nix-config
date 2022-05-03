@@ -32,7 +32,7 @@
     , ringbearer
     , self
     , shell-run-src
-    }@inputs:
+    }@inputs':
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -62,12 +62,9 @@
             { nixpkgs.overlays = [ nur.overlay ]; }
             ({ pkgs, ... }:
               let
-                inputs' = inputs // {
+                inputs = inputs' // {
                   inherit
                     pkgs
-                    navi-src
-                    pythia-src
-                    shell-run-src
                     system
                     xmonad-extra
                     xmonad-ghc;
@@ -76,7 +73,7 @@
               {
                 imports = [
                   (import ./configuration.nix {
-                    inputs = inputs';
+                    inherit inputs;
                   })
 
                   home-manager.nixosModules.home-manager
@@ -84,7 +81,7 @@
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users.tommy = (import ./home-manager/home.nix {
-                      inputs = inputs';
+                      inherit inputs;
                     });
                   })
                 ];
