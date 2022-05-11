@@ -34,6 +34,8 @@
 (setq make-backup-files nil)
 ;; improve buffer ergonomics
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
+;; line numbers
+(global-display-line-numbers-mode 1)
 
 ;; Evil
 (evil-mode 1)

@@ -16,6 +16,7 @@ in
       icat = "kitty +kitten icat";
 
       # misc
+      es = "emacs . &";
       nap = "systemctl suspend";
       nv = "nvim .";
       pwdc = "pwd | xclip -selection clipboard";
