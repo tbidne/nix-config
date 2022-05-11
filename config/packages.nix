@@ -33,6 +33,7 @@ in
     zoom-us
 
     # dev
+    cachix
     emacs
     dbeaver
     git
