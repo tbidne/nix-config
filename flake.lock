@@ -730,11 +730,11 @@
         "smart-math-src": "smart-math-src_2"
       },
       "locked": {
-        "lastModified": 1652503911,
-        "narHash": "sha256-DpMcjrvkZhBC9wcKWKw9rcOcrbaRhzs5IwO7gBKCvQg=",
+        "lastModified": 1652577237,
+        "narHash": "sha256-1bC+G6KRiJx5VWNZPHaLhfwmE/sh0IW2tz3l22kM/lU=",
         "owner": "tbidne",
         "repo": "navi",
-        "rev": "d6e2a0ec1402d72c0f6aaea2729962ecbddf4308",
+        "rev": "9c6ec1dd117a257a34687fbe65fb7e6d47245937",
         "type": "github"
       },
       "original": {
