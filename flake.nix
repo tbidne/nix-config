@@ -9,7 +9,6 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
-    flake-utils.url = "github:numtide/flake-utils";
 
     # fonts
     ringbearer.url = "github:tbidne/ringbearer/main";
@@ -22,8 +21,7 @@
   };
 
   outputs =
-    { flake-utils
-    , home-manager
+    { home-manager
     , impact
     , navi-src
     , nixpkgs
