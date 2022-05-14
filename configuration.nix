@@ -10,6 +10,12 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+
+    # so I can configure binary caches without sudo
+    trustedUsers = [
+      "root"
+      "tommy"
+    ];
   };
 
   imports =
