@@ -351,11 +351,11 @@
         "nixpkgs": "nixpkgs_28"
       },
       "locked": {
-        "lastModified": 1652929261,
-        "narHash": "sha256-j5fe2DZNBCZlLdnJzfNbU5YAZlM8jV6qinvbLkw9VLs=",
+        "lastModified": 1653562352,
+        "narHash": "sha256-ny98RDjnxvnRP7FDINM5Xvv6APGTxtlZKmhqkOwK0RE=",
         "owner": "tbidne",
         "repo": "env-guard",
-        "rev": "89a68d033d0671239b5e5e4a31f4355c46d4b6d3",
+        "rev": "57c2be47346085a0bd48df129da578d44452904b",
         "type": "github"
       },
       "original": {
@@ -1518,16 +1518,16 @@
         "relative-time-src": "relative-time-src_2"
       },
       "locked": {
-        "lastModified": 1653432843,
-        "narHash": "sha256-yQoL9JmDJ6jzvkOjVQTFLJSUalYNr50wdnS3m3d83fQ=",
+        "lastModified": 1653704635,
+        "narHash": "sha256-RoNs1Yt/+PaWXXfj6l1ilTQ7W5bqy6WhHfzL5AjvSEk=",
         "owner": "tbidne",
         "repo": "shell-run",
-        "rev": "29c3d0d50d99a1c4f95a5f78793d1bac2f2bc54c",
+        "rev": "dcd82e128f23f28a5f31f77f1fd3ed9d86260ab2",
         "type": "github"
       },
       "original": {
         "owner": "tbidne",
-        "ref": "cmd-log-improve",
+        "ref": "main",
         "repo": "shell-run",
         "type": "github"
       }

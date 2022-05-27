@@ -24,7 +24,7 @@ in
 
       # shell-run
       # legend defined in shell-run.nix
-      srun = "shell-run -ck -fd";
+      srun = "shell-run -ck -fd -s smart";
     };
     bashrcExtra = ''
       function color_my_prompt {
