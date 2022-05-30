@@ -43,7 +43,6 @@ import XMonad.Layout.MultiToggle (Toggle (..))
 import XMonad.Layout.MultiToggle qualified as XMultiToggle
 import XMonad.Layout.MultiToggle.Instances (StdTransformers (NBFULL))
 import XMonad.Layout.NoBorders qualified as XNoBorders
-import XMonad.Layout.PerWorkspace qualified as XPerWorkspace
 import XMonad.Layout.Spacing
 import XMonad.Layout.Spacing qualified as XSpacing
 import XMonad.StackSet qualified as XStackSet
@@ -291,8 +290,6 @@ myLayout =
   XManageDocks.avoidStruts
     . XNoBorders.smartBorders
     . fullScreenToggle
-    . fullLayouts
-    . mainLayout
     $ defaultLayout
   where
     tiled = gapSpaced 10 $ X.Tall nmaster delta ratio
@@ -309,10 +306,6 @@ myLayout =
 
     -- Percent of screen to increment by when resizing panes
     delta = 3 / 100
-
-    fullLayouts = XPerWorkspace.onWorkspaces ["2"] full
-
-    mainLayout = XPerWorkspace.onWorkspace "1" dev
 
     -- Fullscreen
     fullScreenToggle = XMultiToggle.mkToggle (XMultiToggle.single NBFULL)
