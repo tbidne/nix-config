@@ -24,7 +24,7 @@ in
 
       # shell-run
       # legend defined in shell-run.nix
-      srun = "shell-run -ck -fd -s smart";
+      srun = "shell-run -ck -fd";
     };
     bashrcExtra = ''
       function color_my_prompt {
@@ -94,14 +94,24 @@ in
             | xargs sed -i "s/$1/$2/g"
       }
 
+      function del-hs() {
+        find . \
+          -type d -name .stack-work -o -name dist-newstyle \
+            | xargs rm -r
+
+        rm -r ~/.cabal
+        rm -r ~/.stack
+      }
+
+      function large-dirs() {
+        du -sh ./* | grep [0-9\.]G
+      }
+
       source ~/.git-prompt.sh
     '';
     initExtra = ''
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
       export LESS='-r'
-
-      # old
-      #PS1=\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\]
     '';
     shellOptions =
       [

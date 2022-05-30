@@ -80,7 +80,6 @@ in
     lsof
     nix-prefetch-git
     openssl
-    powerline
     pv
     tree
     unzip

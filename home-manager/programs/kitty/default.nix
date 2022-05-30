@@ -1,6 +1,7 @@
-{ fontSize, pkgs, ... }:
+{ inputs }:
 
-let theme = import ./dracula.nix;
+let
+  theme = builtins.readFile "${inputs.catpuppucin.outPath}/macchiato.conf";
 in
 {
   programs.kitty = {
@@ -9,10 +10,11 @@ in
     settings = {
       shell = "/run/current-system/sw/bin/bash";
       extraConfig = ''
-        ${theme.conf}
+        ${theme}
         wheel_scroll_multiplier 1.0
         touch_scroll_multiplier 1.0
         enable_audio_bell no
+        tab_bar_style powerline
       '';
     };
   };

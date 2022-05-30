@@ -288,6 +288,22 @@
         "type": "github"
       }
     },
+    "catpuppucin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1653855348,
+        "narHash": "sha256-58ZIuo9lxuyyDE+MX0Sc38olYKEjEZgld8Nu2Y83Qoo=",
+        "owner": "catppuccin",
+        "repo": "kitty",
+        "rev": "29ac440e06b1b831d5d368c9b9a4922a517db8a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "kitty",
+        "type": "github"
+      }
+    },
     "env-guard-src": {
       "inputs": {
         "flake-utils": "flake-utils_5",
@@ -1499,6 +1515,7 @@
     },
     "root": {
       "inputs": {
+        "catpuppucin": "catpuppucin",
         "home-manager": "home-manager",
         "impact": "impact",
         "navi-src": "navi-src",

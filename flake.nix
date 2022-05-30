@@ -10,7 +10,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
 
-    # fonts
+    # other
+    catpuppucin.url = "github:catppuccin/kitty";
+    catpuppucin.flake = false;
+
+    # my fonts
     ringbearer.url = "github:tbidne/ringbearer/main";
     impact.url = "github:tbidne/impact/main";
 
@@ -21,7 +25,8 @@
   };
 
   outputs =
-    { home-manager
+    { catpuppucin
+    , home-manager
     , impact
     , navi-src
     , nixpkgs
@@ -62,6 +67,7 @@
               let
                 inputs = inputs' // {
                   inherit
+                    catpuppucin
                     pkgs
                     system
                     xmonad-extra

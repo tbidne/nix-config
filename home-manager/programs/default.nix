@@ -7,7 +7,7 @@
     (import ./firefox.nix { inherit inputs; })
     ./ghci.nix
     ./git.nix
-    ./kitty/default.nix
+    (import ./kitty/default.nix { inherit inputs; })
     ./navi.nix
     ./neovim.nix
     ./shell-run.nix
