@@ -1439,11 +1439,11 @@
         "smart-math-src": "smart-math-src_3"
       },
       "locked": {
-        "lastModified": 1652930703,
-        "narHash": "sha256-eay025baIuWISlaK+0sQF41aCCTo4p/IFlKqrWJxIoY=",
+        "lastModified": 1654036751,
+        "narHash": "sha256-dJkZ2YuVs/4F/CL7UbBDrJvmJifJu4JfXUikjV3XrCw=",
         "owner": "tbidne",
         "repo": "pythia",
-        "rev": "9088124cd1ac3514b26dc636487c490fce99d218",
+        "rev": "8d91f0b6ff3f69ffb81dd8804b11612df9df16b5",
         "type": "github"
       },
       "original": {
