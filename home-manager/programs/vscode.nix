@@ -92,22 +92,21 @@ in
 {
   programs.vscode = {
     enable = true;
-
     package = inputs.pkgs.vscodium;
 
-    extensions = [
-      inputs.pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code
-      inputs.pkgs.vscode-extensions.bbenoist.nix
-      inputs.pkgs.vscode-extensions.dracula-theme.theme-dracula
-      inputs.pkgs.vscode-extensions.editorconfig.editorconfig
-      inputs.pkgs.vscode-extensions.haskell.haskell
-      inputs.pkgs.vscode-extensions.james-yu.latex-workshop
-      inputs.pkgs.vscode-extensions.jnoortheen.nix-ide
-      inputs.pkgs.vscode-extensions.justusadam.language-haskell
-      inputs.pkgs.vscode-extensions.mechatroner.rainbow-csv
-      inputs.pkgs.vscode-extensions.ms-python.python
-      inputs.pkgs.vscode-extensions.octref.vetur
-      inputs.pkgs.vscode-extensions.streetsidesoftware.code-spell-checker
+    extensions = with inputs.pkgs.vscode-extensions; [
+      arcticicestudio.nord-visual-studio-code
+      bbenoist.nix
+      dracula-theme.theme-dracula
+      editorconfig.editorconfig
+      haskell.haskell
+      james-yu.latex-workshop
+      jnoortheen.nix-ide
+      justusadam.language-haskell
+      mechatroner.rainbow-csv
+      ms-python.python
+      octref.vetur
+      streetsidesoftware.code-spell-checker
     ] ++ externalExts;
     userSettings = {
       "breadcrumbs.enabled" = true;
