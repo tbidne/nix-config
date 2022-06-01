@@ -4,7 +4,12 @@
     description = "Tommy Bidne";
     group = "users";
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "networkmanager" ];
+    extraGroups = [
+      "audio"
+      "networkmanager"
+      "podman"
+      "wheel"
+    ];
     uid = 1000;
     createHome = true;
     home = "/home/tommy";

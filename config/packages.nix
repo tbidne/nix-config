@@ -33,9 +33,12 @@ in
     zoom-us
 
     # dev
+    arion
     cachix
     emacs
     dbeaver
+    docker
+    docker-client
     git
     gnumake
     insomnia
@@ -86,6 +89,12 @@ in
     xclip
     zip
   ];
+
+  # See https://docs.hercules-ci.com/arion/#_installation
+  virtualisation.docker.enable = false;
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerSocket.enable = true;
+  virtualisation.podman.defaultNetwork.dnsname.enable = true;
 
   programs.steam.enable = true;
   programs.gnupg.agent.enable = true;
