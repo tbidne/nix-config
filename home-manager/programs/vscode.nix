@@ -38,6 +38,15 @@ let
     };
     meta = { license = licenses.mit; };
   };
+  ide-purescript = buildVscodeExt {
+    mktplcRef = {
+      name = "ide-purescript";
+      publisher = "nwolverson";
+      version = "0.25.12";
+      sha256 = "1f9064w18wwp3iy8ciajad8vlshnzyhnqy8h516k0j5bflz781mn";
+    };
+    meta = { license = licenses.mit; };
+  };
   idris-vscode = buildVscodeExt {
     mktplcRef = {
       publisher = "meraymond";
@@ -53,6 +62,15 @@ let
       license = licenses.mit;
     };
   };
+  language-purescript = buildVscodeExt {
+    mktplcRef = {
+      name = "language-purescript";
+      publisher = "nwolverson";
+      version = "0.2.8";
+      sha256 = "1nhzvjwxld53mlaflf8idyjj18r1dzdys9ygy86095g7gc4b1qys";
+    };
+    meta = { license = licenses.mit; };
+  };
   tokyo-night = buildVscodeExt {
     mktplcRef = {
       name = "tokyo-night";
@@ -65,7 +83,9 @@ let
 
   externalExts = [
     agda-mode
+    ide-purescript
     idris-vscode
+    language-purescript
     tokyo-night
   ];
 in
