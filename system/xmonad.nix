@@ -5,6 +5,22 @@
     gnome.gnome-keyring.enable = true;
     upower.enable = true;
 
+    # Note: when upgrading to 22.05, I received an error restarting
+    # NetworkManager. journalctl | grep NetworkManager | grep error showed:
+    #
+    # Jun 01 13:13:20 nixos NetworkManager[782418]: <error> [1654046000.9090]
+    #   bus-manager: fatal failure to acquire D-Bus service
+    #   "org.freedesktop.NetworkManager: GDBus.
+    #   Error:org.freedesktop.DBus.Error.AccessDenied: Connection ":1.6952"
+    #   is not allowed to own the service "org.freedesktop.NetworkManager"
+    #   due to security policies in the configuration file
+    #
+    # This led to https://github.com/NixOS/nixpkgs/issues/4546, which seemed
+    # like it might fix my use-case, but it was removed in
+    # 1c39a47ac87959b2589ef797e519af96d73c27d6.
+    #
+    # Whatever the exact causes/solutions, restarting my system and _then_
+    # running nixos-rebuild worked.
     dbus = {
       enable = true;
       packages = [ inputs.pkgs.dconf ];
