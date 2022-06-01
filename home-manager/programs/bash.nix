@@ -21,6 +21,7 @@ in
       nv = "nvim .";
       pwdc = "pwd | xclip -selection clipboard";
       reload-ui = "sudo systemctl restart display-manager";
+      vsc = "codium .";
 
       # shell-run
       # legend defined in shell-run.nix
