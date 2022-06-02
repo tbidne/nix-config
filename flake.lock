@@ -1535,11 +1535,11 @@
         "relative-time-src": "relative-time-src_2"
       },
       "locked": {
-        "lastModified": 1653704635,
-        "narHash": "sha256-RoNs1Yt/+PaWXXfj6l1ilTQ7W5bqy6WhHfzL5AjvSEk=",
+        "lastModified": 1654126239,
+        "narHash": "sha256-Lxkqpb5nIM9Y6IFSo74qRWjg7xnmEjDfSWRnjxTO33I=",
         "owner": "tbidne",
         "repo": "shell-run",
-        "rev": "dcd82e128f23f28a5f31f77f1fd3ed9d86260ab2",
+        "rev": "425ea1e6a9e9dfe4e65770778c60739478b80261",
         "type": "github"
       },
       "original": {
