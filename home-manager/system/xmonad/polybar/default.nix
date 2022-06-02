@@ -9,7 +9,7 @@ in
   ];
 
   home.file = {
-    ".config/polybar/config".text = ''
+    ".config/polybar/config.ini".text = ''
       ${config}
     '';
   };
