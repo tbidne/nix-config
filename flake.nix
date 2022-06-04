@@ -40,12 +40,19 @@
         inherit system;
         config = { allowUnfree = true; };
       };
-      xmonad-ghc = pkgs.haskell.packages.ghc922.override (old: {
-        overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
-          (final: prev: {
-            dbus = prev.dbus_1_2_24;
-          });
-      });
+      # Downgraded due to core dump that periodically occurs. Note: I do not
+      # know that this is the fault of ghc 9 or one of its newer deps.
+      # The downgrade is merely a debugging attempt / mitigation tool.
+      #
+      # See https://github.com/xmonad/xmonad/issues/389.
+      #
+      #xmonad-ghc = pkgs.haskell.packages.ghc922.override (old: {
+      #  overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
+      #    (final: prev: {
+      #      dbus = prev.dbus_1_2_24;
+      #    });
+      #});
+      xmonad-ghc = pkgs.haskell.packages.ghc8107;
       xmonad-extra = ps: with ps; [
         async
         dbus
