@@ -17,6 +17,7 @@ in
 
       # misc
       es = "emacs . &";
+      hls = "haskell-language-server";
       nap = "systemctl suspend";
       nv = "nvim .";
       pwdc = "pwd | xclip -selection clipboard";
@@ -42,7 +43,7 @@ in
 
       # runs nix-hs-tools where first arg is tool and the rest are args
       function hs() {
-        nix run github:tbidne/nix-hs-tools/0.2#$1 -- ''${@:2}
+        nix run github:tbidne/nix-hs-tools/0.3#$1 -- ''${@:2}
       }
 
       # tries param command until it succeeds

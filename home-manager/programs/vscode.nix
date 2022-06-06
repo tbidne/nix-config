@@ -112,12 +112,17 @@ in
       "breadcrumbs.enabled" = true;
       "editor.fontLigatures" = true;
       "editor.fontFamily" = "Hasklig, Menlo, Menlo, Monaco, 'Courier New', monospace";
+      "editor.minimap.enabled" = false;
       "editor.renderWhitespace" = "boundary";
       "editor.tabSize" = 2;
       "editor.wordWrap" = "on";
       "editor.wordWrapColumn" = 80;
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = "active";
+      "editor.unicodeHighlight.allowedCharacters" = {
+        "α" = true;
+        "γ" = true;
+      };
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
       "workbench.activityBar.visible" = true;
@@ -129,7 +134,6 @@ in
         "titleBar.activeBackground" = "#242631";
         "sideBar.background" = "#242631";
       };
-      "editor.minimap.enabled" = false;
       "[haskell]" = {
         "editor.defaultFormatter" = "haskell.haskell";
       };
