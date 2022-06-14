@@ -25,3 +25,6 @@ jobs:
 
       - name: Nix check
         run: nix flake check
+
+      - name: Nix build
+        run: nix build --dry-run .#nixosConfigurations.nixos.config.system.build.toplevel
