@@ -20,19 +20,16 @@
     navi-src.url = "github:tbidne/navi/main";
     pythia-src.url = "github:tbidne/pythia/main";
     shell-run-src.url = "github:tbidne/shell-run/main";
+    time-conv-src.url = "github:tbidne/time-conv/main";
   };
 
   outputs =
     { catpuppucin
     , home-manager
-    , impact
-    , navi-src
     , nixpkgs
     , nur
-    , pythia-src
-    , ringbearer
     , self
-    , shell-run-src
+    , ...
     }@inputs':
     let
       system = "x86_64-linux";
@@ -61,6 +58,7 @@
         xmonad-contrib
         xmonad-utils
       ];
+      src2pkg = src: src.defaultPackage."${system}";
     in
     {
       nixosConfigurations = {
@@ -74,6 +72,7 @@
                   inherit
                     catpuppucin
                     pkgs
+                    src2pkg
                     system
                     xmonad-extra
                     xmonad-ghc;

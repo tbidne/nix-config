@@ -1,10 +1,5 @@
 { inputs }:
 
-let
-  pythia = inputs.pythia-src.defaultPackage.${inputs.system};
-  navi = inputs.navi-src.defaultPackage.${inputs.system};
-  shell-run = inputs.shell-run-src.defaultPackage.${inputs.system};
-in
 {
   environment.systemPackages = with inputs.pkgs; [
     # core
@@ -54,9 +49,10 @@ in
     vscodium
 
     # my projects
-    navi
-    pythia
-    shell-run
+    (inputs.src2pkg inputs.navi-src)
+    (inputs.src2pkg inputs.pythia-src)
+    (inputs.src2pkg inputs.shell-run-src)
+    (inputs.src2pkg inputs.time-conv-src)
 
     # network utils
     traceroute
