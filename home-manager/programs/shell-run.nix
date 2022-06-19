@@ -5,7 +5,7 @@
       sys-test=sudo nixos-rebuild test --flake '.#nixos'
       sys-switch=sudo nixos-rebuild switch --flake '.#nixos'
       sys-clean=nix-collect-garbage --delete-older-than 30d
-      sys-clean-all=sudo nix-collect-garbage --delete-older-than 30d
+      sys-clean-all=sudo nix-collect-garbage -d
 
       # nix shell
       ns=nix-shell --command exit
