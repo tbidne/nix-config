@@ -121,7 +121,7 @@ myKeys conf@XConfig {X.modMask = modm} =
     ^++^ audioKeySet
     ^++^ brightnessKeySet
     ^++^ polyBarKeySet modm
-      <> switchWsById
+    <> switchWsById
   where
     action :: KeyMask -> String
     action m = if m == X.shiftMask then "Move to " else "Switch to "
@@ -168,8 +168,8 @@ windowKeySet modm =
       key "Rotate slaves" (modm .|. X.shiftMask, X.xK_Tab) XRotSlaves.rotSlavesUp,
       key "Decrease size" (modm, X.xK_d) $ X.withFocused (XFloatKeys.keysResizeWindow (neg10, neg10) (1, 1)),
       key "Increase size" (modm, X.xK_s) $ X.withFocused (XFloatKeys.keysResizeWindow (10, 10) (1, 1)),
-      key "Decr  abs size" (modm .|. X.shiftMask, X.xK_d) $ X.withFocused (XFloatKeys.keysAbsResizeWindow (neg10, neg10) (1024, 752)),
-      key "Incr  abs size" (modm .|. X.shiftMask, X.xK_s) $ X.withFocused (XFloatKeys.keysAbsResizeWindow (10, 10) (1024, 752))
+      key "Decr  abs size" (modm .|. X.shiftMask, X.xK_d) $ X.withFocused (XFloatKeys.keysAbsResizeWindow (neg10, neg10) (1_024, 752)),
+      key "Incr  abs size" (modm .|. X.shiftMask, X.xK_s) $ X.withFocused (XFloatKeys.keysAbsResizeWindow (10, 10) (1_024, 752))
     ]
   where
     neg10 :: Int

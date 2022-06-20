@@ -1,4 +1,4 @@
-name: nixfmt
+name: style
 
 on:
   push:
@@ -25,5 +25,11 @@ jobs:
             substituters = https://cache.nixos.org/ https://hydra.iohk.io
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=
 
-      - name: Check style
-        run: nix run github:tbidne/nix-hs-tools/0.1.0.0#nixpkgs-fmt -- --check
+      - name: Nix
+        run: nix run github:tbidne/nix-hs-tools/0.5#nixpkgs-fmt -- --check
+
+      - name: Ormolu
+        run: nix run github:tbidne/nix-hs-tools/0.5#ormolu -- --dir system --mode check
+      
+      - name: Hlint
+        run: nix run github:tbidne/nix-hs-tools/0.5#hlint -- --dir system
