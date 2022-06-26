@@ -1617,16 +1617,16 @@
         "relative-time-src": "relative-time-src_2"
       },
       "locked": {
-        "lastModified": 1654319540,
-        "narHash": "sha256-/XlZUqH2SUhQwunYnvFK5luEZiCmiEmrLjZGh1iqAZw=",
+        "lastModified": 1655949804,
+        "narHash": "sha256-52Rwr4lXgI7rJDRYXsHQkKhNbj7bz1JL+ricjHztH84=",
         "owner": "tbidne",
         "repo": "shell-run",
-        "rev": "b94a02a1e687f28e17634ba5c7331f3def04b192",
+        "rev": "0ccf055dddc73cc93c6abb04ec64647fe0e6fca2",
         "type": "github"
       },
       "original": {
         "owner": "tbidne",
-        "ref": "main",
+        "ref": "strip-bs",
         "repo": "shell-run",
         "type": "github"
       }

@@ -19,7 +19,7 @@
     # my repos
     navi-src.url = "github:tbidne/navi/main";
     pythia-src.url = "github:tbidne/pythia/main";
-    shell-run-src.url = "github:tbidne/shell-run/main";
+    shell-run-src.url = "github:tbidne/shell-run/strip-bs";
     time-conv-src.url = "github:tbidne/time-conv/main";
   };
 
