@@ -11,6 +11,10 @@
 
   services.tailscale.enable = true;
 
+  # Without this, we receive errors about switching to the new build since
+  # nm-online never succeeds.
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   # Due to build warning:
   #
   # warning: Strict reverse path filtering breaks Tailscale exit node use and
