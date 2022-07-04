@@ -12,7 +12,7 @@
 
       # don't know how to call exit here...somehow have to make sure it's
       # in the flake (add core-utils somehow?)
-      nd=nix develop
+      nd=nix develop -c bash -c 'exit'
 
       # misc
       nix-revw-hd=nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"
