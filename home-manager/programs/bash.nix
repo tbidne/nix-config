@@ -19,6 +19,7 @@ in
       es = "emacs . &";
       hls = "haskell-language-server";
       nap = "systemctl suspend";
+      nixfork = "cd ~/Dev/opensource/my-forks/nixpkgs";
       nv = "nvim .";
       pwdc = "pwd | xclip -selection clipboard";
       reload-ui = "sudo systemctl restart display-manager";
