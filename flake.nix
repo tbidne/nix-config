@@ -21,6 +21,10 @@
     pythia-src.url = "github:tbidne/pythia/main";
     shell-run-src.url = "github:tbidne/shell-run/strip-bs";
     time-conv-src.url = "github:tbidne/time-conv/main";
+
+    # See https://github.com/xmonad/xmonad/issues/389#issuecomment-1176868574
+    xmonad-fix.url = "github:geekosaur/xmonad/forever-away";
+    xmonad-fix.flake = false;
   };
 
   outputs =
@@ -49,7 +53,18 @@
       #      dbus = prev.dbus_1_2_24;
       #    });
       #});
-      xmonad-ghc = pkgs.haskell.packages.ghc8107;
+
+      # This was the temporary downgrade
+      #xmonad-ghc = pkgs.haskell.packages.ghc8107;
+
+      # Trying fork with fix
+      xmonad-ghc = pkgs.haskell.packages.ghc922.override (old: {
+        overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
+          (final: prev: {
+            dbus = prev.dbus_1_2_24;
+            xmonad = final.callCabal2nix "xmonad" inputs'.xmonad-fix { };
+          });
+      });
       xmonad-extra = ps: with ps; [
         async
         dbus

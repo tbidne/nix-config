@@ -1605,7 +1605,8 @@
         "pythia-src": "pythia-src_2",
         "ringbearer": "ringbearer",
         "shell-run-src": "shell-run-src",
-        "time-conv-src": "time-conv-src"
+        "time-conv-src": "time-conv-src",
+        "xmonad-fix": "xmonad-fix"
       }
     },
     "shell-run-src": {
@@ -1709,6 +1710,23 @@
         "owner": "tbidne",
         "ref": "main",
         "repo": "time-conv",
+        "type": "github"
+      }
+    },
+    "xmonad-fix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1657150640,
+        "narHash": "sha256-2upnlEMpYDHsTEE3DKotS17XthqhJpMBsYCPVHRpUmk=",
+        "owner": "geekosaur",
+        "repo": "xmonad",
+        "rev": "3615a39504d3ab7081f4ce39679855efdbc1ae05",
+        "type": "github"
+      },
+      "original": {
+        "owner": "geekosaur",
+        "ref": "forever-away",
+        "repo": "xmonad",
         "type": "github"
       }
     }
