@@ -19,7 +19,7 @@
     # my repos
     navi-src.url = "github:tbidne/navi/main";
     pythia-src.url = "github:tbidne/pythia/main";
-    shell-run-src.url = "github:tbidne/shell-run/strip-bs";
+    shell-run-src.url = "github:tbidne/shell-run/main";
     time-conv-src.url = "github:tbidne/time-conv/main";
 
     # See https://github.com/xmonad/xmonad/issues/389#issuecomment-1176868574

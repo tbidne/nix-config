@@ -5,11 +5,11 @@
       severity = "debug"
 
       [battery-status]
-      poll-interval = "30"
-      timeout = "5"
+      poll-interval = 30
+      timeout = 5
 
       [battery-percentage]
-      poll-interval = "30"
+      poll-interval = 30
 
       [[battery-percentage.alert]]
       percent = 50
@@ -32,11 +32,11 @@
       timeout = "never"
 
       [[net-interface]]
-      poll-interval = "30"
+      poll-interval = 30
       device = "wlp0s20f3"
 
       [[net-interface]]
-      poll-interval = "30"
+      poll-interval = 30
       device = "enp0s31f6"
     '';
   };
