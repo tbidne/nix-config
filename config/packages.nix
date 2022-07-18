@@ -10,6 +10,7 @@
     gimp
     google-chrome
     haruna
+    peek
     thunderbird
 
     # doc editing
