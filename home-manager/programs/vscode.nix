@@ -97,6 +97,7 @@ in
     extensions = with inputs.pkgs.vscode-extensions; [
       arcticicestudio.nord-visual-studio-code
       bbenoist.nix
+      bungcip.better-toml
       dracula-theme.theme-dracula
       editorconfig.editorconfig
       haskell.haskell
