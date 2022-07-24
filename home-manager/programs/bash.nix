@@ -82,8 +82,21 @@ in
       function ns() {
         nix-shell $@
       }
+
       function nd() {
         nix develop $@
+      }
+
+      function nu() {
+        nix flake lock --update-input $@
+      }
+
+      function nus() {
+        srcs=""
+        for src in "$@"; do
+          srcs+=" --update-input $src"
+        done
+        nix flake lock $srcs
       }
 
       # find-replace
