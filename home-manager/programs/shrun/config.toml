@@ -1,0 +1,18 @@
+file-log = "default"
+file-log-mode = "append"
+cmd-log = true
+
+legend = [
+  # nixos-rebuild
+  { key = "ntest", val = "sudo nixos-rebuild test --flake '.#nixos'" },
+  { key = "nswitch", val = "sudo nixos-rebuild switch --flake '.#nixos'" },
+  { key = "nclean", val = "nix-collect-garbage --delete-older-than 30d" },
+  { key = "ncleanall", val = "sudo nix-collect-garbage -d" },
+
+  # nix shells
+  { key = "ns", val = "nix-shell --command exit" },
+  { key = "nd", val = "nix develop -c bash -c 'exit'" },
+
+  # misc
+  { key = "nix-revw-hd", val = 'nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"' },
+]

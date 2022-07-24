@@ -52,7 +52,7 @@
     # my projects
     (inputs.src2pkg inputs.navi-src)
     (inputs.src2pkg inputs.pythia-src)
-    (inputs.src2pkg inputs.shell-run-src)
+    (inputs.src2pkg inputs.shrun-src)
     (inputs.src2pkg inputs.time-conv-src)
 
     # network utils

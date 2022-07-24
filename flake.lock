@@ -1447,12 +1447,12 @@
         "nur": "nur",
         "pythia-src": "pythia-src_2",
         "ringbearer": "ringbearer",
-        "shell-run-src": "shell-run-src",
+        "shrun-src": "shrun-src",
         "time-conv-src": "time-conv-src_4",
         "xmonad-fix": "xmonad-fix"
       }
     },
-    "shell-run-src": {
+    "shrun-src": {
       "inputs": {
         "algebra-simple-src": "algebra-simple-src_11",
         "flake-utils": "flake-utils_27",
@@ -1460,17 +1460,17 @@
         "relative-time-src": "relative-time-src_2"
       },
       "locked": {
-        "lastModified": 1657847147,
-        "narHash": "sha256-ftJTuOp8WEvE3ghnoVnP+PBaZQIYgOpwrZhCeUFn5ew=",
+        "lastModified": 1658575004,
+        "narHash": "sha256-jLrGJNqa6jOmXWeRB+hwfXQy2E7U/3rxewEp5UY4+/s=",
         "owner": "tbidne",
-        "repo": "shell-run",
-        "rev": "ada7cbf1e6b21777cf1b5d3e740425a4c24645d4",
+        "repo": "shrun",
+        "rev": "00e74ec331e46dce9ed3d7d17ec6804a253a00f6",
         "type": "github"
       },
       "original": {
         "owner": "tbidne",
         "ref": "main",
-        "repo": "shell-run",
+        "repo": "shrun",
         "type": "github"
       }
     },
