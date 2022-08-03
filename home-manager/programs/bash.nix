@@ -16,6 +16,8 @@ in
       icat = "kitty +kitten icat";
 
       # misc
+      lightup = "brightnessctl -d intel_backlight s +10%";
+      lightdown = "brightnessctl -d intel_backlight s 10%-";
       es = "emacs . &";
       hls = "haskell-language-server";
       nap = "systemctl suspend";
