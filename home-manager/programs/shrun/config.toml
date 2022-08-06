@@ -1,5 +1,6 @@
 file-log = "default"
 file-log-mode = "append"
+file-log-size-mode = "warn 500 mb"
 cmd-log = true
 
 legend = [

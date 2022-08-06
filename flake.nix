@@ -73,7 +73,10 @@
         xmonad-contrib
         xmonad-utils
       ];
-      src2pkg = src: src.defaultPackage."${system}";
+      src2pkg = src:
+        if src ? packages."${system}".default
+        then src.packages."${system}".default
+        else src.defaultPackage."${system}";
     in
     {
       nixosConfigurations = {
