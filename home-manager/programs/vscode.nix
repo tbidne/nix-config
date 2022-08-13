@@ -80,6 +80,24 @@ let
     };
     meta = { license = licenses.mit; };
   };
+  rst-preview = buildVscodeExt {
+    mktplcRef = {
+      name = "restructuredtext";
+      publisher = "lextudio";
+      version = "190.1.4";
+      sha256 = "sha256-u7uXzAeAFqOFcdAEOCZlTYIApRCo9VkXC0t2E6JYRfg=";
+    };
+    meta = { license = licenses.mit; };
+  };
+  rst-syntax = buildVscodeExt {
+    mktplcRef = {
+      name = "simple-rst";
+      publisher = "trond-snekvik";
+      version = "1.5.2";
+      sha256 = "sha256-pV7/S8kkDIbhD2K5P2TA8E0pM4F8gsFIlc+4FIheBbc=";
+    };
+    meta = { license = licenses.mit; };
+  };
 
   externalExts = [
     agda-mode
@@ -87,6 +105,8 @@ let
     idris-vscode
     language-purescript
     tokyo-night
+    rst-preview
+    rst-syntax
   ];
 in
 {
