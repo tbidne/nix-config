@@ -1,7 +1,7 @@
 /* Notification center */
 
 .blurredBG, #main_window, .blurredBG.low, .blurredBG.normal {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(221, 221, 221, 0.8);
 }
 
 .noti-center.time {
@@ -24,15 +24,15 @@
 }
 
 .blurredBG.notification {
-  background:  rgba(255, 255, 255, 0.4);
+  background:  rgba(221, 221, 221, 0.8);
 }
 
 .blurredBG.notification.critical {
-  background: rgba(255, 0, 0, 0.5);
+  background: rgba(255, 105, 105, 0.8);
 }
 
 .notificationInCenter.critical {
-  background: rgba(155, 0, 20, 0.5);
+  background: rgba(155, 0, 20, 0.8);
 }
 
 /* Labels */
