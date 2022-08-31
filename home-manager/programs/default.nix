@@ -10,7 +10,7 @@
     (import ./kitty/default.nix { inherit inputs; })
     ./navi.nix
     ./neovim.nix
-    ./shrun/default.nix
+    (import ./shrun/default.nix { inherit inputs; })
     (import ./vscode.nix { inherit inputs; })
   ];
 }

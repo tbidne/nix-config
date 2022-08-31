@@ -1,6 +1,7 @@
-let
-  shrun = builtins.readFile ./config.toml;
-in
+{ inputs }:
+
 {
-  home.file.".config/shrun/config.toml".text = "${shrun}";
+  home.file.".config/shrun/config.toml" = {
+    source = ./config.toml;
+  };
 }

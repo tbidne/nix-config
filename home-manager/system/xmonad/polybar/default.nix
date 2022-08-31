@@ -1,16 +1,11 @@
-{ ... }:
+{ inputs, ... }:
 
-let
-  config = builtins.readFile ./config.ini;
-in
 {
   imports = [
     ./openweathermap.nix
   ];
 
-  home.file = {
-    ".config/polybar/config.ini".text = ''
-      ${config}
-    '';
+  home.file.".config/polybar/config.ini" = {
+    source = ./config.ini;
   };
 }
