@@ -27,5 +27,13 @@
       package = inputs.pkgs.vanilla-dmz;
       name = "Vanilla-DMZ-AA";
     };
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = inputs.pkgs.papirus-icon-theme;
+    };
+    theme = {
+      name = "Dracula";
+      package = inputs.pkgs.dracula-theme;
+    };
   };
 }
