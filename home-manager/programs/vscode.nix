@@ -71,6 +71,15 @@ let
     };
     meta = { license = licenses.mit; };
   };
+  lisp-syntax = buildVscodeExt {
+    mktplcRef = {
+      name = "Lisp-Syntax";
+      publisher = "slbtty";
+      version = "0.2.1";
+      sha256 = "sha256-Jos0MJBuFlbfyAK/w51+rblslNq+pHN8gl1T0/UcP0Q=";
+    };
+    meta = { license = licenses.mit; };
+  };
   tokyo-night = buildVscodeExt {
     mktplcRef = {
       name = "tokyo-night";
@@ -104,6 +113,7 @@ let
     ide-purescript
     idris-vscode
     language-purescript
+    lisp-syntax
     tokyo-night
     rst-preview
     rst-syntax
@@ -143,6 +153,7 @@ in
       "editor.unicodeHighlight.allowedCharacters" = {
         "α" = true;
         "γ" = true;
+        "ℕ" = true;
       };
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
