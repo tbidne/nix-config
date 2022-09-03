@@ -16,6 +16,7 @@ in
       icat = "kitty +kitten icat";
 
       # misc
+      doom = "~/.emacs.d/bin/doom";
       lightup = "brightnessctl -d intel_backlight s +10%";
       lightdown = "brightnessctl -d intel_backlight s 10%-";
       es = "emacs . &";

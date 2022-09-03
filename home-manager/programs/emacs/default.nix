@@ -1,45 +1,26 @@
-let
-  init-script = builtins.readFile ./init.el;
-in
 {
-  # For the record, these get loaded into
-  # /nix/store/.../emacs-package-deps/share/emacs/site-lisp/elpa
-  # and possibly a few other places.
+  # NOTE:
   #
-  # To get the directory(s), run <C-h v> package-direcory-list
-  programs.emacs = {
-    enable = true;
-    extraPackages = epkgs: [
-      epkgs.ag
-      epkgs.all-the-icons
-      epkgs.airline-themes
-      epkgs.company
-      epkgs.one-themes
-      epkgs.evil
-      epkgs.hasklig-mode
-      epkgs.haskell-mode
-      epkgs.ivy
-      epkgs.lispy
-      epkgs.lsp-haskell
-      epkgs.lsp-ivy
-      epkgs.lsp-latex
-      epkgs.lsp-mode
-      epkgs.lsp-treemacs
-      epkgs.lsp-ui
-      epkgs.nix-mode
-      epkgs.projectile
-      epkgs.rg
-      epkgs.treemacs
-      epkgs.treemacs-all-the-icons
-      epkgs.treemacs-evil
-      epkgs.use-package
-      epkgs.which-key
-    ];
+  # - It would be nice if we could install doom the same way as everything
+  #   else. This is in fact possible, but it requires some messy logic:
+  #
+  #   https://discourse.nixos.org/t/advice-needed-installing-doom-emacs/8806
+  #
+  #   A better way would be to include the repo as a flake input, though that
+  #   is even more convoluted as we need the install directory to be writable
+  #   (not possible w/ nix/store, so we'd need to wrapPackage).
+  #
+  #   For now, we just install it imperatively and have the config declarative.
+  #
+  # - Also, on installation we do not want doom installed w/ the env var option,
+  #   as this seems to conflict with nix shell vars (e.g. hls).
+  home.file.".doom.d/config.el" = {
+    source = ./config.el;
   };
-
-  home.file = {
-    ".emacs.d/init.el".text = ''
-      ${init-script}
-    '';
+  home.file.".doom.d/init.el" = {
+    source = ./init.el;
+  };
+  home.file.".doom.d/packages.el" = {
+    source = ./packages.el;
   };
 }

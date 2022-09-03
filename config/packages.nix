@@ -31,7 +31,6 @@
     # dev
     arion
     cachix
-    emacs
     dbeaver
     docker
     docker-client
@@ -48,6 +47,11 @@
     sqlite
     vim
     vscodium
+
+    ## doom emacs
+    coreutils
+    clang
+    emacs
 
     # my projects
     (inputs.src2pkg inputs.navi-src)
