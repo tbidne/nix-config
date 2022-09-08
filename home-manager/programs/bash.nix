@@ -122,6 +122,28 @@ in
         du -sh ./* | grep [0-9\.]G
       }
 
+      # Turns a symlink into a real file. Useful for testing changes to config
+      # files that are managed by nix e.g.
+      #
+      # unsym-f some-config
+      #
+      # # test some-config changes...
+      #
+      # After we are satisfied w/ the changes, we can make the same changes to
+      # our nix file then delete the temp some-config.
+      function unsym-f() {
+        [ -L "$1" ] && cp --remove-destination $(readlink $1) $1
+        chmod a+rw $1
+      }
+
+      # applies unsym-f to all files in the current directory
+      function unsym-d() {
+        for f in $(find -type l); do
+          cp --remove-destination $(readlink $f) $f
+          chmod a+rw $f
+        done
+      }
+
       source ~/.git-prompt.sh
     '';
     initExtra = ''
