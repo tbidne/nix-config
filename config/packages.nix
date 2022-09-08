@@ -51,6 +51,7 @@
     ## doom emacs
     coreutils
     clang
+    python3 # treemacs
     emacs
 
     # my projects
