@@ -107,6 +107,15 @@ let
     };
     meta = { license = licenses.mit; };
   };
+  todo-hl = buildVscodeExt {
+    mktplcRef = {
+      name = "vscode-todo-highlight";
+      publisher = "wayou";
+      version = "1.0.5";
+      sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
+    };
+    meta = { license = licenses.mit; };
+  };
 
   externalExts = [
     agda-mode
@@ -117,6 +126,7 @@ let
     tokyo-night
     rst-preview
     rst-syntax
+    todo-hl
   ];
 in
 {
@@ -156,6 +166,42 @@ in
         "γ" = true;
         "ℕ" = true;
       };
+      "todohighlight.defaultStyle" = {
+        "backgroundColor" = "none";
+        "fontWeight" = "bold";
+      };
+      "todohighlight.keywords" = [
+        {
+            "text" = "BUG:";
+            "color" = "#ff6c6b";
+        }
+        {
+            "text" = "DEPRECATED:";
+            "color" = "#83898d";
+        }
+        {
+            "text" = "FIXME:";
+            "color" = "#ff6c6b";
+            "backgroundColor" = "none";
+        }
+        {
+            "text" = "HACK:";
+            "color" = "#a9a1e1";
+        }
+        {
+            "text" = "NOTE:";
+            "color" = "#5ea164";
+        }
+        {
+            "text" = "REVIEW:";
+            "color" = "#51afef";
+        }
+        {
+          "text" = "TODO:";
+          "color" = "#ecbe7b";
+          "backgroundColor" = "none";
+        }
+      ];
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
       "workbench.activityBar.visible" = true;
