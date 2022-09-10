@@ -145,6 +145,7 @@ in
       "editor.fontFamily" = "Hasklig, Menlo, Menlo, Monaco, 'Courier New', monospace";
       "editor.minimap.enabled" = false;
       "editor.renderWhitespace" = "boundary";
+      "editor.rulers" = [ 80 ];
       "editor.tabSize" = 2;
       "editor.wordWrap" = "on";
       "editor.wordWrapColumn" = 80;
