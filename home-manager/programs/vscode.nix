@@ -199,7 +199,6 @@ in
         {
           "text" = "TODO:";
           "color" = "#ecbe7b";
-          "backgroundColor" = "none";
         }
       ];
       "update.mode" = "manual";
