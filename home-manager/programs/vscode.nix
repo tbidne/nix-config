@@ -199,6 +199,8 @@ in
         {
           "text" = "TODO:";
           "color" = "#ecbe7b";
+          # override default
+          "backgroundColor" = "none";
         }
       ];
       "update.mode" = "manual";
