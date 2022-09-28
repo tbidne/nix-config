@@ -91,6 +91,10 @@
     unzip
     xclip
     zip
+
+    # reading ntfs drives
+    # e.g. sudo mount -t ntfs /dev/sda2 ~/Mnt
+    ntfs3g
   ];
 
   # See https://docs.hercules-ci.com/arion/#_installation
