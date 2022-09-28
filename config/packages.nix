@@ -55,7 +55,7 @@
     emacs
 
     # my projects
-    (inputs.src2pkg inputs.del-src)
+    (inputs.src2pkg inputs.safe-rm-src)
     (inputs.src2pkg inputs.navi-src)
     (inputs.src2pkg inputs.pythia-src)
     (inputs.src2pkg inputs.shrun-src)

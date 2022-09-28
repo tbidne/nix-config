@@ -17,7 +17,7 @@
     impact.url = "github:tbidne/impact/main";
 
     # my repos
-    del-src.url = "github:tbidne/del/main";
+    safe-rm-src.url = "github:tbidne/safe-rm/main";
     navi-src.url = "github:tbidne/navi/main";
     pythia-src.url = "github:tbidne/pythia/main";
     shrun-src.url = "github:tbidne/shrun/main";
