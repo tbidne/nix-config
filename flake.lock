@@ -2301,8 +2301,7 @@
         "ringbearer": "ringbearer",
         "safe-rm-src": "safe-rm-src",
         "shrun-src": "shrun-src",
-        "time-conv-src": "time-conv-src_4",
-        "xmonad-fix": "xmonad-fix"
+        "time-conv-src": "time-conv-src_4"
       }
     },
     "safe-rm-src": {
@@ -2493,23 +2492,6 @@
         "owner": "tbidne",
         "ref": "main",
         "repo": "time-conv",
-        "type": "github"
-      }
-    },
-    "xmonad-fix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1659595490,
-        "narHash": "sha256-xlQ5J9HTNnqTpkXpe1h6YnyxpfcQ5kK6uOse1yv5BVk=",
-        "owner": "geekosaur",
-        "repo": "xmonad",
-        "rev": "8965e41d06895ca9592707161c0d5ed18da6a400",
-        "type": "github"
-      },
-      "original": {
-        "owner": "geekosaur",
-        "ref": "forever-away",
-        "repo": "xmonad",
         "type": "github"
       }
     }

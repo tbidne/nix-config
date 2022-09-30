@@ -22,10 +22,6 @@
     pythia-src.url = "github:tbidne/pythia/main";
     shrun-src.url = "github:tbidne/shrun/main";
     time-conv-src.url = "github:tbidne/time-conv/main";
-
-    # See https://github.com/xmonad/xmonad/issues/389#issuecomment-1176868574
-    xmonad-fix.url = "github:geekosaur/xmonad/forever-away";
-    xmonad-fix.flake = false;
   };
 
   outputs =
@@ -42,30 +38,15 @@
         inherit system;
         config = { allowUnfree = true; };
       };
-      # Downgraded due to core dump that periodically occurs. Note: I do not
-      # know that this is the fault of ghc 9 or one of its newer deps.
-      # The downgrade is merely a debugging attempt / mitigation tool.
+      # NOTE: The aforementioned xmonad bug was actually a ghc bug. There is
+      # a workroung for older ghc versions in xmonad 0.17.1, but the bug itself
+      # was fixed in ghc 9.2.4+. Thus we should be okay to simply upgrade ghc,
+      # but if not we can upgrade xmonad manually instead.
       #
-      # See https://github.com/xmonad/xmonad/issues/389.
-      #
-      #xmonad-ghc = pkgs.haskell.packages.ghc922.override (old: {
-      #  overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
-      #    (final: prev: {
-      #      dbus = prev.dbus_1_2_24;
-      #    });
-      #});
+      # https://discourse.haskell.org/t/ghc-9-2-4-released/4851
+      # https://xmonad.org/news/2022/09/03/xmonad-0-17-1.html
+      xmonad-ghc = pkgs.haskell.packages.ghc924;
 
-      # This was the temporary downgrade
-      #xmonad-ghc = pkgs.haskell.packages.ghc8107;
-
-      # Trying fork with fix
-      xmonad-ghc = pkgs.haskell.packages.ghc922.override (old: {
-        overrides = pkgs.lib.composeExtensions (old.overrides or (_: _: { }))
-          (final: prev: {
-            dbus = prev.dbus_1_2_24;
-            xmonad = final.callCabal2nix "xmonad" inputs'.xmonad-fix { };
-          });
-      });
       xmonad-extra = ps: with ps; [
         async
         dbus
