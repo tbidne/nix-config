@@ -8,8 +8,8 @@
       emacs-all-the-icons-fonts
       font-awesome
       hasklig
-      inputs.impact.defaultPackage.${inputs.system}
-      inputs.ringbearer.defaultPackage.${inputs.system}
+      (inputs.src2pkg inputs.impact)
+      (inputs.src2pkg inputs.ringbearer)
       siji
       unifont
       vistafonts

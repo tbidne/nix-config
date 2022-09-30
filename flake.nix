@@ -14,7 +14,9 @@
 
     # my fonts
     ringbearer.url = "github:tbidne/ringbearer/main";
+    ringbearer.inputs.nixpkgs.follows = "nixpkgs";
     impact.url = "github:tbidne/impact/main";
+    impact.inputs.nixpkgs.follows = "nixpkgs";
 
     # my repos
     safe-rm-src.url = "github:tbidne/safe-rm/main";
