@@ -2321,11 +2321,11 @@
         "nixpkgs": "nixpkgs_28"
       },
       "locked": {
-        "lastModified": 1664523769,
-        "narHash": "sha256-ihs1SWWeZUDMLnQiyoLIBDm7PcRpm4/OverTs6PoyP4=",
+        "lastModified": 1664604295,
+        "narHash": "sha256-utsZduKieACpHtS1ZBLNUekx4OpGR/mlelDN19kuTDs=",
         "owner": "tbidne",
         "repo": "safe-rm",
-        "rev": "7fb8fba6444e2deea63728290ab333fdd59d1fcf",
+        "rev": "1442db22ac0e7b7681802a6d53cc11478be5b726",
         "type": "github"
       },
       "original": {
