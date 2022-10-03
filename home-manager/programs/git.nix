@@ -33,6 +33,7 @@
       dft = "difftool";
       dftc = "difftool --cached";
       lol = "log --oneline";
+      redo = "commit --amend --no-edit";
 
       # e.g. git log-date "2021-07-27 12:00" "master"
       log-date = "!f() { git rev-list -n 1 --before=\"$1\" $2; }; f";
