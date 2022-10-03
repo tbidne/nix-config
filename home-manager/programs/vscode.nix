@@ -161,11 +161,7 @@ in
       "editor.wordWrapColumn" = 80;
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = "active";
-      "editor.unicodeHighlight.allowedCharacters" = {
-        "α" = true;
-        "γ" = true;
-        "ℕ" = true;
-      };
+      "editor.unicodeHighlight.ambiguousCharacters" = false;
       "todohighlight.defaultStyle" = {
         "backgroundColor" = "none";
         "fontWeight" = "bold";
