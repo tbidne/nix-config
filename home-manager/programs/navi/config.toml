@@ -1,0 +1,23 @@
+[logging]
+severity = "debug"
+
+[battery-status]
+app = "upower"
+poll-interval = 30
+timeout = 5
+
+[battery-percentage]
+app = "upower"
+poll-interval = 30
+alert = [
+  { percent = 50 },
+  { percent = 30 },
+  { percent = 20, urgency = "critical" },
+  { percent = 10, urgency = "critical", timeout = "never" },
+  { percent = 5, urgency = "critical", timeout = "never" },
+]
+
+net-interface = [
+  { app = "nmcli", poll-interval = 30, device = "wlp0s20f3" },
+  { app = "nmcli", poll-interval = 30, device = "enp0s31f6" }
+]
