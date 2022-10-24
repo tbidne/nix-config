@@ -93,7 +93,7 @@ myTerminal :: String
 myTerminal = "kitty"
 
 screenLocker :: String
-screenLocker = "betterlockscreen -l blur"
+screenLocker = "betterlockscreen -l dim"
 
 appLauncher :: String
 appLauncher = "rofi -modi drun,ssh,window -show drun -show-icons"
@@ -241,7 +241,7 @@ setWallpaper :: IO ()
 setWallpaper =
   X.spawn $ "feh --bg-scale " <> wpPath
   where
-    wpPath = "$HOME/Pictures/wallpaper/current/flowers_dark_pink.jpg"
+    wpPath = "$HOME/Pictures/wallpaper/current/halloween.png"
 
 audioKeySet :: KeySet
 audioKeySet =
