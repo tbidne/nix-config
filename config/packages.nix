@@ -55,11 +55,11 @@
     emacs
 
     # my projects
-    (inputs.src2pkg inputs.safe-rm-src)
-    (inputs.src2pkg inputs.navi-src)
-    (inputs.src2pkg inputs.pythia-src)
-    (inputs.src2pkg inputs.shrun-src)
-    (inputs.src2pkg inputs.time-conv-src)
+    (inputs.src2pkg inputs.safe-rm)
+    (inputs.src2pkg inputs.navi)
+    (inputs.src2pkg inputs.pythia)
+    (inputs.src2pkg inputs.shrun)
+    (inputs.src2pkg inputs.time-conv)
 
     # network utils
     traceroute
