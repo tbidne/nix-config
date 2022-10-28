@@ -1,3 +1,4 @@
 trash-home = "/home/tommy/.trash"
 log-level = "debug"
-show-trace = true
+name-trunc = 15
+orig-trunc = 65
