@@ -19,9 +19,10 @@
     impact.inputs.nixpkgs.follows = "nixpkgs";
 
     # my repos
-    safe-rm.url = "github:tbidne/safe-rm/main";
+    fs-utils.url = "github:tbidne/fs-utils/main";
     navi.url = "github:tbidne/navi/main";
     pythia.url = "github:tbidne/pythia/main";
+    safe-rm.url = "github:tbidne/safe-rm/main";
     shrun.url = "github:tbidne/shrun/main";
     time-conv.url = "github:tbidne/time-conv/main";
   };
