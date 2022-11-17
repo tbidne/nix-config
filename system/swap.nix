@@ -1,7 +1,11 @@
 let
-  base-mb = 1024;  # size is in megabytes, base-mb = 1 gb
-  sys-ram-gb = 16; # system has 16gb ram
-  factor = 2;      # rule-of-thumb: swap = 2 * ram
+  # size is in megabytes, base-mb = 1 gb
+  base-mb = 1024;
+  # system has 16gb ram
+  sys-ram-gb = 16;
+  # typical rule-of-thumb is 'swap = 2 * ram', but 32gb swap seems
+  # unnecessary, so we'll go with 16 for now.
+  factor = 1;
 in
 {
   swapDevices = [
