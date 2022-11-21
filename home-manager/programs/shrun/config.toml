@@ -18,4 +18,4 @@ legend = [
 [file-log]
 path = "default"
 mode = "append"
-size-mode = "warn 200 mb"
+size-mode = "delete 50 mb"
