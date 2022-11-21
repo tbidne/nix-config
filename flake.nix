@@ -19,7 +19,7 @@
     impact.inputs.nixpkgs.follows = "nixpkgs";
 
     # my repos
-    fs-utils.url = "github:tbidne/fs-utils/main";
+    fs-size.url = "github:tbidne/fs-size/main";
     navi.url = "github:tbidne/navi/main";
     pythia.url = "github:tbidne/pythia/main";
     safe-rm.url = "github:tbidne/safe-rm/main";

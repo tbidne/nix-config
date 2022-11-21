@@ -3,15 +3,15 @@
     "algebra-simple": {
       "inputs": {
         "flake-compat": [
-          "fs-utils",
+          "fs-size",
           "flake-compat"
         ],
         "flake-utils": [
-          "fs-utils",
+          "fs-size",
           "flake-utils"
         ],
         "nixpkgs": [
-          "fs-utils",
+          "fs-size",
           "nixpkgs"
         ]
       },
@@ -148,15 +148,15 @@
     "bounds": {
       "inputs": {
         "flake-compat": [
-          "fs-utils",
+          "fs-size",
           "flake-compat"
         ],
         "flake-utils": [
-          "fs-utils",
+          "fs-size",
           "flake-utils"
         ],
         "nixpkgs": [
-          "fs-utils",
+          "fs-size",
           "nixpkgs"
         ]
       },
@@ -293,23 +293,23 @@
     "byte-types": {
       "inputs": {
         "algebra-simple": [
-          "fs-utils",
+          "fs-size",
           "algebra-simple"
         ],
         "bounds": [
-          "fs-utils",
+          "fs-size",
           "bounds"
         ],
         "flake-compat": [
-          "fs-utils",
+          "fs-size",
           "flake-compat"
         ],
         "flake-utils": [
-          "fs-utils",
+          "fs-size",
           "flake-utils"
         ],
         "nixpkgs": [
-          "fs-utils",
+          "fs-size",
           "nixpkgs"
         ]
       },
@@ -739,7 +739,7 @@
         "type": "github"
       }
     },
-    "fs-utils": {
+    "fs-size": {
       "inputs": {
         "algebra-simple": "algebra-simple",
         "bounds": "bounds",
@@ -749,17 +749,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1668568730,
-        "narHash": "sha256-76yPhV3+24LJkkttFUEg2Av2prYGQ+WgHp16qzZVJyE=",
+        "lastModified": 1668988438,
+        "narHash": "sha256-EsLBFC3iVH0VmKLCuOcF/4S2flCk/J5zqSxyIfKyYRQ=",
         "owner": "tbidne",
-        "repo": "fs-utils",
-        "rev": "fc18cbc2de479dd7205f9af4b3f2d5f24b6f0493",
+        "repo": "fs-size",
+        "rev": "75165d273fea9c4bac169922f4ccb970554ad1aa",
         "type": "github"
       },
       "original": {
         "owner": "tbidne",
         "ref": "main",
-        "repo": "fs-utils",
+        "repo": "fs-size",
         "type": "github"
       }
     },
@@ -1137,7 +1137,7 @@
     "root": {
       "inputs": {
         "catpuppucin": "catpuppucin",
-        "fs-utils": "fs-utils",
+        "fs-size": "fs-size",
         "home-manager": "home-manager",
         "impact": "impact",
         "navi": "navi",
