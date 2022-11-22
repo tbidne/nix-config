@@ -55,8 +55,8 @@
     emacs
 
     # my projects
-    (inputs.src2pkg inputs.fs-size)
     (inputs.src2pkg inputs.navi)
+    (inputs.src2pkg inputs.path-size)
     (inputs.src2pkg inputs.pythia)
     (inputs.src2pkg inputs.safe-rm)
     (inputs.src2pkg inputs.shrun)
