@@ -1,6 +1,6 @@
 { inputs }:
 {
   imports = [
-    (import ./xmonad/default.nix { inherit inputs; })
+    ./plasma/default.nix
   ];
 }

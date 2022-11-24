@@ -6,9 +6,9 @@
       ./audio.nix
       ./boot.nix
       ./mouse.nix
+      (import ./plasma.nix { inherit inputs; })
       ./network.nix
       ./swap.nix
-      (import ./xmonad.nix { inherit inputs; })
     ];
 
   # misc

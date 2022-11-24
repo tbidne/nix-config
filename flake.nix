@@ -8,6 +8,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
 
+    # plasma config
+    plasma-manager.url = "github:pjones/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
+
     # other
     catpuppucin.url = "github:catppuccin/kitty";
     catpuppucin.flake = false;
@@ -30,6 +35,7 @@
   outputs =
     { catpuppucin
     , home-manager
+    , plasma-manager
     , nixpkgs
     , nur
     , self
@@ -41,23 +47,7 @@
         inherit system;
         config = { allowUnfree = true; };
       };
-      # NOTE: The aforementioned xmonad bug was actually a ghc bug. There is
-      # a workroung for older ghc versions in xmonad 0.17.1, but the bug itself
-      # was fixed in ghc 9.2.4+. Thus we should be okay to simply upgrade ghc,
-      # but if not we can upgrade xmonad manually instead.
-      #
-      # https://discourse.haskell.org/t/ghc-9-2-4-released/4851
-      # https://xmonad.org/news/2022/09/03/xmonad-0-17-1.html
-      xmonad-ghc = pkgs.haskell.packages.ghc924;
 
-      xmonad-extra = ps: with ps; [
-        async
-        dbus
-        X11
-        xmonad
-        xmonad-contrib
-        xmonad-utils
-      ];
       src2pkg = src:
         if src ? packages."${system}".default
         then src.packages."${system}".default
@@ -76,9 +66,7 @@
                     catpuppucin
                     pkgs
                     src2pkg
-                    system
-                    xmonad-extra
-                    xmonad-ghc;
+                    system;
                 };
               in
               {
@@ -94,6 +82,10 @@
                     home-manager.users.tommy = (import ./home-manager/home.nix {
                       inherit inputs;
                     });
+
+                    home-manager.sharedModules = [
+                      plasma-manager.homeManagerModules.plasma-manager
+                    ];
                   })
                 ];
               }
@@ -101,14 +93,5 @@
           ];
         };
       };
-      devShell."${system}" =
-        let hs-dev-tools = ps: [ ps.ghcid ps.haskell-language-server ];
-        in
-        pkgs.mkShell {
-          buildInputs = [
-            (xmonad-ghc.ghcWithPackages
-              (ps: hs-dev-tools ps ++ xmonad-extra ps))
-          ];
-        };
     };
 }
