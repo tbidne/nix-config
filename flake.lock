@@ -948,11 +948,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1669095770,
-        "narHash": "sha256-mO1g0AGxk7as9lBgCaww3LFwm+VyJMh/kXXYW3EOMck=",
+        "lastModified": 1669249022,
+        "narHash": "sha256-6e0SJItid5kwZbrhm6OEWR7bexMhh9KG0Wi/Wk3mG+8=",
         "owner": "tbidne",
         "repo": "path-size",
-        "rev": "8467a63d19ad91cb8eeff993efddd69d0bcca979",
+        "rev": "e59f8e5638627afa85ed132276fb2fa6713aad2d",
         "type": "github"
       },
       "original": {
