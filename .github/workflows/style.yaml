@@ -26,10 +26,4 @@ jobs:
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=
 
       - name: Nix
-        run: nix run github:tbidne/nix-hs-tools/0.5#nixpkgs-fmt -- --check
-
-      - name: Ormolu
-        run: nix run github:tbidne/nix-hs-tools/0.5#ormolu -- --dir system --mode check
-      
-      - name: Hlint
-        run: nix run github:tbidne/nix-hs-tools/0.5#hlint -- --dir system
+        run: nix run github:tbidne/nix-hs-tools/0.7#nixpkgs-fmt -- --check
