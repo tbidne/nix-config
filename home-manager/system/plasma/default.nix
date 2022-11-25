@@ -17,8 +17,8 @@
 
     shortcuts = {
       kwin = {
-        ShowDesktopGrid = ["Meta+Ctrl+Space" "Ctrl+F8"];
-        "Window Close" = ["Alt+F4" "Meta+Backspace"];
+        ShowDesktopGrid = [ "Meta+Ctrl+Space" "Ctrl+F8" ];
+        "Window Close" = [ "Alt+F4" "Meta+Backspace" ];
       };
       # This allows us to use meta to open the start menu
       "plasmashell"."activate widget 23" = "Alt+F1,none,Activate Application Launcher Widget";

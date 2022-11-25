@@ -2,7 +2,8 @@
 
 let
   pkgs = inputs.pkgs;
-in {
+in
+{
   services.xserver = {
     enable = true;
     # NOTE: There is an sddm bug that sometimes rears its head on startup via
