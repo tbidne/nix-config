@@ -1,6 +1,8 @@
 { inputs }:
 
-{
+let
+  pkgs = inputs.pkgs;
+in {
   services.xserver = {
     enable = true;
     # NOTE: There is an sddm bug that sometimes rears its head on startup via
@@ -23,6 +25,9 @@
   };
 
   environment.systemPackages = [
-    inputs.pkgs.libsForQt5.bismuth
+    pkgs.libsForQt5.bismuth
+
+    # for kitty dropdown
+    pkgs.tdrop
   ];
 }
