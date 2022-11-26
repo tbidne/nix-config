@@ -2,11 +2,11 @@
   services.xserver.libinput = {
     enable = true;
 
-    mouse = {
-      # This doesn't seem to work, but this is probably what we eventually
-      # want, so leaving it for now.
-      naturalScrolling = true;
-    };
+    # NOTE: Leaving this for documentation. It works for minimal setups but
+    # not for KDE plasma (that is handled by our home-manager plasma settings).
+    #mouse = {
+    #  naturalScrolling = true;
+    #};
 
     touchpad = {
       # -1.0 to 1.0, helps touchpad accel on HiDPI

@@ -20,27 +20,11 @@
     texlab # for lsp + latex
     texlive.combined.scheme-full
 
-    # social
-    discord
-    element-desktop
-    matterhorn
-    mattermost-desktop
-    slack
-    zoom-us
-
     # dev
-    arion
-    cachix
-    dbeaver
-    docker
-    docker-client
     git
     gnumake
-    insomnia
     lua
     neovim
-    nginx
-    nodejs
     onefetch
     ruby
     sqitchPg
@@ -97,12 +81,6 @@
     # e.g. sudo mount -t ntfs /dev/sda2 ~/Mnt
     ntfs3g
   ];
-
-  # See https://docs.hercules-ci.com/arion/#_installation
-  virtualisation.docker.enable = false;
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerSocket.enable = true;
-  virtualisation.podman.defaultNetwork.dnsname.enable = true;
 
   programs.steam.enable = true;
   programs.gnupg.agent.enable = true;

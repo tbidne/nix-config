@@ -144,6 +144,10 @@ in
         done
       }
 
+      function plasma-nix() {
+        nix run github:pjones/plasma-manager
+      }
+
       source ~/.git-prompt.sh
     '';
     initExtra = ''

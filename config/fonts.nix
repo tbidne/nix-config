@@ -10,10 +10,6 @@
       hasklig
       (inputs.src2pkg inputs.impact)
       (inputs.src2pkg inputs.ringbearer)
-      siji
-      unifont
       vistafonts
-      # openweathermap
-      weather-icons
     ];
 }
