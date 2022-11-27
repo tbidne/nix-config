@@ -1,4 +1,10 @@
+{ inputs }:
+
 {
+  imports = [
+    (import ./conky/default.nix { inherit inputs; })
+  ];
+
   # needed for kitty
   xresources.properties = {
     "Xft.dpi" = 280;
@@ -70,7 +76,6 @@
       "kwinrulesrc"."1"."opacityactive" = 95;
       "kwinrulesrc"."1"."opacityactiverule" = 2;
       "kwinrulesrc"."1"."title" = "bash";
-      "kwinrulesrc"."1"."titlematch" = 1;
       "kwinrulesrc"."1"."types" = 1;
       "kwinrulesrc"."1"."wmclass" = "kitty";
       "kwinrulesrc"."1"."wmclassmatch" = 1;

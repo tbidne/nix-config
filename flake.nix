@@ -63,7 +63,6 @@
               let
                 inputs = inputs' // {
                   inherit
-                    catpuppucin
                     pkgs
                     src2pkg
                     system;

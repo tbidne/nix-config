@@ -1,6 +1,6 @@
 { inputs }:
 {
   imports = [
-    ./plasma/default.nix
+    (import ./plasma/default.nix { inherit inputs; })
   ];
 }
