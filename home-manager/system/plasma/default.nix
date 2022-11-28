@@ -69,28 +69,6 @@
       "kcminputrc"."Mouse"."XLbInptNaturalScroll" = true;
       "kcminputrc"."Mouse"."cursorSize" = 48;
       "kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse";
-      "kwinrulesrc"."1"."Description" = "Window settings for kitty";
-      "kwinrulesrc"."1"."clientmachine" = "localhost";
-      "kwinrulesrc"."1"."noborder" = true;
-      "kwinrulesrc"."1"."noborderrule" = 3;
-      "kwinrulesrc"."1"."opacityactive" = 95;
-      "kwinrulesrc"."1"."opacityactiverule" = 2;
-      "kwinrulesrc"."1"."title" = "bash";
-      "kwinrulesrc"."1"."types" = 1;
-      "kwinrulesrc"."1"."wmclass" = "kitty";
-      "kwinrulesrc"."1"."wmclassmatch" = 1;
-      "kwinrulesrc"."2"."Description" = "Window settings for vscodium";
-      "kwinrulesrc"."2"."clientmachine" = "localhost";
-      "kwinrulesrc"."2"."noborder" = true;
-      "kwinrulesrc"."2"."noborderrule" = 3;
-      "kwinrulesrc"."2"."title" = "VSCodium";
-      "kwinrulesrc"."2"."types" = 1;
-      "kwinrulesrc"."2"."wmclass" = "vscodium";
-      "kwinrulesrc"."2"."wmclassmatch" = 1;
-      "kwinrulesrc"."2"."windowrole" = "browser-window";
-      "kwinrulesrc"."2"."windowrolematch" = 1;
-      "kwinrulesrc"."General"."count" = 2;
-      "kwinrulesrc"."General"."rules" = "1,2";
     };
   };
 }
