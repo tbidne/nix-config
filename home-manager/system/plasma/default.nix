@@ -69,6 +69,7 @@
       "kcminputrc"."Mouse"."XLbInptNaturalScroll" = true;
       "kcminputrc"."Mouse"."cursorSize" = 48;
       "kwinrc"."Windows"."FocusPolicy" = "FocusFollowsMouse";
+      "plasmanotifyrc"."Notifications"."PopupPosition" = "TopRight";
     };
   };
 }
