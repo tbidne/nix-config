@@ -1019,11 +1019,11 @@
         "time-conv": "time-conv"
       },
       "locked": {
-        "lastModified": 1670094604,
-        "narHash": "sha256-pwnYABRZR8B3GMKYf3jzd+F/it5p8ATDQX9vO8BiCzw=",
+        "lastModified": 1670117462,
+        "narHash": "sha256-sJKzM1P4M3ofisJgO8pNOKpOO+VdluLleyfTybPmGss=",
         "owner": "tbidne",
         "repo": "navi",
-        "rev": "9de465e22f0400554571d77cfb969844a6d4a69c",
+        "rev": "ed180894b6c62984e43050515d17ac2cc80a871e",
         "type": "github"
       },
       "original": {

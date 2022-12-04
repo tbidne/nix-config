@@ -17,7 +17,12 @@ alert = [
   { percent = 5, urgency = "critical", timeout = "never" },
 ]
 
-net-interface = [
-  { app = "nmcli", poll-interval = 30, device = "wlp0s20f3" },
-  { app = "nmcli", poll-interval = 30, device = "enp0s31f6" }
-]
+[[net-interface]]
+app = "nmcli"
+poll-interval = 30
+device = "wlp0s20f3"
+
+[[net-interface]]
+app = "nmcli"
+poll-interval = 30
+device = "enp0s31f6"
