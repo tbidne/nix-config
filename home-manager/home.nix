@@ -15,4 +15,6 @@
     ".config/nix/netrc".text = "";
     ".config/nix/nix.conf".text = "";
   };
+
+  home.stateVersion = "22.11";
 }
