@@ -12,7 +12,7 @@
     '';
 
     # so I can configure binary caches without sudo
-    trustedUsers = [
+    settings.trusted-users = [
       "root"
       "tommy"
     ];
