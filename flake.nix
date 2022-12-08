@@ -25,10 +25,10 @@
 
     # my repos
     path-size.url = "github:tbidne/path-size/main";
-    navi.url = "github:tbidne/navi/monad-effects";
+    navi.url = "github:tbidne/navi/main";
     pythia.url = "github:tbidne/pythia/main";
-    safe-rm.url = "github:tbidne/safe-rm/monad-effects";
-    shrun.url = "github:tbidne/shrun/monad-effects";
+    safe-rm.url = "github:tbidne/safe-rm/main";
+    shrun.url = "github:tbidne/shrun/main";
     time-conv.url = "github:tbidne/time-conv/main";
   };
 
