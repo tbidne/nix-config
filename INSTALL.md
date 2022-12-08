@@ -200,13 +200,3 @@ Installation on a `VirtualBox` image is largely the same as on real hardware (se
     ```
 
     In the [git clone step](#clone-git-repository), this will be added to `system/vbox.nix`, and the host options should be removed.
-
-* The HiDPI settings are not needed on `VirtualBox`, so these can be removed from `config/xmonad.nix` and `home-manager/programs/xmonad/xmonad.nix`.
-
-* `kitty` does not play nicely with `VirtualBox`, so it is advisable to switch in `Xmonad`, i.e, modify `home-manager/programs/xmonad/config.hs`:
-
-    ```haskell
-    myTerminal :: String
-    -- myTerminal = "kitty"
-    myTerminal = "xterm"
-    ```
