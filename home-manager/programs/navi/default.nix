@@ -16,6 +16,9 @@ in
     '';
   };
 
+  # TODO: navi.sh -> do not start navi if already running
+  # Or maybe kill other processes
+
   # plasma startup
   home.file.".config/autostart/navi.sh.desktop" = {
     executable = true;

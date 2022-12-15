@@ -1,9 +1,11 @@
 { inputs }:
 
 {
-  imports = [
-    (import ./conky/default.nix { inherit inputs; })
-  ];
+  # NOTE: Disabled to test if conky is the reason plasma has been freezing
+  #
+  #imports = [
+  #  (import ./conky/default.nix { inherit inputs; })
+  #];
 
   # needed for kitty
   xresources.properties = {

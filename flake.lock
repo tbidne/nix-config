@@ -1671,11 +1671,11 @@
         "relative-time": "relative-time_2"
       },
       "locked": {
-        "lastModified": 1670805927,
-        "narHash": "sha256-MhlbQqv7w0D71+IBLaC7cXwjvTDDArz/2WYhoTbA+cA=",
+        "lastModified": 1670843350,
+        "narHash": "sha256-92VOJ8FM/6B6X59BHdH1sXXnKgQqaybyL0AdEeqNzcU=",
         "owner": "tbidne",
         "repo": "shrun",
-        "rev": "3e9257915345db0ec9fddd2dd65a91d6ee14210c",
+        "rev": "5cd4bdb9aab8685410a96807c65057adf04b7774",
         "type": "github"
       },
       "original": {

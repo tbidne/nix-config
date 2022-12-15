@@ -4,6 +4,13 @@ let
   pkgs = inputs.pkgs;
 in
 {
+  # NOTE: Plasma occasionally freezes. Sometimes the panel works (in which
+  # case we can launch a new kitty and reload the ui), and sometimes it does
+  # not, forcing a hard restart.
+  #
+  # https://github.com/NixOS/nixpkgs/issues/60312 suggests deleting caches
+  # i.e. ~/.cache/kwin. Try deleting that and ~/.cache/kwin_rules_dialog/.
+
   services.xserver = {
     enable = true;
     # NOTE: There is an sddm bug that sometimes rears its head on startup via
