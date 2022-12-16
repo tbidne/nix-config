@@ -109,6 +109,13 @@ in
             | xargs sed -i "s/$1/$2/g"
       }
 
+      # Update per https://github.com/badges/shields/issues/8671
+      function update-badges() {
+        find . \
+          -type f -name '*md' ! -path "./.*" ! -path "./dist-newstyle/*" \
+            | xargs sed -i -E 's/https:\/\/img.shields.io\/github\/workflow\/status\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\?(.*)/http:\/\/img.shields.io\/github\/actions\/workflow\/status\/\1\/\2\/\3.yaml\?branch=\4\&\5/g'
+      }
+
       function del-hs() {
         find . \
           -type d -name .stack-work -o -name dist-newstyle \
