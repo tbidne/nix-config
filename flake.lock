@@ -1645,11 +1645,11 @@
         "path-size": "path-size_2"
       },
       "locked": {
-        "lastModified": 1671078208,
-        "narHash": "sha256-0Tt6WhkzbIHsAAnFE4GuFLmeAvwvdflJ0M4Uh2fDGcA=",
+        "lastModified": 1671397788,
+        "narHash": "sha256-OfYpJ2xuanSVfqnV6i9lR/zvlAQcjBmGuIMz/Efg1Tk=",
         "owner": "tbidne",
         "repo": "safe-rm",
-        "rev": "c6d8af1031330639cb5ee1dffe043ffd8897752e",
+        "rev": "80214c6eece4f2bfd561ab4f05abf9e0239dc6bb",
         "type": "github"
       },
       "original": {
@@ -1671,11 +1671,11 @@
         "relative-time": "relative-time_2"
       },
       "locked": {
-        "lastModified": 1671249660,
-        "narHash": "sha256-LQmLNGzqv9KjsNWXu/fJOPfhEcgkKnpEG65m0DUfN30=",
+        "lastModified": 1671399020,
+        "narHash": "sha256-i3mdXENxpm7sFuqYQz1pbL0XupnUqTP4OmyBIZTjon4=",
         "owner": "tbidne",
         "repo": "shrun",
-        "rev": "cabe280d73f551d3371d266423a88cc57e6373c6",
+        "rev": "9e42d6e33ec6fb1efd01c244476e527b86531066",
         "type": "github"
       },
       "original": {
