@@ -1,6 +1,6 @@
 { inputs }:
 {
   imports = [
-    (import ./gnome/default.nix { inherit inputs; })
+    (import ./plasma/default.nix { inherit inputs; })
   ];
 }

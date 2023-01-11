@@ -18,7 +18,10 @@ in
     # sudo rm -rf /var/lib/sddm/.cache/sddm-greeter/qmlcache
     displayManager = {
       sddm.enable = true;
-      #sddm.enableHidpi = true;
+      sddm.enableHidpi = true;
+
+      # switch to "plasmawayland" once the bugs are fixed...
+      defaultSession = "plasma";
     };
 
     desktopManager = {
