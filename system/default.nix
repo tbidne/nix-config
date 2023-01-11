@@ -5,8 +5,8 @@
     [
       ./audio.nix
       ./boot.nix
+      (import ./gnome.nix { inherit inputs; })
       ./mouse.nix
-      (import ./plasma.nix { inherit inputs; })
       ./network.nix
       ./swap.nix
     ];
