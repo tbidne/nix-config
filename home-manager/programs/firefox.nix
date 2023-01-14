@@ -10,7 +10,7 @@
       cookie-autodelete
       darkreader
       decentraleyes
-      https-everywhere
+      #https-everywhere
       lastpass-password-manager
       link-cleaner
       noscript
