@@ -10,6 +10,10 @@ in
   #
   # https://github.com/NixOS/nixpkgs/issues/60312 suggests deleting caches
   # i.e. ~/.cache/kwin. Try deleting that and ~/.cache/kwin_rules_dialog/.
+  #
+  # UPDATE: https://github.com/NixOS/nixpkgs/issues/206868 blames mesa,
+  # and is allegedly fixed by mesa 22.3 (currently on 22.2, see
+  # ls /nix/store | grep mesa).
 
   services.xserver = {
     enable = true;
