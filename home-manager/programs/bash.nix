@@ -155,6 +155,24 @@ in
         nix run github:pjones/plasma-manager
       }
 
+      # Runs haddock job and pushes docs to gh-pages branch. Assumes
+      # the following:
+      #
+      # - main branch is 'main'
+      # - pages branch is 'gh-pages'
+      # - haddock script is 'make haddock' (i.e. makefile and cabal)
+      # - remote is 'origin'
+      function haddock-push() {
+        git checkout main && \
+        git branch -D gh-pages && \
+          git checkout -b gh-pages && \
+          make haddock && \
+          git add -A && \
+          git commit -m "Add haddocks" && \
+          git push -u --force origin gh-pages && \
+          git checkout main
+      }
+
       source ~/.git-prompt.sh
     '';
     initExtra = ''
