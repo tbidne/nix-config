@@ -145,7 +145,8 @@ in
       jnoortheen.nix-ide
       justusadam.language-haskell
       mechatroner.rainbow-csv
-      ms-python.python
+      # FIXME: broken
+      #ms-python.python
       octref.vetur
       streetsidesoftware.code-spell-checker
     ] ++ externalExts;
