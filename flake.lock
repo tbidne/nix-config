@@ -1669,11 +1669,11 @@
         "smart-math": "smart-math_5"
       },
       "locked": {
-        "lastModified": 1675289043,
-        "narHash": "sha256-M5eLmiJTnZXJlcPS7usETDV/bVBUe5GQkN4A9F1rThM=",
+        "lastModified": 1676436223,
+        "narHash": "sha256-l2Jb55Yx8JluFBbJ7hwZkYIM37Fl7bm4394AdzEwyTg=",
         "owner": "tbidne",
         "repo": "safe-rm",
-        "rev": "af41b7773b3b0e2095d44382d5b84445a57b3b44",
+        "rev": "6c52042368d7930027ddf169e8cb85f4254176c0",
         "type": "github"
       },
       "original": {
@@ -1696,11 +1696,11 @@
         "smart-math": "smart-math_6"
       },
       "locked": {
-        "lastModified": 1674769724,
-        "narHash": "sha256-8IERYAA/bkGlRdqt9Dp/n+7LHOQtlVnuMLFqXO85geQ=",
+        "lastModified": 1676439569,
+        "narHash": "sha256-SR0M0WrjXHmbs0QC9lbZH07BcrDoOxx7QQp5jNhQ5+Y=",
         "owner": "tbidne",
         "repo": "shrun",
-        "rev": "f0393ed830a47fea6bc20bb2033ced60d5e1da1a",
+        "rev": "5da405ab2429f8318705b86a014be816f1f69e0b",
         "type": "github"
       },
       "original": {
