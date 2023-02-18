@@ -46,6 +46,15 @@ in
         nix run github:tbidne/nix-hs-tools/0.7#$1 -- ''${@:2}
       }
 
+      # Launches a nix shell using those defined in my external repo.
+      # The first arg is the shell and the rest are passed through. E.g.
+      #
+      # hs-nshell liquidhaskell
+      # hs-nshell liquidhaskell --arg dev false
+      function hs-nshell() {
+        nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $1 ''${@:2}
+      }
+
       # tries param command until it succeeds
       function retry() {
         success=0
