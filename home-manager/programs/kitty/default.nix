@@ -1,7 +1,7 @@
 { inputs }:
 
 let
-  theme = builtins.readFile "${inputs.catpuppucin.outPath}/macchiato.conf";
+  theme = builtins.readFile "${inputs.catpuppucin.outPath}/themes/macchiato.conf";
 in
 {
   programs.kitty = {
