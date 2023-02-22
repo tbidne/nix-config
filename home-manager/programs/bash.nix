@@ -49,9 +49,9 @@ in
       # Launches a nix shell using those defined in my external repo.
       # The first arg is the shell and the rest are passed through. E.g.
       #
-      # hs-nshell liquidhaskell
-      # hs-nshell liquidhaskell --arg dev false
-      function hs-nshell() {
+      # hshell liquidhaskell
+      # hshell liquidhaskell --arg ghcid false
+      function hshell() {
         if [[ -z "$1" ]]; then
           attr=default
           args=""
