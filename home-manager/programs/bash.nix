@@ -52,7 +52,15 @@ in
       # hs-nshell liquidhaskell
       # hs-nshell liquidhaskell --arg dev false
       function hs-nshell() {
-        nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $1 ''${@:2}
+        if [[ -z "$1" ]]; then
+          attr=default
+          args=""
+        else
+          attr=$1
+          args=''${@:2}
+        fi
+
+        nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $attr $args
       }
 
       # tries param command until it succeeds
