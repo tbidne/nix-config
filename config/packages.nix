@@ -8,7 +8,6 @@
     conky
     firefox
     gimp
-    google-chrome
     haruna
     peek
     thunderbird
@@ -17,7 +16,6 @@
     libreoffice
     okular
     pandoc
-    texlab # for lsp + latex
     texlive.combined.scheme-full
 
     # dev
@@ -25,19 +23,12 @@
     gnumake
     jq
     lua
-    neovim
     onefetch
     ruby
     sqitchPg
     sqlite
     vim
     vscodium
-
-    ## doom emacs
-    coreutils
-    clang
-    python3 # treemacs
-    emacs
 
     # my projects
     (inputs.src2pkg inputs.navi)
@@ -83,6 +74,5 @@
     ntfs3g
   ];
 
-  programs.steam.enable = true;
   programs.gnupg.agent.enable = true;
 }

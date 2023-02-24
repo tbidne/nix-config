@@ -5,7 +5,6 @@
     [
       aileron
       carlito
-      emacs-all-the-icons-fonts
       font-awesome
       hasklig
       (inputs.src2pkg inputs.impact)
