@@ -23,6 +23,7 @@
     # dev
     git
     gnumake
+    jq
     lua
     neovim
     onefetch
