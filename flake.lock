@@ -1669,11 +1669,11 @@
         "smart-math": "smart-math_5"
       },
       "locked": {
-        "lastModified": 1677202343,
-        "narHash": "sha256-xekOcyk2IooXWbh/DpdhfnMXr7JwkffsRyi8cGyoeZg=",
+        "lastModified": 1677209726,
+        "narHash": "sha256-SYaQ5iY5FVdlwGBBItfAZEyS3dz2pSsJdXN4l1um1YE=",
         "owner": "tbidne",
         "repo": "safe-rm",
-        "rev": "1e278e83986421a1577ddf347d9e7d2ad84d07ca",
+        "rev": "e81cf80c0eaf4a0e89727bf7095e67bd02403474",
         "type": "github"
       },
       "original": {
