@@ -16,14 +16,11 @@ in
       icat = "kitty +kitten icat";
 
       # misc
-      doom = "~/.emacs.d/bin/doom";
       lightup = "brightnessctl -d intel_backlight s +10%";
       lightdown = "brightnessctl -d intel_backlight s 10%-";
-      es = "emacs . &";
       hls = "haskell-language-server";
       nap = "systemctl suspend";
       nixfork = "cd ~/Dev/opensource/my-forks/nixpkgs";
-      nv = "nvim .";
       pwdc = "pwd | xclip -selection clipboard";
       reload-ui = "sudo systemctl restart display-manager";
       vsc = "codium .";
