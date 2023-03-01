@@ -1,3 +1,5 @@
+shell-init = "source ~/.bash_functions.sh"
+
 legend = [
   # nixos-rebuild
   { key = "ntest", val = "sudo nixos-rebuild test --flake '.#nixos'" },
