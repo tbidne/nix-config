@@ -1,6 +1,6 @@
 {
   home.file = {
-    ".git-prompt.sh" = {
+    ".git_prompt.sh" = {
       source = ./bash/git_prompt.sh;
     };
     ".bash_functions.sh" = {
@@ -29,7 +29,7 @@
       . ~/.bash_functions.sh
       color_my_prompt
 
-      . ~/.git-prompt.sh
+      . ~/.git_prompt.sh
     '';
     initExtra = ''
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
