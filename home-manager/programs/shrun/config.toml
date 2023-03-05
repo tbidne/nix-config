@@ -1,19 +1,58 @@
-shell-init = "source ~/.bash_functions.sh"
+init = ". ~/.bash_functions.sh"
 
-legend = [
-  # nixos-rebuild
-  { key = "ntest", val = "sudo nixos-rebuild test --flake '.#nixos'" },
-  { key = "nswitch", val = "sudo nixos-rebuild switch --flake '.#nixos'" },
-  { key = "nclean", val = "nix-collect-garbage --delete-older-than 30d" },
-  { key = "ncleanall", val = "sudo nix-collect-garbage -d" },
+# NIX ALIASES
 
-  # nix shells
-  { key = "ns", val = "nix-shell --command exit" },
-  { key = "nd", val = "nix develop -c bash -c 'exit'" },
+[[legend]]
+key = "ntest"
+val = "sudo nixos-rebuild test --flake '.#nixos'"
 
-  # misc
-  { key = "nix-revw-hd", val = 'nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"' },
-]
+[[legend]]
+key = "nswitch"
+val = "sudo nixos-rebuild switch --flake '.#nixos'"
+
+[[legend]]
+key = "nclean"
+val = "nix-collect-garbage --delete-older-than 30d'"
+
+[[legend]]
+key = "ncleanall"
+val = "sudo nix-collect-garbage -d"
+
+[[legend]]
+key = "ns"
+val = "nix-shell --command exit"
+
+[[legend]]
+key = "nd"
+val = "nix develop -c bash -c 'exit'"
+
+[[legend]]
+key = "nix-revw-hd"
+val = 'nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"'
+
+# GHC ALIASES
+
+[[legend]]
+key = "ghc_clean"
+val = 'rm -rf _build'
+
+[[legend]]
+key = "ghc_build"
+val = "./hadrian/build -j --flavour=validate+werror"
+
+[[legend]]
+key = "ghc_fbuild"
+val = """
+set -e
+
+rm -rf _build
+
+./boot
+
+./configure
+
+./hadrian/build -j --flavour=validate+werror
+"""
 
 [cmd-log]
 
