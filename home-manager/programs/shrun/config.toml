@@ -4,11 +4,11 @@ init = ". ~/.bash_functions.sh"
 
 [[legend]]
 key = "ntest"
-val = "sudo nixos-rebuild test --flake '.#nixos'"
+val = "sudo nixos-rebuild test --flake '.#nixos' -L"
 
 [[legend]]
 key = "nswitch"
-val = "sudo nixos-rebuild switch --flake '.#nixos'"
+val = "sudo nixos-rebuild switch --flake '.#nixos' -L"
 
 [[legend]]
 key = "nclean"
