@@ -19,6 +19,7 @@
     texlive.combined.scheme-full
 
     # dev
+    entr
     git
     gnumake
     jq
