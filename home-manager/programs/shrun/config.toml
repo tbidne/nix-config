@@ -20,11 +20,11 @@ val = "sudo nix-collect-garbage -d"
 
 [[legend]]
 key = "ns"
-val = "nix-shell --command exit"
+val = "nix-shell -L --command exit"
 
 [[legend]]
 key = "nd"
-val = "nix develop -c bash -c 'exit'"
+val = "nix develop -L -c bash -c 'exit'"
 
 [[legend]]
 key = "nix-revw-hd"
