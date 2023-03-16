@@ -64,11 +64,11 @@ cghcid () {
 }
 
 ns () {
-  nix-shell $@
+  nix-shell -L $@
 }
 
 nd () {
-  nix develop $@
+  nix develop -L $@
 }
 
 nu () {
