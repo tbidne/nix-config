@@ -7,8 +7,16 @@
 {
   nix = {
     package = inputs.pkgs.nixFlakes;
+    # NOTE: This is pretty gross, but most of this prompt is stolen from the
+    # functions.sh file. The main differenec is the end, where we add the emoji
+    # for a snowflake.
+    #
+    # Now, this sometimes interacts badly with the test that comes after, so
+    # we have found the following hack, which seems to allow the prompt to
+    # terminate in a single space.
     extraOptions = ''
       experimental-features = nix-command flakes
+      bash-prompt = \[\033[01;34m\]\w \[\033[31m\]`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`\[\033[35m\]\n❄️\[\033[00m\][$SHLVL] \0
     '';
 
     # so I can configure binary caches without sudo
