@@ -9,7 +9,7 @@
   networking.interfaces.enp0s31f6.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
 
-  #services.tailscale.enable = true;
+  services.tailscale.enable = true;
 
   # Without this, we receive errors about switching to the new build since
   # nm-online never succeeds.
