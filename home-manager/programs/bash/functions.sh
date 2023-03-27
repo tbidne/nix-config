@@ -67,8 +67,16 @@ ns () {
   nix-shell -L $@
 }
 
+nse () {
+  nix-shell -L --command exit $@
+}
+
 nd () {
   nix develop -L $@
+}
+
+nde () {
+  nix develop -L -c bash -c 'exit' $@
 }
 
 nu () {

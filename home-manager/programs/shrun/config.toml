@@ -19,14 +19,6 @@ key = "ncleanall"
 val = "sudo nix-collect-garbage -d"
 
 [[legend]]
-key = "ns"
-val = "nix-shell -L --command exit"
-
-[[legend]]
-key = "nd"
-val = "nix develop -L -c bash -c 'exit'"
-
-[[legend]]
 key = "nix-revw-hd"
 val = 'nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"'
 
