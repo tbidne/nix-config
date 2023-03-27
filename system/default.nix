@@ -17,9 +17,13 @@
   nix.settings.auto-optimise-store = true;
 
   # automatic gc
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 30d";
-  };
+  #
+  # disabled for now as the auto gc is really inconvenient for some haskell
+  # dev (e.g. nix-hs-tools)
+  #
+  #nix.gc = {
+  #  automatic = true;
+  #  dates = "weekly";
+  #  options = "--delete-older-than 30d";
+  #};
 }

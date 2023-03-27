@@ -9,7 +9,7 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -30,7 +30,35 @@
 
   swapDevices = [ ];
 
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
+  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
+
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  # This line broke the build w/ the error message:
+  #
+  #     Failed assertions:
+  #     - The option definition `hardware.video.hidpi.enable' in `/nix/store/69ddb49wfgs2nir72jkzm7jpvfa24gcy-source/hardware-configuration.nix' no longer has any effect; please remove it.
+  #     Consider manually configuring fonts.fontconfig according to personal preference.
+  #
+  # I regenerated this file via nixos-generate-config, but the option remained.
+  # Presumably this option will not be generated in the future, but for now
+  # it still is, so the official advice is to manually comment it out. See:
+  #
+  #     https://github.com/NixOS/nixpkgs/issues/222805
+  #
+  # Probably this is all we need so I could revert the other generated changes,
+  # but it doesn't seem like a bad idea to keep the rest up-to-date, hence
+  # keeping them for now.
+  #
   # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
+  #hardware.video.hidpi.enable = lib.mkDefault true;
 }
