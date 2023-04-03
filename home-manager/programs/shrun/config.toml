@@ -52,3 +52,7 @@ rm -rf _build
 path = "default"
 mode = "append"
 size-mode = "delete 50 mb"
+
+[notify]
+system = "dbus"
+action = "command"

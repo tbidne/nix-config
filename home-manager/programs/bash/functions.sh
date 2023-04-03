@@ -67,16 +67,32 @@ ns () {
   nix-shell -L $@
 }
 
+nsj1 () {
+  nix-shell --max-jobs 1 -L $@
+}
+
 nse () {
   nix-shell -L --command exit $@
+}
+
+nsej1 () {
+  nix-shell --max-jobs 1 -L --command exit $@
 }
 
 nd () {
   nix develop -L $@
 }
 
+ndj1 () {
+  nix develop --max-jobs 1 -L $@
+}
+
 nde () {
   nix develop -L -c bash -c 'exit' $@
+}
+
+ndej1 () {
+  nix develop --max-jobs 1 -L -c bash -c 'exit' $@
 }
 
 nu () {
