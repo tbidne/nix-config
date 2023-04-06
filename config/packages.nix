@@ -10,12 +10,9 @@
     gimp
     haruna
     peek
-    thunderbird
 
     # doc editing
-    libreoffice
     okular
-    pandoc
     texlive.combined.scheme-full
 
     # dev
