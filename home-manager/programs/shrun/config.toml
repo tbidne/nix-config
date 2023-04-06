@@ -1,4 +1,5 @@
 init = ". ~/.bash_functions.sh"
+cmd-name-trunc = 15
 
 # NIX ALIASES
 

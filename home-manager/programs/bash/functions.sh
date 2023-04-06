@@ -107,11 +107,41 @@ nus () {
   nix flake lock $srcs
 }
 
+nix_info() {
+  nix-shell -p nix-info --run "nix-info -m"
+}
+
 # find-replace
 fr () {
   find . \
     -type f -name '*' ! -path "./.*" ! -path "./dist-newstyle/*" \
       | xargs sed -i "s/$1/$2/g"
+}
+
+# find_dirs str path lists all directories under path in which str is
+# found, according to ripgrep. If path is not given then we search in the
+# current dir.
+find_dirs () {
+  set +e
+
+  str=$1
+  root=$2
+  if [[ -z $root ]]; then
+    root=$(pwd)
+  fi
+
+  contents=$(ls $root)
+
+  for c in $contents; do
+    d="$root/$c"
+    if [[ -d $d ]]; then
+      output=$(rg $str $d)
+      ec=$?
+      if [[ $ec == 0 ]]; then
+        echo $d
+      fi
+    fi
+  done
 }
 
 # Update per https://github.com/badges/shields/issues/8671
