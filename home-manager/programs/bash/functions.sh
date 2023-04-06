@@ -203,3 +203,52 @@ haddock_push () {
     git push -u --force origin gh-pages && \
     git checkout main
 }
+
+hs_watch () {
+  dir="."
+  cmd="build"
+  verbose=0
+
+  while [ $# -gt 0 ]; do
+    if [[ $1 == "--help" || $1 == "-h" ]]; then
+      echo -e "hs_watch: Simple bash function for using entr with haskell.\n"
+      echo "Usage: haddock-cov [-d|--dir DIR]"
+      echo "                   [-c|--cmd COMMAND]"
+      echo "                   [-v|--verbose]"
+      echo "                   [-h|--help]"
+      echo ""
+      echo "Available options:"
+      echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
+      echo -e "  -c,--cmd COMMAND\tCabal command to run with entr e.g. 'build all'."
+      echo -e "                  \tDefaults to 'build'.\n"
+      echo "Examples:"
+      echo "  hs_watch"
+      echo -e "    = find . -type f -name \"*.hs\" | entr -s \"cabal build\"\n"
+      echo "  hs_watch -d /path/to/src"
+      echo -e "    = find /path/to/src -type f -name \"*.hs\" | entr -s \"cabal build\"\n"
+      echo "  hs_watch -c \"test foo --test-options '-p \\\"pattern\\\"'\""
+      echo -e "    = find . -type f -name \"*.hs\" | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
+      return 0
+    elif [[ $1 == "--dir" || $1 == "-d" ]]; then
+      dir=($2)
+      shift
+    elif [[ $1 == "--cmd" || $1 == "-c" ]]; then
+      cmd=$2
+      shift
+    elif [[ $1 == "--verbose" || $1 == "-v" ]]; then
+      verbose=1
+    else
+      echo "Unexpected arg: '$1'. Try --help."
+      return 1
+    fi
+    shift
+  done
+
+  if [[ $verbose = 1 ]]; then
+    echo "dir:  '$dir'"
+    echo "cmd:  '$cmd'"
+    echo -e "full: 'find $dir -type f -name \"*.hs\" | entr -s \"cabal $cmd\"'\n"
+  fi
+
+  find $dir -type f -name "*.hs" | entr -s "cabal $cmd"
+}
