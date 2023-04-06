@@ -1,67 +1,8 @@
-color_my_prompt () {
-  local __user_and_host="\[\033[01;32m\]\u@\h"
-  local __cur_location="\[\033[01;34m\]\w"
-  local __git_branch_color="\[\033[31m\]"
-  #local __git_branch="\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || \'\').gsub(/^\* (.+)$/, '(\1) ')\"\`"
-  local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
-  local __prompt_tail="\[\033[35m\]\n$"
-  local __last_color="\[\033[00m\]"
-  export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
-}
+###############################################################################
+#                                 GENERAL NIX                                 #
+###############################################################################
 
-# runs nix-hs-tools where first arg is tool and the rest are args
-hs () {
-  nix run github:tbidne/nix-hs-tools/0.8#$1 -- ''${@:2}
-}
-
-# Launches a nix shell using those defined in my external repo.
-# The first arg is the shell and the rest are passed through. E.g.
-#
-# hshell liquidhaskell
-# hshell liquidhaskell --arg ghcid false
-hshell () {
-  if [[ -z "$1" ]]; then
-    attr=default
-    args=""
-  else
-    attr=$1
-    args=''${@:2}
-  fi
-
-  nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $attr $args
-}
-
-# tries param command until it succeeds
-retry () {
-  success=0
-  count=1
-  while [[ $success == 0 ]]; do
-    $@
-    if [[ $? == 0 ]]; then
-      echo "'$@' succeeded on try $count"
-      success=1
-    else
-      echo "'$@' failed on try $count"
-      sleep 1
-    fi
-    count=$((count + 1))
-  done
-}
-
-# force pushes all changes, copies the new git revision into the clipboard
-git_yolo () {
-  git add -A && \
-    git commit --amend --no-edit && \
-    git push --force && \
-    git log \
-      | head -n 1 \
-      | cut -c 8-47 \
-      | xclip -selection clipboard
-}
-
-cghcid () {
-  ghcid --command "cabal repl $@"
-}
+# Functions for launching nix shell w/ various args
 
 ns () {
   nix-shell -L $@
@@ -95,6 +36,8 @@ ndej1 () {
   nix develop --max-jobs 1 -L -c bash -c 'exit' $@
 }
 
+# nu and nus update flake inputs
+
 nu () {
   nix flake lock --update-input $@
 }
@@ -111,53 +54,8 @@ nix_info() {
   nix-shell -p nix-info --run "nix-info -m"
 }
 
-# find-replace
-fr () {
-  find . \
-    -type f -name '*' ! -path "./.*" ! -path "./dist-newstyle/*" \
-      | xargs sed -i "s/$1/$2/g"
-}
-
-# find_dirs str path lists all directories under path in which str is
-# found, according to ripgrep. If path is not given then we search in the
-# current dir.
-find_dirs () {
-  set +e
-
-  str=$1
-  root=$2
-  if [[ -z $root ]]; then
-    root=$(pwd)
-  fi
-
-  contents=$(ls $root)
-
-  for c in $contents; do
-    d="$root/$c"
-    if [[ -d $d ]]; then
-      output=$(rg $str $d)
-      ec=$?
-      if [[ $ec == 0 ]]; then
-        echo $d
-      fi
-    fi
-  done
-}
-
-# Update per https://github.com/badges/shields/issues/8671
-update_badges () {
-  find . \
-    -type f -name '*md' ! -path "./.*" ! -path "./dist-newstyle/*" \
-      | xargs sed -i -E 's/https:\/\/img.shields.io\/github\/workflow\/status\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\?(.*)/http:\/\/img.shields.io\/github\/actions\/workflow\/status\/\1\/\2\/\3.yaml\?branch=\4\&\5/g'
-}
-
-del_hs () {
-  find . \
-    -type d -name .stack-work -o -name dist-newstyle \
-      | xargs rm -r
-
-  rm -r ~/.cabal
-  rm -r ~/.stack
+plasma_nix () {
+  nix run github:pjones/plasma-manager
 }
 
 # Turns a symlink into a real file. Useful for testing changes to config
@@ -182,28 +80,46 @@ unsym_d () {
   done
 }
 
-plasma_nix () {
-  nix run github:pjones/plasma-manager
+###############################################################################
+#                                NIX + HASKELL                                #
+###############################################################################
+
+# runs nix-hs-tools where first arg is tool and the rest are args
+htool () {
+  nix run github:tbidne/nix-hs-tools/0.8#$1 -- ''${@:2}
 }
 
-# Runs haddock job and pushes docs to gh-pages branch. Assumes
-# the following:
+# Launches a nix shell using those defined in my external repo.
+# The first arg is the shell and the rest are passed through. E.g.
 #
-# - main branch is 'main'
-# - pages branch is 'gh-pages'
-# - haddock script is 'make haddock' (i.e. makefile and cabal)
-# - remote is 'origin'
-haddock_push () {
-  git checkout main && \
-  git branch -D gh-pages && \
-    git checkout -b gh-pages && \
-    make haddock && \
-    git add -A && \
-    git commit -m "Add haddocks" && \
-    git push -u --force origin gh-pages && \
-    git checkout main
+# hshell liquidhaskell
+# hshell liquidhaskell --arg ghcid false
+hshell () {
+  if [[ -z "$1" ]]; then
+    attr=default
+    args=""
+  else
+    attr=$1
+    args=''${@:2}
+  fi
+
+  nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $attr $args
 }
 
+###############################################################################
+#                                   HASKELL                                   #
+###############################################################################
+
+hs_del () {
+  find . \
+    -type d -name .stack-work -o -name dist-newstyle \
+      | xargs rm -r
+
+  rm -r ~/.cabal
+  rm -r ~/.stack
+}
+
+# Watches hs files via find and entr
 hs_watch () {
   dir="."
   cmd="build"
@@ -252,3 +168,130 @@ hs_watch () {
 
   find $dir -type f -name "*.hs" | entr -s "cabal $cmd"
 }
+
+###############################################################################
+#                                     GIT                                     #
+###############################################################################
+
+# Runs haddock job and pushes docs to gh-pages branch. Assumes
+# the following:
+#
+# - main branch is 'main'
+# - pages branch is 'gh-pages'
+# - haddock script is 'make haddock' (i.e. makefile and cabal)
+# - remote is 'origin'
+haddock_push () {
+  git checkout main && \
+  git branch -D gh-pages && \
+    git checkout -b gh-pages && \
+    make haddock && \
+    git add -A && \
+    git commit -m "Add haddocks" && \
+    git push -u --force origin gh-pages && \
+    git checkout main
+}
+
+# force pushes all changes, copies the new git revision into the clipboard
+git_yolo () {
+  git add -A && \
+    git commit --amend --no-edit && \
+    git push --force && \
+    git log \
+      | head -n 1 \
+      | cut -c 8-47 \
+      | xclip -selection clipboard
+}
+
+# Update per https://github.com/badges/shields/issues/8671
+update_badges () {
+  find . \
+    -type f -name '*md' ! -path "./.*" ! -path "./dist-newstyle/*" \
+      | xargs sed -i -E 's/https:\/\/img.shields.io\/github\/workflow\/status\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\?(.*)/http:\/\/img.shields.io\/github\/actions\/workflow\/status\/\1\/\2\/\3.yaml\?branch=\4\&\5/g'
+}
+
+###############################################################################
+#                                    UTILS                                    #
+###############################################################################
+
+# tries param command until it succeeds
+retry () {
+  success=0
+  count=1
+  while [[ $success == 0 ]]; do
+    $@
+    if [[ $? == 0 ]]; then
+      echo "'$@' succeeded on try $count"
+      success=1
+    else
+      echo "'$@' failed on try $count"
+      sleep 1
+    fi
+    count=$((count + 1))
+  done
+}
+
+# find-replace
+fr () {
+  find . \
+    -type f -name '*' ! -path "./.*" ! -path "./dist-newstyle/*" \
+      | xargs sed -i "s/$1/$2/g"
+}
+
+# find_dirs str path lists all directories under path in which str is
+# found, according to ripgrep. If path is not given then we search in the
+# current dir.
+find_dirs () {
+  set +e
+
+  str=$1
+  root=$2
+  if [[ -z $root ]]; then
+    root=$(pwd)
+  fi
+
+  contents=$(ls $root)
+
+  for c in $contents; do
+    d="$root/$c"
+    if [[ -d $d ]]; then
+      output=$(rg $str $d)
+      ec=$?
+      if [[ $ec == 0 ]]; then
+        echo $d
+      fi
+    fi
+  done
+}
+
+###############################################################################
+#                                     MISC                                    #
+###############################################################################
+
+color_my_prompt () {
+  local __user_and_host="\[\033[01;32m\]\u@\h"
+  local __cur_location="\[\033[01;34m\]\w"
+  local __git_branch_color="\[\033[31m\]"
+  #local __git_branch="\`ruby -e \"print (%x{git branch 2> /dev/null}.grep(/^\*/).first || \'\').gsub(/^\* (.+)$/, '(\1) ')\"\`"
+  local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+  local __prompt_tail="\[\033[35m\]\n$"
+  local __last_color="\[\033[00m\]"
+  export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
