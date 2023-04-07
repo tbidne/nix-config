@@ -8,6 +8,7 @@
     conky
     firefox
     gimp
+    google-chrome
     haruna
     peek
 
