@@ -1192,11 +1192,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1676885936,
-        "narHash": "sha256-ZRKb6zBfTvdCOXI7nGC1L9UWSU5ay2ltxg+f5UIzBOU=",
+        "lastModified": 1680758185,
+        "narHash": "sha256-sCVWwfnk7zEX8Z+OItiH+pcSklrlsLZ4TJTtnxAYREw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b69883faca9542d135fa6bab7928ff1b233c167f",
+        "rev": "0e19daa510e47a40e06257e205965f3b96ce0ac9",
         "type": "github"
       },
       "original": {
@@ -1558,11 +1558,11 @@
         "smart-math": "smart-math_5"
       },
       "locked": {
-        "lastModified": 1680830543,
-        "narHash": "sha256-9fyy3kQoatE41xK2Mm8YCqMwlHnRzZTxsGdFVBAf6pc=",
+        "lastModified": 1681008955,
+        "narHash": "sha256-Ji76fAhu4CBcamXnRIW3aYikk4wvdLaqcuuDKkkWLj8=",
         "owner": "tbidne",
         "repo": "safe-rm",
-        "rev": "5591689dea0a55606e42d36d081fcf3669d7227d",
+        "rev": "ede8bed0db3d323cb57dd9bb83f20c5b590587f7",
         "type": "github"
       },
       "original": {
