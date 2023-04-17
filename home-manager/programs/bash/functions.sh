@@ -128,10 +128,10 @@ hs_watch () {
   while [ $# -gt 0 ]; do
     if [[ $1 == "--help" || $1 == "-h" ]]; then
       echo -e "hs_watch: Simple bash function for using entr with haskell.\n"
-      echo "Usage: haddock-cov [-d|--dir DIR]"
-      echo "                   [-c|--cmd COMMAND]"
-      echo "                   [-v|--verbose]"
-      echo "                   [-h|--help]"
+      echo "Usage: hs_watch [-d|--dir DIR]"
+      echo "                [-c|--cmd COMMAND]"
+      echo "                [-v|--verbose]"
+      echo "                [-h|--help]"
       echo ""
       echo "Available options:"
       echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
