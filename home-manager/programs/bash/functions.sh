@@ -122,21 +122,24 @@ hs_del () {
 # Watches hs files via find and entr
 hs_watch () {
   dir="."
+  clean=0
   cmd="build"
   verbose=0
 
   while [ $# -gt 0 ]; do
     if [[ $1 == "--help" || $1 == "-h" ]]; then
       echo -e "hs_watch: Simple bash function for using entr with haskell.\n"
-      echo "Usage: hs_watch [-d|--dir DIR]"
+      echo "Usage: hs_watch [--clean]"
       echo "                [-c|--cmd COMMAND]"
+      echo "                [-d|--dir DIR]"
       echo "                [-v|--verbose]"
       echo "                [-h|--help]"
       echo ""
       echo "Available options:"
-      echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
+      echo -e "  --clean         \tRuns 'cabal clean' before --cmd.\n"
       echo -e "  -c,--cmd COMMAND\tCabal command to run with entr e.g. 'build all'."
       echo -e "                  \tDefaults to 'build'.\n"
+      echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
       echo "Examples:"
       echo "  hs_watch"
       echo -e "    = find . -type f -name \"*.hs\" | entr -s \"cabal build\"\n"
@@ -145,11 +148,13 @@ hs_watch () {
       echo "  hs_watch -c \"test foo --test-options '-p \\\"pattern\\\"'\""
       echo -e "    = find . -type f -name \"*.hs\" | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
       return 0
-    elif [[ $1 == "--dir" || $1 == "-d" ]]; then
-      dir=($2)
-      shift
+    elif [[ $1 == "--clean" ]]; then
+      clean=1
     elif [[ $1 == "--cmd" || $1 == "-c" ]]; then
       cmd=$2
+      shift
+    elif [[ $1 == "--dir" || $1 == "-d" ]]; then
+      dir=($2)
       shift
     elif [[ $1 == "--verbose" || $1 == "-v" ]]; then
       verbose=1
@@ -160,13 +165,24 @@ hs_watch () {
     shift
   done
 
-  if [[ $verbose = 1 ]]; then
-    echo "dir:  '$dir'"
-    echo "cmd:  '$cmd'"
-    echo -e "full: 'find $dir -type f -name \"*.hs\" | entr -s \"cabal $cmd\"'\n"
+  tmp_cmd="cabal $cmd"
+  if [[ 1 -eq $clean ]]; then
+    final_cmd="cabal clean && $tmp_cmd"
+  else
+    final_cmd="$tmp_cmd"
   fi
 
-  find $dir -type f -name "*.hs" | entr -s "cabal $cmd"
+  excluded_dirs="! -path \"./.*\" ! -path \"./*dist-newstyle/*\" ! -path \"./*stack-work/*\"";
+  find_cmd="find $dir -type f -name \"*.hs\" $excluded_dirs"
+
+  if [[ $verbose = 1 ]]; then
+    echo "dir:  '$dir'"
+    echo "cmd:  '$final_cmd'"
+    echo -e "full: 'find $dir -type f -name \"*.hs\" | entr -s $final_cmd'\n"
+  fi
+
+
+  find $dir -type f -name "*.hs" | entr -s "$final_cmd"
 }
 
 ###############################################################################
