@@ -149,17 +149,14 @@
       "inputs": {
         "flake-compat": [
           "time-conv",
-          "monad-effects",
           "flake-compat"
         ],
         "flake-parts": [
           "time-conv",
-          "monad-effects",
           "flake-parts"
         ],
         "nixpkgs": [
           "time-conv",
-          "monad-effects",
           "nixpkgs"
         ]
       },
@@ -326,17 +323,14 @@
       "inputs": {
         "flake-compat": [
           "time-conv",
-          "monad-effects",
           "flake-compat"
         ],
         "flake-parts": [
           "time-conv",
-          "monad-effects",
           "flake-parts"
         ],
         "nixpkgs": [
           "time-conv",
-          "monad-effects",
           "nixpkgs"
         ]
       },
@@ -717,11 +711,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681690464,
-        "narHash": "sha256-x8pw8KAb9TJsszbCHUBK2bWvgYPlCjwHMV1dF95eZPs=",
+        "lastModified": 1681935410,
+        "narHash": "sha256-ab7lYrtHb6DyGQFYyxL8EV9/jE1udsvVSsXfMbb2O2k=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "53bd74f786934997e7f6a5ed9741b226e511e508",
+        "rev": "571d0ed82538ea11f9ed4451fae892d9de8c3cc7",
         "type": "github"
       },
       "original": {
@@ -958,8 +952,14 @@
     },
     "monad-effects_6": {
       "inputs": {
-        "algebra-simple": "algebra-simple_6",
-        "bounds": "bounds_6",
+        "algebra-simple": [
+          "time-conv",
+          "algebra-simple"
+        ],
+        "bounds": [
+          "time-conv",
+          "bounds"
+        ],
         "flake-compat": [
           "time-conv",
           "flake-compat"
@@ -1143,11 +1143,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1681648924,
-        "narHash": "sha256-pzi3HISK8+7mpEtv08Yr80wswyHKsz+RP1CROG1Qf6s=",
+        "lastModified": 1681737997,
+        "narHash": "sha256-pHhjgsIkRMu80LmVe8QoKIZB6VZGRRxFmIvsC5S89k4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f294325aed382b66c7a188482101b0f336d1d7db",
+        "rev": "f00994e78cd39e6fc966f0c4103f908e63284780",
         "type": "github"
       },
       "original": {
@@ -1239,11 +1239,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1681731920,
-        "narHash": "sha256-neuZnv55Tpu+IJ4PqUSsSnJQ7rlnZO5uLQV6DMe2qNw=",
+        "lastModified": 1681939899,
+        "narHash": "sha256-3hljOdP9AfcSlIL0j0LABD2TyH+UK3kd+LZC1z4E2o0=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "8ed9352e77002728b5f46a1556f6f159e91c8660",
+        "rev": "a51c2efc17ac4cfe5ae33fcae7e94e1e770610dd",
         "type": "github"
       },
       "original": {
@@ -2046,17 +2046,19 @@
     },
     "time-conv_3": {
       "inputs": {
+        "algebra-simple": "algebra-simple_6",
+        "bounds": "bounds_6",
         "flake-compat": "flake-compat_8",
         "flake-parts": "flake-parts_6",
         "monad-effects": "monad-effects_6",
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1680671813,
-        "narHash": "sha256-rwce2+YsqWr/Hg0gwvEDUOj96mGBWIArrmvNOjDxfX0=",
+        "lastModified": 1681950870,
+        "narHash": "sha256-8uop7VkngmLgXcWABAxLBJnN3N2nNRbtZ18YVxIo2cE=",
         "owner": "tbidne",
         "repo": "time-conv",
-        "rev": "16df0a2dac0ff31d233ad65319afaed5e4284fd4",
+        "rev": "de3e8c910aaa18ea3f07625ddf1d3441629774a8",
         "type": "github"
       },
       "original": {
