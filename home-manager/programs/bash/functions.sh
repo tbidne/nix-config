@@ -181,7 +181,6 @@ hs_watch () {
     echo -e "full: 'find $dir -type f -name \"*.hs\" | entr -s $final_cmd'\n"
   fi
 
-
   find $dir -type f -name "*.hs" | entr -s "$final_cmd"
 }
 
