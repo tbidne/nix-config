@@ -1,1 +1,3 @@
+backend = "fdo"
 log-level = "debug"
+trash-home = "/home/tommy/.local/share/Trash"
