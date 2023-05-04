@@ -123,7 +123,7 @@ hs_del () {
 hs_watch () {
   dir="."
   clean=0
-  cmd="build"
+  cmd="cabal build"
   verbose=0
 
   while [ $# -gt 0 ]; do
@@ -137,15 +137,15 @@ hs_watch () {
       echo ""
       echo "Available options:"
       echo -e "  --clean         \tRuns 'cabal clean' before --cmd.\n"
-      echo -e "  -c,--cmd COMMAND\tCabal command to run with entr e.g. 'build all'."
-      echo -e "                  \tDefaults to 'build'.\n"
+      echo -e "  -c,--cmd COMMAND\tCommand to run with entr e.g. 'cabal build all'."
+      echo -e "                  \tDefaults to 'cabal build'.\n"
       echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
       echo "Examples:"
       echo "  hs_watch"
       echo -e "    = find . -type f -name \"*.hs\" | entr -s \"cabal build\"\n"
       echo "  hs_watch -d /path/to/src"
       echo -e "    = find /path/to/src -type f -name \"*.hs\" | entr -s \"cabal build\"\n"
-      echo "  hs_watch -c \"test foo --test-options '-p \\\"pattern\\\"'\""
+      echo "  hs_watch -c \"cabal test foo --test-options '-p \\\"pattern\\\"'\""
       echo -e "    = find . -type f -name \"*.hs\" | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
       return 0
     elif [[ $1 == "--clean" ]]; then
@@ -165,11 +165,10 @@ hs_watch () {
     shift
   done
 
-  tmp_cmd="cabal $cmd"
   if [[ 1 -eq $clean ]]; then
-    final_cmd="cabal clean && $tmp_cmd"
+    final_cmd="cabal clean && $cmd"
   else
-    final_cmd="$tmp_cmd"
+    final_cmd=$cmd
   fi
 
   excluded_dirs="! -path \"./.*\" ! -path \"./*dist-newstyle/*\" ! -path \"./*stack-work/*\"";
