@@ -14,7 +14,16 @@ alert = [
   { percent = 30 },
   { percent = 20, urgency = "critical" },
   { percent = 10, urgency = "critical", timeout = "never" },
+  { percent = 9, urgency = "critical", timeout = "never" },
+  { percent = 8, urgency = "critical", timeout = "never" },
+  { percent = 7, urgency = "critical", timeout = "never" },
+  { percent = 6, urgency = "critical", timeout = "never" },
   { percent = 5, urgency = "critical", timeout = "never" },
+  { percent = 4, urgency = "critical", timeout = "never" },
+  { percent = 3, urgency = "critical", timeout = "never" },
+  { percent = 2, urgency = "critical", timeout = "never" },
+  { percent = 1, urgency = "critical", timeout = "never" },
+  { percent = 0, urgency = "critical", timeout = "never" },
 ]
 
 [[net-interface]]
