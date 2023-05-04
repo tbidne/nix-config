@@ -112,11 +112,17 @@ hshell () {
 
 hs_del () {
   find . \
-    -type d -name .stack-work -o -name dist-newstyle \
+    -type d -name .stack-work -o -name dist-newstyle -o -name result \
       | xargs rm -r
 
-  rm -r ~/.cabal
-  rm -r ~/.stack
+  if [[ -d ~/.cabal ]]; then
+    echo "deleting ~/.cabal"
+    rm -r ~/.cabal
+  fi
+  if [[ -d ~/.cabal ]]; then
+    echo "deleting ~/.stack"
+    rm -r ~/.stack
+  fi
 }
 
 # Watches hs files via find and entr
