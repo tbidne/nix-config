@@ -13,7 +13,7 @@ val = "sudo nixos-rebuild switch --flake '.#nixos' -L"
 
 [[legend]]
 key = "nclean"
-val = "nix-collect-garbage --delete-older-than 30d'"
+val = "nix-collect-garbage --delete-older-than 30d"
 
 [[legend]]
 key = "ncleanall"
