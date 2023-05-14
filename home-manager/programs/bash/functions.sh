@@ -200,7 +200,7 @@ hs_watch () {
 # - pages branch is 'gh-pages'
 # - haddock script is 'make haddock' (i.e. makefile and cabal)
 # - remote is 'origin'
-haddock_push () {
+haddock_push_legacy () {
   git checkout main && \
   git branch -D gh-pages && \
     git checkout -b gh-pages && \
@@ -209,6 +209,33 @@ haddock_push () {
     git commit -m "Add haddocks" && \
     git push -u --force origin gh-pages && \
     git checkout main
+}
+
+# Runs haddock job and pushes docs to gh-pages branch. Assumes
+# the following:
+#
+# - main branch is 'main'
+# - pages branch is 'gh-pages'
+# - haddock script is './tools/haddock.sh'
+# - remote is 'origin'
+haddock_push () {
+  set -e
+
+  # make gh-pages branch off main
+  git checkout main
+  git branch -D gh-pages
+  git checkout -b gh-pages
+
+  # create docs
+  ./tools/haddock.sh
+
+  # commit and push
+  git add -A
+  git commit -m "Add haddocks"
+  git push -u --force origin gh-pages
+
+  # checkout main
+  git checkout main
 }
 
 # force pushes all changes, copies the new git revision into the clipboard
