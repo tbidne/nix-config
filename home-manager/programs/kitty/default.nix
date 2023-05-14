@@ -9,13 +9,13 @@ in
     font.name = "hasklig";
     settings = {
       shell = "/run/current-system/sw/bin/bash";
-      extraConfig = ''
-        ${theme}
-        wheel_scroll_multiplier 1.0
-        touch_scroll_multiplier 1.0
-        enable_audio_bell no
-        tab_bar_style powerline
-      '';
+      wheel_scroll_multiplier = 1;
+      touch_scroll_multiplier = 1;
+      enable_audio_bell = false;
+      tab_bar_style = "powerline";
     };
+    extraConfig = ''
+      ${theme}
+    '';
   };
 }
