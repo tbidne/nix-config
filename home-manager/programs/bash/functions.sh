@@ -177,16 +177,16 @@ hs_watch () {
     final_cmd=$cmd
   fi
 
-  excluded_dirs="! -path \"./.*\" ! -path \"./*dist-newstyle/*\" ! -path \"./*stack-work/*\"";
-  find_cmd="find $dir -type f -name \"*.hs\" $excluded_dirs"
+  excluded_dirs="! -path */.* ! -path */dist-newstyle/* ! -path */stack-work/*"
+  find_cmd="find $dir -type f -name *.hs $excluded_dirs"
 
   if [[ $verbose = 1 ]]; then
     echo "dir:  '$dir'"
     echo "cmd:  '$final_cmd'"
-    echo -e "full: 'find $dir -type f -name \"*.hs\" | entr -s $final_cmd'\n"
+    echo -e "full: '$find_cmd | entr -s $final_cmd'\n"
   fi
 
-  find $dir -type f -name "*.hs" | entr -s "$final_cmd"
+  $find_cmd | entr -s "$final_cmd"
 }
 
 ###############################################################################
