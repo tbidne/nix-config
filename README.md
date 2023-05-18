@@ -2,6 +2,5 @@
 
 # nix-config
 
-![build](https://github.com/tbidne/nix-config/workflows/build/badge.svg?branch=main)
-![nixfmt](https://github.com/tbidne/nix-config/workflows/style/badge.svg?branch=main)
+![ci](https://github.com/tbidne/nix-config/workflows/ci/badge.svg?branch=main)
 </div>
