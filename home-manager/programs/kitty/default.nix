@@ -8,12 +8,19 @@ in
     enable = true;
     font.name = "hasklig";
     settings = {
-      cursor_shape = "block";
       enable_audio_bell = false;
       shell = "/run/current-system/sw/bin/bash";
-      # needed so that we use the cursor_shape block. otherwise it is overridden
-      # somehow.
-      shell_integration = "no-cursor";
+      # cursor_shape = "block" and shell_integration = "no-cursor" set the
+      # cursor shape to block, which is what it was previously. If we go
+      # this route, also need to include "no-rc enabled" in
+      # shell_integration as those are needed for normal behavior (these params
+      # are default if shell_integration is unspecified).
+      #
+      # That said, deciding to ignore cursor_shape for now as I am somewhat
+      # used to the new line/beam, and the less config the better.
+      #
+      # shell_integration = "no-rc enabled no-cursor";
+      # cursor_shape = "block";
       tab_bar_style = "powerline";
       touch_scroll_multiplier = 1;
       wheel_scroll_multiplier = 1;
