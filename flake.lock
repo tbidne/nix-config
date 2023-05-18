@@ -637,11 +637,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683989410,
-        "narHash": "sha256-puF/QsIkp4ch0sf6M5mNzbdZtYcq2MJHcKre9wJ3ZYo=",
+        "lastModified": 1684442239,
+        "narHash": "sha256-8wD+fQpNULCF9a88E1Knw3MtXWqvyhn8u/859QSSoE4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6702b22b9805bc1879715d4111e3764cd4237aed",
+        "rev": "c10403a5739d6275334710903fe709bc8d587980",
         "type": "github"
       },
       "original": {
@@ -1033,14 +1033,18 @@
         "flake-compat": [
           "shrun",
           "flake-compat"
+        ],
+        "nixpkgs": [
+          "shrun",
+          "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1684025842,
-        "narHash": "sha256-ThbM8bcQRUOSlJiXN24VZXRC2DXPc7p9mzzFYcwWLWY=",
+        "lastModified": 1684036735,
+        "narHash": "sha256-vlzArNfrRRdXdtP1PBWzy9aIaT7kQ7EjSnzsdBfYsT8=",
         "owner": "tbidne",
         "repo": "nix-hs-utils",
-        "rev": "ac6629beb6006f51f03174f3db4c2760c023c44c",
+        "rev": "119ac7d1e462d6de3e4a57be164d7271dba38463",
         "type": "github"
       },
       "original": {
@@ -1196,11 +1200,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1683408522,
-        "narHash": "sha256-9kcPh6Uxo17a3kK3XCHhcWiV1Yu1kYj22RHiymUhMkU=",
+        "lastModified": 1684385584,
+        "narHash": "sha256-O7y0gK8OLIDqz+LaHJJyeu09IGiXlZIS3+JgEzGmmJA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "897876e4c484f1e8f92009fd11b7d988a121a4e7",
+        "rev": "48a0fb7aab511df92a17cf239c37f2bd2ec9ae3a",
         "type": "github"
       },
       "original": {
@@ -1292,11 +1296,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1684015269,
-        "narHash": "sha256-dlQ+eBGLNJpZOjA1v8xnpjqw9FZNsA4kpUUMelC8vf8=",
+        "lastModified": 1684442682,
+        "narHash": "sha256-L5nNfAiC9Ic1lUj68lxmYPbuvodSLD81bcyB/DGwyHA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "c626b2debd22f7dcd4c622a97b0034f5677155f4",
+        "rev": "f57952bb76f63be90400b74eb149c75460c10bc0",
         "type": "github"
       },
       "original": {
@@ -1641,11 +1645,11 @@
         "smart-math": "smart-math_6"
       },
       "locked": {
-        "lastModified": 1684030823,
-        "narHash": "sha256-7YCe/0LgTrholdER8ymFFWbT7bmT0ypT+pRUEIaDC6c=",
+        "lastModified": 1684387756,
+        "narHash": "sha256-MDW2OTewNwLEpUXOaVr6FkPEKofrllrVqr6PWXkeAh8=",
         "owner": "tbidne",
         "repo": "shrun",
-        "rev": "96a91713f505dc9213d6a08e45a65bab0f556812",
+        "rev": "384d1635fd411b040dcaf8cc8daa8325e67e7c8b",
         "type": "github"
       },
       "original": {
