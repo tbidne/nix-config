@@ -149,6 +149,7 @@ in
       #ms-python.python
       octref.vetur
       streetsidesoftware.code-spell-checker
+      rust-lang.rust-analyzer
     ] ++ externalExts;
     userSettings = {
       "breadcrumbs.enabled" = true;
