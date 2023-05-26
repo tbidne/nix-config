@@ -177,7 +177,7 @@ hs_watch () {
     final_cmd=$cmd
   fi
 
-  excluded_dirs="! -path */.* ! -path */dist-newstyle/* ! -path */stack-work/*"
+  excluded_dirs="! -path */\".*\" ! -path */dist-newstyle/* ! -path */stack-work/*"
   find_cmd="find $dir -type f -name *.hs $excluded_dirs"
 
   if [[ $verbose = 1 ]]; then
