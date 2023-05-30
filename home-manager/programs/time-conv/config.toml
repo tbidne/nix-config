@@ -4,6 +4,7 @@ today = true
 
 # usa
 la = "america/los_angeles"
+mt = "america/boise"
 ny = "america/new_york"
 
 # europe
