@@ -145,8 +145,7 @@ in
       jnoortheen.nix-ide
       justusadam.language-haskell
       mechatroner.rainbow-csv
-      # FIXME: broken
-      #ms-python.python
+      ms-python.python
       octref.vetur
       streetsidesoftware.code-spell-checker
       rust-lang.rust-analyzer
@@ -168,13 +167,16 @@ in
         "backgroundColor" = "none";
         "fontWeight" = "bold";
       };
+      # HACK: Whitespace on keywords w/o colons is because they occasionally
+      # can appear as part of another word (e.g. DEBUG), and we do not want
+      # highlighting to apply in those situations.
       "todohighlight.keywords" = [
         {
           "text" = "BUG:";
           "color" = "#ff6c6b";
         }
         {
-          "text" = "BUG";
+          "text" = " BUG";
           "color" = "#ff6c6b";
         }
         {
@@ -182,7 +184,7 @@ in
           "color" = "#83898d";
         }
         {
-          "text" = "DEPRECATED";
+          "text" = " DEPRECATED";
           "color" = "#83898d";
         }
         {
@@ -191,7 +193,7 @@ in
           "backgroundColor" = "none";
         }
         {
-          "text" = "FIXME";
+          "text" = " FIXME";
           "color" = "#ff6c6b";
           "backgroundColor" = "none";
         }
@@ -200,7 +202,7 @@ in
           "color" = "#a9a1e1";
         }
         {
-          "text" = "HACK";
+          "text" = " HACK";
           "color" = "#a9a1e1";
         }
         {
@@ -208,7 +210,7 @@ in
           "color" = "#5ea164";
         }
         {
-          "text" = "NOTE";
+          "text" = " NOTE";
           "color" = "#5ea164";
         }
         {
@@ -216,7 +218,7 @@ in
           "color" = "#51afef";
         }
         {
-          "text" = "REVIEW";
+          "text" = " REVIEW";
           "color" = "#51afef";
         }
         {
@@ -226,7 +228,7 @@ in
           "backgroundColor" = "none";
         }
         {
-          "text" = "TODO";
+          "text" = " TODO";
           "color" = "#ecbe7b";
           # override default
           "backgroundColor" = "none";
