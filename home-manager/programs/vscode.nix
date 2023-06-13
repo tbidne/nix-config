@@ -176,15 +176,7 @@ in
           "color" = "#ff6c6b";
         }
         {
-          "text" = " BUG";
-          "color" = "#ff6c6b";
-        }
-        {
           "text" = "DEPRECATED:";
-          "color" = "#83898d";
-        }
-        {
-          "text" = " DEPRECATED";
           "color" = "#83898d";
         }
         {
@@ -193,16 +185,7 @@ in
           "backgroundColor" = "none";
         }
         {
-          "text" = " FIXME";
-          "color" = "#ff6c6b";
-          "backgroundColor" = "none";
-        }
-        {
           "text" = "HACK:";
-          "color" = "#a9a1e1";
-        }
-        {
-          "text" = " HACK";
           "color" = "#a9a1e1";
         }
         {
@@ -210,25 +193,11 @@ in
           "color" = "#5ea164";
         }
         {
-          "text" = " NOTE";
-          "color" = "#5ea164";
-        }
-        {
           "text" = "REVIEW:";
           "color" = "#51afef";
         }
         {
-          "text" = " REVIEW";
-          "color" = "#51afef";
-        }
-        {
           "text" = "TODO:";
-          "color" = "#ecbe7b";
-          # override default
-          "backgroundColor" = "none";
-        }
-        {
-          "text" = " TODO";
           "color" = "#ecbe7b";
           # override default
           "backgroundColor" = "none";
