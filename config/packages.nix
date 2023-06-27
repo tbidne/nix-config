@@ -10,7 +10,6 @@
     gimp
     google-chrome
     haruna
-    peek
 
     # doc editing
     okular
