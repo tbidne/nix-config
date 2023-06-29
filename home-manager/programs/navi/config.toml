@@ -1,5 +1,6 @@
 [logging]
 severity = "debug"
+size-mode = "delete 100 mb"
 
 [battery-status]
 app = "upower"
