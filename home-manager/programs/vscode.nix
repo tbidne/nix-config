@@ -38,6 +38,15 @@ let
     };
     meta = { license = licenses.mit; };
   };
+  haskell-spotlight = buildVscodeExt {
+    mktplcRef = {
+      name = "haskell-spotlight";
+      publisher = "visortelle";
+      version = "0.0.3";
+      sha256 = "sha256-pHrGjAwb5gWxzCtsUMU6+zdQTI8aMxiwtQi4fc9JH9g=";
+    };
+    meta = { license = licenses.mit; };
+  };
   ide-purescript = buildVscodeExt {
     mktplcRef = {
       name = "ide-purescript";
@@ -119,6 +128,7 @@ let
 
   externalExts = [
     agda-mode
+    haskell-spotlight
     ide-purescript
     idris-vscode
     language-purescript
