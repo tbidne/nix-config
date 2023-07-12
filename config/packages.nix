@@ -11,6 +11,9 @@
     google-chrome
     haruna
 
+    # social
+    zoom-us
+
     # doc editing
     okular
     texlive.combined.scheme-full

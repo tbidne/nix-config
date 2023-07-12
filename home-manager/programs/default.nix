@@ -12,5 +12,6 @@
     ./time-conv/default.nix
     (import ./shrun/default.nix { inherit inputs; })
     (import ./vscode.nix { inherit inputs; })
+    ./zoom/default.nix
   ];
 }
