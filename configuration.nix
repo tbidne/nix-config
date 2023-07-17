@@ -24,6 +24,13 @@
       "root"
       "tommy"
     ];
+
+    # Primarily for legacy nix commands, but still seems to be some hold-outs
+    # as 'ls -al ~ | grep nix' returns hits. See:
+    #
+    # https://github.com/NixOS/nix/issues/1079
+    # https://github.com/NixOS/nixpkgs/issues/243826
+    settings.use-xdg-base-directories = true;
   };
 
   imports =
