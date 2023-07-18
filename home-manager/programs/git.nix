@@ -35,8 +35,11 @@
       lol = "log --oneline";
       redo = "commit --amend --no-edit";
 
-      fetch-ff = "!f() { git fetch $1; git merge $1/$2 --ff-only; }; f";
-      fetch-ff-u = "!f() { git fetch upstream; git merge upstream/$1 --ff-only; }; f";
+      # fast-forward param remote + param branch
+      ffrb = "!f() { git fetch $1 --prune; git merge $1/$2 --ff-only; }; f";
+
+      # fast-forward fixed remote 'upstream' + param branch
+      ffub = "!f() { git fetch upstream --prune; git merge upstream/$1 --ff-only; }; f";
 
       # e.g. git log-date "2021-07-27 12:00" "master"
       log-date = "!f() { git rev-list -n 1 --before=\"$1\" $2; }; f";
