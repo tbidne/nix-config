@@ -12,6 +12,7 @@
     haruna
 
     # social
+    slack
     zoom-us
 
     # doc editing
