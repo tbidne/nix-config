@@ -16,6 +16,16 @@
   # hardlinks to save space
   nix.settings.auto-optimise-store = true;
 
+  # NOTE: The first time I added this, switching to the new profile failed.
+  # I had to run 'sudo freshclam' (installation nonethless installed the
+  # binaries). After that, switch succeeded.
+  #
+  # See https://discourse.nixos.org/t/how-to-use-clamav-in-nixos/19782/3
+  services.clamav = {
+    daemon.enable = true;
+    updater.enable = true;
+  };
+
   # automatic gc
   #
   # disabled for now as the auto gc is really inconvenient for some haskell
