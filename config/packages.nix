@@ -20,6 +20,9 @@
     texlive.combined.scheme-full
 
     # dev
+    awscli2
+    aws-vault
+    dbeaver
     entr
     git
     gnumake
