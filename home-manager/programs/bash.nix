@@ -34,6 +34,7 @@
     initExtra = ''
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
       export LESS='-r'
+      export XDG_CONFIG_HOME=/home/tommy/.config
     '';
     shellOptions =
       [
