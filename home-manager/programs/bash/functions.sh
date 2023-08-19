@@ -111,17 +111,40 @@ hshell () {
 ###############################################################################
 
 hs_del () {
-  find . \
-    -type d -name .stack-work -o -name dist-newstyle -o -name result \
-      | xargs rm -r
+  # -t d -> find dirs
+  # -I   -> ignore .gitignore
+  # -H   -> search hidden
+  # -s   -> case sensitive
+  hs_dirs=$(fd -t d -I -H -s '^.stack-work$|^dist-newstyle$')
+  # -t l -> find symlinks
+  nix_dirs=$(fd -t l -I -H -s '^result$')
+
+  # --interactive=never is a safer way to ignore write-protected files.
+  # I.e. we do not want to prompt on every write-protected files, so we could
+  # use -f, but this will ignore non-existent files/args too.
+  # --interactive=never will also not prompt, but will error on
+  # non-existent files/args, so it's a mildly safer way to do what we want.
+
+  for d in $hs_dirs; do
+    echo "Deleting haskell build dir: '$d'"
+    rm -r --interactive=never "$d"
+  done
+
+  for nd in $nix_dirs; do
+    target=$(readlink $nd)
+    if [[ $target =~ ^/nix/store/.* ]]; then
+      echo "Deleting nix sym link: '$nd'"
+      rm -r --interactive=never "$nd"
+    fi
+  done
 
   if [[ -d ~/.cabal ]]; then
     echo "deleting ~/.cabal"
-    rm -r ~/.cabal
+    rm -r --interactive=never ~/.cabal
   fi
-  if [[ -d ~/.cabal ]]; then
+  if [[ -d ~/.stack ]]; then
     echo "deleting ~/.stack"
-    rm -r ~/.stack
+    rm -r --interactive=never ~/.stack
   fi
 }
 
