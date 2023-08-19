@@ -48,7 +48,7 @@
     };
     # TODO: Active windows should steal focus e.g. Ctrl+o in vscode should be
     # focused, but it is not.
-    files = {
+    configFile = {
       #"dolphinsrc"."IconsMode"."PreviewSize" = 128;
       "kwinrc"."Desktops"."Id_1" = "3868ba12-ce3b-4f2a-838a-c79089819633";
       "kwinrc"."Desktops"."Id_2" = "419c8acf-d73b-48a8-a244-a748545c7674";

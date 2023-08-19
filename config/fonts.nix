@@ -1,7 +1,7 @@
 { inputs }:
 
 {
-  fonts.fonts = with inputs.pkgs;
+  fonts.packages = with inputs.pkgs;
     [
       aileron
       carlito
