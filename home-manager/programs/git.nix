@@ -20,6 +20,7 @@
       s = "status";
       b = "branch";
       gad = "add -A";
+      gadp = "add -A --patch";
       co = "checkout";
       cob = "checkout -b";
       count = "count-objects -vH";
