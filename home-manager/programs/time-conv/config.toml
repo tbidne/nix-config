@@ -8,6 +8,7 @@ mt = "america/boise"
 ny = "america/new_york"
 
 # europe
+denmark = "europe/copenhagen"
 paris = "europe/paris"
 uk = "europe/london"
 zagreb = "europe/zagreb"

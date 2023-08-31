@@ -148,7 +148,7 @@ hs_del () {
   fi
 }
 
-# Watches hs files via find and entr
+# Watches hs files via fd and entr
 hs_watch () {
   dir="."
   clean=0
@@ -171,11 +171,11 @@ hs_watch () {
       echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
       echo "Examples:"
       echo "  hs_watch"
-      echo -e "    = find . -type f -name \"*.hs\" | entr -s \"cabal build\"\n"
+      echo -e "    = fd . -e hs | entr -s \"cabal build\"\n"
       echo "  hs_watch -d /path/to/src"
-      echo -e "    = find /path/to/src -type f -name \"*.hs\" | entr -s \"cabal build\"\n"
+      echo -e "    = fd . /path/to/src -e hs | entr -s \"cabal build\"\n"
       echo "  hs_watch -c \"cabal test foo --test-options '-p \\\"pattern\\\"'\""
-      echo -e "    = find . -type f -name \"*.hs\" | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
+      echo -e "    = fd . -e hs | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
       return 0
     elif [[ $1 == "--clean" ]]; then
       clean=1
@@ -183,7 +183,7 @@ hs_watch () {
       cmd=$2
       shift
     elif [[ $1 == "--dir" || $1 == "-d" ]]; then
-      dir=($2)
+      dir=". ($2)"
       shift
     elif [[ $1 == "--verbose" || $1 == "-v" ]]; then
       verbose=1
@@ -200,16 +200,15 @@ hs_watch () {
     final_cmd=$cmd
   fi
 
-  excluded_dirs="! -path */\".*\" ! -path */dist-newstyle/* ! -path */stack-work/*"
-  find_cmd="find $dir -type f -name *.hs $excluded_dirs"
+  fd_cmd="fd $dir -e hs"
 
   if [[ $verbose == 1 ]]; then
     echo "dir:  '$dir'"
     echo "cmd:  '$final_cmd'"
-    echo -e "full: '$find_cmd | entr -s $final_cmd'\n"
+    echo -e "full: '$fd_cmd | entr -s $final_cmd'\n"
   fi
 
-  $find_cmd | entr -s "$final_cmd"
+  $fd_cmd | entr -s "$final_cmd"
 }
 
 ###############################################################################
@@ -282,6 +281,10 @@ update_badges () {
 ###############################################################################
 #                                    UTILS                                    #
 ###############################################################################
+
+path_hex () {
+  printf '%s\n' $1 | od -t x1 -a
+}
 
 # tries param command until it succeeds
 retry () {
