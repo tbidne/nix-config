@@ -204,7 +204,7 @@ hs_watch () {
     final_cmd=$cmd
   fi
 
-  fd_cmd="fd $dir -e hs"
+  fd_cmd="fd $dir -e cabal -e hs"
 
   if [[ $verbose == 1 ]]; then
     echo "dir:  '$dir'"
