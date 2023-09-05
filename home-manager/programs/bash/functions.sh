@@ -106,6 +106,10 @@ hshell () {
   nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $attr $args
 }
 
+ghcshell () {
+  nix develop github:alpmestan/ghc.nix
+}
+
 ###############################################################################
 #                                   HASKELL                                   #
 ###############################################################################
