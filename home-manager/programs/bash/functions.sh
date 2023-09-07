@@ -344,6 +344,10 @@ find_dirs () {
 #                                     MISC                                    #
 ###############################################################################
 
+shrunlog () {
+  shrun "$1" -f log --file-log-mode write
+}
+
 color_my_prompt () {
   local __user_and_host="\[\033[01;32m\]\u@\h"
   local __cur_location="\[\033[01;34m\]\w"
