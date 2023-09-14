@@ -149,6 +149,7 @@ in
       bbenoist.nix
       bungcip.better-toml
       dracula-theme.theme-dracula
+      eamodio.gitlens
       editorconfig.editorconfig
       haskell.haskell
       james-yu.latex-workshop
