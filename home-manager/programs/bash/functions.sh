@@ -152,6 +152,33 @@ hs_del () {
   fi
 }
 
+hs_ormolu () {
+  ormolu -m inplace $(fd -e hs)
+}
+
+hs_fourmolu () {
+  fourmolu -m inplace $(fd -e hs)
+}
+
+hs_cabalfmt () {
+  cabal-fmt --inplace $(fd -e cabal)
+}
+
+hs_hlint () {
+  hlint $(fd -e hs)
+}
+
+hs_refactor () {
+  $(fd -e hs) | xargs -I % sh -c " \
+    hlint \
+    --ignore-glob=dist-newstyle \
+    --ignore-glob=stack-work \
+    --refactor \
+    --with-refactor=refactor \
+    --refactor-options=-i \
+    %"
+}
+
 # Watches hs files via fd and entr
 hs_watch () {
   dir="."
