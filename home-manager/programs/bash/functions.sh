@@ -183,6 +183,7 @@ hs_refactor () {
 hs_watch () {
   dir="."
   clean=0
+  dry_run=0
   cmd="cabal build"
   verbose=0
 
@@ -192,6 +193,7 @@ hs_watch () {
       echo "Usage: hs_watch [--clean]"
       echo "                [-c|--cmd COMMAND]"
       echo "                [-d|--dir DIR]"
+      echo "                [--dry-run]"
       echo "                [-v|--verbose]"
       echo "                [-h|--help]"
       echo ""
@@ -200,13 +202,14 @@ hs_watch () {
       echo -e "  -c,--cmd COMMAND\tCommand to run with entr e.g. 'cabal build all'."
       echo -e "                  \tDefaults to 'cabal build'.\n"
       echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
+      echo -e "  --dry-run       \tShows which files will be watched."
       echo "Examples:"
       echo "  hs_watch"
-      echo -e "    = fd . -e hs | entr -s \"cabal build\"\n"
+      echo -e "    = fd . -e cabal -e hs | entr -s \"cabal build\"\n"
       echo "  hs_watch -d /path/to/src"
-      echo -e "    = fd . /path/to/src -e hs | entr -s \"cabal build\"\n"
+      echo -e "    = fd . /path/to/src -e cabal -e hs | entr -s \"cabal build\"\n"
       echo "  hs_watch -c \"cabal test foo --test-options '-p \\\"pattern\\\"'\""
-      echo -e "    = fd . -e hs | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
+      echo -e "    = fd . -e cabal -e hs | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
       return 0
     elif [[ $1 == "--clean" ]]; then
       clean=1
@@ -214,8 +217,10 @@ hs_watch () {
       cmd=$2
       shift
     elif [[ $1 == "--dir" || $1 == "-d" ]]; then
-      dir=". ($2)"
+      dir=". $2"
       shift
+    elif [[ $1 == "--dry-run" ]]; then
+      dry_run=1
     elif [[ $1 == "--verbose" || $1 == "-v" ]]; then
       verbose=1
     else
@@ -225,13 +230,18 @@ hs_watch () {
     shift
   done
 
+  fd_cmd="fd $dir -e cabal -e hs"
+
+  if [[ 1 -eq $dry_run ]]; then
+    $fd_cmd
+    return
+  fi
+
   if [[ 1 -eq $clean ]]; then
     final_cmd="cabal clean && $cmd"
   else
     final_cmd=$cmd
   fi
-
-  fd_cmd="fd $dir -e cabal -e hs"
 
   if [[ $verbose == 1 ]]; then
     echo "dir:  '$dir'"
