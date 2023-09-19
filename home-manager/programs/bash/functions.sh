@@ -86,7 +86,7 @@ unsym_d () {
 
 # runs nix-hs-tools where first arg is tool and the rest are args
 htool () {
-  nix run github:tbidne/nix-hs-tools/0.9#$1 -- ''${@:2}
+  nix run github:tbidne/nix-hs-tools/0.9#$1 -- ${@:2}
 }
 
 # Launches a nix shell using those defined in my external repo.
@@ -100,7 +100,7 @@ hshell () {
     args=""
   else
     attr=$1
-    args=''${@:2}
+    args=${@:2}
   fi
 
   nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $attr $args
