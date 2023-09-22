@@ -188,45 +188,52 @@ hs_watch () {
   verbose=0
 
   while [ $# -gt 0 ]; do
-    if [[ $1 == "--help" || $1 == "-h" ]]; then
-      echo -e "hs_watch: Simple bash function for using entr with haskell.\n"
-      echo "Usage: hs_watch [--clean]"
-      echo "                [-c|--cmd COMMAND]"
-      echo "                [-d|--dir DIR]"
-      echo "                [--dry-run]"
-      echo "                [-v|--verbose]"
-      echo "                [-h|--help]"
-      echo ""
-      echo "Available options:"
-      echo -e "  --clean         \tRuns 'cabal clean' before --cmd.\n"
-      echo -e "  -c,--cmd COMMAND\tCommand to run with entr e.g. 'cabal build all'."
-      echo -e "                  \tDefaults to 'cabal build'.\n"
-      echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
-      echo -e "  --dry-run       \tShows which files will be watched."
-      echo "Examples:"
-      echo "  hs_watch"
-      echo -e "    = fd . -e cabal -e hs | entr -s \"cabal build\"\n"
-      echo "  hs_watch -d /path/to/src"
-      echo -e "    = fd . /path/to/src -e cabal -e hs | entr -s \"cabal build\"\n"
-      echo "  hs_watch -c \"cabal test foo --test-options '-p \\\"pattern\\\"'\""
-      echo -e "    = fd . -e cabal -e hs | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
-      return 0
-    elif [[ $1 == "--clean" ]]; then
-      clean=1
-    elif [[ $1 == "--cmd" || $1 == "-c" ]]; then
-      cmd=$2
-      shift
-    elif [[ $1 == "--dir" || $1 == "-d" ]]; then
-      dir=". $2"
-      shift
-    elif [[ $1 == "--dry-run" ]]; then
-      dry_run=1
-    elif [[ $1 == "--verbose" || $1 == "-v" ]]; then
-      verbose=1
-    else
-      echo "Unexpected arg: '$1'. Try --help."
-      return 1
-    fi
+    case "$1" in
+      "--help" | "-h")
+        echo -e "hs_watch: Simple bash function for using entr with haskell.\n"
+        echo "Usage: hs_watch [--clean]"
+        echo "                [-c|--cmd COMMAND]"
+        echo "                [-d|--dir DIR]"
+        echo "                [--dry-run]"
+        echo "                [-v|--verbose]"
+        echo "                [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  --clean         \tRuns 'cabal clean' before --cmd.\n"
+        echo -e "  -c,--cmd COMMAND\tCommand to run with entr e.g. 'cabal build all'."
+        echo -e "                  \tDefaults to 'cabal build'.\n"
+        echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
+        echo -e "  --dry-run       \tShows which files will be watched."
+        echo "Examples:"
+        echo "  hs_watch"
+        echo -e "    = fd . -e cabal -e hs | entr -s \"cabal build\"\n"
+        echo "  hs_watch -d /path/to/src"
+        echo -e "    = fd . /path/to/src -e cabal -e hs | entr -s \"cabal build\"\n"
+        echo "  hs_watch -c \"cabal test foo --test-options '-p \\\"pattern\\\"'\""
+        echo -e "    = fd . -e cabal -e hs | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
+        return 0
+        ;;
+      "--clean")
+        clean=1
+        ;;
+      "--cmd" | "-c")
+        cmd=$2
+        shift
+        ;;
+      "--dir" | "-d")
+        dir=". $2"
+        shift
+        ;;
+      "--dry-run")
+        dry_run=1
+        ;;
+      "--verbose" | "-v")
+        verbose=1
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
     shift
   done
 
