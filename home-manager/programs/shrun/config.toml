@@ -23,30 +23,6 @@ val = "sudo nix-collect-garbage -d"
 key = "nix-revw-hd"
 val = 'nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"'
 
-# GHC ALIASES
-
-[[legend]]
-key = "ghc_clean"
-val = 'rm -rf _build'
-
-[[legend]]
-key = "ghc_build"
-val = "./hadrian/build -j --flavour=validate+werror"
-
-[[legend]]
-key = "ghc_fbuild"
-val = """
-set -e
-
-rm -rf _build
-
-./boot
-
-./configure
-
-./hadrian/build -j --flavour=validate+werror
-"""
-
 [cmd-log]
 
 [file-log]

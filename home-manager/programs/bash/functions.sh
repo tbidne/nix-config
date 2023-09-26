@@ -106,8 +106,91 @@ hshell () {
   nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $attr $args
 }
 
-ghcshell () {
+###############################################################################
+#                                     GHC                                     #
+###############################################################################
+
+ghc_shell () {
   nix develop github:alpmestan/ghc.nix
+}
+
+ghc_cfg () {
+  ./boot && configure_ghc
+}
+
+ghc_build () {
+  build_root="_mybuild"
+  clean=0
+  config=0
+  flavour="quickest"
+  threads=8
+  verbose=0
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "ghc_build: Building ghc.\n"
+        echo "Usage: ghc_build [--build-root]"
+        echo "                 [--clean]"
+        echo "                 [--config]"
+        echo "                 [--flavour FLAVOUR]"
+        echo "                 [--threads NUM_THREADS]"
+        echo "                 [-v|--verbose]"
+        echo "                 [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  --build-root          \tSets the build directory.\n"
+        echo -e "  --clean               \tDeletes --build-root before building.\n"
+        echo -e "  --config              \tRuns configuration step before building.\n"
+        echo -e "  --flavour FLAVOUR     \tSets the flavour(s).\n"
+        echo -e "  --threads NUM_THREADS \tSets the threads.\n"
+        return 0
+        ;;
+      "--build-root")
+        build_root="$2"
+        shift
+        ;;
+      "--clean")
+        clean=1
+        ;;
+      "--config")
+        config=1
+        ;;
+      "--flavour")
+        flavour="$2"
+        shift
+        ;;
+      "--threads")
+        threads="$2"
+        shift
+        ;;
+      "--verbose" | "-v")
+        verbose=1
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+  if [[ 1 -eq $clean ]]; then
+    echo "*** Cleaning $build_root ***"
+    rm -r --interactive=never $build_root
+  fi
+
+  if [[ 1 -eq $config ]]; then
+    echo "*** Configuring ***"
+    ghc_cfg
+  fi
+
+  cmd="hadrian/build -j$threads --flavour=$flavour --build-root=$build_root"
+
+  if [[ 1 -eq $verbose ]]; then
+    echo "*** Command: '$cmd' ***"
+  fi
+
+  $cmd
 }
 
 ###############################################################################
