@@ -17,6 +17,7 @@
 
     # doc editing
     okular
+    pandoc
     texlive.combined.scheme-full
 
     # dev
