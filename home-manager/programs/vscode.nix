@@ -140,6 +140,10 @@ let
   ];
 in
 {
+  # BUG: For some reason, cached gpu settings seems to break the vscode on load
+  # sometimes. A workaround is to delete ~/.config/VSCodium/GPUCache/.
+  # If this becomes a frequent problem, perhaps wrap the exe in logic to
+  # delete this directory on startup.
   programs.vscode = {
     enable = true;
     package = inputs.pkgs.vscodium;
