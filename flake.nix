@@ -3,6 +3,7 @@
 
   inputs = {
     # nixpkgs + community
+    # https://github.com/NixOS/nix/issues/9052
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -24,12 +25,12 @@
     impact.inputs.nixpkgs.follows = "nixpkgs";
 
     # my repos
-    path-size.url = "github:tbidne/path-size/effectful";
-    pythia.url = "github:tbidne/pythia/effectful";
-    navi.url = "github:tbidne/navi/effectful";
-    safe-rm.url = "github:tbidne/safe-rm/effectful";
-    shrun.url = "github:tbidne/shrun/effectful";
-    time-conv.url = "github:tbidne/time-conv/effectful";
+    path-size.url = "github:tbidne/path-size";
+    pythia.url = "github:tbidne/pythia";
+    navi.url = "github:tbidne/navi";
+    safe-rm.url = "github:tbidne/safe-rm";
+    shrun.url = "github:tbidne/shrun";
+    time-conv.url = "github:tbidne/time-conv";
   };
 
   outputs =
