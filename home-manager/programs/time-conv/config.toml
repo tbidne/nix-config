@@ -3,6 +3,7 @@ today = true
 [aliases]
 
 # usa
+chi = "america/chicago"
 la = "america/los_angeles"
 mt = "america/boise"
 ny = "america/new_york"
@@ -12,3 +13,7 @@ denmark = "europe/copenhagen"
 paris = "europe/paris"
 uk = "europe/london"
 zagreb = "europe/zagreb"
+
+# oceania
+aet = "australia/sydney"
+nz = "pacific/auckland"
