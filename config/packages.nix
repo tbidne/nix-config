@@ -11,6 +11,18 @@
     google-chrome
     haruna
 
+    # For emailing books to kindle, set up sharing by email with email server:
+    #
+    # hostname: smtp.gmail.com
+    # username: <email>
+    # password: <app password>
+    # encryption: tls
+    calibre
+
+    # Hotspot. Not strictly necessary for calibre, but makes it easy to
+    # allow kindle to connect to this laptop's wifi.
+    linux-wifi-hotspot
+
     # social
     slack
     zoom-us
