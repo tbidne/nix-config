@@ -1,8 +1,5 @@
 {
   home.file = {
-    ".git_prompt.sh" = {
-      source = ./bash/git_prompt.sh;
-    };
     ".bash_functions.sh" = {
       source = ./bash/functions.sh;
     };
@@ -16,6 +13,7 @@
       icat = "kitty +kitten icat";
 
       # misc
+      reload = ". ~/.bashrc";
       lightup = "brightnessctl -d intel_backlight s +10%";
       lightdown = "brightnessctl -d intel_backlight s 10%-";
       hls = "haskell-language-server";
@@ -27,9 +25,6 @@
     };
     bashrcExtra = ''
       . ~/.bash_functions.sh
-      color_my_prompt
-
-      . ~/.git_prompt.sh
     '';
     initExtra = ''
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
@@ -49,5 +44,20 @@
     extraConfig = ''
       set completion-ignore-case on
     '';
+  };
+
+  programs.starship = {
+   enable = true;
+   enableBashIntegration = true;
+   settings = {
+     add_newline = true;
+     character = {
+       success_symbol = "[λ.](bold green)"; # ➜
+       error_symbol = "[λ.](bold red)";
+     };
+     shlvl = {
+       disabled = false;
+     };
+   };
   };
 }
