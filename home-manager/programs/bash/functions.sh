@@ -130,7 +130,7 @@ ghc_build () {
     case "$1" in
       "--help" | "-h")
         echo -e "ghc_build: Building ghc.\n"
-        echo "Usage: ghc_build [--build-root]"
+        echo "Usage: ghc_build [--build-root DIR]"
         echo "                 [--clean]"
         echo "                 [--config]"
         echo "                 [--flavour FLAVOUR]"
@@ -139,11 +139,13 @@ ghc_build () {
         echo "                 [-h|--help]"
         echo ""
         echo "Available options:"
-        echo -e "  --build-root          \tSets the build directory.\n"
+        echo -e "  --build-root DIR      \tSets the build directory.\n"
         echo -e "  --clean               \tDeletes --build-root before building.\n"
         echo -e "  --config              \tRuns configuration step before building.\n"
-        echo -e "  --flavour FLAVOUR     \tSets the flavour(s).\n"
-        echo -e "  --threads NUM_THREADS \tSets the threads.\n"
+        echo -e "  --flavour FLAVOUR     \tSets the flavour(s). Defaults to 'quickest'.\n"
+        echo -e "  --threads NUM_THREADS \tSets the threads. Defaults to 8.\n"
+        echo "Examples:"
+        echo "  ghc_build --clean --config --build-root _mybuild"
         return 0
         ;;
       "--build-root")
@@ -286,7 +288,7 @@ hs_watch () {
         echo -e "  -c,--cmd COMMAND\tCommand to run with entr e.g. 'cabal build all'."
         echo -e "                  \tDefaults to 'cabal build'.\n"
         echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
-        echo -e "  --dry-run       \tShows which files will be watched."
+        echo -e "  --dry-run       \tShows which files will be watched.\n"
         echo "Examples:"
         echo "  hs_watch"
         echo -e "    = fd . -e cabal -e hs | entr -s \"cabal build\"\n"
