@@ -160,8 +160,7 @@ in
       jnoortheen.nix-ide
       justusadam.language-haskell
       mechatroner.rainbow-csv
-      # Broken due to python3.11-jedi-language-server
-      #ms-python.python
+      ms-python.python
       octref.vetur
       streetsidesoftware.code-spell-checker
       rust-lang.rust-analyzer
