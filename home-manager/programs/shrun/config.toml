@@ -32,5 +32,5 @@ size-mode = "delete 50 mb"
 
 [notify]
 system = "dbus"
-action = "final"
+action = "command"
 timeout = 5
