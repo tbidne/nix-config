@@ -4,36 +4,79 @@
 
 # Functions for launching nix shell w/ various args
 
-ns () {
-  nix-shell -L $@
-}
-
-nsj1 () {
-  nix-shell --max-jobs 1 -L $@
-}
-
-nse () {
-  nix-shell -L --command exit $@
-}
-
-nsej1 () {
-  nix-shell --max-jobs 1 -L --command exit $@
-}
-
 nd () {
-  nix develop -L $@
-}
+  exit=0
+  jobs=""
+  legacy=0
+  path="./"
+  verbose=0
 
-ndj1 () {
-  nix develop --max-jobs 1 -L $@
-}
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "nd: Load a nix shell\n"
+        echo "Usage: nd [-e|--exit]"
+        echo "          [-j|--jobs MAX_JOBS]"
+        echo "          [-l|--legacy]"
+        echo "          [-p|--path PATH]"
+        echo "          [-v|--verbose]"
+        echo "          [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  -e,--exit               \tExits the shell after it loads.\n"
+        echo -e "  -j,--jobs MAX_JOBS      \tMaximum threads to use.\n"
+        echo -e "  -l,--legacy             \tIf true, uses nix-shell over nix develop.\n"
+        echo -e "  -p,--path PATH          \tPath to the shell. Defaults to ./.\n"
+        return 0
+        ;;
+      "-e" | "--exit")
+        exit=1
+        ;;
+      "-j" | "--jobs")
+        jobs="--max-jobs $2"
+        shift
+        ;;
+      "-l" | "--legacy")
+        legacy=1
+        ;;
+      "-p" | "--path")
+        path=$2
+        shift
+        ;;
+      "-v" | "--verbose")
+        verbose=1
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
 
-nde () {
-  nix develop -L -c bash -c 'exit' $@
-}
+  if [[ 1 -eq $exit ]]; then
+    if [[ 1 -eq $legacy ]]; then
+      exit_cmd="--command exit"
+    else
+      exit_cmd="-c bash -c 'exit'"
+    fi
+  else
+    exit_cmd=""
+  fi
 
-ndej1 () {
-  nix develop --max-jobs 1 -L -c bash -c 'exit' $@
+  if [[ 1 -eq $legacy ]]; then
+    main_cmd="nix-shell"
+  else
+    main_cmd="nix develop"
+  fi
+
+  if [[ 1 -eq $verbose ]]; then
+    cmd="$main_cmd $path $jobs -L $exit_cmd"
+    echo "cmd: $cmd"
+  else
+    cmd="$main_cmd $path $jobs $exit_cmd"
+  fi
+
+  $cmd
 }
 
 # nu and nus update flake inputs
