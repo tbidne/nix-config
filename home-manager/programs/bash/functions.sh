@@ -69,11 +69,9 @@ nd () {
     main_cmd="nix develop"
   fi
 
+  cmd="$main_cmd $path $jobs -L $exit_cmd"
   if [[ 1 -eq $verbose ]]; then
-    cmd="$main_cmd $path $jobs -L $exit_cmd"
     echo "cmd: $cmd"
-  else
-    cmd="$main_cmd $path $jobs $exit_cmd"
   fi
 
   $cmd
