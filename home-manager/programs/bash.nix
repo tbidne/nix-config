@@ -47,17 +47,17 @@
   };
 
   programs.starship = {
-   enable = true;
-   enableBashIntegration = true;
-   settings = {
-     add_newline = true;
-     character = {
-       success_symbol = "[λ.](bold green)"; # ➜
-       error_symbol = "[λ.](bold red)";
-     };
-     shlvl = {
-       disabled = false;
-     };
-   };
+    enable = true;
+    enableBashIntegration = true;
+    settings = {
+      add_newline = true;
+      character = {
+        success_symbol = "[λ.](bold green)"; # ➜
+        error_symbol = "[λ.](bold red)";
+      };
+      shlvl = {
+        disabled = false;
+      };
+    };
   };
 }
