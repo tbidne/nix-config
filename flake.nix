@@ -4,6 +4,7 @@
   inputs = {
     # nixpkgs + community
     # https://github.com/NixOS/nix/issues/9052
+    # https://github.com/NixOS/nixpkgs/issues/268727
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
