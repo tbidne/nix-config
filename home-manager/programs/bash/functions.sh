@@ -510,6 +510,29 @@ find_dirs () {
   done
 }
 
+rename_fs () {
+  if [[ $1 == "" || $2 == "" ]]; then
+    echo "Usage: rename_fs <string to match> <new string>"
+    return
+  fi
+
+  RX="^(.*)$1(.*)$"
+
+  files=$(ls)
+
+  for f in $files; do
+    if [[ $f =~ $RX ]]; then
+      prefix=${BASH_REMATCH[1]}
+      suffix=${BASH_REMATCH[2]}
+
+      new_f="$prefix$2$suffix"
+      echo "Renaming $f to $new_f"
+
+      mv $f $new_f
+    fi
+  done
+}
+
 ###############################################################################
 #                                     MISC                                    #
 ###############################################################################
