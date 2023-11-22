@@ -33,6 +33,7 @@
     texlive.combined.scheme-full
 
     # dev
+    avro-tools
     awscli2
     aws-vault
     dbeaver
