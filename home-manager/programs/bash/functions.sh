@@ -272,6 +272,14 @@ hs_del () {
     echo "deleting ~/.cabal"
     rm -r --interactive=never ~/.cabal
   fi
+  if [[ -d ~/.cache/cabal ]]; then
+    echo "deleting ~/.cache/cabal"
+    rm -r --interactive=never ~/.cache/cabal
+  fi
+  if [[ -d ~/.local/state/cabal ]]; then
+    echo "deleting ~/.local/state/cabal"
+    rm -r --interactive=never ~/.local/state/cabal
+  fi
   if [[ -d ~/.stack ]]; then
     echo "deleting ~/.stack"
     rm -r --interactive=never ~/.stack
