@@ -10,6 +10,7 @@
     gimp
     google-chrome
     haruna
+    pavucontrol
 
     # For emailing books to kindle, set up sharing by email with email server:
     #
