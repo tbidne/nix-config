@@ -26,10 +26,10 @@
     impact.inputs.nixpkgs.follows = "nixpkgs";
 
     # my repos
+    charon.url = "github:tbidne/charon";
     path-size.url = "github:tbidne/path-size";
     pythia.url = "github:tbidne/pythia";
     navi.url = "github:tbidne/navi";
-    safe-rm.url = "github:tbidne/safe-rm";
     shrun.url = "github:tbidne/shrun";
     time-conv.url = "github:tbidne/time-conv";
   };

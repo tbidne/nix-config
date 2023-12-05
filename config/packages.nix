@@ -50,10 +50,10 @@
     vscodium
 
     # my projects
+    (inputs.src2pkg inputs.charon)
     (inputs.src2pkg inputs.navi)
     (inputs.src2pkg inputs.path-size)
     (inputs.src2pkg inputs.pythia)
-    (inputs.src2pkg inputs.safe-rm)
     (inputs.src2pkg inputs.shrun)
     (inputs.src2pkg inputs.time-conv)
 
