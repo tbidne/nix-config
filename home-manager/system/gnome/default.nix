@@ -24,7 +24,7 @@
     };
 
     "org/gnome/desktop/wm/keybindings" = {
-      close = ["<Super>BackSpace"];
+      close = [ "<Super>BackSpace" ];
     };
 
     "org/gnome/desktop/wm/preferences" = {
