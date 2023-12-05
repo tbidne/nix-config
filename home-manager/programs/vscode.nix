@@ -220,7 +220,8 @@ in
       ];
       "update.mode" = "manual";
       "window.menuBarVisibility" = "toggle";
-      "workbench.activityBar.visible" = true;
+      # This options seems deprecated
+      #"workbench.activityBar.location" = "hidden";
       "workbench.colorTheme" = "Tokyo Night";
       "workbench.colorCustomizations" = {
         "activityBar.background" = "#242631";
