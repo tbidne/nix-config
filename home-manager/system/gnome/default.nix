@@ -27,12 +27,8 @@
       close = [ "<Super>BackSpace" ];
     };
 
-    "org/gnome/desktop/wm/preferences" = {
-      num-workspaces = 4;
-    };
-
     "org/gnome/mutter" = {
-      dynamic-workspaces = false;
+      dynamic-workspaces = true;
       edge-tiling = true;
     };
 
