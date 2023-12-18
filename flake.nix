@@ -10,11 +10,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
 
-    # plasma config
-    plasma-manager.url = "github:pjones/plasma-manager";
-    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-    plasma-manager.inputs.home-manager.follows = "home-manager";
-
     # other
     catpuppucin.url = "github:catppuccin/kitty";
     catpuppucin.flake = false;
@@ -37,7 +32,6 @@
   outputs =
     { catpuppucin
     , home-manager
-    , plasma-manager
     , nixpkgs
     , nur
     , self
@@ -83,10 +77,6 @@
                     home-manager.users.tommy = (import ./home-manager/home.nix {
                       inherit inputs;
                     });
-
-                    home-manager.sharedModules = [
-                      plasma-manager.homeManagerModules.plasma-manager
-                    ];
                   })
                 ];
               }

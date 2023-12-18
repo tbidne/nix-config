@@ -3,7 +3,7 @@
     enable = true;
 
     # NOTE: Leaving this for documentation. It works for minimal setups but
-    # not for KDE plasma (that is handled by our home-manager plasma settings).
+    # not for desktop envs (that is handled by our home-manager settings).
     #mouse = {
     #  naturalScrolling = true;
     #};
