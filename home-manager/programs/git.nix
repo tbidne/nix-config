@@ -50,22 +50,22 @@
 
       # fast-forward fixed remote 'upstream' + current branch
       ffuc = ''
-      !f() {
-        curr_branch=$(git rev-parse --abbrev-ref HEAD)
-        git fetch upstream --prune
-        git merge upstream/$curr_branch --ff-only
-      }
-      f
+        !f() {
+          curr_branch=$(git rev-parse --abbrev-ref HEAD)
+          git fetch upstream --prune
+          git merge upstream/$curr_branch --ff-only
+        }
+        f
       '';
 
       # fast-forward fixed param remote + current branch
       ffrc = ''
-      !f() {
-        curr_branch=$(git rev-parse --abbrev-ref HEAD)
-        git fetch $1 --prune
-        git merge $1/$curr_branch --ff-only
-      }
-      f
+        !f() {
+          curr_branch=$(git rev-parse --abbrev-ref HEAD)
+          git fetch $1 --prune
+          git merge $1/$curr_branch --ff-only
+        }
+        f
       '';
 
       # e.g. git log-date "2021-07-27 12:00" "master"
