@@ -33,8 +33,8 @@ let
     mktplcRef = {
       name = "agda-mode";
       publisher = "banacorn";
-      version = "0.3.7";
-      sha256 = "0hmldbyldr4h53g5ifrk5n5504yzhbq5hjh087id6jbjkp41gs9b";
+      version = "0.4.7";
+      sha256 = "sha256-gNa3n16lP3ooBRvGaugTua4IXcIzpMk7jBYMJDQsY00=";
     };
     meta = { license = licenses.mit; };
   };
