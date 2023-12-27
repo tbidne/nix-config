@@ -12,6 +12,7 @@
 
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = true;
+      speed = -0.73180076628352486;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
