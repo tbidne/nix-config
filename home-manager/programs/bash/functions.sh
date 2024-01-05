@@ -128,19 +128,63 @@ htool () {
 
 # Launches a nix shell using those defined in my external repo.
 # The first arg is the shell and the rest are passed through. E.g.
-#
-# hshell liquidhaskell
-# hshell liquidhaskell --arg ghcid false
 hshell () {
-  if [[ -z "$1" ]]; then
-    attr=default
-    args=""
-  else
-    attr=$1
-    args=${@:2}
+  args=""
+  exit_cmd=""
+  shell=default
+  URL=http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz
+  verbose=0
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "hshell: Load an external nix shell for haskell dev.\n"
+        echo "Usage: hshell [-a|--args ARGS]"
+        echo "              [-e|--exit]"
+        echo "              [-s|--shell SHELL]"
+        echo "              [-v|--verbose]"
+        echo "              [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  --args ARGS      \tArgs to pass through to shell.\n"
+        echo -e "  --e,--exit       \tExits immediately after loading.\n"
+        echo -e "  -s,--shell SHELL \tShell to load e.g. default.\n"
+        echo "Examples:"
+        echo "  hshell -s liquidhaskell -a '--arg hls true' -e"
+        echo -e "    = nix-shell \\"
+        echo -e "        http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz \\"
+        echo -e "        -A liquidhaskell \\"
+        echo -e "        --arg hls true \\"
+        echo -e "        --command exit"
+        return 0
+        ;;
+      "-a" | "--args")
+        args="$2"
+        shift
+        ;;
+      "-e" | "--exit")
+        exit_cmd="--command exit"
+        ;;
+      "-s" | "--shell")
+        shell=$2
+        shift
+        ;;
+      "-v" | "--verbose")
+        verbose=1
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+  cmd="nix-shell $URL -A $shell $args $exit_cmd"
+  if [[ $verbose == 1 ]]; then
+    echo "cmd: $cmd"
   fi
 
-  nix-shell http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz -A $attr $args
+  $cmd
 }
 
 ###############################################################################
