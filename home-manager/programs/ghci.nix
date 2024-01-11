@@ -7,7 +7,9 @@
       -- turn off warnings
       :set -w
 
-      -- common extension
+      :set -fprint-explicit-foralls
+
+      -- common extensions
       :set -XOverloadedStrings
       :set -XImportQualifiedPost
 
