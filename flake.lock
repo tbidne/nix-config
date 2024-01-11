@@ -351,11 +351,11 @@
     "catpuppucin": {
       "flake": false,
       "locked": {
-        "lastModified": 1686340014,
-        "narHash": "sha256-uZSx+fuzcW//5/FtW98q7G4xRRjJjD5aQMbvJ4cs94U=",
+        "lastModified": 1704898305,
+        "narHash": "sha256-mRFa+40fuJCUrR1o4zMi7AlgjRtFmii4fNsQyD8hIjM=",
         "owner": "catppuccin",
         "repo": "kitty",
-        "rev": "4820b3ef3f4968cf3084b2239ce7d1e99ea04dda",
+        "rev": "d7d61716a83cd135344cbb353af9d197c5d7cec1",
         "type": "github"
       },
       "original": {
@@ -567,11 +567,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704383912,
-        "narHash": "sha256-Be7O73qoOj/z+4ZCgizdLlu+5BkVvO2KO299goZ9cW8=",
+        "lastModified": 1704980804,
+        "narHash": "sha256-lPNNKdPqIYcjhhYIVwlajNt/HqVWbMOoSdNnwCvOP04=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "26b8adb300e50efceb51fff6859a1a6ba1ade4f7",
+        "rev": "93e804e7f8a1eb88bde6117cd5046501e66aa4bd",
         "type": "github"
       },
       "original": {
@@ -1107,11 +1107,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1704194953,
-        "narHash": "sha256-RtDKd8Mynhe5CFnVT8s0/0yqtWFMM9LmCzXv/YKxnq4=",
+        "lastModified": 1704722960,
+        "narHash": "sha256-mKGJ3sPsT6//s+Knglai5YflJUF2DGj7Ai6Ynopz0kI=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "bd645e8668ec6612439a9ee7e71f7eac4099d4f6",
+        "rev": "317484b1ead87b9c1b8ac5261a8d2dd748a0492d",
         "type": "github"
       },
       "original": {
@@ -1187,11 +1187,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1704418598,
-        "narHash": "sha256-X7i2xae7al1Gtd9d5gXP/geeDqzv+hwnhUP6IC1g8oM=",
+        "lastModified": 1705002794,
+        "narHash": "sha256-kOd7hd8A1sGFZSYJGn+cEH3RSpGVAQ004Pd1lZabuIo=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "823b04b39ec717d2069e87be82d6606d68d01ec7",
+        "rev": "753418854902ccec235420cf3ee6b8bb9da3de67",
         "type": "github"
       },
       "original": {
@@ -1340,11 +1340,11 @@
         "time-conv": "time-conv_2"
       },
       "locked": {
-        "lastModified": 1704418381,
-        "narHash": "sha256-lT83XZRjbxm2+WFi3pOezL7JkMrwuB8nCbPrYLAwQuI=",
+        "lastModified": 1705013404,
+        "narHash": "sha256-5okLLMMOCfaQWchSXwSBqofvB/uz8wTgKXEX9YHzgDM=",
         "owner": "tbidne",
         "repo": "pythia",
-        "rev": "0e6e30c63f1fe403ec841780a8e4371fedddf63f",
+        "rev": "c7d7717d978f164880ea18d161c39614c9a7ffcd",
         "type": "github"
       },
       "original": {
