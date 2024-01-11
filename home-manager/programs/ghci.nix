@@ -12,6 +12,7 @@
       -- common extensions
       :set -XOverloadedStrings
       :set -XImportQualifiedPost
+      :set -XNoStarIsType
 
       -- multi-line support
       :set +m -v0
