@@ -588,3 +588,8 @@ rename_fs () {
 shrunlog () {
   shrun "$1" -f log --file-log-mode write
 }
+
+port_to_pid () {
+  # e.g. port_to_pid 5432
+  sudo ss -lptn "sport = :$1"
+}
