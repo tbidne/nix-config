@@ -23,10 +23,10 @@ nd () {
         echo "          [-h|--help]"
         echo ""
         echo "Available options:"
-        echo -e "  -e,--exit               \tExits the shell after it loads.\n"
-        echo -e "  -j,--jobs MAX_JOBS      \tMaximum threads to use.\n"
-        echo -e "  -l,--legacy             \tIf true, uses nix-shell over nix develop.\n"
-        echo -e "  -p,--path PATH          \tPath to the shell. Defaults to ./.\n"
+        echo -e "  -e,--exit          \tExits the shell after it loads.\n"
+        echo -e "  -j,--jobs MAX_JOBS \tMaximum threads to use.\n"
+        echo -e "  -l,--legacy        \tIf true, uses nix-shell over nix develop.\n"
+        echo -e "  -p,--path PATH     \tPath to the shell. Defaults to ./.\n"
         return 0
         ;;
       "-e" | "--exit")
@@ -91,7 +91,7 @@ nus () {
   nix flake lock $srcs
 }
 
-nix_info() {
+nix_info () {
   nix-shell -p nix-info --run "nix-info -m"
 }
 
@@ -109,7 +109,7 @@ unsym_f () {
   chmod a+rw $1
 }
 
-# applies unsym-f to all files in the current directory
+# applies unsym_f to all files in the current directory
 unsym_d () {
   for f in $(find -type l); do
     cp --remove-destination $(readlink $f) $f
@@ -192,7 +192,30 @@ hshell () {
 ###############################################################################
 
 ghc_shell () {
-  nix develop github:alpmestan/ghc.nix
+  exit_cmd=""
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "ghc_shell: Load a nix shell for GHC development.\n"
+        echo "Usage: ghc_shell [-e|--exit]"
+        echo "                 [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  --e,--exit       \tExits immediately after loading.\n"
+        return 0
+        ;;
+      "-e" | "--exit")
+        exit_cmd="-c bash -c 'exit'"
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+  nix develop github:alpmestan/ghc.nix -L $exit_cmd
 }
 
 ghc_cfg () {
@@ -210,7 +233,7 @@ ghc_build () {
   while [ $# -gt 0 ]; do
     case "$1" in
       "--help" | "-h")
-        echo -e "ghc_build: Building ghc.\n"
+        echo -e "ghc_build: Building GHC.\n"
         echo "Usage: ghc_build [--build-root DIR]"
         echo "                 [--clean]"
         echo "                 [--config]"
