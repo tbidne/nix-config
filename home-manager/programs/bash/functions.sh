@@ -1,4 +1,57 @@
 ###############################################################################
+#                                     TOP                                     #
+###############################################################################
+
+toc () {
+  cat << ToC
+*** Custom functions table of contents ***
+
+GHC
+  - ghc_shell: Loads a nix shell for GHC dev
+  - ghc_cfg: Runs configure in GHC repo
+  - ghc_build: Builds GHC in repo
+
+GIT
+  - haddock_push: Builds haskell docs and pushes to gh-pages git branch
+  - git_yolo: Force push all changes
+  - update_badges: Updates readme badges for shields.io changes
+
+Haskell
+  - hs_del: Recursively deletes haskell build dirs
+  - hs_ormolu: Runs ormolu in the current directory
+  - hs_fourmolu: Runs fourmolu in the current directory
+  - hs_cabalfmt: Runs cabal-fmt in the current directory
+  - hs_hlint: Runs hlint in the current directory
+  - hs_refactor: Runs hlint w/ refactor in the current directory
+  - hs_watch: Watches hs files via fd and entr
+
+Misc
+  - shrunlog: Alias for shrun -f log --file-log-mode write
+  - port_to_pid: Finds a process that is listening to the given pid
+
+Nix (General)
+  - nd: Load a nix shell
+  - nu: Update a single nix flake input
+  - nus: Updatte nix flake input(s)
+  - nix_info: print nix info
+  - unsym_f: Remove a symlink from a file
+  - unsym_d: Apply unsym_f to all symlinks in the current dir
+
+Nix (Haskell)
+  - htool: Runs nix-hs-tools
+  - hshell: Loads an external nix shell for haskell dev
+  - nixpkgs_hs_build: Builds a haskell package in the nixpkgs repository
+
+Utils
+  - path_hex: Prints a path in hex
+  - retry: Retries a command until it succeeds
+  - fr: Find/replace
+  - find_dirs: Lists all directories in which a string is found
+  - rename_fs: Renames files
+ToC
+}
+
+###############################################################################
 #                                 GENERAL NIX                                 #
 ###############################################################################
 
@@ -115,6 +168,62 @@ unsym_d () {
     cp --remove-destination $(readlink $f) $f
     chmod a+rw $f
   done
+}
+
+nixpkgs_hs_build () {
+  ghc=""
+  pkg=""
+  verbose=""
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "nixpkgs_hs_build: Builds a haskell package in nixpkgs.\n"
+        echo "Usage: nixpkgs_hs_build [--ghc GHC]"
+        echo "                        [-p|--pkg PKG]"
+        echo "                        [-v|--verbose]"
+        echo "                        [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  --ghc GHC    \tGHC to use. Optional\n"
+        echo -e "  -p,--pkg PKG \tThe package to build.\n"
+        echo "Examples:"
+        echo -e "  nixpkgs_hs_build -p text\n"
+        echo "  nixpkgs_hs_build --ghc ghc963 -p text"
+        return 0
+        ;;
+      "--ghc")
+        ghc="$2"
+        shift
+        ;;
+      "-p" | "--pkg")
+        pkg="$2"
+        shift
+        ;;
+      "-v" | "--verbose")
+        verbose=1
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+  if [[ $pkg == "" ]]; then
+    echo "No --pkg given. Try help."
+  fi
+
+  if [[ $ghc != "" ]]; then
+    cmd="nix build .#haskell.packages.$ghc.$pkg"
+  else
+    cmd="nix build .#haskellPackages.$pkg"
+  fi
+
+  if [[ $verbose == 1 ]]; then
+    echo "cmd: $cmd"
+  fi
+  $cmd
 }
 
 ###############################################################################
