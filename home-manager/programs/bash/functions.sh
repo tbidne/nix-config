@@ -391,7 +391,11 @@ ghc_build () {
 
   if [[ 1 -eq $clean ]]; then
     echo "*** Cleaning $build_root ***"
-    rm -r --interactive=never $build_root
+    if [[ -d $build_root ]]; then
+      rm -r --interactive=never $build_root
+    else
+      echo "$build_root does not exist"
+    fi
   fi
 
   if [[ 1 -eq $config ]]; then
