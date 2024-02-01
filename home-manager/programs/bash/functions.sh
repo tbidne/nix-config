@@ -11,7 +11,7 @@ GHC
   - ghc_cfg: Runs configure in GHC repo
   - ghc_build: Builds GHC in repo
 
-GIT
+Git
   - haddock_push: Builds haskell docs and pushes to gh-pages git branch
   - git_yolo: Force push all changes
   - update_badges: Updates readme badges for shields.io changes
@@ -722,7 +722,7 @@ rename_fs () {
 ###############################################################################
 
 shrunlog () {
-  shrun "$1" -f log --file-log-mode write
+  shrun "$1" -f shrun.log --file-log-mode write
 }
 
 port_to_pid () {
