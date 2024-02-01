@@ -58,6 +58,7 @@ ToC
 # Functions for launching nix shell w/ various args
 
 nd () {
+  args=""
   exit=0
   jobs=""
   legacy=0
@@ -68,7 +69,8 @@ nd () {
     case "$1" in
       "--help" | "-h")
         echo -e "nd: Load a nix shell\n"
-        echo "Usage: nd [-e|--exit]"
+        echo "Usage: nd [-a|--args]"
+        echo "          [-e|--exit]"
         echo "          [-j|--jobs MAX_JOBS]"
         echo "          [-l|--legacy]"
         echo "          [-p|--path PATH]"
@@ -81,6 +83,10 @@ nd () {
         echo -e "  -l,--legacy        \tIf true, uses nix-shell over nix develop.\n"
         echo -e "  -p,--path PATH     \tPath to the shell. Defaults to ./.\n"
         return 0
+        ;;
+      "-a" | "--args")
+        args="$2"
+        shift
         ;;
       "-e" | "--exit")
         exit=1
@@ -119,10 +125,10 @@ nd () {
   if [[ 1 -eq $legacy ]]; then
     main_cmd="nix-shell"
   else
-    main_cmd="nix develop"
+    main_cmd="nix develop -L"
   fi
 
-  cmd="$main_cmd $path $jobs -L $exit_cmd"
+  cmd="$main_cmd $path $args $jobs $exit_cmd"
   if [[ 1 -eq $verbose ]]; then
     echo "cmd: $cmd"
   fi
