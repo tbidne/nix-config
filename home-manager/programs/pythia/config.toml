@@ -1,0 +1,14 @@
+[battery]
+app = "upower"
+
+[global-ip]
+app = "dig"
+
+[memory]
+app = "free"
+
+[net-conn]
+app = "nmcli"
+
+[net-if]
+app = "nmcli"
