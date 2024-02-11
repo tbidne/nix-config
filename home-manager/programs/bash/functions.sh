@@ -238,7 +238,7 @@ nixpkgs_hs_build () {
 
 # runs nix-hs-tools where first arg is tool and the rest are args
 htool () {
-  nix run github:tbidne/nix-hs-tools/0.9.0.1#$1 -- ${@:2}
+  nix run github:tbidne/nix-hs-tools/0.9.1.0#$1 -- ${@:2}
 }
 
 # Launches a nix shell using those defined in my external repo.
