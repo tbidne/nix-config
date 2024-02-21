@@ -626,13 +626,16 @@ haddock_push () {
 
 # force pushes all changes, copies the new git revision into the clipboard
 git_yolo () {
-  git add -A && \
-    git commit --amend --no-edit && \
-    git push --force && \
-    git log \
-      | head -n 1 \
-      | cut -c 8-47 \
-      | xclip -selection clipboard
+  set -e
+
+  git add -A
+  git commit --amend --no-edit
+  git push --force
+
+  git log \
+    | head -n 1 \
+    | cut -c 8-47 \
+    | xclip -selection clipboard
 }
 
 # Update per https://github.com/badges/shields/issues/8671
