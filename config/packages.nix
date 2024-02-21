@@ -75,6 +75,7 @@
 
     # misc utils
     acpi
+    bottom # alternative to htop, gotop, top, etc.
     dig
     gnupg
     gotop
