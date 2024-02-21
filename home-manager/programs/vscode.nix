@@ -125,6 +125,15 @@ let
     };
     meta = { license = licenses.mit; };
   };
+  vscode-auto-scroll = buildVscodeExt {
+    mktplcRef = {
+      name = "vscode-auto-scroll";
+      publisher = "pejmannikram";
+      version = "1.2.0";
+      sha256 = "sha256-n9XVvXxrYbJ02fhBcWnPFhl50t2g/qeT1rRqsWHwrmE=";
+    };
+    meta = { license = licenses.mit; };
+  };
 
   externalExts = [
     agda-mode
@@ -137,6 +146,7 @@ let
     rst-preview
     rst-syntax
     todo-hl
+    vscode-auto-scroll
   ];
 in
 {
