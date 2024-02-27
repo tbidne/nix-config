@@ -434,6 +434,8 @@ ghc_build () {
   clean=0
   config=0
   flavour="quickest"
+  # for available targets, try hadrian/build --help
+  target=""
   threads=8
   verbose=0
 
@@ -445,6 +447,7 @@ ghc_build () {
         echo "                 [--clean]"
         echo "                 [--config]"
         echo "                 [--flavour FLAVOUR]"
+        echo "                 [--target TARGET]"
         echo "                 [--threads NUM_THREADS]"
         echo "                 [-v|--verbose]"
         echo "                 [-h|--help]"
@@ -455,6 +458,7 @@ ghc_build () {
         echo -e "  --config              \tRuns configuration step before building.\n"
         echo -e "  --flavour FLAVOUR     \tSets the flavour(s). Defaults to 'quickest'.\n"
         echo -e "  --threads NUM_THREADS \tSets the threads. Defaults to 8.\n"
+        echo -e "  --target TARGET       \tSpecifies the target e.g. nofib\n"
         echo "Examples:"
         echo "  ghc_build --clean --config --build-root _mybuild"
         return 0
@@ -471,6 +475,10 @@ ghc_build () {
         ;;
       "--flavour")
         flavour="$2"
+        shift
+        ;;
+      "--target")
+        target="$2"
         shift
         ;;
       "--threads")
@@ -501,7 +509,7 @@ ghc_build () {
     ghc_cfg
   fi
 
-  cmd="hadrian/build -j$threads --flavour=$flavour --build-root=$build_root"
+  cmd="hadrian/build $target -j$threads --flavour=$flavour --build-root=$build_root"
 
   if [[ 1 -eq $verbose ]]; then
     echo "*** Command: '$cmd' ***"
