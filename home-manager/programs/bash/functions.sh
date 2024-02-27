@@ -232,6 +232,84 @@ nixpkgs_hs_build () {
   $cmd
 }
 
+# Using this is a bit non-obvious. AFAICT, after creating the latest generation
+# (i.e. nixos-rebuild switch), run this, reboot, then run it again.
+nix_gc () {
+  period="-d"
+  profile="system"
+  verbose=""
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "nix_gc: Runs the garbage collector.\n"
+        echo "Usage: nix_gc [--period PERIOD]"
+        echo "              [--profile PROFILE]"
+        echo "              [-v|--verbose]"
+        echo "              [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  --period PERIOD   \tDeletes entries older than PERIOD. Defaults to all (-d)\n"
+        echo -e "  --profile PROFILE \tDeletes entries for the profile. Defaults to system.\n"
+        echo "Examples:"
+        echo "  nix_ghc --period 30d --profile per-user/<user_name>"
+        return 0
+        ;;
+      "--period")
+        days="--delete-older-than $2"
+        shift
+        ;;
+      "--profile")
+        profile="$2"
+        shift
+        ;;
+      "-v" | "--verbose")
+        verbose=1
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+  df_cmd="df -h /"
+  ls_cmd="sudo nix-env --list-generations --profile /nix/var/nix/profiles/$profile"
+  del_cmd="nix-collect-garbage $days"
+  del_sudo_cmd="sudo nix-collect-garbage $days"
+  boot_cmd="sudo /run/current-system/bin/switch-to-configuration boot"
+  boot2_cmd="sudo nixos-rebuild boot"
+
+  if [[ 1 == $verbose ]]; then
+    echo "df_cmd = $df_cmd"
+    echo "ls_cmd = $ls_cmd"
+    echo "del_cmd = $del_cmd"
+    echo "del_sudo_cmd = $del_sudo_cmd"
+    echo "boot_cmd = $boot_cmd"
+  fi
+
+  echo "*** Get space ***"
+  $df_cmd
+
+  echo "*** Listing generations ***"
+  $ls_cmd
+
+  echo "*** Deleting ***"
+  $del_cmd
+
+  echo "*** Deleting with sudo ***"
+  $del_sudo_cmd
+
+  echo "*** Cleaning boot ***"
+  $boot_cmd
+
+  echo "*** Listing generations ***"
+  $ls_cmd
+
+  echo "*** Get space ***"
+  $df_cmd
+}
+
 ###############################################################################
 #                                NIX + HASKELL                                #
 ###############################################################################
