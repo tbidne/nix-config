@@ -324,6 +324,8 @@ htool () {
 hshell () {
   args=""
   exit_cmd=""
+  ghc=""
+  hls=""
   shell=default
   URL=http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz
   verbose=0
@@ -333,14 +335,18 @@ hshell () {
       "--help" | "-h")
         echo -e "hshell: Load an external nix shell for haskell dev.\n"
         echo "Usage: hshell [-a|--args ARGS]"
+        echo "              [--ghc GHC]"
         echo "              [-e|--exit]"
+        echo "              [--hls]"
         echo "              [-s|--shell SHELL]"
         echo "              [-v|--verbose]"
         echo "              [-h|--help]"
         echo ""
         echo "Available options:"
         echo -e "  --args ARGS      \tArgs to pass through to shell.\n"
+        echo -e "  --ghc GHC        \tSpecifies ghc.\n"
         echo -e "  --e,--exit       \tExits immediately after loading.\n"
+        echo -e "  --hls            \tLoads hls.\n"
         echo -e "  -s,--shell SHELL \tShell to load e.g. default.\n"
         echo "Examples:"
         echo "  hshell -s liquidhaskell -a '--arg hls true' -e"
@@ -358,6 +364,13 @@ hshell () {
       "-e" | "--exit")
         exit_cmd="--command exit"
         ;;
+      "--ghc")
+        ghc=" --argstr ghcVers $2"
+        shift
+        ;;
+      "--hls")
+        hls=" --arg hls true"
+        ;;
       "-s" | "--shell")
         shell=$2
         shift
@@ -372,7 +385,8 @@ hshell () {
     shift
   done
 
-  cmd="nix-shell $URL -A $shell $args $exit_cmd"
+  final_args="$args$ghc$hls"
+  cmd="nix-shell $URL -A $shell $final_args $exit_cmd"
   if [[ $verbose == 1 ]]; then
     echo "cmd: $cmd"
   fi
