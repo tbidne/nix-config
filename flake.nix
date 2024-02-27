@@ -25,7 +25,7 @@
     path-size.url = "github:tbidne/path-size";
     pythia.url = "github:tbidne/pythia";
     navi.url = "github:tbidne/navi";
-    shrun.url = "github:tbidne/shrun";
+    shrun.url = "github:tbidne/shrun/block-size";
     time-conv.url = "github:tbidne/time-conv";
   };
 
