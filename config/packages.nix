@@ -26,6 +26,7 @@
 
     # social
     slack
+    teams-for-linux
     zoom-us
 
     # doc editing
