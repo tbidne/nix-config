@@ -335,7 +335,7 @@ hshell () {
       "--help" | "-h")
         echo -e "hshell: Load an external nix shell for haskell dev.\n"
         echo "Usage: hshell [-a|--args ARGS]"
-        echo "              [--ghc GHC]"
+        echo "              [-g|--ghc GHC]"
         echo "              [-e|--exit]"
         echo "              [--hls]"
         echo "              [-s|--shell SHELL]"
@@ -344,8 +344,8 @@ hshell () {
         echo ""
         echo "Available options:"
         echo -e "  --args ARGS      \tArgs to pass through to shell.\n"
-        echo -e "  --ghc GHC        \tSpecifies ghc.\n"
-        echo -e "  --e,--exit       \tExits immediately after loading.\n"
+        echo -e "  -g,--ghc GHC     \tSpecifies ghc.\n"
+        echo -e "  -e,--exit        \tExits immediately after loading.\n"
         echo -e "  --hls            \tLoads hls.\n"
         echo -e "  -s,--shell SHELL \tShell to load e.g. default.\n"
         echo "Examples:"
@@ -364,7 +364,7 @@ hshell () {
       "-e" | "--exit")
         exit_cmd="--command exit"
         ;;
-      "--ghc")
+      "-g" | "--ghc")
         ghc=" --argstr ghcVers $2"
         shift
         ;;
