@@ -318,7 +318,7 @@ nswitch () {
   sudo nixos-rebuild switch --flake '.#nixos' -L
 }
 
-nix-revw-hd () {
+nix_revw_hd () {
   nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"
 }
 
