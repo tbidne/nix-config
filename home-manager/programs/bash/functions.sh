@@ -310,6 +310,18 @@ nix_gc () {
   $df_cmd
 }
 
+ntest () {
+  sudo nixos-rebuild test --flake '.#nixos' -L
+}
+
+nswitch () {
+  sudo nixos-rebuild switch --flake '.#nixos' -L
+}
+
+nix-revw-hd () {
+  nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"
+}
+
 ###############################################################################
 #                                NIX + HASKELL                                #
 ###############################################################################

@@ -1,28 +1,6 @@
 init = ". ~/.bash_functions.sh"
 cmd-name-trunc = 15
 
-# NIX ALIASES
-
-[[legend]]
-key = "ntest"
-val = "sudo nixos-rebuild test --flake '.#nixos' -L"
-
-[[legend]]
-key = "nswitch"
-val = "sudo nixos-rebuild switch --flake '.#nixos' -L"
-
-[[legend]]
-key = "nclean"
-val = "nix-collect-garbage --delete-older-than 30d"
-
-[[legend]]
-key = "ncleanall"
-val = "sudo nix-collect-garbage -d"
-
-[[legend]]
-key = "nix-revw-hd"
-val = 'nix-shell -p nixpkgs-review --run "nixpkgs-review rev HEAD"'
-
 [cmd-log]
 
 [file-log]
