@@ -32,6 +32,7 @@
     # doc editing
     okular
     pandoc
+    qpdf
     texlive.combined.scheme-full
 
     # dev
