@@ -20,8 +20,10 @@
       -- profiling
       -- :set +s
 
+      -- Type interferes with ghc tests, so for now we leave it off
+      -- by default
       -- type
-      :set +t
+      -- :set +t
     '';
   };
 }
