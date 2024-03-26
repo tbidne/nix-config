@@ -448,6 +448,7 @@ ghc_build () {
   flavour="quickest"
   # for available targets, try hadrian/build --help
   target=""
+  test=0
   threads=8
   verbose=0
 
@@ -455,27 +456,29 @@ ghc_build () {
     case "$1" in
       "--help" | "-h")
         echo -e "ghc_build: Building GHC.\n"
-        echo "Usage: ghc_build [--build-root DIR]"
+        echo "Usage: ghc_build [-b|--build-root DIR]"
         echo "                 [--clean]"
         echo "                 [--config]"
         echo "                 [--flavour FLAVOUR]"
         echo "                 [--target TARGET]"
+        echo "                 [--test]"
         echo "                 [--threads NUM_THREADS]"
         echo "                 [-v|--verbose]"
         echo "                 [-h|--help]"
         echo ""
         echo "Available options:"
-        echo -e "  --build-root DIR      \tSets the build directory.\n"
+        echo -e "  -b,--build-root DIR   \tSets the build directory.\n"
         echo -e "  --clean               \tDeletes --build-root before building.\n"
         echo -e "  --config              \tRuns configuration step before building.\n"
         echo -e "  --flavour FLAVOUR     \tSets the flavour(s). Defaults to 'quickest'.\n"
+        echo -e "  --target TARGET       \tSpecifies the target e.g. nofib.\n"
+        echo -e "  --test                \tRuns the validate tests only.\n"
         echo -e "  --threads NUM_THREADS \tSets the threads. Defaults to 8.\n"
-        echo -e "  --target TARGET       \tSpecifies the target e.g. nofib\n"
         echo "Examples:"
         echo "  ghc_build --clean --config --build-root _mybuild"
         return 0
         ;;
-      "--build-root")
+      "-b" | "--build-root")
         build_root="$2"
         shift
         ;;
@@ -493,11 +496,14 @@ ghc_build () {
         target="$2"
         shift
         ;;
+      "--test")
+        test=1
+        ;;
       "--threads")
         threads="$2"
         shift
         ;;
-      "--verbose" | "-v")
+      "-v" | "--verbose")
         verbose=1
         ;;
       *)
@@ -521,7 +527,11 @@ ghc_build () {
     ghc_cfg
   fi
 
-  cmd="hadrian/build $target -j$threads --flavour=$flavour --build-root=$build_root"
+  if [[ 1 -eq $test ]]; then
+    cmd="./validate --fast --testsuite-only"
+  else
+    cmd="hadrian/build $target -j$threads --flavour=$flavour --build-root=$build_root"
+  fi
 
   if [[ 1 -eq $verbose ]]; then
     echo "*** Command: '$cmd' ***"
