@@ -171,6 +171,7 @@ in
       justusadam.language-haskell
       mechatroner.rainbow-csv
       ms-python.python
+      ms-python.vscode-pylance
       octref.vetur
       streetsidesoftware.code-spell-checker
       rust-lang.rust-analyzer
