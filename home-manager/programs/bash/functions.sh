@@ -771,6 +771,79 @@ update_badges () {
 #                                    UTILS                                    #
 ###############################################################################
 
+# Watches files via fd and entr
+watch_cmd () {
+  dir="."
+  clean=0
+  dry_run=0
+  ext=""
+  cmd="echo 'files modified'"
+  verbose=0
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "watch_cmd: Simple bash function for using entr with a command.\n"
+        echo "Usage: watch_cmd [-c|--cmd COMMAND]"
+        echo "                 [-d|--dir DIR]"
+        echo "                 [--dry-run]"
+        echo "                 [-e|--ext EXT]"
+        echo "                 [-v|--verbose]"
+        echo "                 [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  -c,--cmd COMMAND\tCommand to run with entr e.g. 'cabal build'."
+        echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
+        echo -e "  --dry-run       \tShows which files will be watched.\n"
+        echo -e "  -e,--ext EXT    \tFile extension to watch\n"
+        return 0
+        ;;
+      "--clean")
+        clean=1
+        ;;
+      "--cmd" | "-c")
+        cmd=$2
+        shift
+        ;;
+      "-d" | "--dir")
+        dir=". $2"
+        shift
+        ;;
+      "--dry-run")
+        dry_run=1
+        ;;
+      "-e" | "-ext")
+        ext="$2"
+        shift
+        ;;
+      "--verbose" | "-v")
+        verbose=1
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+  fd_cmd="fd $dir -e $ext"
+
+  if [[ 1 -eq $dry_run ]]; then
+    $fd_cmd
+    return
+  fi
+
+  final_cmd=$cmd
+
+  if [[ $verbose == 1 ]]; then
+    echo "dir:  '$dir'"
+    echo "cmd:  '$final_cmd'"
+    echo -e "full: '$fd_cmd | entr -s $final_cmd'\n"
+  fi
+
+  $fd_cmd | entr -s "$final_cmd"
+}
+
 path_hex () {
   printf '%s\n' $1 | od -t x1 -a
 }
