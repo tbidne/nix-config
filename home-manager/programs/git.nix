@@ -8,13 +8,21 @@
     userName = "Tommy Bidne";
     userEmail = "tbidne@protonmail.com";
     extraConfig = {
-      pull.ff = "only";
-      push.default = "simple";
+      core.editor = "codium --wait";
       diff.tool = "vscode";
       difftool.vscode.cmd = "codium --wait --diff $LOCAL $REMOTE";
-      merge.tool = "vscode";
+
+      merge = {
+        conflictstyle = "zdiff3";
+        ff = "only";
+        tool = "vscode";
+      };
       mergetool.vscode.cmd = "codium --wait $MERGED";
-      core.editor = "codium --wait";
+
+      pull.ff = "only";
+      push.default = "simple";
+
+      rerere.enabled = true;
     };
     aliases = {
       s = "status";
