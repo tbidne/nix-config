@@ -91,6 +91,7 @@
     unzip
     xclip
     zip
+    zstd
 
     # reading ntfs drives
     # e.g. sudo mount -t ntfs /dev/sda2 ~/Mnt
