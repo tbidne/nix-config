@@ -328,7 +328,7 @@ nix_revw_hd () {
 
 # runs nix-hs-tools where first arg is tool and the rest are args
 htool () {
-  nix run github:tbidne/nix-hs-tools/fc0e334a81c3849989440b8e54cab7c8a4f3d035#$1 -- ${@:2}
+  nix run github:tbidne/nix-hs-tools/0.10#$1 -- ${@:2}
 }
 
 # Launches a nix shell using those defined in my external repo.
