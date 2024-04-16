@@ -33,16 +33,15 @@
     settings.use-xdg-base-directories = true;
   };
 
-  imports =
-    [
-      # system
-      ./hardware-configuration.nix
+  imports = [
+    # system
+    ./hardware-configuration.nix
 
-      (import ./system/default.nix { inherit inputs; })
+    (import ./system/default.nix { inherit inputs; })
 
-      # general config
-      (import ./config/default.nix { inherit inputs; })
-    ];
+    # general config
+    (import ./config/default.nix { inherit inputs; })
+  ];
 
   nixpkgs.config.allowUnfree = true;
 

@@ -22,9 +22,7 @@ let
     "unlift"
     "unlifteddatatypes"
   ];
-  miscWords = [
-    "supremum"
-  ];
+  miscWords = [ "supremum" ];
 
   buildVscodeExt = inputs.pkgs.vscode-utils.buildVscodeMarketplaceExtension;
   licenses = inputs.pkgs.lib.licenses;
@@ -36,7 +34,9 @@ let
       version = "0.4.7";
       sha256 = "sha256-gNa3n16lP3ooBRvGaugTua4IXcIzpMk7jBYMJDQsY00=";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   haskell-spotlight = buildVscodeExt {
     mktplcRef = {
@@ -45,7 +45,9 @@ let
       version = "0.0.3";
       sha256 = "sha256-pHrGjAwb5gWxzCtsUMU6+zdQTI8aMxiwtQi4fc9JH9g=";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   ide-purescript = buildVscodeExt {
     mktplcRef = {
@@ -54,7 +56,9 @@ let
       version = "0.25.12";
       sha256 = "1f9064w18wwp3iy8ciajad8vlshnzyhnqy8h516k0j5bflz781mn";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   idris-vscode = buildVscodeExt {
     mktplcRef = {
@@ -78,7 +82,9 @@ let
       version = "0.2.8";
       sha256 = "1nhzvjwxld53mlaflf8idyjj18r1dzdys9ygy86095g7gc4b1qys";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   lisp-syntax = buildVscodeExt {
     mktplcRef = {
@@ -87,7 +93,9 @@ let
       version = "0.2.1";
       sha256 = "sha256-Jos0MJBuFlbfyAK/w51+rblslNq+pHN8gl1T0/UcP0Q=";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   tokyo-night = buildVscodeExt {
     mktplcRef = {
@@ -96,7 +104,9 @@ let
       version = "0.7.9";
       sha256 = "1yci2krmmxz4w105c9mjzhv8r0wbpf3k603rz5p0syq1b7g9vsfv";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   rst-preview = buildVscodeExt {
     mktplcRef = {
@@ -105,7 +115,9 @@ let
       version = "190.1.4";
       sha256 = "sha256-u7uXzAeAFqOFcdAEOCZlTYIApRCo9VkXC0t2E6JYRfg=";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   rst-syntax = buildVscodeExt {
     mktplcRef = {
@@ -114,7 +126,9 @@ let
       version = "1.5.2";
       sha256 = "sha256-pV7/S8kkDIbhD2K5P2TA8E0pM4F8gsFIlc+4FIheBbc=";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   todo-hl = buildVscodeExt {
     mktplcRef = {
@@ -123,7 +137,9 @@ let
       version = "1.0.5";
       sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
   vscode-auto-scroll = buildVscodeExt {
     mktplcRef = {
@@ -132,7 +148,9 @@ let
       version = "1.2.0";
       sha256 = "sha256-n9XVvXxrYbJ02fhBcWnPFhl50t2g/qeT1rRqsWHwrmE=";
     };
-    meta = { license = licenses.mit; };
+    meta = {
+      license = licenses.mit;
+    };
   };
 
   externalExts = [
@@ -158,24 +176,27 @@ in
     enable = true;
     package = inputs.pkgs.vscodium;
 
-    extensions = with inputs.pkgs.vscode-extensions; [
-      arcticicestudio.nord-visual-studio-code
-      bbenoist.nix
-      bungcip.better-toml
-      dracula-theme.theme-dracula
-      eamodio.gitlens
-      editorconfig.editorconfig
-      haskell.haskell
-      james-yu.latex-workshop
-      jnoortheen.nix-ide
-      justusadam.language-haskell
-      mechatroner.rainbow-csv
-      ms-python.python
-      ms-python.vscode-pylance
-      octref.vetur
-      streetsidesoftware.code-spell-checker
-      rust-lang.rust-analyzer
-    ] ++ externalExts;
+    extensions =
+      with inputs.pkgs.vscode-extensions;
+      [
+        arcticicestudio.nord-visual-studio-code
+        bbenoist.nix
+        bungcip.better-toml
+        dracula-theme.theme-dracula
+        eamodio.gitlens
+        editorconfig.editorconfig
+        haskell.haskell
+        james-yu.latex-workshop
+        jnoortheen.nix-ide
+        justusadam.language-haskell
+        mechatroner.rainbow-csv
+        ms-python.python
+        ms-python.vscode-pylance
+        octref.vetur
+        streetsidesoftware.code-spell-checker
+        rust-lang.rust-analyzer
+      ]
+      ++ externalExts;
     userSettings = {
       "breadcrumbs.enabled" = true;
       "editor.fontLigatures" = true;

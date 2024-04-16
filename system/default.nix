@@ -1,15 +1,14 @@
 { inputs }:
 
 {
-  imports =
-    [
-      ./audio.nix
-      ./boot.nix
-      (import ./gnome.nix { inherit inputs; })
-      ./mouse.nix
-      ./network.nix
-      ./swap.nix
-    ];
+  imports = [
+    ./audio.nix
+    ./boot.nix
+    (import ./gnome.nix { inherit inputs; })
+    ./mouse.nix
+    ./network.nix
+    ./swap.nix
+  ];
 
   # misc
 

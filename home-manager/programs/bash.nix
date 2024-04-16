@@ -31,12 +31,11 @@
       export LESS='-r'
       export XDG_CONFIG_HOME=/home/tommy/.config
     '';
-    shellOptions =
-      [
-        "autocd"
-        "cdspell"
-        "cmdhist"
-      ];
+    shellOptions = [
+      "autocd"
+      "cdspell"
+      "cmdhist"
+    ];
   };
 
   programs.readline = {

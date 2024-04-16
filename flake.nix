@@ -29,24 +29,29 @@
   };
 
   outputs =
-    { catpuppucin
-    , home-manager
-    , nixpkgs
-    , nur
-    , self
-    , ...
+    {
+      catpuppucin,
+      home-manager,
+      nixpkgs,
+      nur,
+      self,
+      ...
     }@inputs':
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
 
-      src2pkg = src:
-        if src ? packages."${system}".default
-        then src.packages."${system}".default
-        else src.defaultPackage."${system}";
+      src2pkg =
+        src:
+        if src ? packages."${system}".default then
+          src.packages."${system}".default
+        else
+          src.defaultPackage."${system}";
     in
     {
       nixosConfigurations = {
@@ -54,28 +59,22 @@
           inherit system;
           modules = [
             { nixpkgs.overlays = [ nur.overlay ]; }
-            ({ pkgs, ... }:
+            (
+              { pkgs, ... }:
               let
                 inputs = inputs' // {
-                  inherit
-                    pkgs
-                    src2pkg
-                    system;
+                  inherit pkgs src2pkg system;
                 };
               in
               {
                 imports = [
-                  (import ./configuration.nix {
-                    inherit inputs;
-                  })
+                  (import ./configuration.nix { inherit inputs; })
 
                   home-manager.nixosModules.home-manager
                   ({
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users.tommy = (import ./home-manager/home.nix {
-                      inherit inputs;
-                    });
+                    home-manager.users.tommy = (import ./home-manager/home.nix { inherit inputs; });
                   })
                 ];
               }
