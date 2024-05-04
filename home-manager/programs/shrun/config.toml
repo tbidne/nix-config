@@ -1,10 +1,13 @@
 init = ". ~/.bash_functions.sh"
-cmd-name-trunc = 15
 
-[cmd-log]
+[console-log]
+cmd = true
+cmd-name-trunc = 15
 
 [file-log]
 path = "default"
+cmd-name-trunc = 15
+delete-on-success = true
 mode = "append"
 size-mode = "delete 50 mb"
 
