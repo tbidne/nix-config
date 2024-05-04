@@ -79,6 +79,7 @@
     acpi
     bottom # alternative to htop, gotop, top, etc.
     dig
+    file
     gnupg
     gotop
     libnotify
