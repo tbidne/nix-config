@@ -1,5 +1,5 @@
 {
-  services.xserver.libinput = {
+  services.libinput = {
     enable = true;
 
     # NOTE: Leaving this for documentation. It works for minimal setups but
