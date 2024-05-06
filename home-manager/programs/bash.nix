@@ -24,6 +24,14 @@
       vsc = "codium .";
     };
     bashrcExtra = ''
+      # Load completions for my projects
+      . <(charon --bash-completion-script `which charon`)
+      . <(path-size --bash-completion-script `which path-size`)
+      . <(pythia --bash-completion-script `which pythia`)
+      . <(navi --bash-completion-script `which navi`)
+      . <(shrun --bash-completion-script `which shrun`)
+      . <(time-conv --bash-completion-script `which time-conv`)
+
       . ~/.bash_functions.sh
     '';
     initExtra = ''
