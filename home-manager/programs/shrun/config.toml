@@ -1,14 +1,17 @@
 init = ". ~/.bash_functions.sh"
 
+[command-logs]
+report-read-errors = true
+
 [console-log]
 command = true
 command-name-trunc = 15
 
 [file-log]
-path = "default"
+path = "shrun.log"
 command-name-trunc = 15
 delete-on-success = true
-mode = "append"
+mode = "write"
 size-mode = "delete 50 mb"
 
 [notify]

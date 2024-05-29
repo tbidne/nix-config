@@ -39,7 +39,7 @@
     avro-tools
     awscli2
     aws-vault
-    dbeaver
+    dbeaver-bin
     entr
     git
     gnumake
