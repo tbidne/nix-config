@@ -442,7 +442,7 @@ ghc_cfg () {
 }
 
 ghc_build () {
-  build_root="_mybuild"
+  build_root="_build"
   clean=0
   config=0
   flavour="quickest"
@@ -475,7 +475,7 @@ ghc_build () {
         echo -e "  --test                \tRuns the validate tests only.\n"
         echo -e "  --threads NUM_THREADS \tSets the threads. Defaults to 8.\n"
         echo "Examples:"
-        echo "  ghc_build --clean --config --build-root _mybuild"
+        echo "  ghc_build --clean --config --build-root _build"
         return 0
         ;;
       "-b" | "--build-root")
