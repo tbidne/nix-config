@@ -72,6 +72,9 @@
 
                   home-manager.nixosModules.home-manager
                   ({
+                    # backupFileExtension because switch started failing and
+                    # logs suggested it.
+                    home-manager.backupFileExtension = ".bak";
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users.tommy = (import ./home-manager/home.nix { inherit inputs; });
