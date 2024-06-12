@@ -743,7 +743,8 @@ haddock_push () {
   git push -u --force origin gh-pages
 
   # checkout main
-  git checkout main
+  # --force so we can run with shrun, which creates shrun.log
+  git checkout main --force
 }
 
 # force pushes all changes, copies the new git revision into the clipboard
