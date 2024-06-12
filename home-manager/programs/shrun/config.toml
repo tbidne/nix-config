@@ -6,6 +6,7 @@ report-read-errors = true
 [console-log]
 command = true
 command-name-trunc = 15
+line-trunc = "detect"
 
 [file-log]
 path = "shrun.log"
