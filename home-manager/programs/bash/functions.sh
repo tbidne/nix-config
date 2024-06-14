@@ -434,7 +434,7 @@ ghc_shell () {
     shift
   done
 
-  nix develop gitlab:ghc/ghc.nix?host=gitlab.haskell.org -L $exit_cmd
+  nix develop git+https://gitlab.haskell.org/ghc/ghc.nix -L $exit_cmd
 }
 
 ghc_cfg () {
