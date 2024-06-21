@@ -866,6 +866,22 @@ retry () {
   done
 }
 
+retry_success () {
+  failed=0
+  count=1
+  while [[ $failed == 0 ]]; do
+    $@
+    if [[ $? == 0 ]]; then
+      echo "'$@' succeeded on try $count"
+      sleep 1
+    else
+      echo "'$@' failed on try $count"
+      failed=1
+    fi
+    count=$((count + 1))
+  done
+}
+
 # find-replace
 fr () {
   find . \
