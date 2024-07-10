@@ -30,6 +30,7 @@
       . <(pythia --bash-completion-script `which pythia`)
       . <(navi --bash-completion-script `which navi`)
       . <(shrun --bash-completion-script `which shrun`)
+      . <(todo --bash-completion-script `which todo`)
       . <(time-conv --bash-completion-script `which time-conv`)
 
       . ~/.bash_functions.sh

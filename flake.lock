@@ -174,6 +174,35 @@
         "type": "github"
       }
     },
+    "algebra-simple_7": {
+      "inputs": {
+        "flake-parts": [
+          "todo",
+          "flake-parts"
+        ],
+        "nix-hs-utils": [
+          "todo",
+          "nix-hs-utils"
+        ],
+        "nixpkgs": [
+          "todo",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716375788,
+        "narHash": "sha256-Np/Zk1CRUpWcwN7nwh414/689mGSNTXldHcjTWj+YzA=",
+        "owner": "tbidne",
+        "repo": "algebra-simple",
+        "rev": "f8590486ec0fc66acf7db20308e1ed6993a52151",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "algebra-simple",
+        "type": "github"
+      }
+    },
     "bounds": {
       "inputs": {
         "flake-parts": [
@@ -331,6 +360,35 @@
         ],
         "nixpkgs": [
           "time-conv",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716375824,
+        "narHash": "sha256-WG9ldBj1COftpPleldonF1f+dBJ5ojmlL84ZpTq9i1U=",
+        "owner": "tbidne",
+        "repo": "bounds",
+        "rev": "f93b202c9d154b25b42b048570cf6648451aa577",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "bounds",
+        "type": "github"
+      }
+    },
+    "bounds_7": {
+      "inputs": {
+        "flake-parts": [
+          "todo",
+          "flake-parts"
+        ],
+        "nix-hs-utils": [
+          "todo",
+          "nix-hs-utils"
+        ],
+        "nixpkgs": [
+          "todo",
           "nixpkgs"
         ]
       },
@@ -522,6 +580,24 @@
         "owner": "hercules-ci",
         "repo": "flake-parts",
         "rev": "8dc45382d5206bd292f9c2768b8058a8fd8311d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_7": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_7"
+      },
+      "locked": {
+        "lastModified": 1717285511,
+        "narHash": "sha256-iKzJcpdXih14qYVcZ9QC9XuZYnPc6T8YImb6dX166kw=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "2a55567fcf15b1b1c7ed712a2c6fadaec7412ea8",
         "type": "github"
       },
       "original": {
@@ -847,6 +923,44 @@
         "type": "github"
       }
     },
+    "monad-effects_7": {
+      "inputs": {
+        "algebra-simple": [
+          "todo",
+          "algebra-simple"
+        ],
+        "bounds": [
+          "todo",
+          "bounds"
+        ],
+        "flake-parts": [
+          "todo",
+          "flake-parts"
+        ],
+        "nix-hs-utils": [
+          "todo",
+          "nix-hs-utils"
+        ],
+        "nixpkgs": [
+          "todo",
+          "nixpkgs"
+        ],
+        "smart-math": "smart-math_7"
+      },
+      "locked": {
+        "lastModified": 1720573819,
+        "narHash": "sha256-O26Jlb/zapCOxuPoLEEstoRlR3s60igk6C1YdTY4vmM=",
+        "owner": "tbidne",
+        "repo": "monad-effects",
+        "rev": "29d9463487308e1f137451cf78c75c9a2eca6301",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "monad-effects",
+        "type": "github"
+      }
+    },
     "navi": {
       "inputs": {
         "algebra-simple": "algebra-simple_2",
@@ -965,6 +1079,21 @@
         "type": "github"
       }
     },
+    "nix-hs-utils_7": {
+      "locked": {
+        "lastModified": 1713310032,
+        "narHash": "sha256-fKf7G+wwUoFF2ZfnINncmSgdAR0BlBitx+ENUjxgfcg=",
+        "owner": "tbidne",
+        "repo": "nix-hs-utils",
+        "rev": "a28bc9ae3797ad713deeac4f52df46cb391d7002",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "nix-hs-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1704722960,
@@ -1065,6 +1194,18 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/50eb7ecf4cd0a5756d7275c8ba36790e5bd53e33.tar.gz"
       }
     },
+    "nixpkgs-lib_7": {
+      "locked": {
+        "lastModified": 1717284937,
+        "narHash": "sha256-lIbdfCsf8LMFloheeE6N31+BMIeixqyQWbSr2vk79EQ=",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/eb9ceca17df2ea50a250b6b27f7bf6ab0186f198.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/eb9ceca17df2ea50a250b6b27f7bf6ab0186f198.tar.gz"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1704194953,
@@ -1152,6 +1293,22 @@
         "owner": "nixos",
         "repo": "nixpkgs",
         "rev": "3eaeaeb6b1e08a016380c279f8846e0bd8808916",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_8": {
+      "locked": {
+        "lastModified": 1718160348,
+        "narHash": "sha256-9YrUjdztqi4Gz8n3mBuqvCkMo4ojrA6nASwyIKWMpus=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "57d6973abba7ea108bac64ae7629e7431e0199b6",
         "type": "github"
       },
       "original": {
@@ -1329,6 +1486,35 @@
         "type": "github"
       }
     },
+    "refined-extras": {
+      "inputs": {
+        "flake-parts": [
+          "todo",
+          "flake-parts"
+        ],
+        "nix-hs-utils": [
+          "todo",
+          "nix-hs-utils"
+        ],
+        "nixpkgs": [
+          "todo",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1719924513,
+        "narHash": "sha256-krZ4mU2C2opPx7qAu4DeUjfoU973YvBN0O7lLY3KAhg=",
+        "owner": "tbidne",
+        "repo": "refined-extras",
+        "rev": "9c0e3b2f7e888427338e581449904d700d40c0de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "refined-extras",
+        "type": "github"
+      }
+    },
     "relative-time": {
       "inputs": {
         "algebra-simple": [
@@ -1439,7 +1625,8 @@
         "pythia": "pythia_2",
         "ringbearer": "ringbearer",
         "shrun": "shrun",
-        "time-conv": "time-conv_3"
+        "time-conv": "time-conv_3",
+        "todo": "todo"
       }
     },
     "shrun": {
@@ -1880,6 +2067,48 @@
         "type": "github"
       }
     },
+    "smart-math_7": {
+      "inputs": {
+        "algebra-simple": [
+          "todo",
+          "monad-effects",
+          "algebra-simple"
+        ],
+        "bounds": [
+          "todo",
+          "monad-effects",
+          "bounds"
+        ],
+        "flake-parts": [
+          "todo",
+          "monad-effects",
+          "flake-parts"
+        ],
+        "nix-hs-utils": [
+          "todo",
+          "monad-effects",
+          "nix-hs-utils"
+        ],
+        "nixpkgs": [
+          "todo",
+          "monad-effects",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716380345,
+        "narHash": "sha256-IfpHT70aAUy507iZGaAWR04K4Lf7efFw2SjD28Cbu0o=",
+        "owner": "tbidne",
+        "repo": "smart-math",
+        "rev": "9bd570201445904d12d0e0b792f171d02e6f361e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "smart-math",
+        "type": "github"
+      }
+    },
     "time-conv": {
       "inputs": {
         "algebra-simple": [
@@ -1982,6 +2211,30 @@
       "original": {
         "owner": "tbidne",
         "repo": "time-conv",
+        "type": "github"
+      }
+    },
+    "todo": {
+      "inputs": {
+        "algebra-simple": "algebra-simple_7",
+        "bounds": "bounds_7",
+        "flake-parts": "flake-parts_7",
+        "monad-effects": "monad-effects_7",
+        "nix-hs-utils": "nix-hs-utils_7",
+        "nixpkgs": "nixpkgs_8",
+        "refined-extras": "refined-extras"
+      },
+      "locked": {
+        "lastModified": 1720580708,
+        "narHash": "sha256-o/OdEiOVPhaTJbi4F7dDnsqhJxSBaezKZZXFkjCYSbI=",
+        "owner": "tbidne",
+        "repo": "todo",
+        "rev": "2a3e09a8bae178587e2c1ee58fc3384c6f1e72d1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "todo",
         "type": "github"
       }
     }

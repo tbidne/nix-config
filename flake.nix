@@ -25,6 +25,7 @@
     pythia.url = "github:tbidne/pythia";
     navi.url = "github:tbidne/navi";
     shrun.url = "github:tbidne/shrun";
+    todo.url = "github:tbidne/todo";
     time-conv.url = "github:tbidne/time-conv";
   };
 
