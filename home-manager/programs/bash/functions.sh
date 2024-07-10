@@ -950,3 +950,7 @@ port_to_pid () {
   # e.g. port_to_pid 5432
   sudo ss -lptn "sport = :$1"
 }
+
+cpu_info () {
+  lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('
+}
