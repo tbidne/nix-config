@@ -210,6 +210,10 @@ in
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = "active";
       "editor.unicodeHighlight.ambiguousCharacters" = false;
+
+      # so e.g. format json files does not strip final newline.
+      "files.insertFinalNewline" = true;
+
       "todohighlight.defaultStyle" = {
         "backgroundColor" = "none";
         "fontWeight" = "bold";
