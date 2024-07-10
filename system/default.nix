@@ -20,9 +20,11 @@
   # binaries). After that, switch succeeded.
   #
   # See https://discourse.nixos.org/t/how-to-use-clamav-in-nixos/19782/3
+  #
+  # TODO: Temporarily disabled: https://github.com/NixOS/nixpkgs/issues/325510
   services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
+    #daemon.enable = true;
+    #updater.enable = true;
   };
 
   # automatic gc
