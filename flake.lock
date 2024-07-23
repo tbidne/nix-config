@@ -2225,11 +2225,11 @@
         "refined-extras": "refined-extras"
       },
       "locked": {
-        "lastModified": 1720580708,
-        "narHash": "sha256-o/OdEiOVPhaTJbi4F7dDnsqhJxSBaezKZZXFkjCYSbI=",
+        "lastModified": 1721562363,
+        "narHash": "sha256-8p53NmxRWBDL0Rty3iiiPStMUuaczkDxaHl/Jr0OunY=",
         "owner": "tbidne",
         "repo": "todo",
-        "rev": "2a3e09a8bae178587e2c1ee58fc3384c6f1e72d1",
+        "rev": "87c386ecca5a1e459bd7f7a18a68e7524dad54f2",
         "type": "github"
       },
       "original": {
