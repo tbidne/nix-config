@@ -25,6 +25,7 @@
     linux-wifi-hotspot
 
     # social
+    mumble
     slack
     teams-for-linux
     zoom-us
@@ -43,6 +44,7 @@
     entr
     git
     gnumake
+    influxdb2
     jq
     lua
     onefetch
