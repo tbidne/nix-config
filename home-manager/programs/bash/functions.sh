@@ -412,20 +412,26 @@ hshell () {
 
 ghc_shell () {
   exit_cmd=""
+  js=0
 
   while [ $# -gt 0 ]; do
     case "$1" in
       "--help" | "-h")
         echo -e "ghc_shell: Load a nix shell for GHC development.\n"
         echo "Usage: ghc_shell [-e|--exit]"
+        echo "                 [--js]"
         echo "                 [-h|--help]"
         echo ""
         echo "Available options:"
         echo -e "  --e,--exit       \tExits immediately after loading.\n"
+        echo -e "  --js             \tLoads JS shell.\n"
         return 0
         ;;
       "-e" | "--exit")
         exit_cmd="-c bash -c 'exit'"
+        ;;
+      "--js")
+        js=1
         ;;
       *)
         echo "Unexpected arg: '$1'. Try --help."
@@ -434,11 +440,19 @@ ghc_shell () {
     shift
   done
 
-  nix develop git+https://gitlab.haskell.org/ghc/ghc.nix -L $exit_cmd
+  if [[ 1 -eq $js ]]; then
+    nix develop git+https://gitlab.haskell.org/ghc/ghc.nix#js-cross -L $exit_cmd
+  else
+    nix develop git+https://gitlab.haskell.org/ghc/ghc.nix -L $exit_cmd
+  fi
 }
 
 ghc_cfg () {
   ./boot && configure_ghc
+}
+
+ghc_cfg_js () {
+  ./boot && emconfigure ./configure --target=javascript-unknown-ghcjs
 }
 
 ghc_build () {
@@ -446,6 +460,7 @@ ghc_build () {
   clean=0
   config=0
   flavour="quickest"
+  js=0
   # for available targets, try hadrian/build --help
   target=""
   test=0
@@ -460,6 +475,7 @@ ghc_build () {
         echo "                 [--clean]"
         echo "                 [--config]"
         echo "                 [--flavour FLAVOUR]"
+        echo "                 [--js]"
         echo "                 [--target TARGET]"
         echo "                 [--test]"
         echo "                 [--threads NUM_THREADS]"
@@ -471,6 +487,7 @@ ghc_build () {
         echo -e "  --clean               \tDeletes --build-root before building.\n"
         echo -e "  --config              \tRuns configuration step before building.\n"
         echo -e "  --flavour FLAVOUR     \tSets the flavour(s). Defaults to 'quickest'.\n"
+        echo -e "  --js                  \tBuilds js compiler. Runs boot and configure.\n"
         echo -e "  --target TARGET       \tSpecifies the target e.g. nofib.\n"
         echo -e "  --test                \tRuns the validate tests only.\n"
         echo -e "  --threads NUM_THREADS \tSets the threads. Defaults to 8.\n"
@@ -491,6 +508,9 @@ ghc_build () {
       "--flavour")
         flavour="$2"
         shift
+        ;;
+      "--js")
+        js=1
         ;;
       "--target")
         target="$2"
@@ -523,12 +543,19 @@ ghc_build () {
   fi
 
   if [[ 1 -eq $config ]]; then
-    echo "*** Configuring ***"
-    ghc_cfg
+    if [[ 1 -eq $js ]]; then
+      echo "*** Configuring JS ***"
+      ghc_cfg
+    else
+      echo "*** Configuring ***"
+      ghc_cfg_js
+    fi
   fi
 
   if [[ 1 -eq $test ]]; then
     cmd="./validate --fast --testsuite-only"
+  elif [[ 1 -eq $js ]]; then
+    cmd="hadrian/build -j$threads --flavour=quick --bignum=native --docs=none --build-root=$build_root"
   else
     cmd="hadrian/build $target -j$threads --flavour=$flavour --build-root=$build_root"
   fi
