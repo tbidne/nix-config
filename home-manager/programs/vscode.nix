@@ -1,29 +1,6 @@
 { inputs }:
 
 let
-  haskellWords = [
-    "anyclass"
-    "bifunctor"
-    "bimap"
-    "concat"
-    "doctest"
-    "fmap"
-    "foldr"
-    "foldl"
-    "hashable"
-    "hspec"
-    "mempty"
-    "monoid"
-    "optparse"
-    "semigroup"
-    "stackage"
-    "stringbuilder"
-    "typeclass"
-    "unlift"
-    "unlifteddatatypes"
-  ];
-  miscWords = [ "supremum" ];
-
   buildVscodeExt = inputs.pkgs.vscode-utils.buildVscodeMarketplaceExtension;
   licenses = inputs.pkgs.lib.licenses;
 
@@ -193,7 +170,6 @@ in
         ms-python.python
         ms-python.vscode-pylance
         octref.vetur
-        streetsidesoftware.code-spell-checker
         rust-lang.rust-analyzer
       ]
       ++ externalExts;
@@ -269,9 +245,6 @@ in
       "[haskell]" = {
         "editor.defaultFormatter" = "haskell.haskell";
       };
-
-      # ignore spellcheck
-      "cSpell.userWords" = haskellWords ++ miscWords;
     };
   };
 }
