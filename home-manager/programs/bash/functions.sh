@@ -545,10 +545,10 @@ ghc_build () {
   if [[ 1 -eq $config ]]; then
     if [[ 1 -eq $js ]]; then
       echo "*** Configuring JS ***"
-      ghc_cfg
+      ghc_cfg_js
     else
       echo "*** Configuring ***"
-      ghc_cfg_js
+      ghc_cfg
     fi
   fi
 
