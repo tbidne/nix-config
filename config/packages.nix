@@ -44,7 +44,6 @@
     entr
     git
     gnumake
-    influxdb2
     jq
     lua
     onefetch
