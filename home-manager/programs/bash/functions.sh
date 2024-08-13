@@ -234,6 +234,34 @@ nixpkgs_hs_build () {
 
 # Using this is a bit non-obvious. AFAICT, after creating the latest generation
 # (i.e. nixos-rebuild switch), run this, reboot, then run it again.
+#
+# Other tips for clearing space:
+#
+# - delete unused roots i.e. /nix/var/nix/profiles/
+#
+# - From home dir (so writable), run:
+#
+#     shrun "path-size -a -s pool -d 1 /" --no-file-log-delete-on-success
+#
+#   (Takes about 4 min)
+#
+# - /var can be large, especially /var/lib/docker. If docker is a problem, run:
+#
+#     Kill all running containers:
+# docker kill $(docker ps -q)
+#
+# Delete all stopped containers
+# # docker rm $(docker ps -a -q)
+#
+# Delete all images
+# # docker rmi $(docker images -q)
+#
+# Remove unused data
+# # docker system prune
+#
+# And some more
+# # docker system prune -af
+
 nix_gc () {
   period="-d"
   profile="system"
