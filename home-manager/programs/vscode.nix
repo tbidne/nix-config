@@ -151,8 +151,27 @@ in
   # delete this directory on startup.
   programs.vscode = {
     enable = true;
+    # Nb. With this, extensions get put in ~/.vscode-oss/. Otherwise
+    # it is ~/.vscode/.
     package = inputs.pkgs.vscodium;
+    #mutableExtensionsDir = true;
 
+    # BUG: Encountered a strange bug where none of my extensions loaded.
+    # First, to test changes, we probably need to make a change to the
+    # extension set here i.e. enable/disable some.
+    #
+    # To be honest, I have no idea what caused it. I deleted .vscode,
+    # .vscode-oss, and ~/.VSCodium. I also toggled the nix setting
+    #
+    #   mutableExtensionsDir = true;
+    #
+    # (default true, I think). In the end, what worked __appears__ to be the
+    # combination of deleting those directories and rebuilding, ensuring
+    # we make some changes to the extension list so that a rebuild actually
+    # happens.
+
+    # If this worked then we should _at least_ have extensions in
+    # .vscode-oss/extensions/extensions.json
     extensions =
       with inputs.pkgs.vscode-extensions;
       [
