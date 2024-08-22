@@ -241,9 +241,9 @@ nixpkgs_hs_build () {
 #
 # - From home dir (so writable), run:
 #
-#     shrun "path-size -a -s pool -d 1 /" --no-file-log-delete-on-success
+#     shrun "path-size -a -s pool -d 1 -e proc /" --no-file-log-delete-on-success
 #
-#   (Takes about 4 min)
+#   (Takes about 1 min)
 #
 # - /var can be large, especially /var/lib/docker. If docker is a problem, run:
 #
