@@ -62,6 +62,7 @@ nd () {
   exit=0
   jobs=""
   legacy=0
+  offline=""
   path="./"
   verbose=0
 
@@ -73,14 +74,17 @@ nd () {
         echo "          [-e|--exit]"
         echo "          [-j|--jobs MAX_JOBS]"
         echo "          [-l|--legacy]"
+        echo "          [-o|--offline]"
         echo "          [-p|--path PATH]"
         echo "          [-v|--verbose]"
         echo "          [-h|--help]"
         echo ""
         echo "Available options:"
+        echo -e "  -a,--args          \tMisc args that are passed through.\n"
         echo -e "  -e,--exit          \tExits the shell after it loads.\n"
         echo -e "  -j,--jobs MAX_JOBS \tMaximum threads to use.\n"
         echo -e "  -l,--legacy        \tIf true, uses nix-shell over nix develop.\n"
+        echo -e "  -o,--offline       \tSkips binary cache lookup.\n"
         echo -e "  -p,--path PATH     \tPath to the shell. Defaults to ./.\n"
         return 0
         ;;
@@ -97,6 +101,9 @@ nd () {
         ;;
       "-l" | "--legacy")
         legacy=1
+        ;;
+      "-o" | "--offline")
+        offline="--option substitute false"
         ;;
       "-p" | "--path")
         path=$2
@@ -128,7 +135,7 @@ nd () {
     main_cmd="nix develop -L"
   fi
 
-  cmd="$main_cmd $path $args $jobs $exit_cmd"
+  cmd="$main_cmd $path $args $jobs $offline $exit_cmd"
   if [[ 1 -eq $verbose ]]; then
     echo "cmd: $cmd"
   fi
