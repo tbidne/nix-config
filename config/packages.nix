@@ -90,6 +90,7 @@
     nix-prefetch-git
     openssl
     pv
+    rclone # pcloud
     tree
     unzip
     xclip

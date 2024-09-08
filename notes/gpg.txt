@@ -1,0 +1,57 @@
+get info
+--------
+gpg --list-keys
+gpg --list-keys --keyid-format=long
+gpg --list-secret-keys --keyid-format=long
+
+# key id comes after type, e.g., for
+#
+#     pub   rsa4096/6B1DDDD9D61B8670 ...
+#     ...
+#
+# id is 6B1DDDD9D61B8670
+
+generate
+--------
+gpg --full-generate-key
+
+export
+------
+# ascii armored
+gpg --output public.key --armor --export tbidne@protonmail.com
+gpg --output private.key --armor --export-secret-key tbidne@protonmail.com
+
+# export via id not email
+gpg --output public.key --armor --export F667A914B16C8D2
+
+# no armor
+gpg --output public.key --export tbidne@protonmail.com
+gpg --output private.key --export-secret-key tbidne@protonmail.com
+
+import
+------
+gpg --import private.key
+gpg --import public.key
+
+symmetric encryption
+--------------------
+- symmetric uses a pass phrase to generate a key, so we don't have to save a
+  key.
+
+gpg --output encrypted.data --symmetric --cipher-algo AES256 un_encrypted.data
+gpg --output decrypted.data --decrypt encrypted.data
+
+git
+---
+git config --local user.signingKey <keyid>
+
+github vs. gitlab
+-----------------
+- github displays long key-id whereas gitlab uses the hash. e.g. for (gpg --list-keys --keyid-format=long)
+
+pub   ed25519/15F2DFE933B0BF0B 2024-01-07 [SC] [expires: 2025-01-06]
+      52734F12916B7BF7625B89FD15F2DFE933B0BF0B
+uid                 [ultimate] Tommy Bidne <tbidne@protonmail.com>
+sub   cv25519/BBFF30AE20848D6C 2024-01-07 [E] [expires: 2025-01-06]
+
+github shows 15F2DFE933B0BF0B, but gitlab shows 52734F12916B7BF7625B89FD15F2DFE933B0BF0B

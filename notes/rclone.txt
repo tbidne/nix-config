@@ -1,0 +1,63 @@
+###############################################################################
+#                                    SETUP                                    #
+###############################################################################
+
+$ rclone config
+
+No remotes found, make a new one?
+n) New remote
+s) Set configuration password
+q) Quit config
+n/s/q> n
+
+Enter name for new remote.
+name> my_pcloud
+
+Option Storage.
+Type of storage to configure.
+Choose a number from below, or type in your own value.
+
+Storage> 37
+
+client_id> <leave blank>
+client_secret> <leave blank>
+
+Edit advanced config?
+y) Yes
+n) No (default)
+y/n> n
+
+
+Use web browser to automatically authenticate rclone with remote?
+ * Say Y if the machine running rclone has a web browser you can use
+ * Say N if running rclone on a (remote) machine without web browser access
+If not sure try Y. If Y failed, try N.
+
+y) Yes (default)
+n) No
+y/n> y
+
+Keep this "my_pcloud" remote?
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d> y
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> q
+
+###############################################################################
+#                                   Commands                                  #
+###############################################################################
+
+rclone lsd my_pcloud:
+
+rclone ls my_pcloud:
+
+rclone copy /home/source my_pcloud:some_folder --verbose --progress
