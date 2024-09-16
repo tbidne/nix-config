@@ -186,7 +186,7 @@ in
         jnoortheen.nix-ide
         justusadam.language-haskell
         mechatroner.rainbow-csv
-        ms-python.python
+        #ms-python.python # FIXME: currently broken
         ms-python.vscode-pylance
         octref.vetur
         rust-lang.rust-analyzer
