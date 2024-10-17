@@ -412,7 +412,7 @@ hshell () {
         exit_cmd="--command exit"
         ;;
       "-g" | "--ghc")
-        ghc=" --argstr ghcVers $2"
+        ghc=" --argstr ghc-vers $2"
         shift
         ;;
       "--hls")
