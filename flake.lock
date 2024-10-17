@@ -448,6 +448,22 @@
         "type": "github"
       }
     },
+    "conky": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1729124886,
+        "narHash": "sha256-RttP3PjNVyNKwn5HoirfahGGL/ehGsnwmdt51g6WOfc=",
+        "owner": "tbidne",
+        "repo": "conky",
+        "rev": "629e84765234cd69f81a087e0f2839f1eb291095",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tbidne",
+        "repo": "conky",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -1616,6 +1632,7 @@
       "inputs": {
         "catpuppucin": "catpuppucin",
         "charon": "charon",
+        "conky": "conky",
         "home-manager": "home-manager",
         "impact": "impact",
         "navi": "navi",

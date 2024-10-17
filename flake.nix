@@ -21,6 +21,8 @@
 
     # my repos
     charon.url = "github:tbidne/charon";
+    conky.url = "github:tbidne/conky";
+    conky.flake = false;
     path-size.url = "github:tbidne/path-size";
     pythia.url = "github:tbidne/pythia";
     navi.url = "github:tbidne/navi";
