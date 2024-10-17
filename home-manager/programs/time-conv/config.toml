@@ -10,7 +10,9 @@ ny = "america/new_york"
 
 # europe
 denmark = "europe/copenhagen"
+portugal = "europe/lisbon"
 paris = "europe/paris"
+spain = "europe/madrid"
 uk = "europe/london"
 zagreb = "europe/zagreb"
 
