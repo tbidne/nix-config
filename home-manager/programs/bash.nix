@@ -23,9 +23,16 @@
       reload-ui = "sudo systemctl restart display-manager";
       vsc = "codium .";
     };
+
+    # Note that optparse's completions apparently means we can no longer
+    # get completions for the file-system, at least not by default.
+    # This is super annoying for programs where we are likely to want
+    # fs completions. For that reason, we do not load completions for
+    # the following projects:
+    #
+    # - charon
     bashrcExtra = ''
       # Load completions for my projects
-      . <(charon --bash-completion-script `which charon`)
       . <(path-size --bash-completion-script `which path-size`)
       . <(pythia --bash-completion-script `which pythia`)
       . <(navi --bash-completion-script `which navi`)
