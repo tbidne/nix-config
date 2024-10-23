@@ -5,22 +5,25 @@ let
 in
 {
   # conky files
-  home.file.".config/conky/conkyrc_left.conf" = {
-    source = "${inputs.conky.outPath}/conkyrc_left.conf";
+  home.file.".config/conky/conky_left.conf" = {
+    source = "${inputs.conky.outPath}/conky_left.conf";
   };
-  home.file.".config/conky/conkyrc_right.conf" = {
-    source = "${inputs.conky.outPath}/conkyrc_right.conf";
+  home.file.".config/conky/conky_right.conf" = {
+    source = "${inputs.conky.outPath}/conky_right.conf";
   };
-  home.file.".config/conky/conkyrc_draw.lua" = {
-    source = "${inputs.conky.outPath}/conkyrc_draw.lua";
+  home.file.".config/conky/conky_draw.lua" = {
+    source = "${inputs.conky.outPath}/conky_draw.lua";
+  };
+  home.file.".config/conky/conky.rb" = {
+    source = "${inputs.conky.outPath}/conky.rb";
   };
 
   home.file.".config/conky/startup.sh" = {
     executable = true;
     text = ''
       #!${pkgs.bash}/bin/bash
-      conky -d -c /home/tommy/.config/conky/conkyrc_left.conf
-      conky -d -c /home/tommy/.config/conky/conkyrc_right.conf
+      conky -d -c /home/tommy/.config/conky/conky_left.conf
+      conky -d -c /home/tommy/.config/conky/conky_right.conf
     '';
   };
 

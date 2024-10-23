@@ -451,11 +451,11 @@
     "conky": {
       "flake": false,
       "locked": {
-        "lastModified": 1729124886,
-        "narHash": "sha256-RttP3PjNVyNKwn5HoirfahGGL/ehGsnwmdt51g6WOfc=",
+        "lastModified": 1729414647,
+        "narHash": "sha256-0CPuMOXxoiAgCsICSTFKBbWM1K2QLgsZUh8f32lR+tA=",
         "owner": "tbidne",
         "repo": "conky",
-        "rev": "629e84765234cd69f81a087e0f2839f1eb291095",
+        "rev": "57297b59e418b5d7f4296706d37ffe416da4ae7a",
         "type": "github"
       },
       "original": {
