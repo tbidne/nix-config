@@ -1016,3 +1016,8 @@ port_to_pid () {
 cpu_info () {
   lscpu | grep -E '^Thread|^Core|^Socket|^CPU\('
 }
+
+top_name () {
+  # tragically this has a limit of 20 pids
+  top -c -p $(pgrep -d',' -f "$1")
+}
