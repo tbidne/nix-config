@@ -1,4 +1,4 @@
-init = ". ~/.bash_functions.sh"
+init = ". /home/tommy/.bash_functions.sh"
 
 [command-logs]
 report-read-errors = true

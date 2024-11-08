@@ -1004,8 +1004,15 @@ rename_fs () {
 #                                     MISC                                    #
 ###############################################################################
 
-shrunlog () {
-  shrun "$1" -f shrun.log --file-log-mode write
+shrun_su () {
+  # -c: su has a different home dir, so we need to specify manually
+  # --no-notify-action: dbus fails on root for some reason
+  # --no-file-log-delete-on-success: we should probably default to logging on
+  shrun \
+    -c /home/tommy/.config/shrun/config.toml \
+    --no-notify-action \
+    --no-file-log-delete-on-success \
+    "$1"
 }
 
 port_to_pid () {
