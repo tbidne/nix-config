@@ -6,7 +6,7 @@
 
 {
   nix = {
-    package = inputs.pkgs.nixFlakes;
+    package = inputs.pkgs.nixVersions.stable;
     # NOTE: This is pretty gross, but most of this prompt is stolen from the
     # functions.sh file. The main differenec is the end, where we add the emoji
     # for a snowflake.
