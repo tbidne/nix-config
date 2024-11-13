@@ -691,7 +691,8 @@ hs_watch () {
     case "$1" in
       "--help" | "-h")
         echo -e "hs_watch: Simple bash function for using entr with haskell.\n"
-        echo "Usage: hs_watch [--clean]"
+        echo "Usage: hs_watch [-a|--all]"
+        echo "                [--clean]"
         echo "                [-c|--cmd COMMAND]"
         echo "                [-d|--dir DIR]"
         echo "                [--dry-run]"
@@ -699,6 +700,7 @@ hs_watch () {
         echo "                [-h|--help]"
         echo ""
         echo "Available options:"
+        echo -e "  -a,--all        \tRuns 'cabal build all --enable-tests --enable-benchmarks'.\n"
         echo -e "  --clean         \tRuns 'cabal clean' before --cmd.\n"
         echo -e "  -c,--cmd COMMAND\tCommand to run with entr e.g. 'cabal build all'."
         echo -e "                  \tDefaults to 'cabal build'.\n"
@@ -713,14 +715,17 @@ hs_watch () {
         echo -e "    = fd . -e cabal -e hs | entr -s \"cabal test foo '-p \\\"pattern\\\"'\"\n"
         return 0
         ;;
+      "-a" | "--all")
+        cmd="cabal build all --enable-tests --enable-benchmarks"
+        ;;
       "--clean")
         clean=1
         ;;
-      "--cmd" | "-c")
+      "-c" | "--cmd")
         cmd=$2
         shift
         ;;
-      "--dir" | "-d")
+      "-d" | "--dir")
         dir=". $2"
         shift
         ;;
