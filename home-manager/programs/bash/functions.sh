@@ -146,15 +146,11 @@ nd () {
 # nu and nus update flake inputs
 
 nu () {
-  nix flake lock --update-input $@
+  nix flake update "$@"
 }
 
 nus () {
-  srcs=""
-  for src in "$@"; do
-    srcs+=" --update-input $src"
-  done
-  nix flake lock $srcs
+  nix flake update "$@"
 }
 
 nix_info () {
