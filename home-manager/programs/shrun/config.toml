@@ -12,7 +12,7 @@ line-trunc = "detect"
 path = "shrun.log"
 command-name-trunc = 15
 delete-on-success = true
-mode = "write"
+mode = "append"
 size-mode = "delete 50 mb"
 
 [notify]
