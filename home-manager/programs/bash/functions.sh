@@ -677,11 +677,15 @@ hs_refactor () {
 
 # Watches hs files via fd and entr
 hs_watch () {
+  all=0
   dir="."
   clean=0
   dry_run=0
   cmd="cabal build"
+  custom_cmd=""
+  test=0
   verbose=0
+  werror=0
 
   while [ $# -gt 0 ]; do
     case "$1" in
@@ -692,6 +696,8 @@ hs_watch () {
         echo "                [-c|--cmd COMMAND]"
         echo "                [-d|--dir DIR]"
         echo "                [--dry-run]"
+        echo "                [-t|--test]"
+        echo "                [-w|--werror]"
         echo "                [-v|--verbose]"
         echo "                [-h|--help]"
         echo ""
@@ -702,6 +708,8 @@ hs_watch () {
         echo -e "                  \tDefaults to 'cabal build'.\n"
         echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
         echo -e "  --dry-run       \tShows which files will be watched.\n"
+        echo -e "  -t,--test       \tSwaps 'cabal build' for 'cabal test'.\n"
+        echo -e "  -w,--werror     \tAdds Werror to ghc-options.\n"
         echo "Examples:"
         echo "  hs_watch"
         echo -e "    = fd . -e cabal -e hs | entr -s \"cabal build\"\n"
@@ -712,13 +720,13 @@ hs_watch () {
         return 0
         ;;
       "-a" | "--all")
-        cmd="cabal build all --enable-tests --enable-benchmarks"
+        all=1
         ;;
       "--clean")
         clean=1
         ;;
       "-c" | "--cmd")
-        cmd=$2
+        custom_cmd=$2
         shift
         ;;
       "-d" | "--dir")
@@ -728,8 +736,14 @@ hs_watch () {
       "--dry-run")
         dry_run=1
         ;;
+      "--test" | "-t")
+        test=1
+        ;;
       "--verbose" | "-v")
         verbose=1
+        ;;
+      "--werror" | "-w")
+        werror=1
         ;;
       *)
         echo "Unexpected arg: '$1'. Try --help."
@@ -745,19 +759,35 @@ hs_watch () {
     return
   fi
 
-  if [[ 1 -eq $clean ]]; then
-    final_cmd="cabal clean && $cmd"
+  # if custom_cmd is not set, take other options into account
+  if [[ -z $custom_cmd ]]; then
+    # swap build for test
+    if [[ $test -eq 1 ]]; then
+      cmd="cabal test"
+    fi
+    # add all
+    if [[ $all -eq 1 ]]; then
+      cmd="$cmd all --enable-tests --enable-benchmarks"
+    fi
+    # add werror
+    if [[ $werror -eq 1 ]]; then
+      cmd="$cmd --ghc-options='-Werror'"
+    fi
+    # add clean
+    if [[ $clean -eq 1 ]]; then
+      cmd="cabal clean && $cmd"
+    fi
   else
-    final_cmd=$cmd
+    cmd=$custom_cmd
   fi
 
   if [[ $verbose == 1 ]]; then
     echo "dir:  '$dir'"
-    echo "cmd:  '$final_cmd'"
-    echo -e "full: '$fd_cmd | entr -s $final_cmd'\n"
+    echo "cmd:  '$cmd'"
+    echo -e "full: '$fd_cmd | entr -s $cmd'\n"
   fi
 
-  $fd_cmd | entr -s "$final_cmd"
+  $fd_cmd | entr -s "$cmd"
 }
 
 ###############################################################################
