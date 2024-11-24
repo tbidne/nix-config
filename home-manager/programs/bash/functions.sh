@@ -683,6 +683,7 @@ hs_watch () {
   dry_run=0
   cmd="cabal build"
   custom_cmd=""
+  target=""
   test=0
   verbose=0
   werror=0
@@ -696,6 +697,7 @@ hs_watch () {
         echo "                [-c|--cmd COMMAND]"
         echo "                [-d|--dir DIR]"
         echo "                [--dry-run]"
+        echo "                [--target STRING]"
         echo "                [-t|--test]"
         echo "                [-w|--werror]"
         echo "                [-v|--verbose]"
@@ -708,6 +710,7 @@ hs_watch () {
         echo -e "                  \tDefaults to 'cabal build'.\n"
         echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
         echo -e "  --dry-run       \tShows which files will be watched.\n"
+        echo -e "  --target        \tCabal target.\n"
         echo -e "  -t,--test       \tSwaps 'cabal build' for 'cabal test'.\n"
         echo -e "  -w,--werror     \tAdds Werror to ghc-options.\n"
         echo "Examples:"
@@ -735,6 +738,10 @@ hs_watch () {
         ;;
       "--dry-run")
         dry_run=1
+        ;;
+      "--target")
+        target="$2"
+        shift
         ;;
       "--test" | "-t")
         test=1
@@ -765,14 +772,21 @@ hs_watch () {
     if [[ $test -eq 1 ]]; then
       cmd="cabal test"
     fi
-    # add all
-    if [[ $all -eq 1 ]]; then
+
+    # Set target
+    if [[ -n $target ]]; then
+      # custom target
+      cmd="$cmd $target"
+    elif [[ $all -eq 1 ]]; then
+      # all
       cmd="$cmd all --enable-tests --enable-benchmarks"
     fi
+
     # add werror
     if [[ $werror -eq 1 ]]; then
       cmd="$cmd --ghc-options='-Werror'"
     fi
+
     # add clean
     if [[ $clean -eq 1 ]]; then
       cmd="cabal clean && $cmd"
