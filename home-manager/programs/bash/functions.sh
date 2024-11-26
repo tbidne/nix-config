@@ -137,6 +137,7 @@ nd () {
 
   cmd="$main_cmd $path $args $jobs $offline $exit_cmd"
   if [[ 1 -eq $verbose ]]; then
+    cmd="$cmd -vvvvv"
     echo "cmd: $cmd"
   fi
 
@@ -444,6 +445,7 @@ hshell () {
 ghc_shell () {
   exit_cmd=""
   js=0
+  verbose=""
 
   while [ $# -gt 0 ]; do
     case "$1" in
@@ -452,6 +454,7 @@ ghc_shell () {
         echo "Usage: ghc_shell [-e|--exit]"
         echo "                 [--js]"
         echo "                 [-h|--help]"
+        echo "                 [-v|--verbose]"
         echo ""
         echo "Available options:"
         echo -e "  --e,--exit       \tExits immediately after loading.\n"
@@ -464,6 +467,9 @@ ghc_shell () {
       "--js")
         js=1
         ;;
+      "-v" | "--verbose")
+        verbose="-vvvvv"
+        ;;
       *)
         echo "Unexpected arg: '$1'. Try --help."
         return 1
@@ -472,10 +478,16 @@ ghc_shell () {
   done
 
   if [[ 1 -eq $js ]]; then
-    nix develop git+https://gitlab.haskell.org/ghc/ghc.nix#js-cross -L $exit_cmd
+    cmd="nix develop git+https://gitlab.haskell.org/ghc/ghc.nix#js-cross -L $exit_cmd $verbose"
   else
-    nix develop git+https://gitlab.haskell.org/ghc/ghc.nix -L $exit_cmd
+    cmd="nix develop git+https://gitlab.haskell.org/ghc/ghc.nix -L $exit_cmd $verbose"
   fi
+
+  if [[ -n $verbose ]]; then
+    echo "cmd: $cmd"
+  fi
+
+  $cmd
 }
 
 ghc_cfg () {
