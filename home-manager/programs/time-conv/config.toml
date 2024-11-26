@@ -16,6 +16,9 @@ spain = "europe/madrid"
 uk = "europe/london"
 zagreb = "europe/zagreb"
 
+# asia
+hk = "asia/hong_kong"
+
 # oceania
 aet = "australia/sydney"
 nz = "pacific/auckland"
