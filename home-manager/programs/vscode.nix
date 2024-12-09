@@ -52,6 +52,17 @@ let
       license = licenses.mit;
     };
   };
+  insert-unicode = buildVscodeExt {
+    mktplcRef = {
+      name = "insert-unicode";
+      publisher = "brunnerh";
+      version = "0.15.1";
+      sha256 = "sha256-RHsq7JmlC+4zGSbDdovCZpjpSW+DvcmYnuz9f6F/N4g=";
+    };
+    meta = {
+      license = licenses.mit;
+    };
+  };
   language-purescript = buildVscodeExt {
     mktplcRef = {
       name = "language-purescript";
@@ -135,6 +146,7 @@ let
     haskell-spotlight
     ide-purescript
     idris-vscode
+    insert-unicode
     language-purescript
     lisp-syntax
     tokyo-night
@@ -154,7 +166,6 @@ in
     # Nb. With this, extensions get put in ~/.vscode-oss/. Otherwise
     # it is ~/.vscode/.
     package = inputs.pkgs.vscodium;
-    #mutableExtensionsDir = true;
 
     # BUG: Encountered a strange bug where none of my extensions loaded.
     # First, to test changes, we probably need to make a change to the
@@ -192,6 +203,40 @@ in
         rust-lang.rust-analyzer
       ]
       ++ externalExts;
+
+    globalSnippets = {
+      texMathBbC = {
+        body = [ "ℂ" ];
+        description = "Insert LaTeX \\mathbb{C}, U+2112";
+        prefix = [ "\\C" ];
+      };
+      texMathBbN = {
+        body = [ "ℕ" ];
+        description = "Insert LaTeX \\mathbb{N}, U+2115";
+        prefix = [ "\\N" ];
+      };
+      texMathBbP = {
+        body = [ "ℙ" ];
+        description = "Insert LaTeX \\mathbb{P} U+2119";
+        prefix = [ "\\P" ];
+      };
+      texMathBbQ = {
+        body = [ "ℚ" ];
+        description = "Insert LaTeX \\mathbb{Q}, U+211A";
+        prefix = [ "\\Q" ];
+      };
+      texMathBbR = {
+        body = [ "ℝ" ];
+        description = "Insert LaTeX \\mathbb{R}, U+211D";
+        prefix = [ "\\R" ];
+      };
+      texMathBbZ = {
+        body = [ "ℤ" ];
+        description = "Insert LaTeX \\mathbb{Z}, U+2114";
+        prefix = [ "\\Z" ];
+      };
+    };
+
     userSettings = {
       "breadcrumbs.enabled" = true;
       "editor.fontLigatures" = true;
