@@ -1,4 +1,16 @@
 {
+  # NOTE: [GHC Cache]
+  #
+  # The GHC cachix key changed, which caused some cache failures. The solution
+  # was to comment out the ghc-nix lines below (removing it from
+  # /etc/nix/nix.conf), then adding it back with the new key. In general,
+  # this seems like the way forward as merely updating the key appears to
+  # leave the old key present, which takes priority, hence will fail.
+  #
+  # For other cache failures, ensure ~/config/nix/nix.conf does not contain
+  # outdated refs.
+  #
+  # See NOTE: [Cachix].
   nix.settings.substituters = [
     "https://nixcache.reflex-frp.org"
     "https://cache.nixos.org"

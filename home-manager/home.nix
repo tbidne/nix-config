@@ -5,11 +5,13 @@
     (import ./system/default.nix { inherit inputs; })
   ];
 
+  # NOTE: [Cachix]
+  #
+  # These files come from cachix. Since I am not currently using the cachix
+  # exe, I want them blanked out of paranoia. If that changes, these lines
+  # will have to be removed.
   home.file = {
-    # Blanking these files. I'm not sure where they came from (they are not
-    # part of nixos-rebuild), but they were holding outdated cache info that
-    # was causing my system to use caches not reflected in
-    # nix.settings.substituters.
+    # Blanking these files to prevent outdated caches from being used.
     #
     # A better solution would be to prevent these files from being created.
     ".config/nix/netrc".text = "";
