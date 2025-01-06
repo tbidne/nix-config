@@ -15,6 +15,10 @@
   # hardlinks to save space
   nix.settings.auto-optimise-store = true;
 
+  security.sudo.extraConfig = ''
+    Defaults timestamp_timeout=60
+  '';
+
   # NOTE: The first time I added this, switching to the new profile failed.
   # I had to run 'sudo freshclam' (installation nonethless installed the
   # binaries). After that, switch succeeded.
