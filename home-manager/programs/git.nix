@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
     signing = {
-      key = "52734F12916B7BF7625B89FD15F2DFE933B0BF0B";
+      key = "F306FAE64773BA1F48E145965BFCB120389D92B6";
       signByDefault = true;
     };
     userName = "Tommy Bidne";
