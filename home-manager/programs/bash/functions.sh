@@ -695,6 +695,8 @@ hs_watch () {
   dry_run=0
   cmd="cabal build"
   custom_cmd=""
+  ghc_opts=""
+  no_code=0
   target=""
   test=0
   verbose=0
@@ -709,6 +711,7 @@ hs_watch () {
         echo "                [-c|--cmd COMMAND]"
         echo "                [-d|--dir DIR]"
         echo "                [--dry-run]"
+        echo "                [-n|--no-code]"
         echo "                [--target STRING]"
         echo "                [-t|--test]"
         echo "                [-w|--werror]"
@@ -722,6 +725,7 @@ hs_watch () {
         echo -e "                  \tDefaults to 'cabal build'.\n"
         echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
         echo -e "  --dry-run       \tShows which files will be watched.\n"
+        echo -e "  -n,--no-code    \tPasses ghc --no-code, type checking only.\n"
         echo -e "  --target        \tCabal target.\n"
         echo -e "  -t,--test       \tSwaps 'cabal build' for 'cabal test'.\n"
         echo -e "  -w,--werror     \tAdds Werror to ghc-options.\n"
@@ -751,6 +755,9 @@ hs_watch () {
       "--dry-run")
         dry_run=1
         ;;
+      "-n"| "--no-code")
+        no_code=1
+        ;;
       "--target")
         target="$2"
         shift
@@ -771,12 +778,7 @@ hs_watch () {
     shift
   done
 
-  fd_cmd="fd $dir -e cabal -e hs"
-
-  if [[ 1 -eq $dry_run ]]; then
-    $fd_cmd
-    return
-  fi
+  fd_cmd="fd $dir -e cabal -e hs -e x -e y"
 
   # if custom_cmd is not set, take other options into account
   if [[ -z $custom_cmd ]]; then
@@ -794,23 +796,43 @@ hs_watch () {
       cmd="$cmd all --enable-tests --enable-benchmarks"
     fi
 
+    # Add no_code. Note that this is inconsisent at best.
+    if [[ $no_code -eq 1 ]]; then
+      ghc_opts="$ghc_opts -fno-code"
+    fi
+
     # add werror
     if [[ $werror -eq 1 ]]; then
-      cmd="$cmd --ghc-options='-Werror'"
+      ghc_opts="$ghc_opts -Werror"
     fi
 
     # add clean
     if [[ $clean -eq 1 ]]; then
       cmd="cabal clean && $cmd"
     fi
+
+    # add ghc_opts
+    if [[ -n $ghc_opts ]]; then
+      cmd="$cmd --ghc-options='$ghc_opts'"
+    fi
   else
     cmd=$custom_cmd
+  fi
+
+  if [[ 1 -eq $dry_run ]]; then
+    $fd_cmd
+    echo ""
+    verbose=1
   fi
 
   if [[ $verbose == 1 ]]; then
     echo "dir:  '$dir'"
     echo "cmd:  '$cmd'"
     echo -e "full: '$fd_cmd | entr -s $cmd'\n"
+  fi
+
+  if [[ 1 -eq $dry_run ]]; then
+    return
   fi
 
   $fd_cmd | entr -s "$cmd"
