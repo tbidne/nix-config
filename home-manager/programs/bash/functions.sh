@@ -850,11 +850,22 @@ haddock_push () {
 
   # make gh-pages branch off main
   git checkout main
-  git branch -D gh-pages
+
+  if [ `git branch | egrep "^\*?[[:space:]]+gh-pages$"` ]; then
+    git branch -D gh-pages
+  fi
+
   git checkout -b gh-pages
 
   # create docs
-  ./tools/haddock.sh
+  if [[ -f "./tools/haddock.sh" ]]; then
+    ./tools/haddock.sh
+  elif  [[ -f "./scripts/haddock.sh" ]]; then
+    ./scripts/haddock.sh
+  else
+    echo "No haddock shell script found."
+    return 1
+  fi
 
   # commit and push
   git add -A
