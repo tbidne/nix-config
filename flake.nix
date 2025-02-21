@@ -23,6 +23,7 @@
     charon.url = "github:tbidne/charon";
     conky.url = "github:tbidne/conky";
     conky.flake = false;
+    pacer.url = "github:tbidne/pacer/main";
     path-size.url = "github:tbidne/path-size";
     pythia.url = "github:tbidne/pythia";
     navi.url = "github:tbidne/navi";
