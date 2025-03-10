@@ -40,6 +40,8 @@
       . <(todo --bash-completion-script `which todo`)
       . <(time-conv --bash-completion-script `which time-conv`)
 
+      export PATH=$PATH:~/.local/bin
+
       . ~/.bash_functions.sh
     '';
     initExtra = ''
