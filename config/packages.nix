@@ -31,7 +31,7 @@
     zoom-us
 
     # doc editing
-    okular
+    gpxsee # gpx file viewer
     pandoc
     qpdf
     texlive.combined.scheme-full
