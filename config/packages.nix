@@ -55,13 +55,13 @@
 
     # my projects
     (inputs.src2pkg inputs.charon)
+    (inputs.src2pkg inputs.kairos)
     (inputs.src2pkg inputs.navi)
     (inputs.src2pkg inputs.pacer)
     (inputs.src2pkg inputs.path-size)
     (inputs.src2pkg inputs.pythia)
     (inputs.src2pkg inputs.shrun)
     (inputs.src2pkg inputs.todo)
-    (inputs.src2pkg inputs.time-conv)
 
     # network utils
     traceroute

@@ -33,12 +33,12 @@
     # - charon
     bashrcExtra = ''
       # Load completions for my projects
+      . <(kairos --bash-completion-script `which kairos`)
       . <(path-size --bash-completion-script `which path-size`)
       . <(pythia --bash-completion-script `which pythia`)
       . <(navi --bash-completion-script `which navi`)
       . <(shrun --bash-completion-script `which shrun`)
       . <(todo --bash-completion-script `which todo`)
-      . <(time-conv --bash-completion-script `which time-conv`)
 
       export PATH=$PATH:~/.local/bin
 

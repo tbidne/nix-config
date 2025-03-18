@@ -8,7 +8,7 @@
       default = {
         # For some reason this doesn't appear to work at the moment...
         # Leaving it in as we will likely want something like this in the future.
-        extensions = with (inputs.pkgs.nur.repos.rycee.firefox-addons); [
+        extensions.packages = with (inputs.pkgs.nur.repos.rycee.firefox-addons); [
           cookie-autodelete
           darkreader
           decentraleyes

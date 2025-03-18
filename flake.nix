@@ -23,13 +23,13 @@
     charon.url = "github:tbidne/charon";
     conky.url = "github:tbidne/conky";
     conky.flake = false;
+    kairos.url = "github:tbidne/kairos";
     pacer.url = "github:tbidne/pacer/main";
     path-size.url = "github:tbidne/path-size";
     pythia.url = "github:tbidne/pythia";
     navi.url = "github:tbidne/navi";
     shrun.url = "github:tbidne/shrun";
     todo.url = "github:tbidne/todo";
-    time-conv.url = "github:tbidne/time-conv";
   };
 
   outputs =
@@ -62,7 +62,7 @@
         nixos = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            { nixpkgs.overlays = [ nur.overlay ]; }
+            { nixpkgs.overlays = [ nur.overlays.default ]; }
             (
               { pkgs, ... }:
               let
