@@ -312,7 +312,6 @@ in
           "editor.defaultFormatter" = "haskell.haskell";
         };
       };
-
     };
   };
 }
