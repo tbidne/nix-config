@@ -7,6 +7,7 @@ mt = "america/boise"
 ny = "america/new_york"
 
 # europe
+brussels = "europe/brussels"
 denmark = "europe/copenhagen"
 portugal = "europe/lisbon"
 paris = "europe/paris"
@@ -19,4 +20,5 @@ hk = "asia/hong_kong"
 
 # oceania
 aet = "australia/sydney"
+awt = "australia/perth"
 nz = "pacific/auckland"
