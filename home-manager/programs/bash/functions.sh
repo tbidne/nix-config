@@ -181,6 +181,7 @@ unsym_d () {
 }
 
 nixpkgs_hs_build () {
+  broken=0
   ghc=""
   pkg=""
   verbose=""
@@ -189,18 +190,23 @@ nixpkgs_hs_build () {
     case "$1" in
       "--help" | "-h")
         echo -e "nixpkgs_hs_build: Builds a haskell package in nixpkgs.\n"
-        echo "Usage: nixpkgs_hs_build [--ghc GHC]"
+        echo "Usage: nixpkgs_hs_build [-b|--broken]"
+        echo "                        [--ghc GHC]"
         echo "                        [-p|--pkg PKG]"
         echo "                        [-v|--verbose]"
         echo "                        [-h|--help]"
         echo ""
         echo "Available options:"
+        echo -e "  -b,--broken  \tAttempts to build a package marked broken.\n"
         echo -e "  --ghc GHC    \tGHC to use. Optional\n"
         echo -e "  -p,--pkg PKG \tThe package to build.\n"
         echo "Examples:"
         echo -e "  nixpkgs_hs_build -p text\n"
         echo "  nixpkgs_hs_build --ghc ghc963 -p text"
         return 0
+        ;;
+      "-b" | "--broken")
+        broken=1
         ;;
       "--ghc")
         ghc="$2"
@@ -224,16 +230,29 @@ nixpkgs_hs_build () {
     echo "No --pkg given. Try help."
   fi
 
-  if [[ $ghc != "" ]]; then
-    cmd="nix build .#haskell.packages.$ghc.$pkg"
+  if [[ $verbose == 1 ]]; then
+    base_cmd="nix build"
   else
-    cmd="nix build .#haskellPackages.$pkg"
+    base_cmd="nix build -Lv"
+  fi
+
+  if [[ $broken == 1 ]]; then
+    mbroken_cmd="export NIXPKGS_ALLOW_BROKEN=1; $base_cmd --impure"
+  else
+    mbroken_cmd="$base_cmd"
+  fi
+
+  if [[ $ghc != "" ]]; then
+    cmd="$mbroken_cmd .#haskell.packages.$ghc.$pkg"
+  else
+    cmd="$mbroken_cmd .#haskellPackages.$pkg"
   fi
 
   if [[ $verbose == 1 ]]; then
     echo "cmd: $cmd"
   fi
-  $cmd
+
+  eval $cmd
 }
 
 # Using this is a bit non-obvious. AFAICT, after creating the latest generation
