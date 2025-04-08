@@ -33,6 +33,7 @@ Nix (General)
   - nd: Load a nix shell
   - nu: Update a single nix flake input
   - nus: Updatte nix flake input(s)
+  - nix_del_profs: delete old nix profiles
   - nix_info: print nix info
   - unsym_f: Remove a symlink from a file
   - unsym_d: Apply unsym_f to all symlinks in the current dir
@@ -152,6 +153,30 @@ nu () {
 
 nus () {
   nix flake update "$@"
+}
+
+nix_del_profs () {
+  path=/nix/var/nix/profiles
+
+  all_files=$(ls $path)
+
+  RX="^system-[0-9]+-link$"
+
+  live_link=$(readlink "$path/system")
+
+  for f in $all_files; do
+    if [[ $f =~ $RX ]]; then
+      if [[ $f == $live_link ]]; then
+        echo "Skipping active profile: $f"
+      else
+        echo "Deleting non-active profile: $f"
+        sudo unlink "$path/$f"
+      fi
+    fi
+  done
+
+  # Keeping here just in case we want to sort the links we find...
+  #sorted_links=$(echo $sys_links | xargs -n1 | sort | xargs)
 }
 
 nix_info () {
@@ -286,6 +311,8 @@ nixpkgs_hs_build () {
 # # docker system prune -af
 
 nix_gc () {
+  set -e
+
   period="-d"
   profile="system"
   verbose=""
@@ -344,6 +371,9 @@ nix_gc () {
 
   echo "*** Listing generations ***"
   $ls_cmd
+
+  echo "*** Deleting generations ***"
+  nix_del_profs
 
   echo "*** Deleting ***"
   $del_cmd
