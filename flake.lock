@@ -1317,11 +1317,11 @@
         "smart-math": "smart-math_2"
       },
       "locked": {
-        "lastModified": 1742524331,
-        "narHash": "sha256-97uSwNU3grkJhcl5psd4UD8WhTDlkq8KkCFYAW3Q/ks=",
+        "lastModified": 1744252080,
+        "narHash": "sha256-0kbukEcqhSP7mAX3yzbNivVnTv5TSVEkvvoMB3Jhsg0=",
         "owner": "tbidne",
         "repo": "kairos",
-        "rev": "6f63f3c3ffaf43bba9a6f6a7ef98c8e44106ba23",
+        "rev": "72f5c6bf2acd0a8f158f7d84bab9659f7fa7b9ff",
         "type": "github"
       },
       "original": {
