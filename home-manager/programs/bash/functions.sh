@@ -827,7 +827,7 @@ hs_watch () {
     shift
   done
 
-  fd_cmd="fd $dir -e cabal -e hs -e x -e y"
+  fd_cmd="fd $dir -e cabal -e hs -e project -e x -e y"
 
   # if custom_cmd is not set, take other options into account
   if [[ -z $custom_cmd ]]; then
