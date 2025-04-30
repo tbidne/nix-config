@@ -5,7 +5,6 @@
     # core
     brave
     chromium
-    conky
     firefox
     gimp
     google-chrome

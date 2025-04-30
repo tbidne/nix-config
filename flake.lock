@@ -508,22 +508,6 @@
         "type": "github"
       }
     },
-    "conky": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1741834327,
-        "narHash": "sha256-4awEOmqxbeb5MNSdQMKpvmbcsdl0ZwYDMoAY0UzZKtE=",
-        "owner": "tbidne",
-        "repo": "conky",
-        "rev": "7cf3e7bde55238de6c7b43158255c194be15ba6a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tbidne",
-        "repo": "conky",
-        "type": "github"
-      }
-    },
     "effectful-libs": {
       "inputs": {
         "algebra-simple": [
@@ -2464,7 +2448,6 @@
       "inputs": {
         "catpuppucin": "catpuppucin",
         "charon": "charon",
-        "conky": "conky",
         "home-manager": "home-manager",
         "impact": "impact",
         "kairos": "kairos",
