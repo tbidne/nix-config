@@ -33,6 +33,7 @@
     # - charon
     bashrcExtra = ''
       # Load completions for my projects
+      . <(cabal-monitor --bash-completion-script `which cabal-monitor`)
       . <(kairos --bash-completion-script `which kairos`)
       . <(path-size --bash-completion-script `which path-size`)
       . <(pythia --bash-completion-script `which pythia`)

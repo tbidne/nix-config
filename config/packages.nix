@@ -53,6 +53,7 @@
     vscodium
 
     # my projects
+    (inputs.src2pkg inputs.cabal-monitor)
     (inputs.src2pkg inputs.charon)
     (inputs.src2pkg inputs.kairos)
     (inputs.src2pkg inputs.navi)

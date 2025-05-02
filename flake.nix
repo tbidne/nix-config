@@ -20,6 +20,7 @@
     impact.inputs.nixpkgs.follows = "nixpkgs";
 
     # my repos
+    cabal-monitor.url = "github:tbidne/cabal-monitor";
     charon.url = "github:tbidne/charon";
     kairos.url = "github:tbidne/kairos";
     pacer.url = "github:tbidne/pacer/main";
