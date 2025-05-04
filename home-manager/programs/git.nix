@@ -44,6 +44,7 @@
       dftc = "difftool --cached";
       lol = "log --oneline";
       redo = "commit --amend --no-edit";
+      redo-reset = "commit --amend --no-edit";
       sm = "submodule update --init --recursive";
 
       # r = <remote>
