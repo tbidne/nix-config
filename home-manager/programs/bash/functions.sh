@@ -15,6 +15,8 @@ Git
   - haddock_push: Builds haskell docs and pushes to gh-pages git branch
   - git_yolo: Force push all changes
   - update_badges: Updates readme badges for shields.io changes
+  - mrca_branches: Find branches with common ancestor
+  - find_gh_pr: Find branches with github pr merge commit
 
 Haskell
   - hs_del: Recursively deletes haskell build dirs
@@ -986,8 +988,8 @@ mrca_branches () {
   while [ $# -gt 0 ]; do
     case "$1" in
       "--help" | "-h")
-      echo -e "mrca_branches: Finds the most-recent-common-ancestor of two\n"
-      echo -e "               branches, then list all branch with this commit.\n"
+      echo -e "mrca_branches: Finds the most-recent-common-ancestor c of two branches,"
+      echo -e "               then lists all branches with c.\n"
       echo "Usage: mrca_branches [-r|--remote STRING]"
       echo "                     [-h|--help]"
       echo "                     [-v|--verbose]"
@@ -1048,7 +1050,94 @@ mrca_branches () {
   for l in "${lines[@]}"; do
     echo " -$l"
   done
+}
 
+find_gh_pr () {
+  org="NixOS"
+  pr=""
+  repo="nixpkgs"
+  verbose=0
+
+  set -e
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+      echo -e "find_gh_pr: Finds all branches that contain the merge commit for the given pr.\n"
+      echo "Usage: find_gh_pr [-o|--org STRING]"
+      echo "                  [-p|--pr INT]"
+      echo "                  [-r|--repo STRING]"
+      echo "                  [-h|--help]"
+      echo "                  [-v|--verbose]"
+      echo ""
+      echo "Available options:"
+      echo -e "  -o,--org STRING \tThe github org. Defaults to NixOS.\n"
+      echo -e "  -p,--pr INT     \tThe pr number. Required.\n"
+      echo -e "  -r,--repo STRING\tThe github repo. Defaults to nixpkgs.\n"
+      return 0
+      ;;
+    "-o" | "--org")
+      org="$2"
+      shift
+      ;;
+    "-p" | "--pr")
+      pr="$2"
+      shift
+      ;;
+    "-r" | "--repo")
+      repo="$2"
+      shift
+      ;;
+    "-v" | "--verbose")
+      verbose=1
+      ;;
+    *)
+      echo "Unexpected arg: '$1'. Try --help."
+      return 1
+    esac
+    shift
+  done
+
+  if [[ -z $pr ]]; then
+    echo "--pr not given, but it is required"
+    return 1
+  fi
+
+  # https://docs.github.com/en/rest/pulls/pulls?apiVersion=2022-11-28
+  curl_cmd="curl -L \
+    https://api.github.com/repos/$org/$repo/pulls/$pr"
+
+  if [[ $verbose == 1 ]]; then
+    echo "*** curl_cmd: $curl_cmd ***"
+  fi
+
+  curl_result=$($curl_cmd)
+  jq_result=$(echo $curl_result | jq .merge_commit_sha)
+
+  hash_regex="\"([a-f0-9]{40})\""
+
+  merge_commit=""
+  if [[ $jq_result =~ $hash_regex ]]; then
+    merge_commit=${BASH_REMATCH[1]}
+    echo "*** Merge commit: $merge_commit ***"
+  else
+    echo "*** Error: received expected jq result: $jq_result ***"
+    exit 1
+  fi
+
+  fd_branches="git branch -r --contains $merge_commit"
+  if [[ $verbose == 1 ]]; then
+    echo "*** fd_branches: $fd_branches ***"
+  fi
+
+  out=$($fd_branches)
+
+  readarray -t lines <<<"$out"
+
+  echo "*** Remote branches with commit: ***"
+  for l in "${lines[@]}"; do
+    echo " -$l"
+  done
 }
 
 ###############################################################################
