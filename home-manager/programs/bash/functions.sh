@@ -969,6 +969,88 @@ update_badges () {
       | xargs sed -i -E 's/https:\/\/img.shields.io\/github\/workflow\/status\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\?(.*)/http:\/\/img.shields.io\/github\/actions\/workflow\/status\/\1\/\2\/\3.yaml\?branch=\4\&\5/g'
 }
 
+# Given two branches, finds the most recent common ancestor (mrca) and then
+# finds all branches with this commit. Used for e.g. determining which
+# branches have the latest haskell-updates merge.
+#
+# mrca_branches -r upstream haskell-updates staging
+mrca_branches () {
+  args=()
+  b1=""
+  b2=""
+  remote=""
+  verbose=0
+
+  set -e
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+      echo -e "mrca_branches: Finds the most-recent-common-ancestor of two\n"
+      echo -e "               branches, then list all branch with this commit.\n"
+      echo "Usage: mrca_branches [-r|--remote STRING]"
+      echo "                     [-h|--help]"
+      echo "                     [-v|--verbose]"
+      echo "                     BRANCH_1 BRANCH_2"
+      echo ""
+      echo "Available options:"
+      echo -e "  -r,--remote STRING\tRemote e.g. 'origin', 'upstream'.\n"
+      return 0
+      ;;
+    "-r" | "--remote")
+      remote="$2"
+      shift
+      ;;
+    "-v" | "--verbose")
+      verbose=1
+      ;;
+    *)
+      args+=("$1")
+      ;;
+    esac
+    shift
+  done
+
+  num_args="${#args[@]}"
+  if [[ num_args -ne 2 ]]; then
+    echo "Expected exactly 2 args, received: $num_args"
+    exit 1
+  else
+    b1="${args[0]}"
+    b2="${args[1]}"
+  fi
+
+  if [[ -n $remote ]]; then
+    b1="$remote/$b1"
+    b2="$remote/$b2"
+  fi
+
+  mrca_cmd="git merge-base $b1 $b2"
+
+  if [[ $verbose == 1 ]]; then
+    echo "mrca_cmd: $mrca_cmd"
+  fi
+
+  mrca=$($mrca_cmd)
+
+  echo "*** Most recent common ancestor: $mrca ***"
+
+  fd_branches="git branch -r --contains $mrca"
+  if [[ $verbose == 1 ]]; then
+    echo "fd_branches: $fd_branches"
+  fi
+
+  out=$($fd_branches)
+
+  readarray -t lines <<<"$out"
+
+  echo "*** Remote branches with commit: ***"
+  for l in "${lines[@]}"; do
+    echo " -$l"
+  done
+
+}
+
 ###############################################################################
 #                                    UTILS                                    #
 ###############################################################################
