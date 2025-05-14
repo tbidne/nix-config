@@ -28,8 +28,11 @@ Haskell
   - hs_watch: Watches hs files via fd and entr
 
 Misc
-  - shrunlog: Alias for shrun -f log --file-log-mode write
+  - shrun_su: Alias for shrun -f log --file-log-mode write
+  - shrun_exit: Runs a command w/ shrun, exits, then runs again
   - port_to_pid: Finds a process that is listening to the given pid
+  - cpu_info: Displays cpu info.
+  - top_name: Runs top filtering on names.
 
 Nix (General)
   - nd: Load a nix shell
@@ -1323,6 +1326,21 @@ shrun_su () {
     --no-notify-action \
     --no-file-log-delete-on-success \
     "$1"
+}
+
+# Runs arbitrary command with shrun, appending '-e', then reruns the bare
+# command without '-e'.
+#
+# Used for loading shells that take a long time hence we want to run them
+# with shrun e.g.
+#
+#   shrun_exit nd
+#
+# 1. Runs "nd -e" with shrun i.e. loads a nix develop shell and then exits
+#    once it has loaded.
+# 2. Runs the command again so we end up in the shell.
+shrun_exit () {
+  shrun "$@ -e" && eval $@
 }
 
 port_to_pid () {
