@@ -53,6 +53,7 @@ Utils
   - retry: Retries a command until it succeeds
   - fr: Find/replace
   - find_dirs: Lists all directories in which a string is found
+  - find_files: Lists all files in which a string is found
   - rename_fs: Renames files
 ToC
 }
@@ -1288,6 +1289,11 @@ find_dirs () {
       fi
     fi
   done
+}
+
+# Just because I forget this
+find_files() {
+  rg -l $@
 }
 
 rename_fs () {
