@@ -745,11 +745,13 @@ hs_refactor () {
 # Watches hs files via fd and entr
 hs_watch () {
   all=0
+  background=0
   dir="."
   clean=0
   dry_run=0
   cmd="cabal build"
   custom_cmd=""
+  exts=()
   ghc_opts=""
   no_code=0
   target=""
@@ -762,10 +764,12 @@ hs_watch () {
       "--help" | "-h")
         echo -e "hs_watch: Simple bash function for using entr with haskell.\n"
         echo "Usage: hs_watch [-a|--all]"
+        echo "                [-b|--background]"
         echo "                [--clean]"
         echo "                [-c|--cmd COMMAND]"
         echo "                [-d|--dir DIR]"
         echo "                [--dry-run]"
+        echo "                [-e|--ext EXT...]"
         echo "                [-n|--no-code]"
         echo "                [--target STRING]"
         echo "                [-t|--test]"
@@ -774,16 +778,18 @@ hs_watch () {
         echo "                [-h|--help]"
         echo ""
         echo "Available options:"
-        echo -e "  -a,--all        \tRuns 'cabal build all --enable-tests --enable-benchmarks'.\n"
-        echo -e "  --clean         \tRuns 'cabal clean' before --cmd.\n"
-        echo -e "  -c,--cmd COMMAND\tCommand to run with entr e.g. 'cabal build all'."
-        echo -e "                  \tDefaults to 'cabal build'.\n"
-        echo -e "  -d,--dir DIR    \tDirectory on which to run find. Defaults to '.'\n"
-        echo -e "  --dry-run       \tShows which files will be watched.\n"
-        echo -e "  -n,--no-code    \tPasses ghc --no-code, type checking only.\n"
-        echo -e "  --target        \tCabal target.\n"
-        echo -e "  -t,--test       \tSwaps 'cabal build' for 'cabal test'.\n"
-        echo -e "  -w,--werror     \tAdds Werror to ghc-options.\n"
+        echo -e "  -a,--all         \tRuns 'cabal build all --enable-tests --enable-benchmarks'.\n"
+        echo -e "  -b,--background  \tBackgrounds the command, useful for e.g. web servers.\n"
+        echo -e "  --clean          \tRuns 'cabal clean' before --cmd.\n"
+        echo -e "  -c,--cmd COMMAND \tCommand to run with entr e.g. 'cabal build all'."
+        echo -e "                   \tDefaults to 'cabal build'.\n"
+        echo -e "  -d,--dir DIR     \tDirectory on which to run find. Defaults to '.'\n"
+        echo -e "  --dry-run        \tShows which files will be watched.\n"
+        echo -e "  -e,--ext EXTS... \tCustom file extension to watch.\n"
+        echo -e "  -n,--no-code     \tPasses ghc --no-code, type checking only.\n"
+        echo -e "  --target         \tCabal target.\n"
+        echo -e "  -t,--test        \tSwaps 'cabal build' for 'cabal test'.\n"
+        echo -e "  -w,--werror      \tAdds Werror to ghc-options.\n"
         echo "Examples:"
         echo "  hs_watch"
         echo -e "    = fd . -e cabal -e hs | entr -s \"cabal build\"\n"
@@ -795,6 +801,9 @@ hs_watch () {
         ;;
       "-a" | "--all")
         all=1
+        ;;
+      "-b" | "--background")
+        background=1
         ;;
       "--clean")
         clean=1
@@ -809,6 +818,10 @@ hs_watch () {
         ;;
       "--dry-run")
         dry_run=1
+        ;;
+      "-e" | "--ext")
+        exts+=("$2")
+        shift
         ;;
       "-n"| "--no-code")
         no_code=1
@@ -833,9 +846,16 @@ hs_watch () {
     shift
   done
 
-  fd_cmd="fd $dir -e cabal -e hs -e project -e x -e y"
+  custom_exts=""
+  for e in ${exts[@]}; do
+    custom_exts+=" -e $e"
+  done
 
-  # if custom_cmd is not set, take other options into account
+  fd_cmd="fd $dir -e cabal -e hs -e project $custom_exts"
+
+  # If custom_cmd is not set, take other options into account.
+  # These are cabal-specific, hence should only be set when custom command
+  # is not used.
   if [[ -z $custom_cmd ]]; then
     # swap build for test
     if [[ $test -eq 1 ]]; then
@@ -872,6 +892,12 @@ hs_watch () {
     fi
   else
     cmd=$custom_cmd
+  fi
+
+  # This is a pretty general option, hence is okay to set with custom
+  # command.
+  if [[ $background -eq 1 ]]; then
+    cmd="$cmd &"
   fi
 
   if [[ 1 -eq $dry_run ]]; then
