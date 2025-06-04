@@ -311,6 +311,10 @@ in
         "[haskell]" = {
           "editor.defaultFormatter" = "haskell.haskell";
         };
+        # This setting has started showing inline record fields, which
+        # makes the code very difficult to read. Consider checking later
+        # to see if this is 'fixed' upstream.
+        "haskell.plugin.explicit-fields.inlayHintsOn" = false;
       };
     };
   };
