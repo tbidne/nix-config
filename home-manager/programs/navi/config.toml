@@ -36,3 +36,27 @@ device = "wlp0s20f3"
 app = "nmcli"
 poll-interval = 30
 device = "enp0s31f6"
+
+[[single]]
+name = "tailscale"
+poll-interval = 300
+# repeat-events since we want to be reminded if tailscale is up.
+repeat-events = true
+command = """
+  set +e
+  status=$(tailscale status)
+  ec=$?
+
+  if [[ $ec == 0 ]]; then
+    echo "true"
+  else
+    echo "false"
+  fi
+"""
+trigger = "true"
+
+[single.note]
+summary = "Tailscale"
+body = "Tailscale is probably up!"
+urgency = "critical"
+timeout = 10
