@@ -1317,9 +1317,13 @@ find_dirs () {
   done
 }
 
-# Just because I forget this
+# Just because I forget these
 find_files() {
   rg -l $@
+}
+
+find_file_names() {
+  fd --hidden '.*$1.*' .
 }
 
 rename_fs () {
