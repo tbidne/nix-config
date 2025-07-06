@@ -571,6 +571,7 @@
         "exception-utils": "exception-utils_2",
         "flake-parts": "flake-parts_2",
         "fs-utils": "fs-utils_2",
+        "haskeline": "haskeline",
         "monad-effects": "monad-effects",
         "nix-hs-utils": "nix-hs-utils_2",
         "nixpkgs": "nixpkgs_2",
@@ -579,11 +580,11 @@
         "smart-math": "smart-math"
       },
       "locked": {
-        "lastModified": 1750830470,
-        "narHash": "sha256-cAmwgJ0m5Iys2qw4/zj/Gvcj54dkZHqxgRqoRgMcHl8=",
+        "lastModified": 1751800438,
+        "narHash": "sha256-V+cPyOvPPMoyuLH4h198XWwxouPufZyOHNM5LeBM0ok=",
         "owner": "tbidne",
         "repo": "charon",
-        "rev": "af641391897e548b6baaa0a054712c6f582159e1",
+        "rev": "c5b396a6ed1beec89e281393eaff9a5ebe3b4a99",
         "type": "github"
       },
       "original": {
@@ -727,11 +728,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1738875981,
-        "narHash": "sha256-UXYDrw4/bty2qyjNmvaTYSng0L+MDdzAzawG5gXBcF8=",
+        "lastModified": 1751586675,
+        "narHash": "sha256-gCG6RlIk6xnjUfq/SYHu2d3Vexg4tfOf3d0GttO8k14=",
         "owner": "tbidne",
         "repo": "exception-utils",
-        "rev": "e28b28ae3bc90a0336abf69eff28369b790f4e13",
+        "rev": "02fdf3d44f41019d2f31f7903f432dfc0e91e078",
         "type": "github"
       },
       "original": {
@@ -1233,11 +1234,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750762445,
-        "narHash": "sha256-0vZrZpjy420afq6LJv9Q3C9zjDLdQOnv6SBUs308OWY=",
+        "lastModified": 1750986005,
+        "narHash": "sha256-zeb8hnUuYs/MKc5apz+Jygn2TLgRn237wxYUW1TGp5U=",
         "owner": "tbidne",
         "repo": "fs-utils",
-        "rev": "a0723442a926f712f2b4ef0fe2c766fa083255d2",
+        "rev": "9250f29d28c4ab6dd1ab44719157852c8044d9e9",
         "type": "github"
       },
       "original": {
@@ -1449,6 +1450,22 @@
         "type": "github"
       }
     },
+    "haskeline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1751439316,
+        "narHash": "sha256-ptj6PUCwqwV8q9eGNo9f29dkmyMtmfGJIfvu+SAmcdY=",
+        "owner": "haskell",
+        "repo": "haskeline",
+        "rev": "b12552d378c32fd3ccb813a959dc29419d47d9b2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "haskell",
+        "repo": "haskeline",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1541,6 +1558,10 @@
           "charon",
           "fs-utils"
         ],
+        "haskeline": [
+          "charon",
+          "haskeline"
+        ],
         "nix-hs-utils": [
           "charon",
           "nix-hs-utils"
@@ -1555,15 +1576,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1750763716,
-        "narHash": "sha256-p/LlgiQH9LujN0mpyfpkeBI+pEgdCDlJujXu29s7vUU=",
+        "lastModified": 1751791163,
+        "narHash": "sha256-enJ0VGAfBRtddWs+WES22pI1rUwdqZhsFdVb/BIVH04=",
         "owner": "tbidne",
         "repo": "monad-effects",
-        "rev": "89047cfffd9335e1360762efcf9fce4641439222",
+        "rev": "a62298759d3320840e27d8074a70c5b713ef74d2",
         "type": "github"
       },
       "original": {
         "owner": "tbidne",
+        "ref": "haskeline",
         "repo": "monad-effects",
         "type": "github"
       }
