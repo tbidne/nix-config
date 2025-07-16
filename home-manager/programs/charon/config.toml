@@ -1,3 +1,13 @@
 backend = "fdo"
 log-level = "debug"
-trash-home = "/home/tommy/.local/share/Trash"
+
+[delete]
+verbose = true
+
+[perm-delete]
+indices = true
+verbose = true
+
+[restore]
+indices = true
+verbose = true
