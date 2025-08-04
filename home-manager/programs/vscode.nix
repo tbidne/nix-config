@@ -85,6 +85,17 @@ let
       license = licenses.mit;
     };
   };
+  mermaid-chart = buildVscodeExt {
+    mktplcRef = {
+      name = "vscode-mermaid-chart";
+      publisher = "mermaidchart";
+      version = "2.3.0";
+      sha256 = "sha256-XwrO2gaSGjVdHIf3w+pW1JkHEBQf4r/l2nrnKFsJnpc=";
+    };
+    meta = {
+      license = licenses.mit;
+    };
+  };
   tokyo-night = buildVscodeExt {
     mktplcRef = {
       name = "tokyo-night";
@@ -149,6 +160,7 @@ let
     insert-unicode
     language-purescript
     lisp-syntax
+    mermaid-chart
     tokyo-night
     rst-preview
     rst-syntax
