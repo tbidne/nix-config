@@ -84,6 +84,8 @@
       log-del-str = "!f() { git log -S \"$1\"; }; f";
       # e.g. git log-del-file "deleted-file"
       log-del-file = "!f() { git log --diff-filter=D -- \"$1\"; }; f";
+
+      rbi = "!f() { git rebase -i HEAD~$1; }; f";
     };
   };
 }
