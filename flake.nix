@@ -8,6 +8,11 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nur.url = "github:nix-community/NUR";
+    plasma-manager = {
+      url = "github:pjones/plasma-manager";
+      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # other
     catpuppucin.url = "github:catppuccin/kitty";
@@ -37,6 +42,7 @@
       home-manager,
       nixpkgs,
       nur,
+      plasma-manager,
       self,
       ...
     }@inputs':
@@ -81,6 +87,8 @@
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users.tommy = (import ./home-manager/home.nix { inherit inputs; });
+
+                    home-manager.sharedModules = [ plasma-manager.homeManagerModules.plasma-manager ];
                   })
                 ];
               }

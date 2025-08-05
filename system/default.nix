@@ -4,7 +4,7 @@
   imports = [
     ./audio.nix
     ./boot.nix
-    (import ./gnome.nix { inherit inputs; })
+    (import ./plasma.nix { inherit inputs; })
     ./mouse.nix
     ./network.nix
     ./swap.nix

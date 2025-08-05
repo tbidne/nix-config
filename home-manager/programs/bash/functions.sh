@@ -189,6 +189,10 @@ nix_info () {
   nix-shell -p nix-info --run "nix-info -m"
 }
 
+plasma_nix () {
+  nix run github:pjones/plasma-manager
+}
+
 # Turns a symlink into a real file. Useful for testing changes to config
 # files that are managed by nix e.g.
 #
