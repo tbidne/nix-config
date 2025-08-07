@@ -33,7 +33,7 @@ in
   home.file.".config/kitty/quick-access-terminal.conf" = {
     text = ''
       background_opacity .90
-      lines 22
+      lines 25
     '';
   };
 }
