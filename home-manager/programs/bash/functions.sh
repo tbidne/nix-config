@@ -877,7 +877,7 @@ hs_watch () {
 
     # Add no_code. Note that this is inconsisent at best.
     if [[ $no_code -eq 1 ]]; then
-      ghc_opts="$ghc_opts -fno-code"
+      ghc_opts="$ghc_opts -fno-code -fwrite-interface"
     fi
 
     # add werror
