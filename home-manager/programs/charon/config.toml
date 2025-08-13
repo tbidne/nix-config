@@ -4,10 +4,15 @@ log-level = "debug"
 [delete]
 verbose = true
 
+# For general behavior 'prompt' is probably what I want, but with --indices
+# it seems unnecessary, and tedious. Hence 'prompt = false'.
+
 [perm-delete]
 indices = true
+prompt = false
 verbose = true
 
 [restore]
 indices = true
+prompt = false
 verbose = true
