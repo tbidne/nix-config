@@ -88,6 +88,7 @@
     libnotify
     lm_sensors
     lsof
+    neofetch
     nix-prefetch-git
     openssl
     pv
