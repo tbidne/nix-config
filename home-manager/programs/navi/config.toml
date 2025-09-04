@@ -9,22 +9,13 @@ timeout = 5
 
 [battery-percentage]
 app = "upower"
+repeat-events = [0]
 poll-interval = 30
 alert = [
   { percent = 50 },
   { percent = 30 },
   { percent = 20, urgency = "critical" },
-  { percent = 10, urgency = "critical", timeout = "never" },
-  { percent = 9, urgency = "critical", timeout = "never" },
-  { percent = 8, urgency = "critical", timeout = "never" },
-  { percent = 7, urgency = "critical", timeout = "never" },
-  { percent = 6, urgency = "critical", timeout = "never" },
-  { percent = 5, urgency = "critical", timeout = "never" },
-  { percent = 4, urgency = "critical", timeout = "never" },
-  { percent = 3, urgency = "critical", timeout = "never" },
-  { percent = 2, urgency = "critical", timeout = "never" },
-  { percent = 1, urgency = "critical", timeout = "never" },
-  { percent = 0, urgency = "critical", timeout = "never" },
+  { lower = 0, upper = 11, urgency = "critical", timeout = "never" }
 ]
 
 [[net-interface]]
@@ -37,26 +28,33 @@ app = "nmcli"
 poll-interval = 30
 device = "enp0s31f6"
 
-[[single]]
+[[multiple]]
 name = "tailscale"
 poll-interval = 300
 # repeat-events since we want to be reminded if tailscale is up.
-repeat-events = true
+repeat-events = ["true"]
 command = """
   set +e
   status=$(tailscale status)
   ec=$?
 
   if [[ $ec == 0 ]]; then
-    echo "true"
+    echo "(true, $status)"
   else
-    echo "false"
+    echo "(false, $status)"
   fi
 """
-trigger = "true"
 
-[single.note]
+[[multiple.trigger-note]]
+trigger = "true"
 summary = "Tailscale"
-body = "Tailscale is probably up!"
-urgency = "critical"
+body = "Up: \"$out\""
+urgency = "normal"
+timeout = 10
+
+[[multiple.trigger-note]]
+trigger = "false"
+summary = "Tailscale"
+body = "Down: \"$out\""
+urgency = "normal"
 timeout = 10
