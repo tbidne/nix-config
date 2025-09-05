@@ -52,6 +52,10 @@
     vim
     vscodium
 
+    # iphone
+    libimobiledevice # idevicepair
+    ifuse
+
     # my projects
     (inputs.src2pkg inputs.cabal-monitor)
     (inputs.src2pkg inputs.charon)

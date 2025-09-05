@@ -1,0 +1,29 @@
+See iphone.nix for necessary software. Here are some other notes.
+
+After mounting with ifuse (ifuse ~/iphone), we can browse the files in the
+CLI or automatically see them in KDE dolphin (the latter doesn't appear to
+need ifuse).
+
+Photos are generally in the DCIM folder. This is fine if we want to copy
+everything over, but it is problematic if we want to copy e.g. a specific
+folder.
+
+Here is how I copied a shared album:
+
+1. On my phone, go to the album in Photos, select all, then Share ->
+   Export Unmodified Originals. I then saved these to a specific folder
+   "My Export" (specifically _not_ one synced to iCloud).
+
+2. Downloaded KDE Connect iPhone app. On my phone, copy/paste the new folder
+   into KDE Connect. Confusingly, the KDE Connect folder might be hidden
+   on the UI. But it exists, and we can search for it with the search bar
+  in the Files app, and paste the folder into it.
+
+3. In Dolphin, this folder shows up as iTommy/Apps/KDE Connect/Documents/My Export.
+   This is in fact why we need KDE Connect, as apparently the Files directory
+   structure does not appear to be in the iTommy directory.
+
+4. Copy the files as needed (e.g. locally to laptop, upload to server).
+
+If mounted with ifuse (probably unnecessary with dolphin), unmount iphone with
+fusermount -u ~/iphone.
