@@ -516,7 +516,7 @@ ghc_shell () {
         echo "                 [-v|--verbose]"
         echo ""
         echo "Available options:"
-        echo -e "  --e,--exit       \tExits immediately after loading.\n"
+        echo -e "  -e,--exit        \tExits immediately after loading.\n"
         echo -e "  --js             \tLoads JS shell.\n"
         return 0
         ;;
