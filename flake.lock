@@ -2005,11 +2005,11 @@
         "smart-math": "smart-math_3"
       },
       "locked": {
-        "lastModified": 1757647513,
-        "narHash": "sha256-jlQhAnZPaGYnhudhYKUPdge213efnGeyCiwrFSWM4q8=",
+        "lastModified": 1758079325,
+        "narHash": "sha256-M473Q8Urh/9qGX+rtyTLlQRCFXP2sTbfj4+uRN7wsiY=",
         "owner": "tbidne",
         "repo": "navi",
-        "rev": "06f2da013dc0c6e40ef776ad849c6aaac8a57d8f",
+        "rev": "bf300de1df0c479ae0945a4440f3f2c3e5dbf9b3",
         "type": "github"
       },
       "original": {

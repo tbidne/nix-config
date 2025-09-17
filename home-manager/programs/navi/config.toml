@@ -2,6 +2,10 @@
 severity = "debug"
 size-mode = "delete 100 mb"
 
+# --------------------------------------------------------------------------- #
+#                                   Battery                                   #
+# --------------------------------------------------------------------------- #
+
 [battery-status]
 app = "upower"
 poll-interval = 30
@@ -18,6 +22,10 @@ alert = [
   { lower = 0, upper = 11, urgency = "critical", timeout = "never" }
 ]
 
+# --------------------------------------------------------------------------- #
+#                                   Network                                   #
+# --------------------------------------------------------------------------- #
+
 [[net-interface]]
 app = "nmcli"
 poll-interval = 30
@@ -28,7 +36,11 @@ app = "nmcli"
 poll-interval = 30
 device = "enp0s31f6"
 
-[[multiple]]
+# --------------------------------------------------------------------------- #
+#                                  Tailscale                                  #
+# --------------------------------------------------------------------------- #
+
+[[custom]]
 name = "tailscale"
 poll-interval = 300
 # repeat-events since we want to be reminded if tailscale is up.
@@ -44,17 +56,104 @@ command = """
     echo "(false, $status)"
   fi
 """
+command-result = "(trigger, output)"
 
-[[multiple.trigger-note]]
+[[custom.trigger-note]]
 trigger = "true"
 summary = "Tailscale"
 body = "Up: \"$out\""
 urgency = "normal"
 timeout = 10
 
-[[multiple.trigger-note]]
+[[custom.trigger-note]]
 trigger = "false"
 summary = "Tailscale"
 body = "Down: \"$out\""
 urgency = "normal"
 timeout = 10
+
+# --------------------------------------------------------------------------- #
+#                                   CPU Temp                                  #
+# --------------------------------------------------------------------------- #
+
+[[custom]]
+name = "cpu_temp"
+repeat-events = ["crit", "high"]
+command = """
+  sensor_output=$(sensors)
+
+  rx_0="Core 0:\\s*\\+([0-9]+)\\.[0-9]{0,2}°[C|F].*"
+  rx_1="Core 1:\\s*\\+([0-9]+)\\.[0-9]{0,2}°[C|F].*"
+  rx_2="Core 2:\\s*\\+([0-9]+)\\.[0-9]{0,2}°[C|F].*"
+  rx_3="Core 3:\\s*\\+([0-9]+)\\.[0-9]{0,2}°[C|F].*"
+
+  temp_0=""
+  temp_1=""
+  temp_2=""
+  temp_3=""
+
+  if [[ $sensor_output =~ $rx_0 ]]; then
+    temp_0="${BASH_REMATCH[1]}"
+  else
+    echo "Couldn't parse 'Core 0': ${sensor_output}"
+    exit 1
+  fi
+
+  if [[ $sensor_output =~ $rx_1 ]]; then
+    temp_1="${BASH_REMATCH[1]}"
+  else
+    echo "Couldn't parse 'Core 1': ${sensor_output}"
+    exit 1
+  fi
+
+  if [[ $sensor_output =~ $rx_2 ]]; then
+    temp_2="${BASH_REMATCH[1]}"
+  else
+    echo "Couldn't parse 'Core 2': ${sensor_output}"
+    exit 1
+  fi
+
+  if [[ $sensor_output =~ $rx_3 ]]; then
+    temp_3="${BASH_REMATCH[1]}"
+  else
+    echo "Couldn't parse 'Core 3': ${sensor_output}"
+    exit 1
+  fi
+
+  cpu_str="'($temp_0, $temp_1, $temp_2, $temp_3)'"
+  if [[ $temp_0 -gt 100 ||
+        $temp_1 -gt 100 ||
+        $temp_2 -gt 100 ||
+        $temp_3 -gt 100
+    ]]; then
+    echo "(crit, 10, $cpu_str)"
+  elif [[ $temp_0 -gt 90 ||
+        $temp_1 -gt 90 ||
+        $temp_2 -gt 90 ||
+        $temp_3 -gt 90
+    ]]; then
+    echo "(high, 30, $cpu_str)"
+  else
+    echo "(low, 30, $cpu_str)"
+  fi
+"""
+
+command-result = "(trigger, poll-interval, output)"
+
+[[custom.trigger-note]]
+trigger = "crit"
+summary = "CPU Temperature"
+body = "Critical: $out"
+urgency = "critical"
+
+[[custom.trigger-note]]
+trigger = "high"
+summary = "CPU Temperature"
+body = "High: $out"
+urgency = "normal"
+
+[[custom.trigger-note]]
+trigger = "low"
+summary = "CPU Temperature"
+body = "Low: $out"
+urgency = "normal"
