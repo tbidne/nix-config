@@ -26,7 +26,8 @@
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/3ae74f21-a61b-4e6e-a4f1-798a3b8b294a";
+  boot.initrd.luks.devices."cryptroot".device =
+    "/dev/disk/by-uuid/3ae74f21-a61b-4e6e-a4f1-798a3b8b294a";
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/DC64-F80D";
