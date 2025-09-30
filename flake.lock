@@ -535,11 +535,11 @@
         "relative-time": "relative-time"
       },
       "locked": {
-        "lastModified": 1758365513,
-        "narHash": "sha256-ECtPDgxI/i/IICdfkPrX2rlMZLLj09clMjw38BL9XsI=",
+        "lastModified": 1759266649,
+        "narHash": "sha256-qFRlFYnQkPKHz5zbfW40TGD7wTzsq3K3GcEBIx+rCWs=",
         "owner": "tbidne",
         "repo": "cabal-monitor",
-        "rev": "1b5065ee277f967751176d490799f5b70515c03b",
+        "rev": "f614ac043a7a93e0e4fb69efdcbe31e8570a9205",
         "type": "github"
       },
       "original": {
