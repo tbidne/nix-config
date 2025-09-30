@@ -1396,3 +1396,7 @@ top_name () {
   # tragically this has a limit of 20 pids
   top -c -p $(pgrep -d',' -f "$1")
 }
+
+copy_progress () {
+  rsync -ah --progress $1 $2
+}
