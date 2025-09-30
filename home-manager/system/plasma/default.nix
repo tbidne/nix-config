@@ -71,7 +71,19 @@
       "kcminputrc"."Libinput/1739/52619/SYNA8006:00 06CB:CD8B Touchpad"."TapToClick" = true;
 
       "kwinrc"."Effect-overview"."GridBorderActivate" = 1;
+
+      # KDE redshift equivalent. Wayland alternative is:
+      #
+      #  services.wlsunset = {
+      #    enable = true;
+      #    latitude = ...;
+      #    longitude = ...;
+      #  };
       "kwinrc"."NightColor"."Active" = true;
+      # Coordinates rom wikipedia: Wellington, NZ
+      "kwinrc"."NightColor"."LatitudeFixed" = "-41.2889";
+      "kwinrc"."NightColor"."LongitudeFixed" = "174.7772";
+      "kwinrc"."NightColor"."Mode" = "Location";
 
       # scaling
       "dolphinrc"."IconsMode"."PreviewSize" = 112;
