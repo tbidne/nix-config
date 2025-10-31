@@ -2,17 +2,17 @@ backend = "fdo"
 log-level = "debug"
 
 [delete]
-verbose = true
+verbose = "on"
 
 # For general behavior 'prompt' is probably what I want, but with --indices
-# it seems unnecessary, and tedious. Hence 'prompt = false'.
+# it seems unnecessary, and tedious. Hence 'prompt = "off"'.
 
 [perm-delete]
-indices = true
-prompt = false
-verbose = true
+indices = "on"
+prompt = "off"
+verbose = "on"
 
 [restore]
-indices = true
-prompt = false
-verbose = true
+indices = "on"
+prompt = "off"
+verbose = "on"

@@ -1,17 +1,18 @@
 init = ". /home/tommy/.bash_functions.sh"
+legend-keys-cache = "add"
 
 [command-logs]
-report-read-errors = true
+report-read-errors = "on"
 
 [console-log]
-command = true
-command-name-trunc = 15
+command = "on"
+command-name-trunc = 30
 line-trunc = "detect"
 
 [file-log]
 path = "shrun.log"
-command-name-trunc = 15
-delete-on-success = true
+command-name-trunc = 30
+delete-on-success = "on"
 mode = "append"
 size-mode = "delete 50 mb"
 
