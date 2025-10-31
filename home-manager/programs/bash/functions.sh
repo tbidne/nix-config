@@ -673,6 +673,10 @@ ghc_build () {
 #                                   HASKELL                                   #
 ###############################################################################
 
+hs_install_local () {
+  cabal install @$ --installdir=./bin --overwrite-policy=always
+}
+
 hs_del () {
   # -t d -> find dirs
   # -I   -> ignore .gitignore
@@ -1399,4 +1403,28 @@ top_name () {
 
 copy_progress () {
   rsync -ah --progress $1 $2
+}
+
+# Inhibits sleep for N seconds.
+inhibit_sleep_n () {
+  n=$1
+  systemd-inhibit \
+    --what=sleep \
+    --who="no_sleep_n" \
+    --why="Staying awake for $n seconds."
+    sleep $n
+}
+
+# Inhibits sleep as long as the passed PID is running.
+inhibit_sleep_pid () {
+  pid=$1
+
+  # period is optional
+  period=$2
+
+  systemd-inhibit \
+    --what=sleep \
+    --who="no_sleep_pid" \
+    --why="Staying awake while $pid is running." \
+    poll_pid.sh $pid $period
 }

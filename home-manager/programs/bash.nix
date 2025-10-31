@@ -3,6 +3,12 @@
     ".bash_functions.sh" = {
       source = ./bash/functions.sh;
     };
+
+    # Command as we want systemd-inhibit to be able to see it.
+    ".local/bin/poll_pid.sh" = {
+      executable = true;
+      source = ./bash/poll_pid.sh;
+    };
   };
 
   programs.bash = {
