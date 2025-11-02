@@ -1,10 +1,10 @@
 [aliases]
 
 # usa
-chi = "america/chicago"
-la = "america/los_angeles"
-mt = "america/boise"
-ny = "america/new_york"
+central = "america/chicago"
+pacific = "america/los_angeles"
+mountain = "america/boise"
+eastern = "america/new_york"
 
 # europe
 brussels = "europe/brussels"
