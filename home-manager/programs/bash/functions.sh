@@ -1428,3 +1428,7 @@ inhibit_sleep_pid () {
     --why="Staying awake while $pid is running." \
     poll_pid.sh $pid $period
 }
+
+optparse_completions () {
+  source <($1 --bash-completion-script $1)
+}
