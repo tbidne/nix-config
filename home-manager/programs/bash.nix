@@ -34,6 +34,7 @@
       # Load completions for my projects
       . <(charon --bash-completion-script `which charon`)
       . <(kairos --bash-completion-script `which kairos`)
+      . <(pacer --bash-completion-script `which pacer`)
       . <(path-size --bash-completion-script `which path-size`)
       . <(pythia --bash-completion-script `which pythia`)
       . <(navi --bash-completion-script `which navi`)
