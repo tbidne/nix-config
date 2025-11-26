@@ -127,10 +127,10 @@ command = """
         $temp_3 -gt 100
     ]]; then
     echo "(crit, 10, $cpu_str)"
-  elif [[ $temp_0 -gt 90 ||
-        $temp_1 -gt 90 ||
-        $temp_2 -gt 90 ||
-        $temp_3 -gt 90
+  elif [[ $temp_0 -gt 95 ||
+        $temp_1 -gt 95 ||
+        $temp_2 -gt 95 ||
+        $temp_3 -gt 95
     ]]; then
     echo "(high, 30, $cpu_str)"
   else
