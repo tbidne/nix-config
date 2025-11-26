@@ -1,6 +1,17 @@
 init = ". /home/tommy/.bash_functions.sh"
 legend-keys-cache = "add"
 
+legend = [
+  # common nix flake apps
+  { key = "nf-format", val = "nix run .#format" },
+  { key = "nf-lint", val = "nix run .#lint" },
+  { key = "nf-tidy", val = ["nf-format", "nf-lint"], edges = "1 -> 2" },
+  # haskell shortcuts
+  { key = "hs-format", val = ["htool ormolu -i", "htool cabal-fmt -i"] },
+  { key = "hs-lint", val = "htool hlint" },
+  { key = "hs-tidy", val = ["hs-format", "hs-lint"], edges = "1 -> 2" },
+]
+
 [command-logs]
 report-read-errors = "on"
 
@@ -18,5 +29,6 @@ size-mode = "delete 50 mb"
 
 [notify]
 system = "dbus"
-action = "command"
-timeout = 5
+action-complete = "command"
+action-start = "on"
+timeout = 10

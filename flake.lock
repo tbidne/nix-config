@@ -1457,11 +1457,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762787259,
-        "narHash": "sha256-t2U/GLLXHa2+kJkwnFNRVc2fEJ/lUfyZXBE5iKzJdcs=",
+        "lastModified": 1764075860,
+        "narHash": "sha256-KYEIHCBBw+/lwKsJNRNoUxBB4ZY2LK0G0T8f+0i65q0=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "37a3d97f2873e0f68711117c34d04b7c7ead8f4e",
+        "rev": "295d90e22d557ccc3049dc92460b82f372cd3892",
         "type": "github"
       },
       "original": {
@@ -1507,11 +1507,11 @@
         "smart-math": "smart-math_2"
       },
       "locked": {
-        "lastModified": 1762125697,
-        "narHash": "sha256-pxnDKqHXgKzhiCkuGTQrrKdRB51owbfk4+o2aRGfYlU=",
+        "lastModified": 1763509559,
+        "narHash": "sha256-yPqsEvp2MKoclXPtC5Nenac2p83tLapX45TMtC5xwoU=",
         "owner": "tbidne",
         "repo": "kairos",
-        "rev": "e6f6148241db800c7e3b6f937655fedd1158ab6a",
+        "rev": "f2ae8661bf8ca0c76c1c9d255a2a4e57eabb9c14",
         "type": "github"
       },
       "original": {
@@ -2361,11 +2361,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1762596750,
-        "narHash": "sha256-rXXuz51Bq7DHBlfIjN7jO8Bu3du5TV+3DSADBX7/9YQ=",
+        "lastModified": 1763966396,
+        "narHash": "sha256-6eeL1YPcY1MV3DDStIDIdy/zZCDKgHdkCmsrLJFiZf0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b6a8526db03f735b89dd5ff348f53f752e7ddc8e",
+        "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
         "type": "github"
       },
       "original": {
@@ -2377,11 +2377,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1762596750,
-        "narHash": "sha256-rXXuz51Bq7DHBlfIjN7jO8Bu3du5TV+3DSADBX7/9YQ=",
+        "lastModified": 1763966396,
+        "narHash": "sha256-6eeL1YPcY1MV3DDStIDIdy/zZCDKgHdkCmsrLJFiZf0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b6a8526db03f735b89dd5ff348f53f752e7ddc8e",
+        "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
         "type": "github"
       },
       "original": {
@@ -2445,11 +2445,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1762897535,
-        "narHash": "sha256-8BEfeNN7FTRo+pnZZwzjsdNtEYzmCWIVoxk7e0hjmnQ=",
+        "lastModified": 1764125455,
+        "narHash": "sha256-LeO9FnpEOdXtlw05kpN5+6GGBK9GP6bsA3EXRTo5hCU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "9d554a06b33c68c68776601f8878d30800f05d55",
+        "rev": "7e4be054cb4ee5b9f3c81f0225e366e018491fc4",
         "type": "github"
       },
       "original": {
@@ -2472,11 +2472,11 @@
         "smart-math": "smart-math_4"
       },
       "locked": {
-        "lastModified": 1762382466,
-        "narHash": "sha256-W0vPLVEfKvCsOuWoYDGGGUNgTD6DPwOVzUDyOFRJjNQ=",
+        "lastModified": 1763508255,
+        "narHash": "sha256-pHZ8Ck6MYMuvc+hNlnzIeto9k7KiNaoD1K7g1gWtw5g=",
         "owner": "tbidne",
         "repo": "pacer",
-        "rev": "fc0d772e515edf7dcf0f2bbef40c3ce8d1975f49",
+        "rev": "c2dd5a075d01beee7d97804560ae489b0e377fb6",
         "type": "github"
       },
       "original": {
@@ -2582,11 +2582,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762784320,
-        "narHash": "sha256-odsk96Erywk5hs0dhArF38zb7Oe0q6LZ70gXbxAPKno=",
+        "lastModified": 1763909441,
+        "narHash": "sha256-56LwV51TX/FhgX+5LCG6akQ5KrOWuKgcJa+eUsRMxsc=",
         "owner": "pjones",
         "repo": "plasma-manager",
-        "rev": "7911a0f8a44c7e8b29d031be3149ee8943144321",
+        "rev": "b24ed4b272256dfc1cc2291f89a9821d5f9e14b4",
         "type": "github"
       },
       "original": {
@@ -2919,11 +2919,11 @@
         "smart-math": "smart-math_7"
       },
       "locked": {
-        "lastModified": 1761793201,
-        "narHash": "sha256-TXw9FOiuxyqxr7Yy+NLDJyD0aACPzRH3OkYK3Cz02l0=",
+        "lastModified": 1764127097,
+        "narHash": "sha256-lJmZjUkLe/EgbmeazUe2UeiEYCyoRQm8RBBMZu9KwPM=",
         "owner": "tbidne",
         "repo": "shrun",
-        "rev": "3f02a18654a2a4abe6736c8fb0f730a33a939e46",
+        "rev": "e2b6503e516fd520c54258845c52ffc0f07bdc1d",
         "type": "github"
       },
       "original": {
