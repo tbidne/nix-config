@@ -1264,7 +1264,7 @@ retry () {
   success=0
   count=1
   while [[ $success == 0 ]]; do
-    $@
+    eval $@
     if [[ $? == 0 ]]; then
       echo "'$@' succeeded on try $count"
       success=1
@@ -1280,7 +1280,7 @@ retry_success () {
   failed=0
   count=1
   while [[ $failed == 0 ]]; do
-    $@
+    eval $@
     if [[ $? == 0 ]]; then
       echo "'$@' succeeded on try $count"
       sleep 1
@@ -1410,7 +1410,7 @@ inhibit_sleep_n () {
   n=$1
   systemd-inhibit \
     --what=sleep \
-    --who="no_sleep_n" \
+    --who="inhibit_sleep_n" \
     --why="Staying awake for $n seconds."
     sleep $n
 }
@@ -1424,7 +1424,7 @@ inhibit_sleep_pid () {
 
   systemd-inhibit \
     --what=sleep \
-    --who="no_sleep_pid" \
+    --who="inhibit_sleep_pid" \
     --why="Staying awake while $pid is running." \
     poll_pid.sh $pid $period
 }
