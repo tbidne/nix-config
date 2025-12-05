@@ -68,6 +68,7 @@
     (inputs.src2pkg inputs.todo)
 
     # network utils
+    tcpdump
     traceroute
     whois
 
