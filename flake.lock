@@ -1457,11 +1457,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1764075860,
-        "narHash": "sha256-KYEIHCBBw+/lwKsJNRNoUxBB4ZY2LK0G0T8f+0i65q0=",
+        "lastModified": 1764998300,
+        "narHash": "sha256-fZatn/KLfHLDXnF0wy7JxXqGaZmGDTVufT4o/AOlj44=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "295d90e22d557ccc3049dc92460b82f372cd3892",
+        "rev": "27a6182347ccae90a88231ae0dc5dfa7d15815bb",
         "type": "github"
       },
       "original": {
@@ -2361,11 +2361,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1763966396,
-        "narHash": "sha256-6eeL1YPcY1MV3DDStIDIdy/zZCDKgHdkCmsrLJFiZf0=",
+        "lastModified": 1764950072,
+        "narHash": "sha256-BmPWzogsG2GsXZtlT+MTcAWeDK5hkbGRZTeZNW42fwA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
+        "rev": "f61125a668a320878494449750330ca58b78c557",
         "type": "github"
       },
       "original": {
@@ -2377,11 +2377,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1763966396,
-        "narHash": "sha256-6eeL1YPcY1MV3DDStIDIdy/zZCDKgHdkCmsrLJFiZf0=",
+        "lastModified": 1764950072,
+        "narHash": "sha256-BmPWzogsG2GsXZtlT+MTcAWeDK5hkbGRZTeZNW42fwA=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
+        "rev": "f61125a668a320878494449750330ca58b78c557",
         "type": "github"
       },
       "original": {
@@ -2445,11 +2445,11 @@
         "nixpkgs": "nixpkgs_6"
       },
       "locked": {
-        "lastModified": 1764125455,
-        "narHash": "sha256-LeO9FnpEOdXtlw05kpN5+6GGBK9GP6bsA3EXRTo5hCU=",
+        "lastModified": 1765143841,
+        "narHash": "sha256-aoQIZ5eN8D/syhuSSuXFEe5+byVovUUZrfDy3915SvA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "7e4be054cb4ee5b9f3c81f0225e366e018491fc4",
+        "rev": "81331be66fd8b677c575747347cb360ee2d2b0b2",
         "type": "github"
       },
       "original": {
@@ -2919,11 +2919,11 @@
         "smart-math": "smart-math_7"
       },
       "locked": {
-        "lastModified": 1764882843,
-        "narHash": "sha256-a7+yiTHnewr9OYkMwnAtcNoYvEVL/b2eWeCGaQ5Pw+0=",
+        "lastModified": 1765145136,
+        "narHash": "sha256-YjnXM93m8c9WjTtMcKxyVGcrIa1EdIh5O+qVgJU41hI=",
         "owner": "tbidne",
         "repo": "shrun",
-        "rev": "6c72fd4c1fd3dde0ed1f50ee872b90200f7a2f93",
+        "rev": "3320606e5cd1f276bed35899222a5ed53a7dd2db",
         "type": "github"
       },
       "original": {
