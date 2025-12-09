@@ -1432,3 +1432,33 @@ inhibit_sleep_pid () {
 optparse_completions () {
   source <($1 --bash-completion-script $1)
 }
+
+# Given a pid, finds all children.
+pid_children () {
+  ppid="$1"
+  # get child pids for argument
+  child_pids=$(pgrep -P "$ppid")
+  ec=$?
+
+  if [[ $ec == 0 ]]; then
+    # add parent to child pids for better output
+    ps_str="$ppid $child_pids"
+    ps -fp $(echo $ps_str)
+  else
+    echo "No child pids for: $ppid"
+  fi
+}
+
+# Given a string, finds all related pids.
+str_pids () {
+  str="$@"
+
+  pids=$(pgrep -f "$str")
+  ec=$?
+
+  if [[ $ec == 0 ]]; then
+    ps -fp $(echo $pids)
+  else
+    echo "No pids for string: $str"
+  fi
+}
