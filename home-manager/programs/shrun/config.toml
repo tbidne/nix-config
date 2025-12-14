@@ -1,6 +1,8 @@
 init = ". /home/tommy/.bash_functions.sh"
 
 legend = [
+  # nix system
+  { key = "nix-update-switch", val = ["nix flake update", "nswitch"], edges = "1 & 2" },
   # common nix flake apps
   { key = "nf-format", val = "nix run .#format" },
   { key = "nf-lint", val = "nix run .#lint" },
