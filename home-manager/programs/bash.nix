@@ -5,9 +5,9 @@
     };
 
     # Command as we want systemd-inhibit to be able to see it.
-    ".local/bin/poll_pid.sh" = {
+    ".local/bin/pid_poll.sh" = {
       executable = true;
-      source = ./bash/poll_pid.sh;
+      source = ./bash/pid_poll.sh;
     };
   };
 

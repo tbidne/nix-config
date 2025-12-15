@@ -1426,7 +1426,7 @@ inhibit_sleep_pid () {
     --what=sleep \
     --who="inhibit_sleep_pid" \
     --why="Staying awake while $pid is running." \
-    poll_pid.sh $pid $period
+    pid_poll.sh $pid $period
 }
 
 optparse_completions () {
@@ -1450,7 +1450,7 @@ pid_children () {
 }
 
 # Given a string, finds all related pids.
-str_pids () {
+pids_str () {
   str="$@"
 
   pids=$(pgrep -f "$str")
