@@ -1462,3 +1462,83 @@ pids_str () {
     echo "No pids for string: $str"
   fi
 }
+
+# test_rx <rx> <str> tests that <str> matches the regex <rx>.
+test_rx () {
+  rx=$1
+  t=$2
+
+  if [[ -z $1 || -z $2 ]]; then
+    echo "Usage: test_rx <regex> <string>"
+    return 1
+  fi
+
+  print_vars () {
+    echo "Regex: /$rx/"
+    echo "String: '$t'"
+  }
+
+  if [[ $t =~ $rx ]]; then
+    echo -e "Found match\n"
+    print_vars
+    echo -e "\nCapture groups:"
+    count=0
+    for g in "${BASH_REMATCH[@]}"; do
+      echo "  $count: $g"
+      count=$(($count + 1))
+    done
+  else
+    echo -e "No match\n"
+    print_vars
+    return 1
+  fi
+
+}
+
+# Scans nixpkgs' haskell package set to determine the version for a given
+# package.
+nix_hs_pkg_vers () {
+  name=$1
+
+  nixpkgs_home="$HOME/Dev/opensource/forks/nixpkgs/"
+  if [[ -n $2 ]]; then
+    nixpkgs_home=$2
+  fi
+  file="$nixpkgs_home/pkgs/development/haskell-modules/hackage-packages.nix"
+
+  # e.g. '  optparse-applicative = callPackage ('
+  name_rx="^[[:space:]]*$name[[:space:]]*=[[:space:]]*callPackage[[:space:]]*\($"
+
+  # e.g. '  version = "0.1.0.0";'
+  vers_rx="^[[:space:]]*version[[:space:]]*=[[:space:]]*\"([0-9.]+)\";$"
+
+  found_pkg=0
+  found_vers=0
+  count=0
+  while IFS= read -r line; do
+    # First try to find the package.
+    if [[ "$line" =~ $name_rx ]]; then
+      found_pkg=1;
+    fi
+
+    # Once we have found the package, now search for the version. If we find
+    # it, break.
+    if [[ $found_pkg == 1 && "$line" =~ $vers_rx ]]; then
+      found_vers=1
+      echo "${BASH_REMATCH[1]}"
+      break;
+    fi
+    count=$(($count + 1))
+  done < $file
+
+  if [[ $found_vers != 1 ]]; then
+    if [[ $found_pkg != 1 ]]; then
+      echo "Did not find package: '$name'."
+    else
+      echo "Found package '$name' but no version."
+    fi
+    echo "Scanned $count lines."
+    return 1
+  fi
+
+}
