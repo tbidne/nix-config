@@ -15,6 +15,8 @@
   # hardlinks to save space
   nix.settings.auto-optimise-store = true;
 
+  nix.settings.use-xdg-base-directories = true;
+
   security.sudo.extraConfig = ''
     Defaults timestamp_timeout=60
   '';
