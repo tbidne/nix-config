@@ -1496,9 +1496,16 @@ test_rx () {
 }
 
 # Scans nixpkgs' haskell package set to determine the version for a given
-# package.
+# package. E.g.
+#
+#   nix_hs_pkg_vers optparse-applicative
 nix_hs_pkg_vers () {
   name=$1
+
+  if [[ -z $1 ]]; then
+    echo "Usage: nix_hs_pkg_vers PKG [NIX_DIR]"
+    return 1
+  fi
 
   nixpkgs_home="$HOME/Dev/opensource/forks/nixpkgs/"
   if [[ -n $2 ]]; then
@@ -1540,5 +1547,95 @@ nix_hs_pkg_vers () {
     echo "Scanned $count lines."
     return 1
   fi
+}
 
+# Convenience function for running nix_hs_pkg_vers on multiple branches. E.g.
+#
+#   nix_hs_pkg_vers_branches -p optparse-applicative
+nix_hs_pkg_vers_branches () {
+  branches="haskell-updates nixos-unstable"
+  nixpkgs_home="$HOME/Dev/opensource/forks/nixpkgs/"
+  package=""
+  update=0
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "nix_hs_pkg_vers_branches: Finds nixpkgs package version for branches\n"
+        echo "Usage: nix_hs_pkg_vers_branches [-b|--branches BRANCHES]"
+        echo "                                [--nixpkgs-home PATH]"
+        echo "                                (-p|--package PKG)"
+        echo "                                [-u|--update]"
+        echo "                                [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  -b,--branches BRANCHES \tBranches to search.\n"
+        echo -e "  --nixpkgs-home PATH    \tNixpkgs source home.\n"
+        echo -e "  -p,--package PKG       \tPackage whose version to find.\n"
+        echo -e "  -u,--update            \tWhether to update branches.\n"
+        return 0
+        ;;
+      "-b" | "--branches")
+        branches="$2"
+        shift
+        ;;
+      "--nixpkgs-home")
+        nixpkgs_home="$2"
+        shift
+        ;;
+      "-p" | "--package")
+        package="$2"
+        shift
+        ;;
+      "-u" | "--update")
+        update=1
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+  if [[ -z "$package" ]]; then
+    echo "--package is required".
+    return 1
+  fi
+
+  curr_dir=$(pwd)
+  ec=0
+
+  cd $nixpkgs_home
+  ec=$?
+  if [[ $ec != 0 ]]; then
+    return $ec
+  fi
+
+  # If update is on, fetch remote.
+  if [[ $update == 1 ]]; then
+    echo "*** Fetching remote ***"
+    git fetch upstream --prune
+  fi
+
+  curr_branch=$(git rev-parse --abbrev-ref HEAD)
+  for branch in $branches; do
+    git checkout $branch
+    echo "*** Branch: $branch ***"
+    if [[ $ec != 0 ]]; then
+      return $ec
+    fi
+
+    # If update is on, merge upstream first.
+    if [[ $update == 1 ]]; then
+      echo "*** Merging remote ***"
+      git merge @{u} --ff-only
+    fi
+
+    nix_hs_pkg_vers $package ./
+  done
+
+  echo "*** Restoring original branch: $curr_branch ***"
+  git checkout $curr_branch
+  echo "*** Restoring original path: $curr_dir ***"
+  cd $curr_dir
 }
