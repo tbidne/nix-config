@@ -1613,13 +1613,14 @@ nix_hs_pkg_vers_branches () {
 
   # If update is on, fetch remote.
   if [[ $update == 1 ]]; then
-    echo "*** Fetching remote ***"
+    echo "*** Fetching upstream ***"
     git fetch upstream --prune
   fi
 
   curr_branch=$(git rev-parse --abbrev-ref HEAD)
   for branch in $branches; do
     git checkout $branch
+    ec=$?
     echo "*** Branch: $branch ***"
     if [[ $ec != 0 ]]; then
       return $ec
@@ -1627,8 +1628,8 @@ nix_hs_pkg_vers_branches () {
 
     # If update is on, merge upstream first.
     if [[ $update == 1 ]]; then
-      echo "*** Merging remote ***"
-      git merge @{u} --ff-only
+      echo "*** Merging upstream ***"
+      git merge upstream/$branch --ff-only
     fi
 
     nix_hs_pkg_vers $package ./
