@@ -90,7 +90,7 @@
     };
 
     signing = {
-      key = "F306FAE64773BA1F48E145965BFCB120389D92B6";
+      key = "7915DC3783B023CCC261F87E618C67B2C1D6B5F8";
       signByDefault = true;
     };
   };
