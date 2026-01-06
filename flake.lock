@@ -2919,11 +2919,11 @@
         "smart-math": "smart-math_7"
       },
       "locked": {
-        "lastModified": 1766017984,
-        "narHash": "sha256-MwEUIFiLFD/OfiT51CJNDXwpAnxDTPSt2RCcaoCMiTw=",
+        "lastModified": 1767930455,
+        "narHash": "sha256-0Di1SWudb8/5U9q/zKkqUIzg5HCG4N1urSS2bVesawg=",
         "owner": "tbidne",
         "repo": "shrun",
-        "rev": "a2ddcc7e1c7b42177673a0c8ed98f02df28b4aba",
+        "rev": "7c2bd63cf43ee5b62414eb0f8c3a1aac67357fe8",
         "type": "github"
       },
       "original": {
