@@ -15,6 +15,17 @@ let
       license = licenses.mit;
     };
   };
+  haskell-debugger-extension = buildVscodeExt {
+    mktplcRef = {
+      name = "haskell-debugger-extension";
+      publisher = "Well-Typed";
+      version = "0.11.0";
+      sha256 = "sha256-NQw8FRIjS54Cn+0vaYJ3DFzzqVYRGTMKRJy2Npp8wfo=";
+    };
+    meta = {
+      license = licenses.mit;
+    };
+  };
   haskell-spotlight = buildVscodeExt {
     mktplcRef = {
       name = "haskell-spotlight";
@@ -154,6 +165,7 @@ let
 
   externalExts = [
     agda-mode
+    haskell-debugger-extension
     haskell-spotlight
     ide-purescript
     idris-vscode
