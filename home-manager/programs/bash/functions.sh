@@ -1614,29 +1614,32 @@ nix_hs_pkg_vers_branches () {
   # If update is on, fetch remote.
   if [[ $update == 1 ]]; then
     echo "*** Fetching upstream ***"
-    git fetch upstream --prune
+    git fetch upstream --prune > /dev/null 2>&1
   fi
 
   curr_branch=$(git rev-parse --abbrev-ref HEAD)
   for branch in $branches; do
-    git checkout $branch
+    co_out=$(git checkout $branch 2>&1)
     ec=$?
     echo "*** Branch: $branch ***"
     if [[ $ec != 0 ]]; then
+      echo "*** Checkout failed: $co_out ***"
       return $ec
     fi
 
     # If update is on, merge upstream first.
     if [[ $update == 1 ]]; then
       echo "*** Merging upstream ***"
-      git merge upstream/$branch --ff-only
+      git merge upstream/$branch --ff-only > /dev/null 2>&1
     fi
 
-    nix_hs_pkg_vers $package ./
+    vers=$(nix_hs_pkg_vers $package ./)
+
+    echo "*** $package: $vers ***"
   done
 
   echo "*** Restoring original branch: $curr_branch ***"
-  git checkout $curr_branch
+  git checkout $curr_branch > /dev/null 2>&1
   echo "*** Restoring original path: $curr_dir ***"
   cd $curr_dir
 }
