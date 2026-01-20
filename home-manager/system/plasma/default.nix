@@ -52,8 +52,10 @@
     };
 
     configFile = {
-      "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."Image" = "file:///home/tommy/Pictures/wallpaper/current";
-      "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."PreviewImage" = "file:///home/tommy/Pictures/wallpaper/current";
+      "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."Image" =
+        "file:///home/tommy/Pictures/wallpaper/current";
+      "kscreenlockerrc"."Greeter/Wallpaper/org.kde.image/General"."PreviewImage" =
+        "file:///home/tommy/Pictures/wallpaper/current";
 
       "kwinrc"."Desktops"."Id_1" = "3868ba12-ce3b-4f2a-838a-c79089819633";
       "kwinrc"."Desktops"."Id_2" = "419c8acf-d73b-48a8-a244-a748545c7674";

@@ -39,5 +39,5 @@ jobs:
 
       - name: Nix
         run: |
-          nix run github:tbidne/nix-hs-tools/0.10#nixfmt
+          nix run github:tbidne/nix-hs-tools/0.11#nixfmt
           git diff --exit-code --color=always
