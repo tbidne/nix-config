@@ -1629,13 +1629,14 @@ nix_hs_pkg_vers_branches () {
 
     # If update is on, merge upstream first.
     if [[ $update == 1 ]]; then
-      echo "*** Merging upstream ***"
+      echo "*** Merging upstream... ***"
       git merge upstream/$branch --ff-only > /dev/null 2>&1
     fi
 
+    echo "*** Scanning $branch... ***"
     vers=$(nix_hs_pkg_vers $package ./)
 
-    echo "*** $package: $vers ***"
+    echo "*** $branch $package: $vers ***"
   done
 
   echo "*** Restoring original branch: $curr_branch ***"
