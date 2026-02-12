@@ -44,6 +44,11 @@
       export PATH=$PATH:~/.local/bin
 
       . ~/.bash_functions.sh
+
+      # Extra that is not version controlled e.g. temporary defs.
+      if [[ -f ~/.bash_extra.sh ]]; then
+        . ~/.bash_extra.sh
+      fi
     '';
     initExtra = ''
       export FZF_DEFAULT_COMMAND='rg --files --hidden'
