@@ -339,6 +339,21 @@ in
         # makes the code very difficult to read. Consider checking later
         # to see if this is 'fixed' upstream.
         "haskell.plugin.explicit-fields.inlayHintsOn" = false;
+        #
+        # Tells vscode to use new multi-repl mode. (cf. "singleComponent").
+        #
+        # To verify, after loading a haskell project, check the logs for:
+        #
+        #     Load cabal cradle using all files (multi-components)
+        #
+        # As opposed to:
+        #
+        #     Load cabal cradle using single file
+        #
+        # Note that we may also want cabal.project to have 'multi-repl: True'.
+        #
+        # See https://github.com/haskell/haskell-language-server/issues/3694
+        "haskell.sessionLoading" = "multipleComponents";
       };
     };
   };
