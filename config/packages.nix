@@ -96,6 +96,10 @@
     neofetch
     nix-prefetch-git
     openssl
+    # Not my first choice since this is an unofficial fork, but for when
+    # I need to work with them. Hopefully we get the real 7zip in nixpkgs
+    # eventually.
+    p7zip
     pv
     rclone # pcloud
     tree
