@@ -7,6 +7,11 @@ this works:
 
     sudo mount -t hfsplus -o force,rw /dev/sda2 ~/Mnt
 
+NOTE: hfsprogs seems to be necessary for forcing write access. That is, the
+last time I tried mounting my drive without it I was unable to get have
+write access, even with 'force,rw'. But doing this in a shell w/ hfsprogs
+worked for write access.
+
 Note we refer to the _partition_, not the entire drive.
 I.e., `sudo fdisk /dev/sda` shows:
 

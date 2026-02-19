@@ -61,3 +61,29 @@ rclone lsd my_pcloud:
 rclone ls my_pcloud:
 
 rclone copy /home/source my_pcloud:some_folder --verbose --progress
+
+rclone mount --vfs-cache-mode full my_pcloud: /some/mount/point
+
+-- args that may improve perf
+rclone mount my_pcloud: /some/mount/point \
+  --vfs-cache-mode full \
+  --vfs-cache-max-size 100G \
+  --vfs-read-chunk-size 128M
+
+###############################################################################
+#                                     Misc                                    #
+###############################################################################
+
+- https://rcloneui.com/docs/cli/faq/why-is-it-slow
+
+- Extracting archives via the web interface does not work for me. It is _much_ faster
+  to upload archives than individual files, though, so instead of 'rclone copy' we
+  should 'rclone mount', then copy the directory and extract (seems to work).
+
+- Empty files cannot be deleted directly from pcloud, so make sure test files are
+  non-empty.
+
+- In general, make sure uploaded files are squared away with permissions,
+  owner/group non-root.
+
+- rclone perf tips: https://rcloneui.com/docs/cli/faq/why-is-it-slow

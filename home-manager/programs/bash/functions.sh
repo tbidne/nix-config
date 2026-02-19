@@ -1644,3 +1644,77 @@ nix_hs_pkg_vers_branches () {
   echo "*** Restoring original path: $curr_dir ***"
   cd $curr_dir
 }
+
+mount_apple () {
+  echo "hfsprogs should be installed for write access e.g. 'nix-shell -p hfsprogs'"
+  # $1 e.g. '/dev/sda2'
+  sudo mount -t hfsplus -o force,rw "$1" ~/mounts/hd
+}
+
+# rclone_copy /local/path my_pcloud:dir
+rclone_copy () {
+  src="$1"
+  dest="$2"
+  rclone copy $src $dest \
+    --checkers 16 \
+    --fast-list \
+    --transfers 16 \
+    --progress \
+    --verbose
+}
+
+# It is better to use some sub-directory rather than root for perf reasons.
+# Note also that -vv might be costly for copies.
+rclone_mount () {
+  src=""
+  verbose=""
+
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "rclone_mount: Mounts remote fs via rclone.\n"
+        echo "Usage: rclone_mount (-s|--src)"
+        echo "                    [-v|-vv]"
+        echo "                    [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  -s,--src SRC \tRemote server to mount e.g. my_cloud:dir.\n"
+        echo -e "  -v,-vv       \tVerbosity level.\n"
+        return 0
+        ;;
+      "-s" | "--source")
+        src="$2"
+        shift
+        ;;
+      "-v")
+        verbose="-v"
+        ;;
+      "-vv")
+        verbose="-vv"
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+
+  if [[ -z "$src" ]]; then
+    echo "--src is required."
+    return 1
+  fi
+
+  # $src is something like 'my_pcloud:directory' (notice the colon)
+  rclone mount $src ~/mounts/pcloud \
+    --vfs-cache-mode full \
+    --vfs-cache-max-size 100G \
+    --vfs-read-chunk-size 128M \
+    $verbose
+}
+
+rsync_copy () {
+  src="$1"
+  dest="$2"
+  rsync -ah --progress $src $dest
+}
