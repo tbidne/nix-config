@@ -402,11 +402,11 @@ nix_gc () {
 }
 
 ntest () {
-  sudo nixos-rebuild test --flake '.#nixos' -L
+  sudo nixos-rebuild test --flake '.#nixos' -Lv
 }
 
 nswitch () {
-  sudo nixos-rebuild switch --flake '.#nixos' -L
+  sudo nixos-rebuild switch --flake '.#nixos' -Lv
 }
 
 nix_revw_hd () {
