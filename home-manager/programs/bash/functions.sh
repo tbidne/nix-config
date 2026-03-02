@@ -24,6 +24,8 @@ Haskell
   - hs_fourmolu: Runs fourmolu in the current directory
   - hs_cabalfmt: Runs cabal-fmt in the current directory
   - hs_hlint: Runs hlint in the current directory
+  - hs_doctest_install: Installs haskell doctest
+  - hs_doctest: Runs haskell doctest
   - hs_refactor: Runs hlint w/ refactor in the current directory
   - hs_watch: Watches hs files via fd and entr
 
@@ -737,6 +739,14 @@ hs_cabalfmt () {
 
 hs_hlint () {
   hlint $(fd -e hs)
+}
+
+hs_doctest_install () {
+  cabal install --ignore-project doctest --flag cabal-doctest --overwrite-policy=always
+}
+
+hs_doctest () {
+  cabal doctest
 }
 
 hs_refactor () {

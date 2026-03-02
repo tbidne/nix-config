@@ -15,6 +15,10 @@
     enable = true;
     historySize = 100000;
     shellAliases = {
+      # NOTE: Note that true aliases are invisible to shrun, hence if we want
+      # an alias visible to shrun, it needs to go in bash_functions
+      # (i.e. functions, not aliases) or shrun.toml.
+
       # kitty
       icat = "kitty +kitten icat";
 
