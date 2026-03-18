@@ -444,6 +444,7 @@ hshell () {
   args=""
   exit_cmd=""
   ghc=""
+  help_arg=0
   hls=""
   shell=default
   URL=http://github.com/tbidne/nix-hs-shells/archive/main.tar.gz
@@ -456,6 +457,7 @@ hshell () {
         echo "Usage: hshell [-a|--args ARGS]"
         echo "              [-g|--ghc GHC]"
         echo "              [-e|--exit]"
+        echo "              [help]"
         echo "              [--hls]"
         echo "              [-s|--shell SHELL]"
         echo "              [-v|--verbose]"
@@ -465,6 +467,7 @@ hshell () {
         echo -e "  --args ARGS      \tArgs to pass through to shell.\n"
         echo -e "  -g,--ghc GHC     \tSpecifies ghc.\n"
         echo -e "  -e,--exit        \tExits immediately after loading.\n"
+        echo -e "  help             \tRuns the 'help' script.\n"
         echo -e "  --hls            \tLoads hls.\n"
         echo -e "  -s,--shell SHELL \tShell to load e.g. default.\n"
         echo "Examples:"
@@ -487,6 +490,9 @@ hshell () {
         ghc=" --argstr ghc-vers $2"
         shift
         ;;
+      "help")
+        help_arg=1
+        ;;
       "--hls")
         hls=" --arg hls true"
         ;;
@@ -503,6 +509,11 @@ hshell () {
     esac
     shift
   done
+
+  if [[ $help_arg == 1 ]]; then
+    $(nix-build $URL -A help --no-out-link)/bin/help
+    return 0
+  fi
 
   final_args="$args$ghc$hls"
   cmd="nix-shell $URL -A $shell $final_args $exit_cmd"
