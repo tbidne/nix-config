@@ -61,6 +61,20 @@ ToC
 }
 
 ###############################################################################
+#                                   Helpers                                   #
+###############################################################################
+
+del_dir () {
+  dir=$1
+  if [[ -d $dir ]]; then
+    echo "deleting '$dir'"
+    rm -r --interactive=never $dir
+  else
+    echo "directory '$dir' does not exist"
+  fi
+}
+
+###############################################################################
 #                                 GENERAL NIX                                 #
 ###############################################################################
 
@@ -707,22 +721,13 @@ hs_del () {
     fi
   done
 
-  if [[ -d ~/.cabal ]]; then
-    echo "deleting ~/.cabal"
-    rm -r --interactive=never ~/.cabal
-  fi
-  if [[ -d ~/.cache/cabal ]]; then
-    echo "deleting ~/.cache/cabal"
-    rm -r --interactive=never ~/.cache/cabal
-  fi
-  if [[ -d ~/.local/state/cabal ]]; then
-    echo "deleting ~/.local/state/cabal"
-    rm -r --interactive=never ~/.local/state/cabal
-  fi
-  if [[ -d ~/.stack ]]; then
-    echo "deleting ~/.stack"
-    rm -r --interactive=never ~/.stack
-  fi
+  del_dir ~/.cabal
+  del_dir ~/.stack
+  del_dir ~/.cache/cabal
+  del_dir ~/.cache/ghcide
+  del_dir ~/.cache/hie-bios
+  del_dir ~/.cache/stack
+  del_dir ~/.local/state/cabal
 }
 
 hs_ormolu () {
