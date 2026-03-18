@@ -29,3 +29,4 @@ size-mode = "delete 50 mb"
 [notify]
 action-complete = "all"
 action-start = "on"
+timeout = 5

@@ -36,6 +36,7 @@
 
     bashrcExtra = ''
       # Load completions for my projects
+      . <(cabal-monitor --bash-completion-script `which cabal-monitor`)
       . <(charon --bash-completion-script `which charon`)
       . <(kairos --bash-completion-script `which kairos`)
       . <(pacer --bash-completion-script `which pacer`)
