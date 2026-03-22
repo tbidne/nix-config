@@ -6,7 +6,7 @@
     ./boot.nix
     (import ./plasma.nix { inherit inputs; })
     ./mouse.nix
-    ./network.nix
+    (import ./network.nix { inherit inputs; })
     ./swap.nix
   ];
 

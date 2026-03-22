@@ -40,37 +40,38 @@ device = "enp0s31f6"
 #                                  Tailscale                                  #
 # --------------------------------------------------------------------------- #
 
-[[custom]]
-name = "tailscale"
-poll-interval = 300
-# repeat-events since we want to be reminded if tailscale is up.
-repeat-events = ["true"]
-command = """
-  set +e
-  status=$(tailscale status)
-  ec=$?
 
-  if [[ $ec == 0 ]]; then
-    echo "(true, $status)"
-  else
-    echo "(false, $status)"
-  fi
-"""
-command-result = "(trigger, output)"
-
-[[custom.trigger-note]]
-trigger = "true"
-summary = "Tailscale"
-body = "Up: \"$out\""
-urgency = "normal"
-timeout = 10
-
-[[custom.trigger-note]]
-trigger = "false"
-summary = "Tailscale"
-body = "Down: \"$out\""
-urgency = "normal"
-timeout = 10
+#[[custom]]
+#name = "tailscale"
+#poll-interval = 300
+## repeat-events since we want to be reminded if tailscale is up.
+#repeat-events = ["true"]
+#command = """
+#  set +e
+#  status=$(tailscale status)
+#  ec=$?
+#
+#  if [[ $ec == 0 ]]; then
+#    echo "(true, $status)"
+#  else
+#    echo "(false, $status)"
+#  fi
+#"""
+#command-result = "(trigger, output)"
+#
+#[[custom.trigger-note]]
+#trigger = "true"
+#summary = "Tailscale"
+#body = "Up: \"$out\""
+#urgency = "normal"
+#timeout = 10
+#
+#[[custom.trigger-note]]
+#trigger = "false"
+#summary = "Tailscale"
+#body = "Down: \"$out\""
+#urgency = "normal"
+#timeout = 10
 
 # --------------------------------------------------------------------------- #
 #                                   CPU Temp                                  #
