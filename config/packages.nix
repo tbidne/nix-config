@@ -87,13 +87,13 @@
     acpi
     bottom # alternative to htop, gotop, top, etc.
     dig
+    fastfetch # neofetch is unmaintained, apparently
     file
     gnupg
     gotop
     libnotify
     lm_sensors
     lsof
-    neofetch
     nix-prefetch-git
     openssl
     # Not my first choice since this is an unofficial fork, but for when

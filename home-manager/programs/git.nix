@@ -91,6 +91,20 @@
 
     signing = {
       key = "7915DC3783B023CCC261F87E618C67B2C1D6B5F8";
+      # Caused by warning:
+      #
+      #   The default value of `programs.git.signing.format` has changed from
+      #   `"openpgp"` to `null`.
+      #
+      #   You are currently using the legacy default (`"openpgp"`) because
+      #   `home.stateVersion` is less than "25.05".
+      #
+      #   To silence this warning and keep legacy behavior, set:
+      #     programs.git.signing.format = "openpgp";
+      #
+      #   To adopt the new default behavior, set:
+      #     programs.git.signing.format = null;
+      format = null;
       signByDefault = true;
     };
   };

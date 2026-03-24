@@ -19,4 +19,20 @@
   };
 
   home.stateVersion = "22.11";
+
+  # Caused by warning:
+  #
+  #   The default value of `programs.swaylock.enable` has changed from
+  #   `config.programs.swaylock.settings != { }` to `false`.
+  #
+  #   You are currently using the legacy default
+  #   (`config.programs.swaylock.settings != { }`) because `home.stateVersion`
+  #   is less than "23.05".
+  #
+  #   To silence this warning and keep legacy behavior, set:
+  #     programs.swaylock.enable = config.programs.swaylock.settings != { };
+  #
+  #   To adopt the new default behavior, set:
+  #     programs.swaylock.enable = false;
+  programs.swaylock.enable = false;
 }

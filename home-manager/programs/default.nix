@@ -2,6 +2,7 @@
 {
   imports = [
     ./bash.nix
+    ./cabal-monitor/default.nix
     ./charon/default.nix
     ./chromium.nix
     (import ./firefox.nix { inherit inputs; })
