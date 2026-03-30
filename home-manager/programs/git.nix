@@ -24,7 +24,19 @@
         lol = "log --oneline";
         redo = "commit --amend --no-edit";
         redo-reset = "commit --amend --no-edit --reset-author";
-        sm = "submodule update --init --recursive";
+
+        sm = ''
+          !f() {
+            # double -f to delete untracked submodules
+            git clean -f -f -d
+            # cleans all submodules e.g. throws aways new commits / local changes
+            git submodule deinit --force --all
+            # re-init. Note that we do /not/ want the --remote flag here, as
+            # we want to used the pinned hashes, not necessarily the latest.
+            git submodule update --init --recursive
+          }
+          f
+        '';
 
         # r = <remote>
         # u = upstream
