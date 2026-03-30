@@ -226,6 +226,7 @@ in
           #ms-python.python # FIXME: currently broken
           ms-python.vscode-pylance
           octref.vetur
+          streetsidesoftware.code-spell-checker
           rust-lang.rust-analyzer
         ]
         ++ externalExts;
