@@ -86,7 +86,16 @@
                     home-manager.backupFileExtension = ".bak";
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users.tommy = (import ./home-manager/home.nix { inherit inputs; });
+
+                    # Put home-manager's overridden lib on inputs.
+                    home-manager.users.tommy =
+                      { lib, ... }:
+                      let
+                        hmInputs = inputs // {
+                          hmLib = lib;
+                        };
+                      in
+                      (import ./home-manager/home.nix { inputs = hmInputs; });
 
                     home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                   })

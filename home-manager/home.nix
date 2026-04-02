@@ -1,9 +1,30 @@
 { inputs }:
+let
+  hoogle = inputs.pkgs.haskellPackages.hoogle;
+in
 {
   imports = [
     (import ./programs/default.nix { inherit inputs; })
     (import ./system/default.nix { inherit inputs; })
   ];
+
+  # If home-manager fails for a vague reason, try:
+  #
+  #     journalctl -eu home-manager-tommy.service
+
+  home.packages = [
+    hoogle
+  ];
+
+  # This ensures hoogle is always up-to-date. However, it takes 6-8 minutes
+  # to generate every time, so this seems like a heavy penalty to impose on
+  # every switch. Hence disabling it for now, but leaving the code as it is
+  # useful if we ever want to do something like it in the future.
+  #home.activation = {
+  #  hoogleDatabase = inputs.hmLib.hm.dag.entryAfter [ "installPackages" ] ''
+  #    ${hoogle}/bin/hoogle generate
+  #  '';
+  #};
 
   # NOTE: [Cachix]
   #

@@ -24,6 +24,17 @@
       -- by default
       -- type
       -- :set +t
+
+      -- Hoogle, requires that hoogle is globally installed and generated
+      -- with 'hoogle generate'.
+      --
+      -- Use like:
+      --
+      --   :hoogle [a] -> Int
+      --   :hdoc [a] -> Int
+      --
+      :def hoogle \x -> return $ ":!hoogle -q --colour -n 10 \"" ++ x ++ "\""
+      :def hdoc \x -> return $ ":!hoogle --info \"" ++ x ++ "\""
     '';
   };
 }

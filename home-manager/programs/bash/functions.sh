@@ -765,6 +765,78 @@ hs_doctest () {
   cabal doctest
 }
 
+hs_haddock () {
+  cabal haddock all --haddock-internal --haddock-quickjump --haddock-hoogle --haddock-html
+}
+
+hs_hoogle_gen () {
+  echo "*** Generating haddocks for local packages ***"
+  # The --haddock-hoogle ensures we generate the hoogle .txt for local packages.
+  hs_haddock
+
+  echo "*** Generating haddocks for (boot) packages ***"
+
+  # Generates hoogle .txt for boot libs. Also, running this _after_ hs_haddock
+  # means the local haddock directory gets the local package .txt files,
+  # necessary for hoogle (otherwise these files are missing).
+  #
+  # NOTE: That is, while the .txt files are /not/ generated, it appears we
+  # can click links to get redirected to libs e.g. async or any other
+  # dependency, even source-repositories. They do not show under the hoogle
+  # search though, so e.g. 'async' will fail to find the package because
+  # it is not indexed.
+  #
+  # Presumably this would be fixed by the --hoogle param, that is currently
+  # a no-op.
+  #
+  # See https://github.com/haskell/cabal/issues/10630
+  cabal haddock-project --all
+
+  echo "*** Generating hoogle database ***"
+
+  hoogle generate --local=haddocks --database=all.hoo
+}
+
+hs_hoogle_serve () {
+  local_db="all.hoo"
+  port=8080
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      "--help" | "-h")
+        echo -e "hs_hoogle_serve: Serves a hoogle database.\n"
+        echo "Usage: hs_hoogle_serve [-l|--local]"
+        echo "                       [-p|--port]"
+        echo "                       [-h|--help]"
+        echo ""
+        echo "Available options:"
+        echo -e "  -l,--local \tUses a database defined locally at local.hoo.\n"
+        echo -e "  -p,--port  \tChooses the server port.\n"
+        return 0
+        ;;
+      "-l" | "--local")
+        local_db="$2"
+        ;;
+      "-p" | "--port")
+        port="$2"
+        shift
+        ;;
+      *)
+        echo "Unexpected arg: '$1'. Try --help."
+        return 1
+    esac
+    shift
+  done
+
+  args=""
+  if [[ ! -z $local_db ]]; then
+    # In addition to the database, we need --local to ensure the local files
+    # are actually served.
+    args="--database=$local_db --local"
+  fi
+
+  hoogle server -p $port $args
+}
+
 hs_refactor () {
   $(fd -e hs) | xargs -I % sh -c " \
     hlint \
