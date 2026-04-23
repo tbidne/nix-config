@@ -1,2 +1,5 @@
 [core]
 search-infix = 'on'
+
+[notify]
+action = 'all'

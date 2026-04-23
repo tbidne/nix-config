@@ -511,7 +511,7 @@ hshell () {
   done
 
   if [[ $help_arg == 1 ]]; then
-    $(nix-build $URL -A help --no-out-link)/bin/help
+    $(nix-build $URL -A help --no-out-link)/bin/help | less
     return 0
   fi
 
@@ -1355,6 +1355,10 @@ watch_cmd () {
 
 path_hex () {
   printf '%s\n' $1 | od -t x1 -a
+}
+
+print_hex () {
+  hexdump -C "$1"
 }
 
 # tries param command until it succeeds
