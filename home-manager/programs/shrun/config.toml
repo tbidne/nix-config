@@ -29,4 +29,7 @@ size-mode = "delete 50 mb"
 [notify]
 action-complete = "all"
 action-start = "on"
+# Since dbus switched to dbus-broker, urgency levels no longer seem to work.
+# They do w/ notify-send, though.
+system = "notify-send"
 timeout = 5

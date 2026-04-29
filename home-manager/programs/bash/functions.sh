@@ -417,6 +417,10 @@ nix_gc () {
   $df_cmd
 }
 
+nboot () {
+  sudo nixos-rebuild boot --flake '.#nixos' -Lv
+}
+
 ntest () {
   sudo nixos-rebuild test --flake '.#nixos' -Lv
 }
