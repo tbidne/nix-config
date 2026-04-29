@@ -8,7 +8,7 @@
     firefox
     gimp
     google-chrome
-    haruna
+    inputs.pkgs_old.haruna
     pavucontrol
 
     # For emailing books to kindle, set up sharing by email with email server:
