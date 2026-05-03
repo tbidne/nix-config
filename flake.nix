@@ -101,9 +101,10 @@
 
                     # Put home-manager's overridden lib on inputs.
                     home-manager.users.tommy =
-                      { lib, ... }:
+                      { config, lib, ... }:
                       let
                         hmInputs = inputs // {
+                          inherit config;
                           hmLib = lib;
                         };
                       in

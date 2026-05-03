@@ -4,6 +4,8 @@
   programs.firefox = {
     enable = true;
 
+    configPath = "${inputs.config.xdg.configHome}/mozilla/firefox";
+
     profiles = {
       default = {
         # For some reason this doesn't appear to work at the moment...
