@@ -8,8 +8,8 @@ let
     mktplcRef = {
       name = "agda-mode";
       publisher = "banacorn";
-      version = "0.4.7";
-      sha256 = "sha256-gNa3n16lP3ooBRvGaugTua4IXcIzpMk7jBYMJDQsY00=";
+      version = "0.9.1";
+      sha256 = "sha256-gtUZfmsoWbRqp29BzPJrWMb3yNHS1wftH/ZMWLIzSeg=";
     };
     meta = {
       license = licenses.mit;
@@ -19,8 +19,8 @@ let
     mktplcRef = {
       name = "haskell-debugger-extension";
       publisher = "Well-Typed";
-      version = "0.11.0";
-      sha256 = "sha256-NQw8FRIjS54Cn+0vaYJ3DFzzqVYRGTMKRJy2Npp8wfo=";
+      version = "0.13.1";
+      sha256 = "sha256-AN5Vd99cYsdMJedXkXekau8tcaAMppzo7JLtdimItzM=";
     };
     meta = {
       license = licenses.mit;
@@ -41,8 +41,8 @@ let
     mktplcRef = {
       name = "ide-purescript";
       publisher = "nwolverson";
-      version = "0.25.12";
-      sha256 = "1f9064w18wwp3iy8ciajad8vlshnzyhnqy8h516k0j5bflz781mn";
+      version = "0.26.6";
+      sha256 = "sha256-zYLAcPgvfouMQj3NJlNJA0DNeayKxQhOYNloRN2YuU8=";
     };
     meta = {
       license = licenses.mit;
@@ -52,14 +52,10 @@ let
     mktplcRef = {
       publisher = "meraymond";
       name = "idris-vscode";
-      version = "0.0.9";
-      sha256 = "16n8bi34alpyybm90h3nn1rdw6r6s1xdyx11dbggr6fwdps70mv9";
+      version = "0.0.15";
+      sha256 = inputs.pkgs.lib.fakeHash;
     };
     meta = {
-      changelog = "https://marketplace.visualstudio.com/items/meraymond.idris-vscode/changelog";
-      description = "Language support for Idris and Idris 2.";
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=meraymond.idris-vscode";
-      homepage = "https://github.com/meraymond2/idris-vscode";
       license = licenses.mit;
     };
   };
@@ -78,8 +74,8 @@ let
     mktplcRef = {
       name = "language-purescript";
       publisher = "nwolverson";
-      version = "0.2.8";
-      sha256 = "1nhzvjwxld53mlaflf8idyjj18r1dzdys9ygy86095g7gc4b1qys";
+      version = "0.2.10";
+      sha256 = "sha256-JBKswfQuxaZe6stgwFsyxS9hlil6OXKzFGV11za6JbQ=";
     };
     meta = {
       license = licenses.mit;
@@ -100,19 +96,8 @@ let
     mktplcRef = {
       name = "vscode-mermaid-chart";
       publisher = "mermaidchart";
-      version = "2.3.0";
-      sha256 = "sha256-XwrO2gaSGjVdHIf3w+pW1JkHEBQf4r/l2nrnKFsJnpc=";
-    };
-    meta = {
-      license = licenses.mit;
-    };
-  };
-  tokyo-night = buildVscodeExt {
-    mktplcRef = {
-      name = "tokyo-night";
-      publisher = "enkia";
-      version = "0.7.9";
-      sha256 = "1yci2krmmxz4w105c9mjzhv8r0wbpf3k603rz5p0syq1b7g9vsfv";
+      version = "2.6.6";
+      sha256 = "sha256-Xs6D3P8DQAHIBcJQ/NVUy5WxY0QMhlKgqRQd+md0mr8=";
     };
     meta = {
       license = licenses.mit;
@@ -122,8 +107,8 @@ let
     mktplcRef = {
       name = "restructuredtext";
       publisher = "lextudio";
-      version = "190.1.4";
-      sha256 = "sha256-u7uXzAeAFqOFcdAEOCZlTYIApRCo9VkXC0t2E6JYRfg=";
+      version = "190.1.11";
+      sha256 = "sha256-y5KReXeqnxxR0W/ydIRL5KBBPtA+WFre+tJ9hC1suKI=";
     };
     meta = {
       license = licenses.mit;
@@ -133,8 +118,8 @@ let
     mktplcRef = {
       name = "simple-rst";
       publisher = "trond-snekvik";
-      version = "1.5.2";
-      sha256 = "sha256-pV7/S8kkDIbhD2K5P2TA8E0pM4F8gsFIlc+4FIheBbc=";
+      version = "1.5.4";
+      sha256 = "sha256-W3LydBsc7rEHIcjE/0jESFS87uc1DfjuZt6lZhMiQcs=";
     };
     meta = {
       license = licenses.mit;
@@ -146,6 +131,17 @@ let
       publisher = "wayou";
       version = "1.0.5";
       sha256 = "sha256-CQVtMdt/fZcNIbH/KybJixnLqCsz5iF1U0k+GfL65Ok=";
+    };
+    meta = {
+      license = licenses.mit;
+    };
+  };
+  tokyo-night = buildVscodeExt {
+    mktplcRef = {
+      name = "tokyo-night";
+      publisher = "enkia";
+      version = "1.1.2";
+      sha256 = "sha256-oW0bkLKimpcjzxTb/yjShagjyVTUFEg198oPbY5J2hM=";
     };
     meta = {
       license = licenses.mit;
@@ -168,7 +164,9 @@ let
     haskell-debugger-extension
     haskell-spotlight
     ide-purescript
-    idris-vscode
+    # FIXME: Something wrong with idris. Maybe because the publisher changed
+    # there name and it's a warning?
+    #idris-vscode
     insert-unicode
     language-purescript
     lisp-syntax
@@ -185,11 +183,8 @@ in
   # sometimes. A workaround is to delete ~/.config/VSCodium/GPUCache/.
   # If this becomes a frequent problem, perhaps wrap the exe in logic to
   # delete this directory on startup.
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
-    # Nb. With this, extensions get put in ~/.vscode-oss/. Otherwise
-    # it is ~/.vscode/.
-    package = inputs.pkgs.vscodium;
 
     profiles.default = {
 
@@ -214,19 +209,19 @@ in
         [
           arcticicestudio.nord-visual-studio-code
           bbenoist.nix
-          bungcip.better-toml
           dracula-theme.theme-dracula
           eamodio.gitlens
           editorconfig.editorconfig
           haskell.haskell
-          james-yu.latex-workshop
+          #james-yu.latex-workshop # FIXME: Extension too old for current vscode
           jnoortheen.nix-ide
           justusadam.language-haskell
           mechatroner.rainbow-csv
-          #ms-python.python # FIXME: currently broken
+          ms-python.python
           ms-python.vscode-pylance
           octref.vetur
           streetsidesoftware.code-spell-checker
+          tamasfe.even-better-toml
           rust-lang.rust-analyzer
         ]
         ++ externalExts;
