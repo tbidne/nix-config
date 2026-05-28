@@ -217,7 +217,7 @@ in
           jnoortheen.nix-ide
           justusadam.language-haskell
           mechatroner.rainbow-csv
-          ms-python.python
+          #ms-python.python
           ms-python.vscode-pylance
           octref.vetur
           streetsidesoftware.code-spell-checker

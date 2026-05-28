@@ -180,22 +180,35 @@ nus () {
 nix_del_profs () {
   path=/nix/var/nix/profiles
 
-  all_files=$(ls $path)
+  days="$1"
 
-  RX="^system-[0-9]+-link$"
+  all_files=$(ls -l $path --time-style=+%s)
+
+  RX="^.* ([0-9]+) system-([0-9]+)-link.*$"
 
   live_link=$(readlink "$path/system")
 
-  for f in $all_files; do
-    if [[ $f =~ $RX ]]; then
-      if [[ $f == $live_link ]]; then
-        echo "Skipping active profile: $f"
+  while IFS= read -r line; do
+    if [[ "$line" =~ $RX ]]; then
+      file_unix_sec="${BASH_REMATCH[1]}"
+      num="${BASH_REMATCH[2]}"
+      link_name="system-$num-link"
+      if [[ "$link_name" == $live_link ]]; then
+        echo "Not deleting active profile: $link_name"
       else
-        echo "Deleting non-active profile: $f"
-        sudo unlink "$path/$f"
+        curr_unix_sec=$(date +%s)
+        diff_sec=$(($curr_unix_sec - $file_unix_sec))
+        diff_days=$(($diff_sec / 86400))
+
+        if [[ $diff_days -gt $days ]]; then
+          echo "Deleting non-active profile: $link_name"
+          sudo unlink "$path/$link_name"
+        else
+          echo "Not deleting: $link_name. Age $diff_days < threshold $days days."
+        fi
       fi
     fi
-  done
+  done <<< "$all_files"
 
   # Keeping here just in case we want to sort the links we find...
   #sorted_links=$(echo $sys_links | xargs -n1 | sort | xargs)
@@ -339,6 +352,7 @@ nixpkgs_hs_build () {
 nix_gc () {
   set -e
 
+  days=""
   period="-d"
   profile="system"
   verbose=""
@@ -353,14 +367,15 @@ nix_gc () {
         echo "              [-h|--help]"
         echo ""
         echo "Available options:"
-        echo -e "  --period PERIOD   \tDeletes entries older than PERIOD. Defaults to all (-d)\n"
+        echo -e "  --period PERIOD   \tDeletes entries older than PERIOD (days). Defaults to all (-d)\n"
         echo -e "  --profile PROFILE \tDeletes entries for the profile. Defaults to system.\n"
         echo "Examples:"
-        echo "  nix_ghc --period 30d --profile per-user/<user_name>"
+        echo "  nix_ghc --period 30 --profile per-user/<user_name>"
         return 0
         ;;
       "--period")
-        days="--delete-older-than $2"
+        days="$2"
+        days_opt="--delete-older-than ${2}d"
         shift
         ;;
       "--profile")
@@ -379,8 +394,8 @@ nix_gc () {
 
   df_cmd="df -h /"
   ls_cmd="sudo nix-env --list-generations --profile /nix/var/nix/profiles/$profile"
-  del_cmd="nix-collect-garbage $days"
-  del_sudo_cmd="sudo nix-collect-garbage $days"
+  del_cmd="nix-collect-garbage $days_opt"
+  del_sudo_cmd="sudo nix-collect-garbage $days_opt"
   boot_cmd="sudo /run/current-system/bin/switch-to-configuration boot"
   boot2_cmd="sudo nixos-rebuild boot"
 
@@ -399,7 +414,7 @@ nix_gc () {
   $ls_cmd
 
   echo "*** Deleting generations ***"
-  nix_del_profs
+  nix_del_profs $days
 
   echo "*** Deleting ***"
   $del_cmd
