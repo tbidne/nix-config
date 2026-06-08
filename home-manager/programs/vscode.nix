@@ -171,10 +171,10 @@ let
     language-purescript
     lisp-syntax
     mermaid-chart
-    tokyo-night
     rst-preview
     rst-syntax
     todo-hl
+    tokyo-night
     vscode-auto-scroll
   ];
 in

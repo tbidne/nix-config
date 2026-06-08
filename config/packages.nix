@@ -76,7 +76,6 @@
     fd
     fzf
     ripgrep
-    silver-searcher
 
     # terminals
     kitty

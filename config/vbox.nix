@@ -1,9 +1,10 @@
 {
   virtualisation.virtualbox = {
     host = {
-      # heavy dependency, so disable it when not in use
-      enable = false;
-      enableExtensionPack = true;
+      enable = true;
+      # The extension pack is unfree, hence requires a (n expensive)
+      # rebuild. Hence disabling it unless we need it.
+      #enableExtensionPack = true;
     };
   };
 }
