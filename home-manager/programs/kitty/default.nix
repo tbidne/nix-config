@@ -36,6 +36,9 @@ in
       wheel_scroll_multiplier = 1;
     };
     extraConfig = ''
+      # https://github.com/kovidgoyal/kitty/issues/10066
+      auto_reload_config -1
+
       ${theme}
     '';
   };
