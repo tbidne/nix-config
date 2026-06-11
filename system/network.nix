@@ -55,6 +55,10 @@
     firewall.enable = false;
   };
 
+  # If we receive an error about fwupdtool service failing, try:
+  #
+  #   sudo fwupdtool refresh
+
   # Without this, we receive errors about switching to the new build since
   # nm-online never succeeds.
   systemd.services.NetworkManager-wait-online.enable = false;

@@ -84,7 +84,12 @@
               { pkgs, ... }:
               let
                 inputs = inputs' // {
-                  inherit pkgs pkgs_old src2pkg system;
+                  inherit
+                    pkgs
+                    pkgs_old
+                    src2pkg
+                    system
+                    ;
                 };
               in
               {
