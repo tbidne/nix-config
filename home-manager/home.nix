@@ -8,6 +8,16 @@ in
     (import ./system/default.nix { inherit inputs; })
   ];
 
+  # virt-manager + QEMU/KVM
+  #
+  # https://nixos.wiki/wiki/Virt-manager
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
+  };
+
   # If home-manager fails for a vague reason, try:
   #
   #     journalctl -eu home-manager-tommy.service
