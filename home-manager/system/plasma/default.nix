@@ -90,6 +90,9 @@
       "kwinrc"."NightColor"."LongitudeFixed" = "174.7772";
       "kwinrc"."NightColor"."Mode" = "Location";
 
+      # transparency
+      "kwinrc"."Plugins"."translucencyEnabled" = true;
+
       # scaling
       "dolphinrc"."IconsMode"."PreviewSize" = 112;
       "kwinrc"."Xwayland"."Scale" = 2.5;
