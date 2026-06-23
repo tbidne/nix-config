@@ -9,6 +9,6 @@
     ./postgresql.nix
     ./sys.nix
     ./user.nix
-    ./vbox.nix
+    ./virt.nix
   ];
 }
