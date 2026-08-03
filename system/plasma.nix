@@ -26,6 +26,10 @@ in
     wayland.enable = true;
   };
 
+  environment.systemPackages = [
+    pkgs.kdePackages.oxygen
+  ];
+
   # tdrop does not work with wayland, and there does not appear to be any
   # alternatives for KDE, at the moment. Give up for now or use yaquake.
   #
