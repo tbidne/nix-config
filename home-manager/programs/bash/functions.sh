@@ -1835,3 +1835,35 @@ rsync_copy () {
   dest="$2"
   rsync -ah --progress $src $dest
 }
+
+kill_name () {
+  name=$1
+
+  all_dead=0
+  count=0
+
+  while [[ $all_dead == 0 ]]; do
+    pids=$(pids_str $name | tail -n +2 | awk '{print $2}')
+    my_pids_str=$(printf "$pids" | tr '\n' ' ')
+
+    if [[ $count -gt 4 ]]; then
+      echo "Tried cancelling $count times. Still alive: $my_pids_str."
+      return 1
+    fi
+
+    if [[ ! -z "$my_pids_str" ]]; then
+      echo "Killing $my_pids_str."
+
+      kill -15 $my_pids_str
+
+      count=$(($count + 1))
+
+      sleep 2
+    else
+      echo "No processes alive for $name."
+      all_dead=1
+    fi
+  done
+
+  echo "Ran $count times."
+}

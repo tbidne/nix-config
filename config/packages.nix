@@ -33,7 +33,7 @@
     gpxsee # gpx file viewer
     pandoc
     qpdf
-    texlive.combined.scheme-full
+    texliveSmall # Or texliveFull, texliveBasic...
 
     # dev
     avro-tools
