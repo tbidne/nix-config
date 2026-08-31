@@ -91,7 +91,7 @@
       "kwinrc"."NightColor"."Mode" = "Location";
 
       # transparency
-      "kwinrc"."Plugins"."translucencyEnabled" = true;
+      #"kwinrc"."Plugins"."translucencyEnabled" = true;
 
       # scaling
       "dolphinrc"."IconsMode"."PreviewSize" = 112;
