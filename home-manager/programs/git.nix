@@ -97,12 +97,12 @@
 
       user = {
         name = "Tommy Bidne";
-        email = "tbidne@protonmail.com";
+        email = "tbidne@gmail.com";
       };
     };
 
     signing = {
-      key = "7915DC3783B023CCC261F87E618C67B2C1D6B5F8";
+      key = "0D544155313904BC693BB83C8B4E5FB28323202C";
       # Caused by warning:
       #
       #   The default value of `programs.git.signing.format` has changed from
