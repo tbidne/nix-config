@@ -607,7 +607,7 @@ ghc_build () {
   build_root="_build"
   clean=0
   config=0
-  flavour="quickest"
+  flavour="quick"
   js=0
   # for available targets, try hadrian/build --help
   target=""
