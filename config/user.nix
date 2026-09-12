@@ -1,5 +1,5 @@
 {
-  users.groups.libvirtd.members = ["tommy"];
+  users.groups.libvirtd.members = [ "tommy" ];
   users.users.tommy = {
     name = "tommy";
     description = "Tommy Bidne";
