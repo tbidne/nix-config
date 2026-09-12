@@ -1056,7 +1056,7 @@ haddock_push_legacy () {
   git branch -D gh-pages && \
     git checkout -b gh-pages && \
     make haddock && \
-    git add -A && \
+    git add docs/* && \
     git commit -m "Add haddocks" && \
     git push -u --force origin gh-pages && \
     git checkout main
@@ -1092,7 +1092,7 @@ haddock_push () {
   fi
 
   # commit and push
-  git add -A
+  git add docs/*
   git commit -m "Add haddocks"
   git push -u --force origin gh-pages
 
