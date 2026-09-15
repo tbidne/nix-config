@@ -7,6 +7,8 @@ legend = [
   { key = "nf-format", val = "nix run .#format" },
   { key = "nf-lint", val = "nix run .#lint" },
   { key = "nf-tidy", val = ["nf-format", "nf-lint"], edges = "1 ; 2" },
+  # git
+  { key = "git_gc", val = ["git count", "git gc", "git count", "git prune", "git count"], edges = "&&" },
   # haskell shortcuts
   { key = "hs-format", val = ["htool ormolu -i", "htool cabal-fmt -i"] },
   { key = "hs-lint", val = "htool hlint" },
