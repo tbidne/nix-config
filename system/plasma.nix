@@ -17,6 +17,18 @@ in
 
   services.xserver.enable = false;
 
+  # NOTE: We ran into an issue where the screenlocker was not working. That is,
+  # whenever the system was suspended (e.g. 'nap', closing the lid), upon awaking
+  # we would receive some black screen error like 'screen locker failed ...',
+  # where the only resolution was either restart or launch a virtual terminal
+  # and reload-ui.
+  #
+  # This did not seem related to nixpkgs (e.g. multiple hashes had the same
+  # problem). My _guess_ is that this had to do w/ my screenlocker's wallpaper
+  # using apod, and there was maybe a cert error (observed when digging into
+  # screenlocker settings). Changing the wallpaper to a local, static image
+  # seems to have 'fixed' the issue.
+
   services.desktopManager.plasma6 = {
     enable = true;
   };
