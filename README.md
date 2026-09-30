@@ -2,5 +2,6 @@
 
 # nix-config
 
-![ci](https://github.com/tbidne/nix-config/workflows/ci/badge.svg?branch=main)
+[![ci](https://github.com/tbidne/nix-config/actions/workflows/ci.yaml/badge.svg)](https://github.com/tbidne/nix-config/actions/workflows/ci.yaml)
+
 </div>
