@@ -79,7 +79,6 @@
 
     # terminals
     kitty
-    tmate
     tmux
 
     # misc utils
