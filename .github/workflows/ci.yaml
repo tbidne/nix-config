@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - build
 
   pull_request:
     branches:
@@ -24,8 +25,11 @@ jobs:
       - name: Nix check
         run: nix flake check
 
-      - name: Nix build
+      - name: Nix build --dry-run
         run: nix build --dry-run .#nixosConfigurations.nixos.config.system.build.toplevel
+
+      - name: Nix build
+        run: nix build .#nixosConfigurations.nixos.config.system.build.toplevel
   format:
     runs-on: ubuntu-latest
     steps:
